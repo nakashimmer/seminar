@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<title>HTML5fun プレゼン資料</title>
+<meta name=description content="横幅・縦幅、色、枠線などのデザインのCSSがよりリッチになりました。そんなCSS3についての20分間です">
+<meta name=viewport content="width=device-width">
+<script>
+	var img=new Array();
+	img[0]=new Image();
+	img[0].src="fukei.jpg";
+</script>
+
+<style>
+	*{font-weight:bold;line-height:1.2em;color:blue;}
+	html{height:100%;}
+	body{height:100%;margin:0;padding:0;
+		background:url("bg.png") no-repeat bottom right;background-size:150%;margin:0;
+		font-size:40px;}
+	.page{width:90%;height:100%;padding:0 5%;
+		-webkit-box-pack:center;
+		display:-webkit-box;-webkit-box-align:center;
+		z-index:2;
+		text-shadow:-3px -3px 3px white,-3px 3px 3px white,3px -3px 3px white,3px 3px 3px white;}
+	
+	h1{font-size:1.2em;}
+	h2{font-size:1.1em;}
+	.font06{font-size:0.6em;}
+	.font08{font-size:0.8em;}
+	.font13{font-size:1.3em;}
+	b,b *{color:rgba(0,0,0,1.0);}
+	
+	.bgimg{width:50%;height:50%;
+		position:absolute;left:0;top:0;
+		z-index:-1;opacity:0.3;background-size:cover;}
+	.inner{text-align:center;}
+	.inner div{margin:0 auto;}
+	strong{color:red;}
+	input[type="search"]{
+		-webkit-transition:-webkit-transform 1s linear;
+		width:15em;font-size:20px;padding:5px;
+		border:1px solid gray;border-radius:25px;
+		color:black;
+		box-shadow:inset 2px 2px 7px gray;}
+	button{
+		-webkit-transition:-webkit-transform 1s linear;
+		font-size:20px;padding:5px 10px;border:1px solid white;
+		border-radius:10px;color:white;
+		background-color:black;
+		box-shadow:inset -3px -3px 5px gray;}
+	button:hover{-webkit-transform:scale(6);}
+	input[type="search"]:hover{-webkit-transform:translate(100px,0) scale(3) ;}
+	@media screen and (max-width:1000px) {
+		body{font-size:30px;}
+	}
+	@media screen and (max-width:600px) {
+		body{font-size:20px;}
+	}
+}
+</style>
+
+<!-- 進捗計 -->
+<meter id=meter value=0 optimum=0 low=8 high=13 min=0 max=20></meter>
+<meter id=meter2 value=0 optimum=0 low=0.3 high=0.5 max=100></meter>
+<style>
+	#meter{width:98%;height:8px;margin:1%;position:absolute;bottom:15px;border:0 solid gray;background-color:skyblue;}
+	#meter2{width:98%;height:8px;margin:1%;position:absolute;bottom:5px;border:0 solid gray;background-color:skyblue;}
+</style>
+<script>
+	var meter=0;
+	setInterval(function(){
+		document.getElementById("meter").value=meter;
+		meter+=1/60;
+	},1000);
+</script>
+
+<!-- スプラッシュ -->
+<div class="page">
+	<img class=bgimg src="taws.png">
+	<img class=bgimg style="left:50%" src="html5fun.png">
+	<img class=bgimg style="top:50%" src="img_about.jpg">
+	このプレゼンは、5月19日に行われた<br>
+	html5funのプレゼン資料です<br>
+	chromeまたはsafariで御覧ください<br>
+	<span class="font06">
+		画面の右クリック＝進む、左クリック＝戻る<br>
+		Presented By　東京アプリ・ワークショップ 中島俊治</span>
+	
+</div>
+
+<!-- HTML5で作ったよ -->
+<div class="page">
+	&lt;p><br>
+	　<b>このプレゼンは<br>
+	　<strong>HTML5の技術</strong>を使ってます。</b><br>
+	&lt;/p>
+</div>
+
+<!-- あいさつ１ -->
+<div class="page font08">
+	<b>こんばんは</b>
+</div>
+
+<!-- あいさつ１ -->
+<div class="page font08">
+	&lt;p><b>こんばんは</b>&lt;/p>
+</div>
+
+<!-- あいさつ２ -->
+<div class="page">
+	&lt;p><br>
+	　<strong>&lt;strong></strong><br>
+	　　<b>こんばんは~!</b><br>
+	　<strong>&lt;/strong></strong><br>
+	&lt;/p>
+</div>
+
+<!-- あいさつ３ -->
+<div class="page font13">
+	&lt;p><br>
+	　<strong>&lt;strong><br>
+	　　&lt;strong><br>
+	　　　&lt;strong></strong><br>
+	　　　　<b style="font-size:1.5em">こんばんは~~~!</b><br>
+	　　　<strong>&lt;/strong><br>
+	　　&lt;/strong><br>
+	　&lt;/strong></strong><br>
+	&lt;/p>
+</div>
+
+<!-- テーマの変わり目 -->
+<div class="page font13">
+	&lt;hr>
+</div>
+
+<!-- はじまり -->
+<div class="page">
+	<strong>&lt;!DOCTYPE html><br></strong>
+	&lt;head><br>
+	<strong>　&lt;meta charset=utf-8><br></strong>
+	　&lt;title><br>
+	　　<b>影と角丸だけじゃないCSS3の遊び方</b><br>
+	　&lt;/title><br>
+	　…<br>
+	&lt;/head>
+	
+</div>
+
+<!-- 要約 -->
+<div class="page">
+	&lt;meta name=description <br>
+	content="<b>横幅・縦幅、色、枠線などのデザインのCSSがよりリッチになりました。そんなCSS3についての20分間です</b>">
+</div>
+
+<!-- お断り -->
+<div class="page font06">
+	<strong>&lt;small><br></strong>
+	　<b>このプレゼン内容は私の主観に基づいています。<br>
+	　都合上、必ずしも正確でない部分もありますので<br>
+	　ご了承ください。<br></b>
+	<strong>&lt;/small></strong>
+</div>
+
+<!-- お断り -->
+<div class="page">
+	<strong>&lt;small><br></strong>
+	　<b>このプレゼン内容は私の主観に基づいています。<br>
+		　都合上、必ずしも正確でない部分もありますので<br>
+	　ご了承ください。<br></b>
+	<strong>&lt;/small></strong>
+</div>
+
+
+<!-- ヘッダ -->
+<div class="page">
+	&lt;body><br>
+	　<strong>&lt;header><br></strong>
+	　　&lt;h1><b>HTML5 fun</b>&lt;/h1><br>
+	　　&lt;h2><b>～全国にHTML5の楽しさを届けよう！～</b>&lt;/h2><br>
+	　　&lt;h3><b>影と角丸だけじゃないCSS3の遊び方</b>&lt;/h3><br>
+	　<strong>&lt;/header></strong><br><br>
+	　…<br>
+	&lt;/body>
+</div>
+
+<!-- ナビ -->
+<div class="page">
+	<strong>&lt;nav></strong><br>
+	　&lt;ol><br>
+	　　&lt;li><b>自己紹介</b>&lt;/li><br>
+	　　&lt;li><b>CSS3の遊び方</b>&lt;/li><br>
+	　　&lt;li><b>HTML5認定試験</b>&lt;/li><br>
+	　&lt;/ol><br>
+	<strong>&lt;/nav></strong><br>
+</div>
+
+<!-- 自己紹介 -->
+<div class="page">
+	<img class=bgimg style="height:100%;" src="me.jpeg">
+	<strong>&lt;main</strong> id=theme1><br>
+	　&lt;h1><b>自己紹介</b>&lt;/h1><br>
+	　&lt;dl><br>
+	　　&lt;dt><b>名前</b>&lt;/dt><br>
+	　　&lt;dd><b>中島俊治</b>&lt;/dd><br>
+	　&lt;/dl><br>
+	　…<br>
+	<strong>&lt;/main></strong>
+</div>
+
+<!-- ルビ -->
+<div class="page">
+	<img class=bgimg style="height:100%;" src="me.jpeg">
+	<p>&lt;dd>
+	<b><ruby>中<rt>なか</rt>島<rt>しま</rt>
+	俊<rt>しゅん</rt>治<rt>じ</rt></ruby></b>&lt;dd>
+	<br><br>
+	<strong>&lt;ruby><br></strong>
+	　<b>中</b>&lt;rt><b>なか</b>&lt;/rt><br>
+	　<b>島</b>&lt;rt><b>しま</b>&lt;/rt><br>
+	　<b>俊</b>&lt;rt><b>しゅん</b>&lt;/rt><br>
+	　<b>治</b>&lt;rt><b>じ</b>&lt;/rt><br>
+	<strong>&lt;/ruby></strong>
+	<br><br>
+	</p>
+</div>
+
+<!-- 自己紹介：今 -->
+<div class="page">
+	<img class=bgimg style="height:100%;" src="html5_nintei.jpg">
+	&lt;dt><b>今</b>&lt;/dt><br>
+	&lt;dd><br>
+	　<b>HTML5講師</b><br>
+	　・<b><strong>放送大学</strong>・八洲学園大学・秋草学園短期大学</b><br>
+	　・<b>東京アプリ・ワークショップ</b><br>
+	　・<b><strong>HTML5プロフェッショナル認定校</strong></b><br>
+	　<b>アマチュア無線技士講習会講師</b><br>
+	　<b>放送大学情報コース在学中</b><br>
+	&lt;/dd>
+</div>
+
+<!-- 自己紹介：昔の仕事 -->
+<div class="page">
+	<img class=bgimg src="geo.jpeg">
+	<img class=bgimg style="left:50%" src="y.png">
+	<img class=bgimg style="top:50%" src="softbank.gif">
+	&lt;dt><b>昔</b>&lt;/dt><br>
+	&lt;dd><br>
+	　1.<b>日本アマチュア無線連盟</b><br>
+	　2.<b>ソフトバンク</b><br>
+	　3.<b><strong>GeoCities JAPAN</strong></b><br>
+	　4.<b>Yahoo! JAPAN</b><br>
+	　5.<b>ベクター</b><br>
+	　6.<b>SBIホールディングス</b><br>
+	　7.<b>野村G Joinvest証券</b><br>
+	&lt;/dd><br>
+</div>
+
+<!-- 自己紹介：受賞歴 -->
+<div class="page">
+	<img class=bgimg  src="mvp.jpg">
+	<img class=bgimg style="left:50%" src="ma6logo.jpeg">
+	&lt;dt><b>受賞歴</b>&lt;/dt><br>
+	&lt;dd><br>
+	　・<b>マッシュアップアワード6</b>入賞<br>
+	　・<b><strong>マイクロソフトMVP2014</strong></b>受賞<br>
+	&lt;/dd><br>
+</div>
+
+<!-- 自己紹介：MVP -->
+<div class="page">
+	<img class=bgimg  style="width:100%;height:100%;opacity:1;"  src="mvp.png">
+</div>
+
+<!-- 自己紹介：資格 -->
+<div class="page">
+	<img class=bgimg style="height:100%" src="lev1.jpg">
+	&lt;dt>資格&lt;/dt><br>
+	&lt;dd><br>
+	　・<b><strong>HTML5プロフェッショナル</strong>（レベル1）</b><br>
+	　・<b>ネットショップ実務士（レベル2）</b><br>
+	　・<b>シスアド</b><br>
+	　・<b>第2級アマチュア無線技士</b><br>
+	　・<b>証券外務員資格</b><br>
+	　・<b>ファイナンシャルプランナ</b><br>
+	&lt;/dd><br>
+</div>
+
+<!-- CM -->
+<div class="page font13">
+	<img class=bgimg src="fukei.jpg" style="width:100%;height:100%">
+	&lt;aside class=CM><br>
+	　<input type=search value="東京アプリ・ワークショップ"/><button>今すぐ検索</button><br>
+	　&lt;h1><b>CM</b>&lt;/h1><br>
+	　&lt;p><b><strong>HTML5のことなら<br>
+	　LPI-JapanのHTML5認定校<br>
+	　東京アプリ・ワークショップ</strong></b><br>
+	　&lt;/p><br>
+	&lt;/aside>
+</div>
+
+<!-- 区切り -->
+<div class="page ctr font13">
+	&lt;hr>
+</div>
+
+<!-- ぴかちゅ -->
+<div class="page">
+	<div class=inner>
+		<h1>しばし癒やされてください</h1>
+		<div id=picakao style="border:1px solid gray">
+			<div class=picaeye id=picaeye1>
+				<div class=picaeyelight></div>
+			</div>
+			<div class=picaeye id=picaeye2>
+				<div class=picaeyelight></div>
+			</div>
+			<div class=picahoho id=picahoho1></div>
+			<div class=picahoho id=picahoho2></div>
+			<div id=picahana></div>
+			<div id=picakuchi></div>
+			<div id=picakuchi2></div>
+		</div>
+	</div>
+</div>
+<style>
+	#picakao{background-color:yellow;width:500px;height:350px;margin:0 auto;position:relative}
+	.picaeye{position:absolute;top:80px;width:100px;height:100px;background-color:black;border-radius:50px;}
+	#picaeye1{left:80px;}
+	#picaeye2{right:80px;}
+	.picaeyelight{margin:13px 0 0 13px;width:30px;height:30px;background-color:white;border-radius:15px;}
+	.picahoho{position:absolute;top:190px;width:80px;height:80px;background-color:rgb(238,155,149);
+		border-radius:40px;}
+	#picahoho1{left:20px;}
+	#picahoho2{right:20px;}
+	
+	#picahana{position:absolute;left:210px;top:200px;width:0;height:0;
+		border-top:30px solid black;
+		border-left:30px solid transparent;    
+		border-right:30px solid transparent;
+		}
+	#picakuchi,#picakuchi2{position:absolute;top:250px;width:80px;height:30px;background-color:yellow;
+		box-shadow:-6px 8px 0 black,6px 8px 0 black;}
+	#picakuchi{left:155px;border-radius:0 0 60px 40px/0 0 30px 30px ;}
+	#picakuchi2{left:245px;border-radius:0 0 40px 60px/0 0 30px 30px ;}
+	.picaeye{-webkit-animation: pachipachi 16s linear 1s infinite;}
+	@-webkit-keyframes pachipachi{
+		50%{-webkit-transform:scale(1,1);}
+		51%{-webkit-transform:scale(1,0);}
+		52%{-webkit-transform:scale(1,1);}
+		70%{-webkit-transform:scale(1,1);}
+		71%{-webkit-transform:scale(1,0);}
+		72%{-webkit-transform:scale(1,1);}
+		80%{-webkit-transform:scale(1,1);}
+		81%{-webkit-transform:scale(1,0);}
+		82%{-webkit-transform:scale(1,1);}
+	}
+</style>
+
+<!-- 区切り -->
+<div class="page ctr font13">
+	&lt;hr>
+</div>
+
+<!-- ２つ目のテーマ -->
+<div class="page">
+	&lt;main id=theme2><br>
+	　&lt;h1><b>CSSの遊び方</b>&lt;/h1><br>
+	　…<br>
+	&lt;/main>
+</div>
+
+<!-- ナビ -->
+<div class="page">
+	&lt;nav><br>
+	　&lt;ol><br>
+	　　1.<b>影</b><br>
+	　　2.<b>角丸</b><br>
+	　　3.<b>CSS3アニメ/3次元</b><br>
+	　&lt;/ol><br>
+	&lt;/nav><br>
+</div>
+
+<!-- 影１ -->
+<div class="page">
+	&lt;section id=sec1><br>
+	　&lt;h1><b>影</b>&lt;/h1><br>
+	　&lt;p><b>とりあえずつくってみる</b>&lt;/p><br>
+	　…<br>
+	&lt;/section>
+</div>
+
+<!-- 影２ -->
+<div class="page">
+	&lt;style><br>
+	<b>　#boxkage{<br>
+	　　width:19px;height:19px;<br>
+	　　background-color:red;<br>
+	　}<br></b>
+	&lt;/style><br>
+	&lt;div id=boxkage>&lt;/div>
+</div>
+
+<!-- 影２−１ -->
+<div class="page">
+	<div class=inner>
+		<div id=kagebox1 style="margin:0 auto"></div><br><br>
+		&lt;p><b>四角形ができた</b>&lt;/p>
+	</div>
+</div>
+<style>
+	#kagebox1{
+		width:19px;height:19px;
+		background-color:red;
+	}
+</style>
+
+<!-- 影３ -->
+<div class="page">
+	&lt;style><br>
+	<b>　#boxkage{…<br>
+	　　<strong>box-shadow</strong>:20px 0px 0px red;<br>
+	　}<br></b>
+	&lt;/style><br>
+</div>
+
+<!-- 影３−１ -->
+<div class="page">
+	<div class=inner>
+		<div id=kagebox2></div><br><br>
+		&lt;p>&lt;em><b>増えた！</b>&lt;em>&lt;/p>
+	</div>
+</div>
+<style>
+	#kagebox2{
+		width:19px;height:19px;
+		background-color:red;
+		box-shadow:20px 0px 0px red;
+		-webkit-transition:-webkit-transform 1s linear;}
+	#kagebox2:hover{
+		-webkit-transform-origin:9.5px 9.5px;
+		-webkit-transform:translate(-200px,0) scale(20);}
+</style>
+
+<!-- 影４ -->
+<div class="page">
+	&lt;style><br>
+	　<b>#boxkage{…<br>
+	　　box-shadow:<br>
+	　　　20px 0px 0px red<strong>,<br>
+	　　　30px 0px 0px red;</strong><br>
+	　}<br></b>
+	&lt;/style><br>
+</div>
+
+<!-- 影４−１ -->
+<div class="page">
+	<div class=inner>
+		<div id=kagebox3></div><br><br>
+		&lt;p><strong>&lt;strong></strong><b>増えた！</b><strong>&lt;strong></strong>&lt;/p>
+	</div>
+</div>
+<style>
+#kagebox3{
+	width:19px;height:19px;
+	background-color:red;
+	box-shadow:20px 0px 0px red,40px 0px 0px red;
+	-webkit-transition:-webkit-transform 1s linear;
+	}
+#kagebox3:hover{
+	-webkit-transform-origin:9.5px 9.5px;
+	-webkit-transform:translate(-300px,0) scale(15);
+	}
+</style>
+
+<!-- 影５ -->
+<div class="page">
+	<p><b>どんどん増やすと・・・</b><p>
+</div>
+
+<!-- 影５−１ -->
+<div class="page">
+	<div class=inner>
+		<div id=marioouter>
+			<div id=mario style="margin-left:30%;"></div>
+		</div>
+		&lt;p><strong>&lt;strong><b>マリ◯！</b>&lt;/strong></strong>&lt;/p>
+	</div>
+</div>
+<style>
+	#marioouter{
+		position:relative;height:350px;
+		-webkit-transition:-webkit-transform 0.3s linear;}
+	#marioouter:hover{
+		-webkit-transform:translate(0,-800px);}
+	#mario{
+		width:19px;height:19px;
+		box-shadow: 60px 20px 0 red,80px 20px 0 red,100px 20px 0 red,120px 20px 0 red,140px 20px 0 red,40px 40px 0 red,60px 40px 0 red,80px 40px 0 red, 100px 40px 0 red, 120px 40px 0 red, 140px 40px 0 red, 160px 40px 0 red, 180px 40px 0 red, 200px 40px 0 red, 40px 60px 0 green,60px 60px 0 green,80px 60px 0 green, 100px 60px 0 orange, 120px 60px 0 orange, 140px 60px 0 green, 160px 60px 0 orange,20px 80px 0 green, 40px 80px 0 orange,60px 80px 0 green,80px 80px 0 orange, 100px 80px 0 orange, 120px 80px 0 orange, 140px 80px 0 green, 160px 80px 0 orange, 180px 80px 0 orange, 200px 80px 0 orange,20px 100px 0 green, 40px 100px 0 orange,60px 100px 0 green,80px 100px 0 orange, 100px 100px 0 orange, 120px 100px 0 orange, 140px 100px 0 orange, 160px 100px 0 green, 180px 100px 0 orange, 200px 100px 0 orange, 220px 100px 0 orange,20px 120px 0 green, 40px 120px 0 green,60px 120px 0 orange,80px 120px 0 orange, 100px 120px 0 orange, 120px 120px 0 orange, 140px 120px 0 green, 160px 120px 0 green, 180px 120px 0 green, 200px 120px 0 green,60px 140px 0 orange,80px 140px 0 orange, 100px 140px 0 orange, 120px 140px 0 orange, 140px 140px 0 orange, 160px 140px 0 orange, 180px 140px 0 orange, 40px 160px 0 green,60px 160px 0 green,80px 160px 0 red, 100px 160px 0 green, 120px 160px 0 green, 140px 160px 0 green, 160px 160px 0 green, 20px 180px 0 green, 40px 180px 0 green,60px 180px 0 green,80px 180px 0 red, 100px 180px 0 green, 120px 180px 0 green, 140px 180px 0 red, 160px 180px 0 green, 180px 180px 0 green, 200px 180px 0 green, 0px 200px 0 green, 20px 200px 0 green, 40px 200px 0 green,60px 200px 0 green,80px 200px 0 red, 100px 200px 0 red, 120px 200px 0 red, 140px 200px 0 red, 160px 200px 0 green, 180px 200px 0 green, 200px 200px 0 green, 0px 220px 0 orange, 20px 220px 0 orange, 40px 220px 0 green,60px 220px 0 red,80px 220px 0 orange, 100px 220px 0 red, 120px 220px 0 red, 140px 220px 0 orange, 160px 220px 0 red, 180px 220px 0 orange, 200px 220px 0 orange, 220px 220px 0 orange, 0px 240px 0 orange, 20px 240px 0 orange, 40px 240px 0 orange,60px 240px 0 red,80px 240px 0 red, 100px 240px 0 red, 120px 240px 0 red, 140px 240px 0 red, 160px 240px 0 red, 180px 240px 0 orange, 200px 240px 0 orange, 220px 240px 0 orange, 0px 260px 0 orange, 20px 260px 0 orange, 40px 260px 0 orange,60px 260px 0 red,80px 260px 0 red, 100px 260px 0 red, 120px 260px 0 red, 140px 260px 0 red, 160px 260px 0 red, 180px 260px 0 orange, 200px 260px 0 orange, 40px 280px 0 red,60px 280px 0 red,80px 280px 0 red, 140px 280px 0 red, 160px 280px 0 red, 180px 280px 0 red,20px 300px 0 green, 40px 300px 0 green,60px 300px 0 green, 160px 300px 0 green, 180px 300px 0 green, 200px 300px 0 green; 0px 320px 0 green,20px 320px 0 green, 40px 320px 0 green, 180px 340px 0 green, 200px 340px 0 gree, 220px 340px 0 green; }
+</style>
+
+<!-- CM -->
+<div class="page font13">
+	<img class=bgimg src="fukei.jpg" style="width:100%;height:100%">
+	&lt;aside class=CM><br>
+	　<input type=search value="東京アプリ・ワークショップ"/><button>今すぐ検索</button><br>
+	　&lt;h1><b>CM</b>&lt;/h1><br>
+	　&lt;p><b><strong>マリ◯のことなら<br>
+	　LPI-JapanのHTML5認定校<br>
+	　東京アプリ・ワークショップ</strong></b><br>
+	　&lt;/p><br>
+	&lt;/aside>
+</div>
+
+<!-- 区切り -->
+<div class="page ctr font13">
+	&lt;hr>
+</div>
+
+<!-- 角丸１ -->
+<div class="page">
+	&lt;section id=sec2><br>
+	　&lt;h1><b>角丸</b>&lt;/h1><br>
+	　&lt;p><b>こんどは大きい箱など…</b>&lt;/p><br>
+	　…<br>
+	&lt;/section>
+</div>
+
+<!-- 角丸２ -->
+<div class="page">
+	&lt;style><br>
+	<b>　#boxkado{<br>
+	　　width:500px;<br>
+	　　height:500px;<br>
+	　　border:2px solid gray;<br>
+	　}<br></b>
+	&lt;/style><br>
+	&lt;div id=boxkado>&lt;/div>
+</div>
+
+<!-- 角丸２−１ -->
+<div class="page">
+	<div class=inner>
+		<div id=boxkado1></div>
+		&lt;p><b>四角形ができた</b>&lt;/p>
+	</div>
+</div>
+<style>
+ #boxkado1{
+	width:500px;height:500px;
+	border:5px solid gray;
+	background-color:white;
+	}
+</style>
+
+<!-- 角丸３ -->
+<div class="page">
+	&lt;style><br>
+	<b>　#boxkado{…<br>
+	　　<strong>border-radius:250px;</strong><br>
+	　}<br></b>
+	&lt;/style></br>
+</div>
+
+<!-- 角丸３−１ -->
+<div class="page">
+	<div class=inner>
+		<div id=boxkado2></div>
+		&lt;p>&lt;em><b>丸ができた！</b>&lt;em>&lt;/p>
+	</div>
+</div>
+<style> 
+	#boxkado2{
+		width:500px;height:500px;
+		border:5px solid gray;
+		background-color:white;
+		-webkit-transition:border-radius 1s linear;}
+	#boxkado2:hover{border-radius:250px;}
+</style>
+
+<!-- 角丸４ -->
+<div class="page">
+	&lt;style><br>
+	<b>　#boxkado{…<br>
+	　　border-radius:250px;<br>
+	　　<strong>box-shadow:30px 30px 30px gray;</strong><br>
+	　}<br></b>
+	&lt;/style></br>
+</div>
+
+<!-- 角丸４−１ -->
+<div class="page">
+	<div class=inner>
+		<div id=boxkado3></div>
+		&lt;p>&lt;em><b>浮いた！</b>&lt;em>&lt;/p>
+	</div>
+</div>
+<style>
+	#boxkado3{
+		width:500px;height:500px;
+		border-radius:250px;
+		border:5px solid gray;
+		background-color:white;
+		-webkit-transition:box-shadow 1s linear,-webkit-transform 1s linear;}
+	#boxkado3:hover{box-shadow:30px 30px 30px gray;
+		-webkit-transform:translate(-25px,-25px);}
+</style>
+
+<!-- 角丸５ -->
+<div class="page">
+	&lt;style><br>
+	<b>　#boxkado{…<br>
+	　　border-radius:250px;<br>
+	　　box-shadow:<strong>inset</strong> -30px -30px 30px gray;<br>
+	　}<br></b>
+	&lt;/style></br>
+</div>
+
+<!-- 角丸５−１ -->
+<div class="page">
+	<div class=inner>
+		<div id=boxkado4></div>
+		&lt;p>&lt;em><b>影が内側に</b>&lt;em>&lt;/p>
+	</div>
+</div>
+<style>
+	#boxkado4{
+		width:500px;height:500px;
+		border-radius:250px;
+		box-shadow:30px 30px 30px gray,inset 0px 0px 0px gray;
+		border:5px solid gray;
+		background-color:white;
+		-webkit-transition:box-shadow 1s linear;}
+	#boxkado4:hover{
+		box-shadow:0px 0px 0px gray,inset -30px -30px 30px gray;}
+</style>
+
+<!-- 角丸６ -->
+<div class="page">
+	&lt;style><br>
+	<b>　#boxkado{…<br>
+	　　border-radius:250px;<br>
+	　　box-shadow:inset -30px -30px <strong>150px</strong> gray;<br>
+	　}<br></b>
+	&lt;/style></br>
+</div>
+
+<!-- 角丸６−１ -->
+<div class="page">
+	<div class=inner>
+		<div id=boxkado5></div>
+		&lt;p><strong>&lt;strong><b>球になった！</b>&lt;/strong></strong>&lt;/p>
+	</div>
+</div>
+<style> 
+	#boxkado5{
+		width:500px;height:500px;
+		border-radius:250px;
+		box-shadow:inset 0px 0px 0px gray;
+		border:2px solid gray;
+		background-color:white;
+		-webkit-transition:box-shadow 1s linear;}
+	#boxkado5:hover{
+		box-shadow:inset -30px -30px 150px gray,10px 10px 30px #ccc;}
+</style>
+
+<!-- 角丸７ -->
+<div class="page">
+	<div class=inner>
+		<div id=boxkado6></div>
+		&lt;p><strong>&lt;strong><b>水滴になった！</b>&lt;/strong></strong>&lt;/p>
+	</div>
+</div>
+<style> 
+	#boxkado6{
+		width:500px;height:500px;
+		border-radius:250px;
+		box-shadow:inset 0px 0px 0px gray;
+		border:2px solid gray;
+		background-color:white;
+		-webkit-transition:box-shadow 1s linear,border-radius 1s linear,border 1s linear;}
+	#boxkado6:hover{
+		box-shadow:inset -60px -60px 250px blue,5px 5px 5px gray;
+		border-radius:50px 400px 250px 250px/20px 250px 250px 400px;}
+</style>
+
+<!-- 角丸８ -->
+<div class="page">
+	<div class=inner>
+		<div id=boxkado7></div>
+		&lt;p><strong>&lt;strong><b>アメーバ</b>&lt;/strong></strong>&lt;/p>
+	</div>
+</div>
+<style> 
+	#boxkado7{
+		width:500px;height:500px;
+		border-radius:250px;
+		box-shadow:inset 0px 0px 0px gray;
+		border:2px solid gray;
+		background-color:white;
+		-webkit-transition:box-shadow 1s linear,border-radius 1s linear,border 1s linear,height 1s linear,width 1s linear;}
+</style>
+<script>
+	var boxkado7=document.getElementById("boxkado7");
+	boxkado7.addEventListener("mousemove",function(){
+		boxkado7.style.borderRadius
+		=Math.floor(Math.random()*300)+"px "
+		+Math.floor(Math.random()*200)+"px "
+		+Math.floor(Math.random()*300)+"px "
+		+Math.floor(Math.random()*200)+"px/"
+		+Math.floor(Math.random()*300)+"px "
+		+Math.floor(Math.random()*200)+"px "
+		+Math.floor(Math.random()*300)+"px "
+		+Math.floor(Math.random()*200)+"px";
+		var ww=Math.floor(Math.random()*800+200);
+		boxkado7.style.width=ww+"px";
+		boxkado7.style.height=Math.floor(Math.random()*300+200)+"px";
+		boxkado7.style.boxShadow="inset -"+Math.floor(ww/10)+"px -"+Math.floor(ww/10)+"px "+Math.floor(ww/3)+"px blue,5px 5px 5px gray"
+	});
+	boxkado7.addEventListener("mouseout",function(){
+		boxkado7.style.boxShadow="inset 0px 0px 0px gray";
+		boxkado7.style.borderRadius="250px";
+		boxkado7.style.width="500px";
+		boxkado7.style.height="500px";
+	});
+</script>
+
+
+<!-- CM -->
+<div class="page font13">
+	<img class=bgimg src="fukei.jpg" style="width:100%;height:100%">
+	&lt;aside class=CM><br>
+	　<input type=search value="東京アプリ・ワークショップ"/><button>今すぐ検索</button><br>
+	　&lt;h1><b>CM</b>&lt;/h1><br>
+	　&lt;p><b><strong>アメーバのことなら<br>
+	　LPI-JapanのHTML5認定校<br>
+	　東京アプリ・ワークショップ</strong></b><br>
+	　&lt;/p><br>
+	&lt;/aside>
+</div>
+
+<!-- 区切り -->
+<div class="page font13">
+	&lt;hr>
+</div>
+
+<!-- もみじ -->
+<div class="page">
+	&lt;section id=sec3><br>
+	　&lt;h1><b>CSS3アニメーション</b>&lt;/h1><br>
+	　&lt;p><b>もみじを作りましょう</b>&lt;/p><br>
+	　…<br>
+	&lt;/section>
+</div>
+
+<!-- もみじ１ -->
+<div class="page">
+	&lt;div id=<b>momiji</b>><br>
+	　&lt;div class=<b>a</b>>&lt;/div><br>
+	　&lt;div class=<b>b</b>>&lt;/div><br>
+	　&lt;div class=<b>c</b>>&lt;/div><br>
+	　&lt;div class=<b>d</b>>&lt;/div><br>
+	　&lt;div class=<b>e</b>>&lt;/div><br>
+	　&lt;div class=<b>f</b>>&lt;/div><br>
+	&lt;/div>
+</div>
+
+<!-- もみじ２ -->
+<div class="page">
+	&lt;style><br>
+	<b>　.a, .b, .c, .d, .e{<br>
+	　　position:absolute;left:100px;<br>
+	　　background-color:#701d00;<br>
+	　　height:200px;width:200px;<br>
+	　　<strong>border-radius:100%  0 100% 0;</strong><br>
+	　　-webkit-transform-origin:bottom left;<br>
+	　}<br></b>
+	&lt;/style>
+</div>
+
+<!-- もみじ２−１ -->
+<div class="page">
+	<div class=inner>
+		<div id=momiji1>
+			<div class=a></div>
+			<div class=b></div>
+			<div class=c></div>
+			<div class=d></div>
+			<div class=e></div>
+		</div><br><br>
+	&lt;p><b>葉っぱができた</b>&lt;/p>
+	</div>
+</div>
+<style>
+	#momiji1{width:200px;height:200px;position:relative;}
+	#momiji1 .a,
+	#momiji1 .b,
+	#momiji1 .c,
+	#momiji1 .d,
+	#momiji1 .e{
+		position:absolute;left:100px;
+		background-color:#701d00;
+		height:200px;width:200px;
+		border-radius:100% 0 100% 0;
+		-webkit-transform-origin:bottom left;
+	}
+</style>
+
+<!-- もみじ３ -->
+<div class="page">
+	&lt;style><br>
+	<b>　.a{-webkit-transform:<br>
+	　　　<strong>rotate(-90deg) scale(0.5);</strong>}<br>
+	　.b{-webkit-transform:<br>
+	　　　<strong>rotate(-45deg) scale(0.8);</strong>}<br>
+	　.c{-webkit-transform:<br>
+	　　　<strong>rotate(0deg);</strong>}<br>
+	　.d{-webkit-transform:<br>
+	　　　<strong>rotate(45deg) scale(0.8);</strong>}<br>
+	　.e{-webkit-transform:<br>
+	　　　<strong>rotate(90deg) scale(0.5);</strong>}<br></b>
+	&lt;/style>
+</div>
+
+<!-- もみじ３−１ -->
+<div class="page">
+	<div class=inner>
+		<div id=momiji2>
+			<div class=a></div>
+			<div class=b></div>
+			<div class=c></div>
+			<div class=d></div>
+			<div class=e></div>
+			<div class=f></div>
+		</div><br><br>
+		&lt;p><span id=momijicolor>&lt;strong><b>もみじになった！</b>&lt;/strong></span>&lt;/p>
+	</div>
+</div>
+<style>
+	#momiji2{width:200px;height:200px;position:relative;}
+	#momiji2 .a,#momiji2 .b,#momiji2 .c,#momiji2 .d,#momiji2 .e{
+		position:absolute;left:100px;
+		background-color:#701d00;
+		height:200px;width:200px;
+		border-radius:100% 0 100% 0;
+		-webkit-transform-origin:bottom left;
+		-webkit-animation: momiji2 20s ease-in-out 0 1 normal;}
+	#momijicolor{
+		color:red;
+		-webkit-animation: momijicolor 20s ease-in-out 0 1 normal;}
+	#momiji2 .a{-webkit-transform:rotate(-90deg) scale(0.5);}
+	#momiji2 .b{-webkit-transform:rotate(-45deg) scale(0.8);}
+	#momiji2 .c{-webkit-transform:rotate(0deg);}
+	#momiji2 .d{-webkit-transform:rotate(45deg) scale(0.8);}
+	#momiji2 .e{-webkit-transform:rotate(90deg) scale(0.5);}
+	#momiji2 .f{-webkit-animation: momiji2f 30s ease-in-out 0 1 normal;
+		position:absolute;
+		height:150px;width:100px;
+		top:40px;left:100px;
+		border-bottom:5px solid #701d00;
+		border-right:5px solid #701d00;
+		border-radius:100%  0 100% 0;
+		-webkit-transform-origin:bottom left;
+		-webkit-transform:rotate(150deg) ;}
+	@-webkit-keyframes momiji2{
+		0% {-webkit-transform:rotate(0) scale(1);}
+		50% {-webkit-transform:rotate(0) scale(1);}}
+	@-webkit-keyframes momiji2f{
+		0% {position:absolute;
+			height:0px;width:0px;
+			top:40px;left:100px;
+			border-bottom:0px solid transparent;
+			border-right:0px solid transparent;
+			border-radius:0px;
+			-webkit-transform-origin:bottom left;
+			-webkit-transform:rotate(0);}
+		50% {position:absolute;
+			height:0px;width:0px;
+			top:40px;left:100px;
+			border-bottom:0px solid transparent;
+			border-right:0px solid transparent;
+			border-radius:0px;
+			-webkit-transform-origin:bottom left;
+			-webkit-transform:rotate(0);}
+	}
+	@-webkit-keyframes momijicolor{
+		0% {color:blue;}
+	}
+</style>
+
+<!-- もみじ３−２ -->
+<div class="page font06">
+	<div>
+		<p><b>CSS3アニメーション</b>にする</p>
+		&lt;style><br>
+		　<b>#momiji{…<br>
+		　　<strong>-webkit-animation:<br>
+		　　　hirahira 10s linear 0 infinite normal;</strong><br>
+		　}<br>
+		　@-webkit-keyframes hirahira{<br>
+		　　<strong>0%</strong>{<br>
+		　　　-webkit-transform-origin:top;<br>
+		　　　-webkit-transform:<br>
+		　　　　translate(0,-450px) rotateY(0) rotateX(-90deg)<br>
+		　　　　rotateZ(-90deg) translateZ(50px);}<br>
+		　　<strong>100%</strong>{<br>
+		　　　-webkit-transform:<br>
+		　　　　translate(0,700px) rotateY(360deg) rotateX(90deg)<br>
+		　　　　rotateZ(90deg) translateZ(50px);}<br>
+		　}<br></b>
+		&lt;/style>
+	</div>
+</div>
+
+<!-- もみじ４ -->
+<div class="page">
+	<div>
+		<p>そして<b>3次元…</b></p>
+		&lt;style>…<br>
+		<b>#wrap{<br>
+		　<strong>-webkit-perspective:150px;</strong></br>
+		}<br></b>
+		&lt;/style>
+	</div>
+</div>
+
+<!-- もみじ５ -->
+<div class="page">
+	<div id=wrapmomiji>
+		<div id=momiji3>
+			<div class=a></div>
+			<div class=b></div>
+			<div class=c></div>
+			<div class=d></div>
+			<div class=e></div>
+			<div class=f></div>
+		</div>
+	</div>
+</div>
+	
+<style>
+	#wrapmomiji{
+		position:absolute;left:0;
+		width:100%;height:100%;margin-left:-100px;
+		background:-webkit-gradient(linear,left top,left bottom,from(red),to(yellow));
+		-webkit-perspective:170px;
+		overflow:hidden;
+		margin:0 auto;}
+	#momiji3{position:absolute;top:50px;left:50%;width:300px;height:300px;
+	-webkit-animation:hirahira2 10s linear 0 infinite normal;}
+	#momiji3 .a,#momiji3 .b,#momiji3 .c,#momiji3 .d,#momiji3 .e{
+		position:absolute;
+		left:100px;
+		background-color:#701d00;
+		height:200px;width:200px;
+		border-radius:100%  0 100% 0;
+		-webkit-transform-origin:bottom left;
+	}
+	#momiji3 .a{-webkit-transform:rotate(-90deg) scale(0.5);}
+	#momiji3 .b{-webkit-transform:rotate(-45deg) scale(0.8);}
+	#momiji3 .c{-webkit-transform:rotate(0deg);}
+	#momiji3 .d{-webkit-transform:rotate(45deg) scale(0.8);}
+	#momiji3 .e{-webkit-transform:rotate(90deg) scale(0.5);}
+	#momiji3 .f{
+		position:absolute;
+		height:150px;width:100px;
+		top:40px;left:100px;
+		border-bottom:5px solid #701d00;
+		border-right:5px solid #701d00;
+		border-radius:100%  0 100% 0;
+		-webkit-transform-origin:bottom left;
+		-webkit-transform:rotate(150deg) ;
+	}
+	@-webkit-keyframes hirahira2{
+		0%{	-webkit-transform-origin:top;
+			-webkit-transform:translate(0,-1000px) rotateY(0) rotateX(-90deg) rotateZ(-90deg) translateZ(50px); }
+		100%{-webkit-transform:translate(0,1500px) rotateY(360deg) rotateX(90deg)  rotateZ(90deg) translateZ(50px);}
+	}
+</style>
+
+<!-- 9-9 -->
+<div class="page font13">
+	<img class=bgimg src="fukei.jpg" style="width:100%;height:100%">
+	&lt;aside class=CM><br>
+	　<input type=search value="東京アプリ・ワークショップ"/><button>今すぐ検索</button><br>
+	　&lt;h1><b>CM</b>&lt;/h1><br>
+	　&lt;p><b><strong>もみじのことなら<br>
+	　LPI-JapanのHTML5認定校<br>
+	　東京アプリ・ワークショップ</strong></b><br>
+	　&lt;/p><br>
+	&lt;/aside>
+</div>
+
+<!-- くぎり -->
+<div class="page ctr font13">
+	&lt;hr>
+</div>
+
+<!-- まるこ -->
+<div class="page">
+	<div class=inner style="margin-top:-50px;">
+	<h1>しばし癒やされてください</h1><br><br>
+	<div id=sotowaku>
+		
+		<div id=hana>
+			<div class=hana id=hana1></div>
+			<div class=hana id=hana2></div>
+			<div class=hana id=hana3></div>
+			<div class=hana id=hana4></div>
+		</div>
+		<div class="kao shirowaku"></div>
+		<div id=hair></div>
+		<div class=maegami id=maegami1></div>
+		<div class=maegami id=maegami2></div>
+		<div class=maegami id=maegami3></div>
+		<div class=maegami id=maegami4></div>
+		<div class=maegami id=maegami5></div>
+		<div class=maegami id=maegami6></div>
+		<div class=maegami id=maegami7></div>
+		<div id=mimi></div>
+		
+		<div class=kao>
+			<div class=mayu id=mayu1></div>
+			<div class=mayu id=mayu2></div>
+			<div class=eye id=eye1>
+				<div class=eyelight></div>
+			</div>
+			<div class=eye id=eye2>
+				<div class=eyelight></div>
+			</div>
+			<div class=hoho id=hoho1></div>
+			<div class=hoho id=hoho2></div>
+			<div id=kuchi></div>
+		</div>
+	</div>
+	</div>
+</div>
+<style>
+	#sotowaku{border:1px solid gray;position:relative;margin:0 auto;width:200px;height:200px;
+		background-color:rgb(252,219,200);border:3px solid black;border-radius:30px;overflow:hidden;
+		-webkit-transform:scale(2,2) translate(0,0px);}
+	.hana{position:absolute;left:50px;width:100px;height:200px;
+		background-color:rgb(233,177,94);border-radius:50px/100px;}
+	#hana1{-webkit-transform:rotate(0);}
+	#hana2{-webkit-transform:rotate(45deg);}
+	#hana3{-webkit-transform:rotate(90deg);}
+	#hana4{-webkit-transform:rotate(135deg);}
+	#hair{position:absolute;left:17px;top:20px;width:160px;height:110px;
+		background-color:rgb(19,35,51);border:5px solid white;
+		border-radius:120px 120px 0 0/180px 180px 0 0;
+		-webkit-transform:rotate(-5deg);}
+	.maegami{position:absolute;width:0;height:0;border-top:30px solid black;z-index:1;
+		border-style:solid solid none solid;
+		border-color:rgb(19,35,51) transparent transparent transparent ;}
+	#maegami1{left: 43px;top:71px;border-width:18px  7px 0  7px; -webkit-transform:rotate(-10deg);}
+	#maegami2{left: 47px;top:60px;border-width:25px 12px 0 12px; -webkit-transform:rotate(-10deg);}
+	#maegami3{left: 64px;top:53px;border-width:30px 15px 0 15px; -webkit-transform:rotate(-10deg);}
+	#maegami4{left: 87px;top:48px;border-width:35px 17px 0 17px; -webkit-transform:rotate(-5deg);}
+	#maegami5{left:112px;top:50px;border-width:30px 15px 0 15px; -webkit-transform:rotate(10deg);}
+	#maegami6{left:132px;top:55px;border-width:25px 12px 0 12px; -webkit-transform:rotate(5deg);}
+	#maegami7{left:147px;top:64px;border-width:20px  8px 0  8px; -webkit-transform:rotate(10deg);}
+	#mimi{position:absolute;left:37px;top:100px;width:135px;height:30px;
+		background-color:rgb(252,219,200);border-radius:10px 10px 20px 20px;
+		-webkit-transform:rotate(-5deg);}
+	.kao{position:absolute;left:43px;top:50px;width:120px;height:120px;
+		background-color:rgb(252,219,200);border-radius:75px 75px 70px 70px/50px 50px 70px 70px;
+		border:2px solid black;-webkit-transform:rotate(-5deg);}
+	.shirowaku{border:5px solid white;left:40px;top:49px;}
+	.mayu{position:absolute;width:27px;height:15px;
+		border-width:1px 0 0 0;
+		border-top:1px solid black;
+		border-radius:15px 15px 3px 3px;
+		-webkit-transform:rotate(-10deg);}
+	#mayu1{left:17px;top:20px;}
+	#mayu2{left:72px;top:20px;}	
+	.eye{position:absolute;top:45px;width:16px;height:16px;
+		background-color:black;border-radius:8px;}
+	#eye1{left:30px;}
+	#eye2{left:75px;}
+	.eyelight{margin:3px 0 0 7px;width:7px;height:7px;background-color:white;border-radius:5px;}
+	.hoho{position:absolute;top:75px;width:15px;height:15px;background-color:rgb(238,155,149);border-radius:8px;}
+	#hoho1{left:5px;}
+	#hoho2{left:99px;}
+	#kuchi{position:absolute;left:45px;top:85px;width:30px;height:15px;background-color:rgb(200,105,101);
+		border-radius:0 0 15px 15px;border:2px solid black;
+		-webkit-transform:rotate(-5deg);}
+	#hana{-webkit-animation: kurukuru 16s linear 1s infinite;width:200px;height:200px;-webkit-transform-origin:center;}
+	@-webkit-keyframes kurukuru{
+		0%{-webkit-transform:rotate(0deg);}
+		100%{-webkit-transform:rotate(360deg);}}
+	.eye{-webkit-animation: pachipachi 16s linear 1s infinite;}
+	@-webkit-keyframes pachipachi{
+		50%{-webkit-transform:scale(1,1);}
+		51%{-webkit-transform:scale(1,0);}
+		52%{-webkit-transform:scale(1,1);}
+		70%{-webkit-transform:scale(1,1);}
+		71%{-webkit-transform:scale(1,0);}
+		72%{-webkit-transform:scale(1,1);}
+		80%{-webkit-transform:scale(1,1);}
+		81%{-webkit-transform:scale(1,0);}
+		82%{-webkit-transform:scale(1,1);}}
+</style>
+
+<!-- 区切り -->
+<div class="page ctr font13">
+	&lt;hr>
+</div>
+
+<!-- 3つ目のテーマ -->
+<div class="page">
+	&lt;main id=theme3><br>
+	　&lt;h1><b>HTML5プロフェッショナル認定試験</b>&lt;/h1><br>
+	　…<br>
+	&lt;/main>
+</div>
+		
+<!-- 試験のこと -->
+<div class="page">
+	<div>
+	&lt;blockquote><br>
+	<h2>HTML5プロフェッショナル認定試験は<br>
+	Webデザイナのもっとも受けたい資格</h2>
+				<img src="graph1.gif" width=500><br>
+	&lt;/blockquote><br>
+	</div>
+</div>
+
+<!-- 試験のこと２ -->
+<div class="page">
+	<div>
+		&lt;blockquote><br>
+		<h1>実務</h1>
+		<ul><li>レベル1は<b>基礎力</b>として活かせる</li>
+		<li>普段の業務に<b>必要</b></li>
+		</ul>
+		<h1>キャリアアップ</h1>
+		<ul><li>学ぶべきスキルが分かるので<b>キャリアパス</b>が描ける</li>
+		<li><b>スキル指標</b>として役立つ</li></ul>
+		&lt;/blockquote><br>
+	</div>
+</div>
+
+<!-- 試験のこと３ -->
+<div class="page font13">
+	<div>
+	&lt;p><br><strong>
+	　&lt;strong><br>
+	　　&lt;strong><br>
+	　　　&lt;strong><br>
+	　　　　<b style="font-size:70px;">履歴書にかける</b><br>
+	　　　&lt;/strong><br>
+	　　&lt;/strong><br>
+	　&lt;/strong><br></strong>
+	&lt;/p>
+	</div>
+</div>
+
+<!-- CM -->
+<div class="page font13">
+	<img class=bgimg src="exam.png" style="height:100%">
+	&lt;aside class=CM><br>
+	　<input type=search value="東京アプリ・ワークショップ"/><button>今すぐ検索</button><br>
+	　&lt;h1><b>CM</b>&lt;/h1><br>
+	　&lt;p><b><strong>HTML5プロフェッショナル<br>
+	　認定試験のことなら<br>
+	　LPI-JapanのHTML5認定校<br>
+	　東京アプリ・ワークショップ</strong></b><br>
+	　&lt;/p><br>
+	&lt;/aside>
+</div>
+
+<div class="page font13">
+	<img class=bgimg src="lpi.png" style="width:100%;height:100%">
+	&lt;aside class=CM><br>
+	　<input type=search value="LPI HTML5"/><button>今すぐ検索</button><br>
+	　&lt;h1><b>アフィリエイト</b>&lt;/h1><br>
+	　&lt;p><b><strong>HTML5プロフェッショナル<br>
+	　認定試験についての詳細は<br>
+	　LPI-Japanサイト</strong></b><br>
+	　&lt;/p><br>
+	&lt;/aside>
+</div>
+
+<!-- 区切り -->
+<div class="page ctr font13">
+	&lt;hr>
+</div>
+
+<!-- CM1 -->
+<div class="page">
+	&lt;h1><br>
+	　東京アプリ・ワークショップ<br>
+	　キャラクタのご紹介<br>
+	&lt;/h1>
+</div>
+
+<div class="page" style="background:-webkit-gradient(linear,left top,left bottom,from(white),to(skyblue))">
+	<div class=inner>
+		<p></p>
+		<canvas id=canvasina width=500 height=450></canvas>
+	</div>
+</div>
+
+<script>
+	var canvas=document.getElementById("canvasina");
+	var c=canvas.getContext("2d");
+	var pi=Math.PI;
+	
+	setInterval(ml,50);
+	var frame=0;
+	function ml(){
+		frame++;
+		c.clearRect(0,0,canvas.width,canvas.height);
+	
+		mLmsg();
+		msg();
+		
+		c.save();
+		c.translate(250,210-60*Math.sin(frame/180*Math.PI));
+		c.rotate(Math.sin(frame/50*Math.PI)/10);
+			c.translate(-250,-250);
+			hane(30);
+			hane(0);
+			hane(-30);
+			hane(180+30);
+			hane(180+0);
+			hane(180-30);
+			haneMsg("CSS3",360,175,-25);
+			haneMsg("JavaScript",360,245,0);
+			haneMsg("AudioVideo",360,305,40);
+			haneMsg("Canvas",140,175,25);
+			haneMsg("Geolocation",140,245,0);
+			haneMsg("Sensor",140,300,-40);
+		
+			footer(250-25,300);footer(250+25,300);
+			
+			c.save();
+				c.translate(250,235);
+				c.rotate(Math.sin(frame/50*Math.PI)/10);
+				fude(250-100-250,235-5-235,250-140-250,235-5-50-235);
+				ude(250-250,235-235,250-70-250,235+5-235,250-100-250,235-5-235);
+			c.restore();
+			ude(250,235,250+70,235+5,250+60,235+55);
+			body(250,250);
+			face(250,170);
+			eye(220,190,0);
+			eye(280,190,0);
+			mouth(250,210);
+			hat(230,135);
+			five();
+		c.restore();
+	}
+	
+	
+	function five(){
+		c.save();
+			c.translate(250,265);
+			c.fillStyle="white";
+			c.font="8px serif";
+			c.textAlign="left";
+			c.fillText("mL Fairy",-5,-20);
+			
+			c.beginPath();
+			c.moveTo(35,0);
+			c.lineTo(-30,0);
+			c.lineTo(-29,20);
+			c.lineTo(29,20);
+			c.lineTo(28,45);
+			c.lineTo(0,50);
+			c.lineTo(-27,45);
+			c.lineTo(-28,30);
+			c.lineWidth=15;
+			c.strokeStyle="white";
+			c.stroke();
+		c.restore();
+	}
+	
+	function haneMsg(msg,x,y,kakudo){
+		c.font="20px serif";
+		c.save();
+			c.translate(x,y);
+			c.rotate(kakudo/180*pi);
+			c.textAlign="center";
+			c.fillStyle="#0091BE";
+			c.beginPath();
+			c.fillText(msg,0,0);
+		c.restore();
+	}
+	
+	function fude(x,y,x1,y1){
+		c.beginPath();
+		c.moveTo(x1+5,y1);
+		c.lineTo(x,y);
+		c.lineTo(x1-10,y1);
+		c.fillStyle="#955629";
+		c.fill();
+		c.lineWidth=5;
+		c.strokeStyle="#955629";
+		c.stroke();
+		
+		c.beginPath();
+		c.moveTo(x1+3,y1+5);
+		c.lineTo(x1-9,y1-10);
+		c.lineWidth=18;
+		c.strokeStyle="#ffffad";
+		c.stroke();
+	}
+	function msg(){
+		c.font="35px 'Hiragino Maru Gothic ProN'";
+		c.lineWidth=2;
+		c.strokeStyle="#ffffad";
+		c.textAlign="center";
+		c.strokeText("東京アプリ・ワークショップ",250,401);
+		c.fillStyle="#EF652A";
+		c.fillText("東京アプリ・ワークショップ",251,400);
+	}
+	function mLmsg(){
+		c.font="30px 'Hiragino Maru Gothic ProN'";
+		c.lineWidth=2;
+		c.strokeStyle="white";
+		c.textAlign="center";
+		c.strokeText("mL Fairly(ムエル・フェアリ)",250,50);
+		c.fillStyle="blue";
+		c.fillText("mL Fairly(ムエル・フェアリ)",251,50);
+	
+	}
+	
+	function hat(x,y){
+		c.save();
+			c.translate(x,y);
+			c.rotate(-15/180*pi);
+			c.scale(1,0.5);
+			c.beginPath();
+			c.arc(0,0,60,0,2*pi,true);
+			c.closePath();
+			c.fillStyle="#EF652A";
+			c.fill();
+			c.fillStyle="white";
+			c.font="20px sans-serif";
+			c.rotate(40/180*pi);
+			c.textAlign="left";
+			c.fillText("HTML",-40,40);
+		c.restore();
+	}
+	
+	function mouth(x,y){
+		c.save();
+			c.translate(x,y);
+			c.beginPath();
+			c.moveTo(-10,-3)
+			c.lineTo(0,3);
+			c.lineTo(10,-3);
+			c.lineWidth=3;
+			c.lineCap="round";
+			c.strokeStyle="#E34F26";
+			c.stroke();
+		c.restore();
+	}
+	
+	function eye(x,y,kakudo){
+		c.save();
+			c.translate(x,y);
+			c.rotate(kakudo/180*pi);
+			c.scale(1,0.5);
+			c.beginPath();
+			c.arc(0,0,10,0,2*pi,false);
+			c.closePath();
+			c.fillStyle="gray";
+			c.fill();
+		c.restore();
+	}
+	function face(x,y){
+		c.save();
+			c.translate(x,y);
+			c.scale(1,0.7);
+			c.beginPath();
+			c.arc(0,0,80,0,2*pi,false);
+			
+			c.closePath();
+			c.fillStyle="#FFE4C4";
+			c.fill();
+			//髪
+			c.beginPath();
+			c.arc(0,0,80,10/180*pi,170/180*pi,true);
+			c.arc(0,70,60,pi,0,false);
+			c.closePath();
+			c.fillStyle="#ffffad";
+			c.fill();
+		c.restore();
+	}
+	
+	function ude(x,y,x2,y2,x3,y3){
+		c.save();
+			c.translate(x,y);
+			c.beginPath();
+			c.moveTo(0,0);
+			c.lineTo(x2-x,y2-y);
+			c.lineTo(x3-x,y3-y);
+			c.lineWidth=20;
+			c.strokeStyle="#FFE4C4";
+			c.stroke();
+			c.beginPath();
+			c.arc(x3-x,y3-y,13,0,2*pi,false);
+			c.closePath();
+			c.fillStyle="#FFE4C4";
+			c.fill();
+		c.restore();
+	}
+	
+	function body(x,y){
+		c.save();
+			c.translate(x,y);
+			c.fillStyle="#EF652A";
+			c.beginPath();
+			c.moveTo(-50,-30);
+			c.lineTo(50,-30);
+			c.lineTo(40,0);
+			c.arc(0,-50,150,0.2*pi,0.8*pi,false);
+			c.lineTo(-40,0);
+			c.fill();
+		c.restore();
+	}
+	
+	function footer(x,y){
+		c.save();
+			c.translate(x,y);
+			
+			c.lineWidth=35;
+			c.strokeStyle="#FFE4C4";
+			c.beginPath();
+			c.moveTo(0,0);
+			c.lineTo(0,100);
+			c.stroke();
+			
+			c.lineWidth=40;
+			c.strokeStyle="#fff";
+			c.beginPath();
+			c.moveTo(0,60);
+			c.lineTo(0,100);
+			c.stroke();
+			
+			c.beginPath();
+			c.arc(0,100,20,0,2*pi,false);
+			c.fillStyle="#fff";
+			c.fill();
+		
+		c.restore();
+	}
+	
+	function hane(kakudo){
+		c.save();
+			c.translate(250,250);
+			c.rotate(kakudo/180*pi);
+			c.scale(1,0.3);
+			c.beginPath();
+			c.arc(100,0,100,-0,2*pi,pi,false);
+			c.closePath();
+			c.fillStyle="skyblue";
+			c.globalAlpha=0.5;
+			c.fill();
+			c.globalAlpha=1;
+		c.restore();
+	}
+</script>
+
+<!-- CM -->
+<div class="page font13">
+	<img class=bgimg src="fukei.jpg" style="width:100%;height:100%">
+	&lt;aside class=CM><br>
+	　<input type=search value="東京アプリ・ワークショップ"/><button>今すぐ検索</button><br>
+	　&lt;h1><b>CM</b>&lt;/h1><br>
+	　&lt;p><b><strong>canvasのことなら<br>
+	　LPI-JapanのHTML5認定校<br>
+	　東京アプリ・ワークショップ</strong></b><br>
+	　&lt;/p><br>
+	&lt;/aside>
+</div>
+
+
+<div class="page">
+	<img class=bgimg src="canvasina.png" style="width:100%;height:100%;opacity:0.7">
+</div>
+<!-- 区切り -->
+<div class="page ctr font13">
+	&lt;hr>
+</div>
+
+<!-- 最新情報 -->
+<div class="page">
+	&lt;h1><b>最新情報</b>&lt;/h1>
+</div>
+
+<!-- 大学の窓 -->
+<div class="page">
+	&lt;aside class=CM><br>
+	<img class=bgimg src="ouj.jpg" style="height:100%">
+	　&lt;p><br>
+	　<b>放送大学の情報番組「大学の窓」<br>
+	　5月27日〜6月2日までの<br>
+	　火・木・土・月に<br>
+	　「面接授業紹介～HP作成講座～」<br>
+	　主演します。</b><br>
+	　&lt;/p><br>
+	&lt;aside>
+</div>
+
+<!-- ワークショップ -->
+<div class="page">
+	&lt;aside class=CM><br>
+	　&lt;h1><b>ワークショップのご案内</b>&lt;/h1><br>
+	　&lt;p><b>都内で<br>
+	　HTML5ワークショップを<br>
+	　開催しています。<br>
+	　ぜひご参加ください。</b>&lt;/p><br>
+	　<input type=search value="東京アプリ・ワークショップ"/><button>今すぐ検索</button><br>
+	&lt;aside>
+</div>
+
+<!-- 女子率 -->
+<div class="page">
+	<img class=bgimg style="width:100%;height:100%" src="josi.jpg">
+	<h1>女子率高いです</h1>
+	<input type=search value="東京アプリ・ワークショップ"/><button>今すぐ検索</button>
+</div>
+
+<!-- 会場 -->
+<div class="page">
+	&lt;aside class=CM><br>
+	　&lt;h1><b>会場を探してます！</b>&lt;/h1><br>
+	　&lt;p><b>HTML5ワークショップの<br>
+	　教室を貸してくださる<br>
+	　心優しい方からの<br>
+	　ご連絡お待ちしています。</b>&lt;/p><br>
+	　<input type=search value="東京アプリ・ワークショップ"/><button>今すぐ検索</button><br>
+	&lt;aside>
+</div>
+
+<!-- 電子書籍 -->
+<div class="page">
+	<img class=bgimg src="book.jpg" style="left:50%;height:100%">
+	<img class=bgimg src="booklank.jpg" style="height:100%">
+	&lt;aside class=CM><br>
+	　&lt;h1><b>電子書籍のご案内</b>&lt;/h1><br>
+	　&lt;p><strong>電子書籍「HTML5入門」</strong><b>を<br>
+	　・iBook Store<br>
+	　・Kindle market<br>
+	　・DL marketで<br>
+	　販売中。</b>&lt;/p><br>
+	　<input type=search value="東京アプリ・ワークショップ"/><button>今すぐ検索</button><br>
+	&lt;aside>
+</div>
+
+
+<!-- フッタ -->
+<div class="page">
+	&lt;footer><br>
+	　&lt;h1><b>2014(c)Nakashima Shunji</b>&lt;/h1><br>
+	　&lt;address><br>
+	　　<b>http://www.facebook.com/<wbr>nakashimmer</b><br>
+	　&lt;/address><br>
+	&lt;/footer>
+</div>
+
+<!-- スプラッシュ -->
+<div class="page">
+	<img class=bgimg src="taws.png">
+	<img class=bgimg style="left:50%" src="html5fun.png">
+	<img class=bgimg style="top:50%" src="img_about.jpg">
+			ご清聴ありがとうございました<br>
+	<input type=search value="東京アプリ・ワークショップ"/><button>今すぐ検索</button>
+</div>
+
+<script>
+	var pageNo=0;
+	var pages=document.getElementsByClassName("page");
+	var w=document.body.clientWidth;
+	for(var i=0;i<pages.length;i++){
+		pages[i].style.display="none";
+		pages[i].addEventListener("click",pagemove);
+	}
+	pages[pageNo].style.display="-webkit-box";
+	function pagemove(e){
+		if(window.innerWidth/2<e.pageX){
+			pageNo++;if(pages.length<=pageNo)pageNo=pages.length-1;
+			pages[pageNo-1].style.display="none";
+			pages[pageNo].style.display="-webkit-box";
+		}else{
+			pageNo--;if(pageNo<=0)pageNo=0;
+			pages[pageNo+1].style.display="none";
+			pages[pageNo].style.display="-webkit-box";
+		}
+		document.getElementById("meter2").value=100*(pageNo+1)/pages.length;
+	}
+</script>

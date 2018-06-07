@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<title>HTML5fun</title>
+
+<meta name=viewport content="width=320px,user-scalable=no">
+
+<style>
+	*{margin:0;padding:0;
+		text-decoration:none;
+		list-style:none;
+		font-family:sans-serif; 
+		color:black;
+		font-size:20px;
+	}
+	
+	body{text-align:center;background-color:#fff;}
+	#wrap{width:100%;margin:0 auto;text-align:left;}
+	header{
+		background:white url("header.png") no-repeat center center;
+		background-size:100% auto;
+		width:100%;height:300px;
+	}
+	header h1{
+		text-indent:-9999px;
+	}
+	section h1{
+		text-align:center;height:43px;line-height:43px;
+		background:-webkit-gradient(
+			linear,left top,left bottom,from(pink),to(white)
+		);
+		margin:5px 0;
+		padding:5px;
+		text-shadow:-1px -1px 1px white;
+	}
+	nav ul:after{
+		content:"";
+		display:block;
+		clear:both;
+	}
+	nav li{
+		height:56px;
+		margin:5px 3px;
+		background-color:#fff;
+		border:1px solid gray;
+		border-radius:5px;
+		text-indent:1em;
+		font-weight:bold;
+		box-shadow:2px 2px 2px gray;
+		background-size:100% 100%;
+	}
+
+	nav li a{
+		display:block;
+		line-height:56px;
+	}
+
+	main section p{
+		margin:5px;
+		line-height:1.5em;
+	}
+	footer h1{
+		background-color:red;
+		color:white;
+		font-size:0.7em;
+		padding:5px;
+		text-align:center;
+	}
+
+	@media(min-width:600px){
+		header{height:450px;}
+	}
+	
+	@media(min-width:800px){
+		#wrap{width:800px;}
+		header{height:550px;}
+		ul:after{content:"";display:block;clear:both;}
+		li{width:190px;height:100px;line-height:100px;float:left;}
+		li a{font-size:12px;line-height:100px;}
+		
+	}
+	small{font-size:12px;line-height:12px;color:red;font-weight:bold;}
+	a{-webkit-transition:box-shadow 0.5s linear,color 0.5s linear;}
+	a:hover{color:red;box-shadow:inset 0 0 10px gray;}
+	
+</style>
+
+<script>
+	function $(id){
+		return document.getElementById(id);
+	}
+</script>
+
+<div id=wrap>
+	<header>
+		<h1>HTML5fun</h1>
+		<h2>ちょと面白い(かもしれない)CSS3</h2>
+	</header>
+	
+	<main>
+		<section>
+			<p>最近、シングルページWebアプリケーションやパララックス的なWebサイトふえてますね。HTML5でそれらを一からつくるのが今の私のマイブーム。CSS3を使って試行錯誤していますけどこれが結構面白いのです。今回はそれらをマジメにご紹介します。みなさんのお役に立つことができれば嬉しいです。どうぞ、お楽しみに。</p>
+		</section>
+		<section>
+			<h1>サンプルリンク</h1>
+			<nav>
+				
+				<ul>
+					<li><a href="https://www.apple.com/jp/iphone-6/">①シングルページ</a></li>
+					<li><a href="http://www.linguage-school.jp/lp/201401.html">①ランディングページ</a></li>
+					<li><a href="http://www.tamabi.ac.jp/index_j.htm">②多摩美</a></li>
+					<li><a href="http://www.dangersoffracking.com/">②HYDRAULIC…</a></li>
+					<li><a href="http://shop.nikon-image.com/nikon1/nikon1aw1/">④Nikon A AW1</a></li>
+					<li><a href="http://graphicnovel-hybrid4.peugeot.com/start.html">④peugeot hybrid4</a></li>
+					<li><a href="http://2011.beercamp.com/">④BEERCAMP</a></li>
+					
+				</ul>
+			</nav>
+		</section>
+		<section>
+			<h1>JavaScriptでCSS</h1>
+			<div id=cssSample1>We<br>Love<br>HTML5</div>
+			<script>
+				$("cssSample1").style.width="100px";
+				$("cssSample1").style.height="100px";
+				$("cssSample1").style.margin="50px auto";
+				$("cssSample1").style.border="1px solid gray";
+				$("cssSample1").style.webkitTransform='scale(-1,1) rotate(20deg)';
+			</script>
+		</section>
+		
+		<section>
+			<h1>スクロールの値を取得</h1>
+			<span id=info>ここに数値が入ります</span>
+			<div id=cssSample2>We<br>Love<br>HTML5</div>
+			<script>
+				var W=window.innerWidth;
+				var H=window.innerHeight;
+			
+				$("cssSample2").style.width="100px";
+				$("cssSample2").style.height="100px";
+				$("cssSample2").style.margin="50px auto";
+				$("cssSample2").style.border="1px solid gray";
+		
+				window.onscroll = function(){
+					pos =document.body.scrollTop;
+					$("cssSample2").style.webkitTransform='scale('+(3*Math.cos(pos/4))+',1)';
+					
+					$("info").innerHTML="横幅="+W+"px,高さ="+H+"px,スクロール"+pos+"px";
+				}
+			</script>
+		</section>
+		<section>
+			<h1>やってみた</h1>
+			<nav>
+			<ul>
+				<li><a href="http://springreen.jp/podium/html5newfuture2/presen/">放送大学</a></li>
+				<li><a href="http://springreen.jp/podium/htmlday/">HTML5 Night</a></li>
+				<li><a href="https://www.youtube.com/watch?v=LDK_Qs0ph3Y&feature=youtu.be#t=1h53m10s">HTMLNight YouTube</a></li>
+				
+			</ul>
+			</nav>
+		</section>
+		<section>
+			<h1>修正</h1>
+			<p contenteditable="true">ページ上で直接修正ができます</p>
+		</section>
+		<section>
+			<h1>告知</h1>
+			<nav>
+				<ul>
+					<li><a href="https://schoo.jp/class/1981">オンライン授業 schoo</a></li>
+					<li><a href="http://www.shuwasystem.co.jp/newbook.html#com">HTML5認定対策本</a></li>
+					<li><a href="http://www.facebook.com/tokyoAppWorkShop">HTML5講座</a></li>
+				</ul>
+			</nav>
+		</section>
+	</main>
+
+	<footer>
+		<h1>Copyright(c)2014 Nakashima Shunji.All Rights Reserved.</h1>
+	</footer>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-57184048-1', 'auto');
+  ga('send', 'pageview');
+
+</script>

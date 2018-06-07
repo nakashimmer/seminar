@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<title>HTML5fun</title>
+<style>
+*{margin:0;padding:0;}
+body{
+	/*overflow-y:hidden;*/
+	font-weight:bold;
+	font-family:sans-serif;
+}
+.bg{
+	position:relative;
+	background-size:cover;
+	background-position:center center;
+	border:0px solid gray;
+	overflow:hidden;
+	
+}
+
+.inner{
+	position:absolute;
+	background-color:rgba(0,0,0,0.5);
+	z-index:1;
+	box-shadow:5px 5px 5px rgba(10,10,10,0.5),10px 10px 10px rgba(200,200,200,0.3);
+	text-shadow:1px 1px 2px black;
+	border-radius:15px;
+	border:1px solid rgba(0,0,0,0.2);
+	padding:20px;
+	color:white;
+	line-height:1.2em;
+	word-break: break-all;
+}
+.title{
+	position:absolute;
+	z-index:1;
+	text-align:center;
+	
+	color:blue;
+	text-shadow:2px 2px 3px white,
+	-1px -1px 3px white;
+}
+.theme{font-size:1.9em;
+line-height:1em;
+text-align:center;
+}
+p{
+	margin:0 0 0.2em 0;
+}
+ul,ol{
+	margin-left:1em;
+	list-style-image:url(bg/li.png);
+}
+
+iframe{
+	border:none;
+	margin:0 250px;
+	overflow:hidden;
+}
+a{
+	text-decoration:none;
+	color:white;
+}
+.sample{
+	background-color:white;
+	text-align:center;
+	padding:10px;
+	color:blue;
+	border-radius:30px;
+}
+input{font-size:1em;height:1em;}
+a{border-bottom:2px solid lightgreen;}
+b{color:lightgreen;}
+</style>
+
+<div id=bg></div>
+
+<script src=story.js></script>
+<script>
+var pos=0;
+var W=window.innerWidth;
+var H=window.innerHeight;
+
+init();
+
+function $floor(n){return Math.floor(n)+"px";}
+function $(id){return document.getElementById(id);}
+
+function init(){
+	for(var i=0;i<c.length;i++){
+		$("bg").innerHTML+=
+			'<section class=bg id=p'+i+'>'+
+				'<h1 class=title id=t'+i+'>'+c[i].t+'</h1>'+
+				'<div class=inner id=c'+i+'>'+c[i].c+'</div>'+
+			'</section>';
+		$("p"+i).style.height=H+"px";
+		$("p"+i).style.backgroundImage="linear-gradient(to bottom,rgba(255,255,255,0.3),rgba(255,255,255,0.3)),url(bg/"+c[i].b+")";
+		
+		$("t"+i).style.marginLeft=$floor(W/8+W*i);
+		$("t"+i).style.width=$floor(W/8*6);
+		$("t"+i).style.height=$floor(W/8*1.5);
+		$("t"+i).style.lineHeight=$floor(H/8*1.5);
+		$("t"+i).style.fontSize=Math.floor(W/20)+"px";
+		
+		$("c"+i).style.marginTop=$floor(H/8*1.5);
+		$("c"+i).style.marginLeft=$floor(W/8);
+		$("c"+i).style.width=$floor(W/8*6-40);
+		$("c"+i).style.height=$floor(H/8*6-40);
+		$("c"+i).style.fontSize=Math.floor(W/23)+"px";
+	}
+}
+window.onscroll = function(){
+	pos =document.body.scrollTop;
+	if(pos%H<20)window.scroll(0,Math.floor(pos/H)*H);
+	for(var i=0;i<c.length;i++){
+		$("t"+i).style.marginLeft=$floor(W/8+W*i-pos/H*W);
+		$("c"+i).style.marginTop=$floor(H/8*1.5-pos+i*H);
+	}
+}
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<title>スマートフォンを活用した HTML5 Webアプリケーション開発</title>
+<meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1.0">
+<link rel="stylesheet" href="first3.css">
+<style>
+	
+	a,section h1{font-size:20px;height:30px;display:block;}
+	li:hover{background-color:yellow;}
+	.sample{width:100%;text-align:left;}
+	ul{margin:0 5px;}
+	header h1{text-shadow:2px 2px 4px white;}
+	section h1{border-radius:10px 10px 0 0;}
+	
+	@media(max-width:449px){
+		li{border:1px solid gray;border-bottom:none;padding:3px;}
+		li:last-of-type{border-bottom:1px solid gray;border-radius:0 0 5px 5px;}
+		header h1{line-height:2em;height:6em;}
+	}
+	
+	@media(min-width:450px){
+		#wrap{width:95%}
+		li a{font-size:20px;height:25px;line-height:25px;}
+		li{float:left;margin:5px;border:1px solid #aaa;padding:3px;border-radius:10px;}
+		h1{clear:both;}
+		main section h1{background:white;border-bottom:1px solid gray;}
+		header h1{line-height:2em;}
+	}
+	@media(min-width:1000px){
+		#wrap{width:1000px;}
+		#right,#center,#left{width:50%;float:left;}
+		li a{font-size:15px;height:15px;line-height:15px;margin:3px;}
+		li{clear:left;border:none;margin:0;padding:0;}
+		h1{clear:both;}
+		header h1{line-height:6em;height:6em;}
+		.jikan{padding:20px 0 0 0;}
+		footer{margin-top:50px;}
+	}
+	.ul{background-color:#fee;}
+	
+</style>
+
+<div id=wrap>
+<header>
+	<h1>スマートフォンを活用した HTML5 Webアプリケーション開発</h1>
+</header>
+<main>
+	<div id=left>
+		<section>
+			<h1 class=jikan>はじめに</h1>
+			<ul>
+				<li><a href="app/casareal_sample.zip">0.サンプルファイル</a></li>
+				<li><a href="https://cs264.xbit.jp/~w074265/practice/group1/">0.練習場所</a></li>
+				<li><a href="/SHOWCASE/">0.HTML5サンプル</a></li>
+
+		</section>
+		<section>
+			<h1 class=jikan>1日目午前</h1>
+			<ul>
+				<li><a href="app/sample_1.html">1.Webアプリケーション製作基礎</a></li>
+				<li><a href="app/sample_2-1.html">2-1.レスポンシブWebデザイン</a></li>	
+				<li><a href="app/sample_2-2.html">2-2.CSSスプライト</a></li>
+				<li><a href="app/sample_2-4.html">2-4.フルードイメージ</a></li>
+			</ul>
+		</section>
+		
+		<section>
+			<h1 class=jikan>1日目午後</h2>
+			<ul>
+				<li><a href="app/sample_3-1.html">3-1.ローカルストレージ</a></li>
+				<li><a href="app/sample_3-2.html">3-2.複数のデータ</a></li>
+				<li><a href="app/sample_4.html">4.オフラインアプリケーション</a></li>
+			</ul>
+		</section>
+	</div>
+	<div id=left>
+		<section>
+			<h1 class=jikan>2日目午前</h2>
+			<ul>
+				<li><a href="https://cs264.xbit.jp/~w074265/SEMINAR/casareal/app/sample_5.html">5.GPS取得</a></li>
+				<li><a href="https://cs264.xbit.jp/~w074265/SEMINAR/casareal/app/sample_6.html">6.Google Mapとの連携</a></li>
+			</ul>
+		</section>
+		
+		<section>
+			<h1 class=jikan>2日目午後</h2>
+			<ul>
+				<li><a href="app/sample_7.html">7.マウスセンサ</a></li>
+				<li><a href="app/sample_8.html">8.タッチセンサ</a></li>
+				<li><a href="app/sample_9.html">9.加速度センサ</a></li>
+			</ul>
+		</section>
+		
+		<section>
+			<h1 class=jikan>付録</h2>
+			<ul>
+				<li><a href="app/sample_a3-2.html">A3-2.コンテンツ書換</a></li>
+				<li><a href="app/sample_a3-3.html">A3-3.CSS書換</a></li>
+				<li><a href="app/sample_a4.html">A4.(グラフ作成)</a></li>
+				<li><a href="app/sample_a4-2.html">A4-2.canvas</a></li>
+				
+			</ul>
+		</section>
+		
+		<section>
+			<h1 class=jikan>参考</h2>
+			<ul>
+				<li><a href="https://ja.monaca.io/">monaca</a></li>
+				<li><a href="http://jsdo.it">jsdo.it</a></li>
+
+				
+			</ul>
+		</section>
+	</div>
+</main>
+</div>
+<footer>
+	<a href="http://www.facebook.com/nakashimmer"><small>2015(C) Nakashima.</small></a>
+</footer>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3233827-39', 'auto');
+  ga('send', 'pageview');
+
+</script>

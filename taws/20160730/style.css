@@ -1,0 +1,109 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+*{margin:0;padding:0;list-style:none;
+font-size:32px;font-family: 'Noto Sans Japanese', sans-serif;font-weight:bold;}
+
+body{
+	height:600px;
+	background-repeat: no-repeat;
+	background-attachment: fixed !important; 
+	background:linear-gradient(#66f ,white);
+}
+
+
+section,.section{
+	z-index:1;
+	border-radius:50px;
+	margin:50px auto;
+	padding:30px;
+	width:700px;height:500px;
+	transition:all 1s ease-in-out 0.5s;
+	color:black;
+	background-color:rgba(255,255,255,0.6);
+	text-shadow:-1px -1px 0px rgba(255,255,255,0.9),1px 1px 2px rgba(0,0,0,0.5);
+	box-shadow:inset -1px -2px 20px white,10px 10px 10px gray;
+}
+section{
+	opacity:0.1;	
+}
+section:hover{opacity:1;}
+section h1{
+	font-size:50px;
+	color:#33f;
+}
+
+ol,ul{
+	margin-left:1em;
+	text-indent:-1em;
+	list-style:none;
+}
+
+li:before{content:"● ";color: #99f;}
+
+
+header h1,footer h1{
+	font-size:1.6em;
+	text-align:center;
+	margin-top:1em;
+	color:rgba(256,255,255,0.95);
+	text-shadow:none;
+	animation:headerh 6s ease-in-out 0s infinite alternate;
+}
+@keyframes headerh{
+	95%{transform:translate(0,-24px) rotateX(0deg);}
+	100%{transform:translate(0,-25px)  rotateX(180deg);}
+}
+
+section:nth-of-type(3n) h1{
+	animation:animeh1 10s ease-in-out 0s infinite alternate;
+}
+
+section:nth-of-type(3n+1) h1{
+	animation:animeh1 10s ease-in-out -3s infinite alternate;
+}
+section:nth-of-type(3n+2) h1{
+	animation:animeh1 10s ease-in-out -6s infinite alternate;
+}
+@keyframes animeh1{
+	100%{transform:translate(0,-25px);}
+}
+
+header ul,footer small{
+	margin:1em 3em;
+	color:rgba(256,255,255,0.95);
+	text-shadow:none;
+}
+header li:before{content:"";}
+footer p{
+	margin:3em 0;
+	text-align:center;;
+}
+
+
+a{
+	text-decoration:none;
+	color:#11f;
+}
+a:hover{
+	color:red;
+}
+
+section:hover{
+	opacity:30%;
+}
+
+img{background:none;box-shadow:none;}
+
+header,footer{
+	background-color:transparent !important;
+	box-shadow:none !important;
+}
+li{transition:background-color 1s ease;border-radius:50%;
+	margin:5px 0;
+}
+li:hover{background-color:rgba(255,255,0,0.5);}
+.sub{line-height:4em;}
+footer{
+	margin-bottom:150px;
+
+}
+small{font-size:0.7em  !important;color:#88f !important;}

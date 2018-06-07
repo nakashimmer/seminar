@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<title>JpegCamera demo</title>
+
+<!-- 
+https://amw.github.io/jpeg_camera/doc/extra/README.md.html
+-->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="dist/jpeg_camera_with_dependencies.min.js"></script>
+<script src="demo.js"></script>
+<link href="demo.css" media=all rel=stylesheet>
+
+<style>
+	*{margin:0;padding:0;}
+	body{background-color:#aaa;}
+	#wrap{margin:0 auto;position:relative;width:265px;}
+	#wrap1,#wrap2{
+		position:absolute;
+		width:265px;height:315px;
+	}
+	#camera{position:absolute;top:0;left:0;}
+	#inner{position:absolute;}
+
+	.item{
+		position:absolute;
+		transition:all 1s linear;
+		z-index:1;
+		top:300px;
+	}
+
+	#pen1{left:10px;font-size:60px;color:white;}
+	#apple{left:80px;font-size:60px;}
+	#pen2{left:150px;font-size:60px;color:white;}
+	#pinapple{left:200px;font-size:80px;}
+
+	
+	button{width:50px;height:20px;display:inline-block;}
+</style>
+
+<div id=wrap>
+<div id=wrap1>
+	<div id=camera></div>
+</div>
+<div id=wrap2><div id=inner>
+
+	<div id=pen1 class="item pen" onclick="item('pen1');">✑</div>
+	<div id=apple class=item onclick="item('apple');">🍎</div>
+	<div id=pen2 class="item pen" onclick="item('pen2');">✒</div>
+	<div id=pinapple class=item onclick="item('pinapple');">🍍</div>
+	
+</div></div>
+</div>
+</div>
+
+<script>
+	function item(item){
+		$id(item).style.top="100px";
+	
+	}
+	function $id(id){return document.getElementById(id);}
+</script>

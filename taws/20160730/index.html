@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<title>HTML5を感じよう｜東京アプリ・ワークショップ</title>
+<link rel=stylesheet href=style.css>
+<style>
+	iframe{width:600px;height:400px;margin:0 auto;display:block;border:none;
+	overflow:hidden;
+		}
+	#left{width:900px;height:700px;overflow:scroll;float:left;}
+	#right{float:left;width:300px;}
+	section small,header small{color:red !important;text-align:right;display:block;font-size:1em !important;}
+</style>
+	
+	
+	<header class=section>
+		<h1>HTML5を感じよう</h1>
+		<ul>
+			<li>マイクロソフトMVP
+			<li>東京アプリ・ワークショップ
+			<li>中島俊治
+		</ul>
+		<p contenteditable style="text-align:center;color:white;">
+			<img src="camera.png" style="width:100px;" align=right>
+		</p>
+		<script>
+			var str=location.href;
+			if(str.match("springreen.jp")){
+				location.href="https://cs264.xbit.jp/~w074265/SEMINAR/taws/20160730/";
+			}
+		</script>
+	</header>
+	
+	<section>
+		<h1>自己紹介：中島俊治</h1>
+		<ul>
+			<li>SOFTBANK入社、GeoCoties JAPAN立上げ、Yahoo! JAPAN他のベンチャ企業から野村證券の後、独立。
+			<li>現在、サイバー大学、放送大学、デジハリ・オンラインその他大学の講師。
+			<li>HTML5認定校「東京アプリワークショップ」運営
+		</ul>
+	</section>
+	
+	<section>
+		<h1>アワード・資格等</h1>
+		<ul>
+			<li>マイクロソフトMVPアワード受賞
+			<li>MashUp Awards 6 受賞
+			<li>HTML5プロフェッショナル認定試験（レベル1・レベル２）合格
+		</ul>
+	</section>
+	
+	<section>
+		<h1>本日のセミナ</h1>
+		<p>「HTML5」に触れて体験してください。
+		<ul>
+			<li>身近なHTML5
+			<li>HTML5の３つの柱(HTML5,CSS3,JavaScript)
+			<li>APIで広がるHTML5
+		</ul></p>
+	</section>
+	
+		<header class=section>
+		<h1 class=sub>1.身近なHTML5</h1>
+	</header>
+	
+	
+	<section>
+		<h1>1.身近なHTML5</h1>
+		<ul>
+			<li>1. Google 401 / doodles
+			
+			<li>2. 背景が動画 
+				<a target=_blank  href="http://ss14.soniaby.com/fr/home">SONIA</a> (video要素の原理)
+			<li>3. SP・パララックス 
+				<a target=_blank href="http://shop.nikon-image.com/nikon1/nikon1aw1/">NICON<a>
+				(<a href="scroll" target=_blank>スクロール・変形の原理</a>)
+		</ul>
+	</section>
+	
+	
+
+	
+	<header class=section>
+		<h1 class=sub>2.HTML5の３つの柱</h1>
+	</header>
+	
+	<section>
+		<h1>2-1. HTML5</h1>
+		<ul>
+			<li>新しいタグが増えた</li>
+			<div style="font-size:0.6em;text-indent:0;">&lt;section> &lt;nav> &lt;article> &lt;aside> &lt;header> &lt;footer> &lt;figure> &lt;figcaption> &lt;time> &lt;mark> &lt;ruby> &lt;rt> &lt;rp> &lt;bdi> &lt;wbr> &lt;embed> &lt;video> &lt;audio> &lt;source> &lt;track> &lt;canvas> &lt;datalist> &lt;keygen> &lt;output> &lt;progress> &lt;meter> &lt;details> &lt;summary> &lt;command> etc...</div>
+			<li>廃止されたタグがある</li>
+			<div style="font-size:0.6em;text-indent:0;">&lt;ACRONYM> &lt;DIR> &lt;APPLET> &lt;TT> &lt;BIG> &lt;STRIKE> &lt;FONT> &lt;BASEFONT> &lt;FRAMESET> &lt;FRAME> &lt;NOFRAMES> &lt;ISINDEX></div>
+		<li>意味の変わったタグがある</li>
+		<div style="font-size:0.6em;text-indent:0;">&lt;strong> &lt;small> &lt;i> &lt;b> &lt;u> &lt;hr>etc...</div>
+		</ul>
+	</section>
+
+	<section>
+		<h1>2-1. HTML５>input要素</h1>
+		<p>&lt;input type="text"></p>
+		<p><input id=ipt type=text style="width:500px;height:2em;border-width:3px;">
+			<button onclick="getIpt()">取得</button>
+			<script>
+				function getIpt(){
+					alert(document.getElementById("ipt").value);
+				}
+			</script>
+			</p>
+			<ul>
+				<li>type属性の値の追加
+				<li>placeholder属性
+			</ul>
+	</section>
+	
+	<section>
+		<h1>2-2. CSS3</h1>
+		<p><a target=_blank href="http://springreen.jp/SHOWCASE/CSS3/css3/index.html">CSS3</a>は</p>
+		<ul>
+			<li>デザインがリッチになった。
+			<li>アニメーション
+			<li>変形
+			<li>３次元
+		</ul>
+	</section>
+	
+	<section>
+		<h1>2-3. JavaScript</h1>
+		<ul>
+			<li>デザインがリッチになった。
+			<li>アニメーション
+			<li>変形
+			<li>３次元
+		</ul>
+	</section>
+	
+
+	<header class=section>
+		<h1 class=sub>#3. 触る</h1>
+	</header>
+	
+	<header class=section>
+		<h1 class=sub>…おとといのこと…</h1>
+	</header>
+	
+	<section>
+		<h1 contenteditable>3-1. なにか突然</h1>
+		<iframe src="ball/hitokage.html"></iframe>
+		<small>CSS3/CSS3アニメーション</small>
+	</section>
+	
+	<section>
+		<h1 contenteditable>3-2. 作ってみたんすけれども</h1>
+		<iframe src="gps/index.html"></iframe>
+		<small>GeoLocation APIとCanvas API</small>
+	</section>
+	
+	<section>
+		<h1>3-3. IoT(WoT)を触る</h1>
+		<iframe src="https://www.youtube.com/embed/5VQkIOMMV_o?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+	</section>
+	<section>
+		<h1>3-4. スマホアプリを触る</h1>
+		<p><a target=_blank href="https://ja.monaca.io/"><img src="monaca.png" style="width:700px;height:400px;"></a></p>
+	</section>
+	
+	
+	
+	<header class=section>
+		<h1 class=sub>#4. 学んで味わう</h1>
+	</header>
+	
+	<section>
+		<h1>4-1. 試験を味わう①</h1>
+		<h2>HTML5プロフェッショナル認定試験レベル1</h2>
+		<ul>
+			<table><tr><td>
+			<ul>
+				<li contenteditable>HTML要素(37%)
+				<li contenteditable>webの基礎知識(30%）
+				<li contenteditable>CSS3(20%)
+				<li contenteditable>レスポンシブweb(10%)
+				<li contenteditable>オフラインアプリ(3%)
+			</ul>
+		</ul>
+		</td><td>
+			<img src="lv1.png" align=right width=200>
+		</td></tr></table>
+	</section>
+	
+	<section>
+		<h1>4-2. 試験を味わう②</h1>
+		<h2>HTML5プロフェッショナル認定試験 レベル2</h2>
+		<table><tr><td>
+			<ul>
+				<li contenteditable>JavaScriptほか(46%)
+				<li contenteditable>グラフィクス・マルチメディア(11%）
+				<li contenteditable>通信(10%)
+				<li contenteditable>ストレージ(8%)
+				<li contenteditable>表示(8%)
+			</ul>
+		</td><td>
+			<img src="lv2.png" align=right width=200>
+		</td></tr></table>
+	</section>
+	
+	<section>
+		<h1>4-3. ワークショップを味わう</h1>
+		<div id=wsPhoto>
+			<p>東京アプリ・ワークショップでは、HTML5のワークショップを開催しています。</p>
+			<ul>
+				<li>一日まるごとどっぷりHTML5入門
+				<li>一日まるごとどっぷりCSS3
+				<li>一日まるごとどっぷりJavaScript
+				<li>一日まるごとどっぷりCanvas など
+			</ul>
+			<button onclick="photo()">写真</button>
+		</div>
+		<script>
+			function photo(){
+				document.getElementById("wsPhoto").innerHTML
+				="<iframe src='wsPhoto'></iframe>";
+			}
+		</script>
+	</section>
+	
+	<section>
+		<h1>4-4. オンライン授業を味わう</h1>
+		<p><a target=_blank href="https://www.udemy.com/html5beginning/"><img src="sponsor.png" style="width:700px;height:400px;"></a></p>
+	</section>
+	
+	<section>
+		<h1>補講</h1>
+		<ul>
+			<li>1. 見て楽しむ　
+				<a target=_blank href="http://springreen.jp/SHOWCASE/CANVAS/shonan">湘南</a> 
+				<a target=_blank href="http://jsdo.it/nakashimmer/pv0Z/fullscreen">風鈴</a> 
+				<a target=_blank href="http://helloracer.com/webgl/">レーシングカー</a>
+			<li>2. 書いて楽しむ　
+				<a target=_blank href="http://springreen.jp/SHOWCASE/CANVAS/oekaki/index.html">一筆書き</a>
+			<li>3. 数字で楽しむ　
+				<a target=_blank href="http://springreen.jp/SHOWCASE/CANVAS/physics/fractal.html">フラクタル</a> 
+				<a target=_blank href="http://springreen.jp/SHOWCASE/CANVAS/pi/index.html">π</a>
+			<li>4. シミュレーションで楽しむ　
+				<a target=_blank href="http://springreen.jp/SHOWCASE/WebGL/co/index.html">分子模型</a> 
+				<a target=_blank href="http://www.madebyevan.com/webgl-water/">プール</a>
+		</ul>
+	</section>
+	
+	<header class=section>
+		<h1 class=sub>#5. いかがでしたか？</h1>
+	</header>
+	
+	<section>
+		<ul>
+			<li>以上、４つのHTML５感をお話しました。
+			<li>みなさんどのようにお感じになりましたか？それが５つめの５感になります。
+			<li>どうぞ、写真もOKですから、FBやtwitterで、#html5kan でつぶやいてください。
+			<li>ぜひ、これからもHTML5を楽しんでください。
+		</ul>
+	</section>
+	
+	
+
+
+
+	
+	<section>
+		<h1>質疑応答</h1>
+		<p contenteditable>ご質問、お受けします。</p>
+	</section>
+	
+	
+	<footer class=section >
+		<h1 class=sub>終了</h1>
+		<p><small>(c)2016 東京アプリ・ワークショップ</small></p>
+	</footer>
+
+

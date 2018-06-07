@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>外部JS|JavaScript文法</title>
+	<link rel="stylesheet" href="../style.css">
+	<meta name="viewport" content="width=320,user-scalable=yes">
+	
+	<script src="script.js"></script>
+
+</head>
+<body>
+
+	<button id="btn">外部ファイルのNGサンプル</button>
+	
+	<!-- script要素をid要素の前に記述すると
+	動かないことがあります -->
+	
+<pre>
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+	&lt;meta charset="utf-8">
+	&lt;title>外部JS|JavaScript文法&lt;/title>
+	
+	&lt;script src="script.js">&lt;/script>
+
+&lt;/head>
+&lt;body>
+
+	&lt;button id="btn">外部ファイルのNGサンプル&lt;/button>
+	
+	&lt;!-- script要素をid要素の前に記述すると
+	動かないことがあります -->
+	
+&lt;/body>
+&lt;/html>
+</pre>
+</body>
+</html>

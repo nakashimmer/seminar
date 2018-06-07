@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ページ内|JavaScript文法</title>
+	<link rel="stylesheet" href="../style.css">
+	<meta name="viewport" content="width=320,user-scalable=yes">
+	
+	<script>
+		window.onload=function(){
+			var btn=document.getElementById("btn");
+			btn.addEventListener("mousedown",function(){
+				alert('JavaScript');
+			})
+		}
+	</script>
+	
+</head>
+<body>
+
+	<button id="btn">ページ内のサンプル</button>
+	
+	<!--window.onloadを使って、文書を読み込んだ後に、
+		JavaScriptを実行することで、正常に機能します -->
+<pre>
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+	&lt;meta charset="utf-8">
+	&lt;title>ページ内|JavaScript文法&lt;/title>
+	
+	&lt;script>
+		window.onload=function(){
+			var btn=document.getElementById("btn");
+			btn.addEventListener("mousedown",function(){
+				alert('JavaScript');
+			})
+		}
+	&lt;/script>
+	
+&lt;/head>
+&lt;body>
+
+	&lt;button id="btn">ページ内のサンプル&lt;/button>
+	
+	&lt;!--window.onloadを使って、文書を読み込んだ後に、
+		JavaScriptを実行することで、正常に機能します -->
+
+
+&lt;/body>
+&lt;/html>
+</pre>
+
+</body>
+</html>

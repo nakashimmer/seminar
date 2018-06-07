@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>3-1-1.canvas</title>
+	<style>
+		#canvas{border:1px solid gray;}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="300">
+		canvasは使用できません
+	</canvas>
+
+	<script>
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+	
+//矩形
+	ctx.fillStyle = "red";
+	ctx.fillRect(10,10,50,50);
+	ctx.fillRect(40,40,50,50);
+	ctx.clearRect(40,40,20,20);
+	ctx.strokeStyle="skyblue";
+	ctx.strokeRect(10,10,90,90);
+
+//多角形
+	ctx.beginPath();
+	ctx.moveTo(110,10);
+	ctx.lineTo(150,90);
+	ctx.lineTo(190,50);
+	ctx.closePath();
+	ctx.fillStyle = "green";
+	ctx.fill();
+	
+//直線
+	ctx.beginPath();
+	ctx.moveTo(210,10);
+	ctx.lineTo(250,90);
+	ctx.lineTo(290,50);
+	ctx.lineWidth = 30;
+	ctx.strokeStyle = "blue";
+	ctx.stroke();
+	
+//円弧
+	var angle1 = 40/180 * Math.PI ;
+	var angle2 = 300/180 * Math.PI ; 
+	ctx.beginPath();
+	ctx.arc(350, 50, 40, angle1, angle2, false);
+	ctx.strokeStyle = "yellow"; 
+	ctx.lineWidth = 10;
+	ctx.stroke();
+//円
+	ctx.beginPath();
+	ctx.arc(450, 50, 40, 0, 2*Math.PI, false);
+	ctx.closePath()
+	ctx.fillStyle = "pink";
+	ctx.fill();
+	
+//2次曲線
+	ctx.beginPath();
+	ctx.moveTo(10,150);
+	ctx.quadraticCurveTo(100,100,190,150);
+	ctx.strokeStyle = "lightgreen";
+	ctx.lineCap = "round";
+	ctx.lineWidth = 10;
+	ctx.stroke();
+	
+//3次曲線
+	ctx.beginPath();
+	ctx.moveTo(210,150);
+	ctx.bezierCurveTo(260, 100, 340, 200, 390, 150);
+	ctx.stroke();
+	
+//グラデーション
+	var g = ctx.createLinearGradient(0,100, 0,200);
+	g.addColorStop(0,"red"); 
+	g.addColorStop(0.5,"white");
+	g.addColorStop(1,"blue");
+	ctx.fillStyle = g;
+	ctx.fillRect(400,100, 100,100);
+	
+//文字列
+	ctx.fillStyle = "red";
+	ctx.font = "80px serif";
+	var measure = ctx.measureText("HTML5");
+	ctx.fillText("HTML5",10,290);
+	
+	ctx.font = "10px serif";
+	ctx.textAlign="right";
+	ctx.fillText("文字の長さは"+measure.width+"px",490,290);
+</script>
+</body>
+</html>

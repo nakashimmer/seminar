@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>canvas</title>
+	<link rel="stylesheet" href="../style.css">
+	<meta name="viewport" content="width=320,user-scalable=yes">
+</head>
+<body>
+	
+	<canvas id=canvas1 width=300 height=300></canvas>
+	
+	<script>
+		var canvas1=document.getElementById("canvas1");
+		var ctx=canvas1.getContext("2d");
+		ctx.fillStyle="skyblue";
+		ctx.fillRect(0,0,300,300);
+		
+		var img=new Image();
+		img.src="mL.png";
+		img.onload=function(){
+			ctx.drawImage(img,30,30,200,200);
+		}
+		
+	</script>
+	<!-- 画像をonloadした後に起動します -->
+
+<pre>
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+	&lt;meta charset="utf-8">
+	&lt;title>canvas&lt;/title>
+&lt;/head>
+&lt;body>
+	
+	&lt;canvas id=canvas1 width=300 height=300>&lt;/canvas>
+	
+	&lt;script>
+		var canvas1=document.getElementById("canvas1");
+		var ctx=canvas1.getContext("2d");
+		ctx.fillStyle="skyblue";
+		ctx.fillRect(0,0,300,300);
+
+			
+		var img=new Image();
+		img.src="mL.png";
+		img.onload=function(){
+			ctx.drawImage(img,30,30);
+		}
+
+	&lt;/script>
+	&lt;!-- 画像をonloadした後に起動します -->
+
+&lt;/body>
+&lt;/html>
+</pre>
+</body>
+</html>

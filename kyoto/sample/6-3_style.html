@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>スタイルの上書き</title>
+</head>
+<body>
+	<div id="elem">Happy HTML5</div>
+	<button onclick="clk2(1);">色の変更</button>
+	<button onclick="clk2(2);">太さの変更</button>
+	<button onclick="clk2(3);">大きさの変更</button>
+	<button onclick="clk2(4);">左右揃えの変更</button>
+	<button onclick="clk2(5);">visibility:hidden</button>
+	<button onclick="clk2(6);">visibility:visible</button>
+	<button onclick="clk2(7);">display:none</button>
+	<button onclick="clk2(8);">display:block</button>
+	<button onclick="clk2(9);">変形</button>
+</body>
+<script>
+	function $(id){return document.getElementById(id);}
+
+	function clk2(i){switch(i){
+		case 1:$("elem").style.color="red";				break;
+		case 2:$("elem").style.fontWeight="bold";		break;
+		case 3:$("elem").style.fontSize="100px";		break;
+		case 4:$("elem").style.textAlign="center";	break;
+		case 5:$("elem").style.visibility="hidden";	break;
+		case 6:$("elem").style.visibility="visible";	break;
+		case 7:$("elem").style.display="none";			break;
+		case 8:$("elem").style.display="block";			break;
+		case 9:$("elem").style.webkitTransform="rotate(30deg)";
+		break;
+	}}
+</script>
+</html>

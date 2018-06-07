@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Math</title>
+</head>
+<body>
+<script>
+	var n1 = Math.random()*10;
+	var n2 = Math.floor(n1);
+	var n3 = Math.round(n1);
+	var n4 = Math.ceil(n1);
+	var n5 = Math.pow(2,3);
+	var n6 = Math.sin(30/180*Math.PI);
+	var n7 = Math.cos(45/180*Math.PI);
+	var n8 = Math.tan(60/180*Math.PI);
+	var pi = Math.PI;
+	document.write(
+		"<p>乱数="+n1+
+		"<p>切り捨て="+n2+
+		"<p>四捨五入="+n3+
+		"<p>切り上げ="+n4+
+		"<p>2の3乗="+n5+
+		"<p>sin(30)="+n6+
+		"<p>cos(45)="+n7+
+		 "<p>tan(60)="+n8+
+		"<p>円周率="+pi);
+</script>
+</body>
+</html>

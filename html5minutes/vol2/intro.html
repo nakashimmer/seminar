@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<title>HTML5minutes</title>
+<meta name=viewport content="width=device-width">
+<script>
+	var img=new Array();
+	img[0]=new Image();
+	img[0].src="fukei.jpg";
+</script>
+
+<style>
+	*{font-weight:bold;line-height:1.2em;color:blue;}
+	html{height:100%;}
+	body{height:100%;margin:0;padding:0;
+		background:url("bg.png") no-repeat bottom right;background-size:150%;margin:0;
+		font-size:40px;}
+	.page{width:90%;height:100%;padding:0 5%;
+		-webkit-box-pack:center;
+		display:-webkit-box;-webkit-box-align:center;
+		z-index:2;
+		text-shadow:-3px -3px 3px white,-3px 3px 3px white,3px -3px 3px white,3px 3px 3px white;}
+	
+	h1{font-size:1.2em;}
+	h2{font-size:1.1em;}
+	.font06{font-size:0.6em;}
+	.font08{font-size:0.8em;}
+	.font13{font-size:1.3em;}
+	b,b *{color:rgba(0,0,0,1.0);}
+	
+	.bgimg{width:50%;height:50%;
+		position:absolute;left:0;top:0;
+		z-index:-1;opacity:0.3;background-size:cover;}
+	.inner{text-align:center;}
+	.inner div{margin:0 auto;}
+	strong{color:red;}
+	input[type="search"]{
+		-webkit-transition:-webkit-transform 1s linear;
+		width:15em;font-size:20px;padding:5px;
+		border:1px solid gray;border-radius:25px;
+		color:black;
+		box-shadow:inset 2px 2px 7px gray;}
+	button{
+		-webkit-transition:-webkit-transform 1s linear;
+		font-size:20px;padding:5px 10px;border:1px solid white;
+		border-radius:10px;color:white;
+		background-color:black;
+		box-shadow:inset -3px -3px 5px gray;}
+	button:hover{-webkit-transform:scale(6);}
+	input[type="search"]:hover{-webkit-transform:translate(100px,0) scale(3) ;}
+	@media screen and (max-width:1000px) {
+		body{font-size:30px;}
+	}
+	@media screen and (max-width:600px) {
+		body{font-size:20px;}
+	}
+}
+</style>
+
+<!-- 自己紹介 -->
+<div class="page">
+	
+	<div>
+		<p>自己紹介<br>
+		<b><input type=search value="中島俊治" ><button>検索</button><br>
+		
+			<p>都内で、HTML5の入門体験講座、	および<br>
+			LPI−Japan HTML５プロフェッショナル認定校<br>
+			<strong>東京アプリ・ワークショップ</strong>を主催しています。</p>
+		<p><strong>放送大学・八洲学園大学・秋草学園短大</strong>で<br>
+	HTML5を教えてます。</p>
+			<p><strong>マイクロソフトMVP</strong>です。</p>
+					</div>
+</div>
+	
+	<div class="page">
+		
+		<div>
+			<p>元<strong>ソフトバンク</strong><br></p>
+			<p>元<strong>GeoCities JAPAN</strong><br></p>
+			<p>元<strong>Yahoo! JAPAN</strong><br></p>
+			<p>元<strong>SBI</strong><br></p>
+			<p>元<strong>ジョインベスト証券</strong><br></p>
+				
+		</div>
+	</div>
+	
+	<!-- 発生練習 -->
+	<div class="page">
+		<div>
+		<p>今からFirefox OS スマホ flame を歌にのせて紹介します。</p>
+		<p>お願いがひとつあります</p>
+		<p>「<strong>アプリつくろう</strong>」と言ったらみなさんも「<strong>アプリつくろう</strong>」と返してください。
+		</p>
+		<center>
+		<a href="index.html" style="text-align:center;"><button>みな、同意する</button></a>
+		</center>
+		</div>
+		
+	</div>
+	
+
+
+<script>
+	var pageNo=0;
+	var pages=document.getElementsByClassName("page");
+	var w=document.body.clientWidth;
+	for(var i=0;i<pages.length;i++){
+		pages[i].style.display="none";
+		pages[i].addEventListener("click",pagemove);
+	}
+	pages[pageNo].style.display="-webkit-box";
+	function pagemove(e){
+		if(window.innerWidth/2<e.pageX){
+			pageNo++;if(pages.length<=pageNo)pageNo=pages.length-1;
+			pages[pageNo-1].style.display="none";
+			pages[pageNo].style.display="-webkit-box";
+		}else{
+			pageNo--;if(pageNo<=0)pageNo=0;
+			pages[pageNo+1].style.display="none";
+			pages[pageNo].style.display="-webkit-box";
+		}
+		document.getElementById("meter2").value=100*(pageNo+1)/pages.length;
+	}
+</script>

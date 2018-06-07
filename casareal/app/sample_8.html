@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+<head>	
+	<meta charset="utf-8">
+	<title>お絵かきソフト</title>
+	<meta name = "viewport" content="width=device-width,user-scalable=no">
+</head>
+
+<body>
+<section>
+	<p id="info">座標</p>
+	<canvas id="mycanvas" width="310" height="320"></canvas>
+</section>
+
+<script>
+	var canvas=document.getElementById("mycanvas");
+	var ctx=canvas.getContext("2d");
+	var finger={x:150,y:150,z:0};
+
+	canvas.addEventListener("touchmove",function(e){
+
+		var rect = e.target.getBoundingClientRect();
+		finger.x = e.touches[0].clientX-rect.left;
+		finger.y = e.touches[0].clientY-rect.top;
+
+		ctx.fillStyle="green";
+		ctx.fillRect(finger.x-2,finger.y-2,4,4);
+		document.getElementById("info").innerHTML
+		="x=" +finger.x+ ",y=" +finger.y+ "px";
+
+		e.preventDefault();
+
+});
+</script>
+</body>
+</html>

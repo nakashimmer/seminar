@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ページ内|JavaScript文法</title>
+	<link rel="stylesheet" href="../style.css">
+	<meta name="viewport" content="width=320,user-scalable=yes">
+	
+	<script>
+		var btn=document.getElementById("btn");
+		btn.addEventListener("mousedown",function(){
+			alert('JavaScript');
+		})
+	</script>
+	
+</head>
+<body>
+
+	<button id="btn">ページ内のNGサンプル</button>
+	
+	<!-- ★要素より上にJavaScriptを書くとうまく動かないことがよくあります。上記ではbtnで識別できるものがないとアラートが出ています。 -->
+
+<pre>
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+	&lt;meta charset="utf-8">
+	&lt;title>ページ内|JavaScript文法&lt;/title>
+	
+	&lt;script>
+		var btn=document.getElementById("btn");
+		btn.addEventListener("mousedown",function(){
+			alert('JavaScript');
+		})
+	&lt;/script>
+	
+&lt;/head>
+&lt;body>
+
+	&lt;button id="btn">ページ内のNGサンプル&lt;/button>
+	
+	&lt;!-- ★要素より上にJavaScriptを書くとうまく動かないことがよくあります。上記ではbtnで識別できるものがないとアラートが出ています。 -->
+
+&lt;/body>
+&lt;/html>
+</pre>
+</body>
+</html>

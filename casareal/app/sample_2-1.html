@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>アプリサンプル</title>
+	<meta name="viewport" content="width=device-width,user-scalable=no">
+	<link rel="stylesheet" href="style.css">
+	
+	<style>
+		@media (min-width:500px){
+			#wrap{width:100%;}
+			nav ul li{width:20%;margin:0;border:none;border-radius:0;box-shadow:none;}
+		}
+			
+		@media (min-width:800px){
+			*{font-size:12px;}
+			#wrap{width:800px;}
+			.left{float:left;width:50%;}
+			.right{float:right;width:50%;}
+			main:after{content:"";display:block;clear:both;}
+			audio,video{width:200px;height:100px;}
+		}
+	
+	</style>
+	
+</head>
+
+<body>
+	<div id="wrap">
+		<header>
+			<h1>アプリサンプル</h1>
+			<nav>
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="link1.html">link1</a></li>
+					<li><a href="link2.html">link2</a></li>
+					<li><a href="link3.html">link3</a></li>
+					<li><a href="link4.html">link4</a></li>
+				</ul>
+			</nav>
+		</header>
+
+
+		<main>
+
+		<section class="left">
+			<h1>説明</h1>
+			<p>これは、Webアプリのサンプルです</p>
+		</section>
+
+		<section class="left">
+			<h1>input要素の属性</h1>
+			<p>HTML5ではinput要素のtype属性が豊かになりました。クリックを押すと入力した値をアラートで表示し、確認することができます。</p>
+			<ul>
+				<li>
+					<p>テキスト；<input type="text" id="txt1">
+					<button onclick = 						'alert(document.getElementById("txt1").value);'>
+					クリック</button></p>
+				</li>
+				<li>
+					<p>レンジ：<input type="range" id="rng1">
+					<button onclick =  					'alert(document.getElementById("rng1").value);'>
+					クリック</button></p>
+				</li>
+				<li>
+					<p>日にち：<input type="date" id="dte1">
+					<button onclick =  					'alert(document.getElementById("dte1").value);'>
+					クリック</button></p>
+				</li>
+				<li>
+					<p>色：<input type="color" id="clr1">
+					<button onclick =  					'alert(document.getElementById("clr1").value);'>
+					クリック</button></p>
+				</li>
+			</ul>
+		</section>
+		
+		<section class="right">
+			<h1>バリデートと値の制限</h1>
+			<p>また、input要素の属性には入力を制限したり、簡単なバリデートチェックが備わりました。サーバに無駄な負荷をかけなくても良くなります。</p>
+			<form method="get" action="action.php">
+				<p>数字入力(必須)：
+				<input type="number" name="number" min="0" max="10" step="3" required></p>
+				<p>メアド入力：<input type="email" name="email" placeholder="(記載例)sample@sample***.com" ></p>
+				<p><input type="submit" value="送信"></p>
+			</form>
+		</section>
+		
+		<section class="right">
+			<h1>アプリに便利な要素</h1>
+			<p>アプリに使える要素として、次の２つを紹介します。
+			<p>進捗状況：<progress value="40" max="100">40%</progress></p>
+			<p>測定状況：<meter value="60" min="0" max="100" optimum="0" low="30" high="80">60%</meter></p>
+		</section>
+
+
+	</main>
+	<footer>
+		<small>Copyright(c) 2015 casareal.All Rights Reserved.</small>
+	</footer>
+</div>
+</body>
+</html>

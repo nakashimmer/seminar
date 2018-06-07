@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ウインドウオブジェクト</title>
+	<link rel="stylesheet" href="../style.css">
+	<meta name="viewport" content="width=320,user-scalable=yes">
+</head>
+<body>
+	
+	<button onclick="window.print();">印刷</button>
+	<button onclick='url=window.open("http://www.facebook.com/tokyoAppWorkShop","myUrl","resizable=no,scrollbars=yes,status=no,width=100");'>他のURLを開く</button>
+	<button onclick='url.close();'>閉じる</button>
+	<button onclick='window.alert("お！");'>アラート</button>
+	<button onclick='window.confirm("HTML5は楽しいですか？");'>確認</button>
+	<button onclick='window.prompt("何歳ですか？",20);'>文字列入力</button>
+
+<pre>
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+	&lt;meta charset="utf-8">
+	&lt;title>ウインドウオブジェクト&lt;/title>
+&lt;/head>
+&lt;body>
+	
+	&lt;button onclick="window.print();">印刷&lt;/button>
+	&lt;button onclick='myUrl=window.open("http://www.facebook.com/tokyoAppWorkShop","myUrl","resizable=no,scrollbars=yes,status=no,width=100");'>他のURL&lt;/button>
+	&lt;button onclick='myUrl.close();'>閉じる&lt;/button>
+	&lt;button onclick='window.alert("お！");'>アラート&lt;/button>
+	&lt;button onclick='window.confirm("HTML5は楽しいですか？");'>確認&lt;/button>
+	&lt;button onclick='window.prompt("何歳ですか？",20);'>文字列入力&lt;/button>
+
+&lt;/body>
+&lt;/html>
+</pre>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<title>2nd HBD HTML5</title>
+<link href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet" />
+
+
+<style>
+	*{margin:0;padding:0;font-size:36px;font-family: "Noto Sans Japanese";
+	color:rgba(0,0,0,1);font-weight:bold;
+	text-shadow:-1px -1px 1px #eee,1px 1px 1px #aaa;
+	}
+	*:focus{outline:none;}
+	body{background-color:black;}
+	section{
+		box-shadow:10px 10px 30px rgba(255,255,255,0.3);
+		position:absolute;
+		margin:auto;
+		top:0;bottom:0;left:0;right:0;
+		width:800px;height:500px;
+		background:linear-gradient(#fff,#666);
+		opacity:0;
+		transition:opacity 0.5s ease-in-out;
+		border-radius:15px;
+	}
+	#p1{
+		opacity:1;
+		background-image:url(foto/hbd.png);
+		background-size:100% 100%;
+	}
+	
+	#p2{
+		background-image:url(foto/hbd.png);
+		background-size:100% 100%;
+	}
+	h1{
+		font-size:1.5em;
+		margin:5px;
+		text-align:center;
+
+	}
+	p{
+		margin:3px;
+	}
+	a{
+	}
+	#todan{
+		display:flex;
+		margin:5px;
+	}
+	.todan{
+		display:block;width:100%;height:200px;
+		background-repeat:no-repeat;
+		text-align:center;line-height:280px;
+		box-shadow:none;
+		text-shadow:1px 1px 1px white,-1px -1px 1px white;
+		font-size:0.8em;
+		transition:transform 0.5s ease-in-out 0.5s;
+	}
+	.todan:hover{transform:rotate(-20deg);}
+	#todan div:nth-of-type(1){background-image:url(foto/azami.jpg)}
+	#todan div:nth-of-type(2){background-image:url(foto/murakami.jpg)}
+	#todan div:nth-of-type(3){background-image:url(foto/murachi.jpg)}
+	#todan div:nth-of-type(4){background-image:url(foto/yamasaki.jpg)}
+	#todan div:nth-of-type(5){background-image:url(foto/nakashima.jpg)}
+	
+	button{background-color:transparent;color:rgba(255,255,255,0.5);line-height:1em;margin:0 2px;
+	border:none;font-size:0.8em;height:1em;}
+	.center{text-align:center;}
+	ul li{font-size:1em;margin-left:1.5em;}
+	span,a,b{font-size:1em;}
+	nav{position:absolute;bottom:0;width:100%;}
+	#navBtn{margin:0 auto;display:flex;width:800px;}
+	#navBtn button{width:100%;}
+</style>
+
+<script>
+	function $id(id){return document.getElementById(id);}
+</script>
+
+<section id=p1>
+	
+</section>
+
+<section id=p2>
+	<h1>ごあいさつ</h1>
+	<p class=center>ご来場ありがとうございます。<br>
+		10/28はHTML5の２歳の誕生日。<br>
+	<p class=center>登壇は5人、募集人員も55人(+10)<br>	
+	みなさんでHTML5を楽しみましょう。</p>
+	
+</section>
+
+<section id=p3>
+	<h1>登壇者のご紹介</h1>
+	<div id=todan>
+		<div class=todan>生明さん</div>
+		<div class=todan>村上さん</div>
+		<div class=todan>村地さん</div>
+		<div class=todan>山崎さん</div>
+		<div class=todan>中島</div>
+	</div>
+	<ul>
+		<li>セッションの中で自己紹介あります、多分。</p>
+		<li>個別に話したいときは休憩時間等にどうぞ</p>
+	</ul>
+</section>
+
+<section id=p4>
+	<h1>お願い</h1>
+	<p>感動したら</p>
+	<ul>
+		<audio src="audio/unun.wav" id=unun></audio>
+		<audio src="audio/oou.wav" id=oou></audio>
+		<audio src="audio/hakushu.mp3" id=hakushu></audio>
+		
+		<li>レベル1：<span onclick="$id('unun').play();"><u>ウンウン</u></span>とうなづく😊
+		<li>レベル2：+ &lt;em&gt;<span onclick="$id('oou').play();"><u>📢📢📢おー📢📢📢</u></span>&lt;/em&gt;
+		<li>レベル3：+ <span onclick="$id('hakushu').play();"><u>拍手👏👏👏👏👏 👏👏👏👏👏</u></span>
+	</ul>
+</section>
+
+<section id=p5>
+	<h1>セッション1</h1>
+	<p class=center style="font-size:60px;line-height:80px;margin-top:80px;">HTML5で<br>PPAP</p>
+	<p class=center>中島俊治</p>
+</section>
+
+<section id=p6>
+	<h1>HTML5でPPAP</h1>
+	<ul>
+		<li>撮影OK
+		<li>twitter,FBご自由に
+		<li>ハッシュタグは「#HBDHTML5」
+		<li>PCでのメモ取りはご遠慮ください
+	</ul>
+</section>
+
+
+<section id=p7>
+	<h1>登壇者：中島俊治</h1>
+	<ul>
+		<li><img src="logo/sb.png" height=60> <img src="logo/geo.png" height=60> <img src="logo/y.png" height=45> <img src="logo/vector.png" height=30> <img src="logo/sbi.png" height=50> <img src="logo/jv.png" height=50>
+		<li>現在は、サイバー大学・デジハリOS他の講師
+		<li>マイクロソフトMVP受賞。HTML5プロフェッショナル認定試験レベル2合格。
+		<li><span onclick="taws();"><u>東京アプリ・ワークショップ</u></span>でHTML5の楽しさを伝道中。
+	</ul>
+	<script>
+		var tawsF=true;
+		function taws(){
+			if(tawsF){
+				$id("p7").style.backgroundImage="url(logo/taws.jpg)";
+				$id("p7").style.backgroundSize="100% 100%";
+				tawsF=false;
+			}else{
+				$id("p7").style.backgroundImage="linear-gradient(#fff,#666)";
+				tawsF=true;
+			}
+		}
+	</script>
+</section>
+
+<section id=p8>
+	<h1>HTML5でPPAP</h1>
+	<p class=center>祝！ギネス登録！</p>
+	<p class=center><iframe width="560" height="315" src="https://www.youtube.com/embed/0E00Zuayv9Q" frameborder="0" allowfullscreen></iframe></p>
+</section>
+
+<section id=p9>
+	<h1>準備：ミュージック</h1>
+	<p>ピコピコ音をHTML5で作ってみよう。</p>
+	<ul>
+		<li>必要な技術は<a target=_blank href="http://springreen.jp/SHOWCASE/WEBAUDIO/synthesizer/index.html">Web Audio API</a>
+		<li>鍵盤好きな人は手を挙げて！
+	</ul>
+</section>
+
+<section id=p10>
+	<h1>準備：映像</h1>
+	<p><a target=_blank href="https://cs264.xbit.jp/~w074265/SHOWCASE/Camera">camera</a></p>
+	<ul>
+		<li>時間がなかったので<a target=_blank href="https://amw.github.io/jpeg_camera/doc/extra/README.md.html">JpegCamera</a>を使用。
+		<li>JpegCamera is a JavaScript library that allows you to display a camera stream on a web page and then capture
+		<li>カメラに写りたい人手を挙げて！
+	</ul>
+</section>
+
+<section id=p11>
+	<h1>準備：アニメーション</h1>
+	<p>CSSトランジションをJavaScriptで操作</p>
+	<ul>
+		
+		<li><a target=_blank href="http://springreen.jp/SHOWCASE/CSS3/scroll/">スクロールで3次元CSS操作</a>
+		<li><a target=_blank href="http://springreen.jp/SHOWCASE/CSS3/animation/matrix.html">キーで3次元CSS操作</a>
+		<li>アニメ好きな人！手を挙げて！
+	</ul>
+</section>
+
+<section id=p12>
+	<h1>準備：音声合成</h1>
+	<p>音声を出したり、認識させることができます。
+	<ul>
+		<li><a target=_blank href="https://cs264.xbit.jp/~w074265/SHOWCASE/SPEECH/index.html">SpeechSynthesis API</a>
+		<li>PCと喋ってみたい人、手を挙げて！
+	</ul>
+</section>
+
+<section id=p13>
+	<h1>完成</h1>
+	<p class=center>以上の技術を組み合わせたら、<br>とってもシュール<br>（超現実的亜空間なかんじ）。
+	<p class=center><a target=_blank href="https://cs264.xbit.jp/~w074265//SEMINAR/html52ndBTD/ppap">ペンパイナポーアポーペン</a></p>
+</section>
+
+<section id=p14>
+	<h1>HTML5でPPAP</h1>
+	<p class=center>以上で本セッションを終わります。</p>
+	<p class=center>ご清聴ありがとうございました。</p>
+	<p class=center>「HTML5っておもしろいな」と<br>思ってもらえたら最高です。</p>
+	<p class=center><span onclick="taws2();"><u>HTML5講座</u></span>来てくださいね。</p>
+	<p class=center>最後にご案内。
+	<script>
+		var tawsF=true;
+		function taws2(){
+			if(tawsF){
+				$id("p14").style.backgroundImage="url(logo/taws.jpg)";
+				$id("p14").style.backgroundSize="100% 100%";
+				tawsF=false;
+			}else{
+				$id("p14").style.backgroundImage="linear-gradient(#fff,#666)";
+				tawsF=true;
+			}
+		}
+	</script>
+
+</section>
+
+<section id=p15>
+	<h1>ご案内</h1>
+	<p  class=center contenteditable>次のセッションは<br>◯◯さんで、<br>◯◯分からです。</p>
+	<p class=center>それでは休憩です。</p>
+</section>
+
+<nav>
+	<p id=navBtn></p>
+	
+	<script>
+		var str="";
+		for(var i=1;i<=15;i++){
+			str+="<button id=btn"+i+" onclick='pageChange("+i+");'>"+i+"</button> "
+		}
+		$id("navBtn").innerHTML=str;
+	</script>
+
+
+</nav>
+
+<script>
+
+	
+
+
+	function pageChange(i){
+		for(var j=1;j<=15;j++){
+			$id("p"+j).style.opacity=0;
+			$id("p"+j).style.zIndex=0;
+			$id("btn"+j).style.color="white";
+		}
+		$id("p"+i).style.opacity=1;
+		$id("p"+i).style.zIndex=1;
+		$id("btn"+i).style.color="red";
+	}
+	function $id(id){return document.getElementById(id);}
+</script>

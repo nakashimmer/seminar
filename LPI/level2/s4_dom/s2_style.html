@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>DOM</title>
+	<link rel="stylesheet" href="../style.css">
+	<meta name="viewport" content="width=320,user-scalable=yes">
+</head>
+<body>
+	
+	<p>色を入力<input type="text" id="input1"></p>
+	<p><button id="btn">押す</button><span id="output1">出力</span></p>
+	
+	
+	<script>
+		var input1=document.getElementById("input1");
+		var output1=document.getElementById("output1");
+		var btn=document.getElementById("btn");
+		
+		btn.addEventListener("click",function(){
+			output1.style.color = input1.value;
+		});
+	</script>
+
+<pre>
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+	&lt;meta charset="utf-8">
+	&lt;title>DOM&lt;/title>
+&lt;/head>
+&lt;body>
+	
+	&lt;p>入力&lt;input type="text" id="input1">&lt;/p>
+	&lt;p id="output1">出力&lt;/p>
+	&lt;button id="btn">押す&lt;/button>
+	
+	&lt;script>
+		var input1=document.getElementById("input1");
+		var output1=document.getElementById("output1");
+		var btn=document.getElementById("btn");
+		
+		btn.addEventListener("click",function(){
+			output1.style.color = input1.value;
+		});
+	&lt;/script>
+
+&lt;/body>
+&lt;/html>
+</pre>
+</body>
+</html>

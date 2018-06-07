@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>イベント</title>
+	<link rel="stylesheet" href="../style.css">
+	<meta name="viewport" content="width=320,user-scalable=yes">
+</head>
+<body>
+	
+	<button onclick="now();">今の時間</button>
+	
+	<script>
+		function now(){
+			var now=new Date();
+			var m=now.getMonth()+1;
+			var d=now.getDate();
+			var h=now.getHours();
+			var i=now.getMinutes();
+			alert(m+"月"+d+"日"+h+"時"+i+"分");
+		}
+	</script>
+
+<pre>
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+	&lt;meta charset="utf-8">
+	&lt;title>イベント&lt;/title>
+&lt;/head>
+&lt;body>
+	
+	&lt;button onclick="now();">今の時間&lt;/button>
+	
+	&lt;script>
+		function now(){
+			var now=new Date();
+			var m=now.getMonth()+1;
+			var d=now.getDate();
+			var h=now.getHours();
+			var i=now.getMinutes();
+			alert(m+"月"+d+"日"+h+"時"+i+"分");
+		}
+	&lt;/script>
+
+&lt;/body>
+&lt;/html>
+</pre>
+</body>
+</html>

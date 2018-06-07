@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>BGM</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="dist/jpeg_camera_with_dependencies.min.js"></script>
+<script src="demo.js"></script>
+<link href="demo.css" media=all rel=stylesheet>
+<style>
+	*{margin:0;padding:0;list-style:none;font-size:15px;font-family:serif;}
+	
+	#wrap{margin:0 auto;position:relative;width:860px;}
+	#wrap:after{content:"";display:block;clear:both;}
+	
+	/*common*/
+	section{float:left;margin:0.5em;}
+	
+	button{background-color:transparent;border:none;}
+
+	/*canera*/
+	#section1{width:300px;height:450px;}
+	#camera{
+		width:300px;height:450px;position:absolute;top:0;left:0;border:none;
+		margin:0 !important;
+	}
+	#camera1,#camera2{
+		position:absolute;
+		width:300px;height:450px;
+	}
+	#camera2 #inner{position:absolute;}
+	
+	.item{
+		position:absolute;
+		transition:all 1s linear;
+		z-index:2;
+		top:440px;
+	}
+	
+	/*bgm*/
+	
+	/*voice*/
+	input{
+		height:1em;color:black;width:28em;display:inline-block;
+		padding:1em;margin:0 !important;
+	}
+
+
+
+
+	
+
+
+
+	#pen1{left:10px;font-size:60px;color:white;}
+	#apple{left:80px;font-size:60px;}
+	#pen2{left:150px;font-size:60px;color:white;}
+	#pinapple{left:200px;font-size:80px;}
+
+	button{width:50px;height:20px;display:inline-block;}
+	
+	#bgm span{color:gray;}
+
+</style>
+<script>
+	function $id(id){return document.getElementById(id);}
+</script>
+
+<div id=wrap>
+<section id=section1>
+	<div id=camera1>
+		<div id=camera></div>
+	</div>
+	<div id=camera2><div id=inner>
+		<div id=pen1 class="item pen" onclick="item('pen1');">✑</div>
+		<div id=apple class=item onclick="item('apple');">🍎</div>
+		<div id=pen2 class="item pen" onclick="item('pen2');">✒</div>
+		<div id=pinapple class=item onclick="item('pinapple');">🍍</div>
+	</div>
+</section>
+
+<section id=section2>
+	<p>
+		<button onclick="start();">start</button>
+		<span id=count>0</span>
+	</p>
+	<p id=bgm>
+		<p id=maru></p>
+	<script>
+		var str="";
+		for(var i=0;i<27;i++){
+			str+="<span id=d"+i+">";
+			if(i!==26){str+="◯";}
+			str+="</span>";
+		}
+		$id("maru").innerHTML=str;
+	</script>
+</section>
+
+<section id=voice>
+	<ol>
+		<li><input type=text id=input1 value="PPAP" >
+				<button onclick="mySpeech(1);">📢</button>
+		<li><input type=text id=input2 value="I have a pen.">
+				<button onclick="mySpeech(2);">📢</button>
+		<li><input type=text id=input3 value="I have an apple.">
+				<button onclick="mySpeech(3);">📢</button>	
+		<li><input type=text id=input4 value="ah! apple pen">
+				<button onclick="mySpeech(4);">📢</button>	
+		<li><input type=text id=input5 value="I have a pen.">
+				<button onclick="mySpeech(5);">📢</button>	
+		<li><input type=text id=input6 value="I have a pineapple.">
+				<button onclick="mySpeech(6);">📢</button>	
+		<li><input type=text id=input7 value="ah! pineapple pen">
+				<button onclick="mySpeech(7);">📢</button>
+		<li><input type=text id=input8 value="apple pen">
+				<button onclick="mySpeech(8);">📢</button>
+		<li><input type=text id=input9 value="pineapple pen">
+				<button onclick="mySpeech(9);">📢</button>
+				
+		<li><input type=text id=input10 value="pen pineapple apple pen">
+				<button onclick="mySpeech(10);">📢</button>	
+	</ol>
+	<p><button onclick="noteChange();">HBHF</button></p>
+	<script src="voice.js"></script>
+</section>
+
+
+
+<script>
+	function item(item){
+		$id(item).style.top="100px";
+	}
+</script>
+
+<script src=bgm.js></script>
+</body>
+</html>

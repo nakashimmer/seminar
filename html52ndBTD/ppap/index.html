@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>PPAP</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="dist/jpeg_camera_with_dependencies.min.js"></script>
+<script src="demo.js"></script>
+<link href="demo.css" rel=stylesheet>
+<link href="style.css" rel=stylesheet>
+
+<script>
+	function $id(id){return document.getElementById(id);}
+</script>
+
+<div id=wrap>
+
+<section id=section1>
+	<div id=camera1>
+		<div id=camera></div>
+	</div>
+	<div id=camera2><div id=inner>
+		<div id=apple class=item onclick="item('apple');">🍎</div>
+		<div id=pen1 class="item pen" onclick="item('pen1');">✑</div>
+		<div id=pineapple class=item onclick="item('pineapple');">🍍</div>
+		<div id=pen2 class="item pen" onclick="item('pen2');">✒</div>
+	</div>
+</section>
+
+<section id=section2>
+	<p id=bgm>
+		<p id=maru></p>
+	<script>
+		var str="";
+		for(var i=0;i<27;i++){
+			str+="<span id=d"+i+">";
+			if(i!==26){str+="◯";}
+			str+="</span>";
+		}
+		$id("maru").innerHTML=str;
+	</script>
+</section>
+
+<section id=section3>
+	<ol id=voiceList></ol>
+
+	<script>
+		var str="";
+		var kashi=["PPAP",
+			"I have a pen","I have an apple","ah!. apple pen",
+			"I have a pen","I have a pineapple","ah!. pineapple pen",
+			"apple pen","pineapple pen","ah! pen pineapple apple pen",
+			"pen pineapple apple pen"
+		]
+		for(var i=0;i<11;i++){
+			str += 
+			"<li><input type=text id=input"+i+" value='"+kashi[i]+"' >";
+			str+="<button onclick='mySpeech("+i+");'>📢</button>";
+		}
+		$id("voiceList").innerHTML=str;
+	</script>
+
+	<p id=control>
+		<button onclick="start();">start</button>
+		<span id=count>0</span>
+		<button onclick="noteChange();">HTML5</button>
+	</p>
+
+</section>
+
+
+
+<script src="cssanime.js"></script>
+<script src="voice.js"></script>
+<script src=bgm.js></script>
+<script src=melody.js></script>
+</body>
+</html>

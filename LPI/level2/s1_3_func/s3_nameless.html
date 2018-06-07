@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>無名関数|JavaScript文法</title>
+	<link rel="stylesheet" href="../style.css">
+	<meta name="viewport" content="width=320,user-scalable=yes">
+</head>
+<body>
+	
+	<button id="btn">計算する</button>
+	
+	<script>
+
+		var btn=document.getElementById("btn");
+		
+		btn.addEventListener("mousedown",function(){
+			var n1=2;
+			var n2=3;
+			n=n1+n2;
+			alert(n);
+		})
+	</script>
+	
+	<!-- この場所でしか使わないような使い捨ての場合、
+	いちいち関数名をつけることはしないで、無名関数という
+	書き方をします。 「function(){}」 -->
+
+<pre>
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+	&lt;meta charset="utf-8">
+	&lt;title>無名関数|JavaScript文法&lt;/title>
+&lt;/head>
+&lt;body>
+	
+	&lt;button id="btn">計算する&lt;/button>
+	
+	&lt;script>
+
+		var btn=document.getElementById("btn");
+		
+		btn.addEventListener("mousedown",function(){
+			var n1=2;
+			var n2=3;
+			n=n1+n2;
+			alert(n);
+		})
+	&lt;/script>
+	
+	&lt;!-- この場所でしか使わないような使い捨ての場合、
+	いちいち関数名をつけることはしないで、無名関数という
+	書き方をします。 「function(){}」 -->
+
+&lt;/body>
+&lt;/html>
+</pre>
+</body>
+</html>

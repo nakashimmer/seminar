@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html manifest="offline.appcache">
+<meta charset=utf-8>
+<title>HTML5が開く新しい未来</title>
+<meta name=viewport content="width=980px,user-scalable=no">
+<style>
+	*{margin:0;padding:0;font-size:30px;
+		text-shadow:10px 10px 5px rgba(0,0,0,0.2);
+		text-decoration:none;
+	}
+	small *{font-size:25px;}
+	body{background:url(bg.jpg);
+		position:relative;
+	}
+	#wrap{width:980px;height:520px;overflow:hidden;
+		border:0px solid gray;
+		position:absolute;
+		display:none;
+		z-index:0;
+		}
+	#top{-webkit-transition:margin-top 1s ease-in-out;}
+	section{
+		width:930px;height:470px;
+		border-radius:3px;
+		margin:10px auto 20px auto;
+		padding:15px;
+	}
+	section>h1{font-size:35px;text-align:center;margin-bottom:30px;}
+	.middle{line-height:490px;}
+	.upper{margin-top:150px;}
+	.center{text-align:center;}
+	ul,ol{margin-left:2em;}
+	li{margin-bottom:1em;}
+	strong{color:red;}
+	input{width:300px;margin:0 15px;}
+	input[type="text"]{border:5px solid gray;}
+	meter,progress,audio{height:30px;width:500px;margin:0 30px;}
+	button,input[type="submit"]{border-radius:10px;background-color:white;box-shadow:-10px -10px 20px gray inset;padding:3px;width:5em;font-size:20px;}
+</style>
+
+<script>
+	function $(id){return document.getElementById(id);}
+</script>
+
+<style>
+
+</style>
+
+
+
+<div id=wrap>
+<section id="top">
+	<h1>公開講演会「HTML5が開く新しい未来」</h1>
+	<small>
+		<h1>開始前諸注意</h1>
+		<ul>
+			<li>10:00分に開始します。あと<span id=time>?</span>秒</li>
+			<li>事前にお手洗いをお済ませください。講演中の出入りはご遠慮ください</li>
+			<li>講演中の撮影・録画・PCによるメモ取りはご遠慮ください</li>
+		</ul>
+	</small>
+	<script>
+		var time=0;
+		setInterval(cnt,1000);
+		var endDate=new Date("2014/10/22 9:0");
+		
+		function cnt(){
+			var now=new Date();
+			var nokori = 3600-now.getMinutes()*60-now.getSeconds();
+			$("time").innerHTML=nokori;
+		}
+		
+	</script>
+</section>
+
+<section style="background:url(html5.png) no-repeat center;">
+	<h1 class=middle>公開講座「HTML5が開く新しい未来」</h1>
+</section>
+
+<section>
+	<style>
+		.enja{float:left;width:33%;height:300px;text-align:center;}
+		.namae{text-shadow:2px 2px 2px black,-1px 1px 2px black,-1px -1px 1px black;color:white;}
+	</style>
+	
+	<h1>1.講演者ご紹介</h1>
+	<div class=enja id=tadd1 onclick=tadd(1) style="background:url(yamazaki.jpg) center top;background-size:cover;">
+		<h1 class=namae>山崎大助先生</h1>
+	</div>
+	<div class=enja id=tadd2 onclick=tadd(2) style="background:url(narui.jpg) center top;background-size:cover;">
+		<h1 class=namae>成井弦理事長</h1> 
+	</div>
+	<div class=enja id=tadd3 onclick=tadd(3) style="background:url(nakashima.jpg) center top;background-size:cover;">
+		<h1 class=namae>中島俊治</h1><p>
+	</div>
+	<script>
+		var t1=0,t2=0,t3=0;
+		var tstr1=["デジハリ講師","マイクロソフトMVP","html5jビギナー部長"];
+		var tstr2=["LPI-Japan理事長","HTML5プロフェッショナル認定試験"];
+		var tstr3=["放送大学非常勤講師","マイクロソフトMVP","HTML5資格（L1,2）","当講演 主催者"]
+		function tadd(n){
+			if(n==1){var tstr=tstr1[t1];t1++;}
+			if(n==2){var tstr=tstr2[t2];t2++;}
+			if(n==3){var tstr=tstr3[t3];t3++;}
+			if(tstr){
+				$("tadd"+n).innerHTML+="<span class=namae>"+tstr+"</span><br>";
+			}
+		}
+	</script>
+</section>
+
+<section>
+	<h1>2.この講演会の目的</h1>
+	<p>HTMLが、<strong>2014年10月28日</strong>大幅な改定が行われ「<b>HTML5</b>」としてW3C勧告されました。
+	本日も200名以上お集まりいただくなど関心を集めている<b>HTML5</b>をもっと盛り上げるため
+	この講座を企画しました。参加の皆様、ご登壇の皆様、放送大学の皆様のご協力に感謝申し上げます。</p>
+</section>
+
+<section>
+	<h1>3.講演スケジュール</h1>
+	<ol style="list-style:none;">
+		<li>#1.キーノート「HTML5の概要」（中島）</li>
+		<li>#2.「デモで理解するこれからのHTML5（山崎先生）</li>
+		<li>#3.「HTML5が創りだす新たな世界」（成井理事長）</li>
+		<li>#4.「Webアニメーションで楽しもう」（中島）</li>
+	</ol>
+</section>
+
+<section  style="background:url(html5.png) no-repeat center;">
+	<h1 class=upper>#1.キーノート「HTML5の概要」</h1>
+	<h2 class=center>中島俊治</h2>
+</section>
+
+<section>
+
+	<h1>1.広義 HTML5</h1>
+	<ol>
+		<li><span id=add1 onclick=add(1)>狭義 HTML5</span>
+			<br><p class=center><i>&lt;p>きょうはいい天気です&lt;/p></i></p></li>
+		<li><span id=add2 onclick=add(2)>CSS3</span>
+			<br><p class=center><i>p { color : skyblue; }</i></p></li>
+		<li><span id=add3 onclick=add(3)>JavaScript</span>
+			<br><p class=center><i>var a=1,b=2;<br>var c=a+b;</i></p></li>
+	</ol>
+	<script>
+		var n1=0,n2=0,n3=0;
+		var str1=["意味付","検索エンジンにやさしい","スマホ！"];
+		var str2=["リッチなデザイン","変形","アニメーション","三次元"];
+		var str3=["動き","双方向","センサ","GPS","描画","ゲーム"]
+		function add(n){
+			if(n==1){var str=str1[n1];n1++;}
+			if(n==2){var str=str2[n2];n2++;}
+			if(n==3){var str=str3[n3];n3++;}
+			if(str){
+				$("add"+n).innerHTML+="　<strong>"+str+"</strong>";
+			}
+		}
+	</script>
+</section>
+
+<section style="background:url(html5.png) no-repeat center;">
+	<h1 class="middle">2. 狭義HTML5で、特徴的なものをご紹介</h1>
+
+</section>
+
+<section>
+	<h1>2-1. 入力フォーム</h1>
+	<ol>
+		<li>テキスト<input type="text" id="inputText" placeholder=従来の入力フォーム><button onclick="alert($('inputText').value)">送信</button></li>
+		<li>日　付　<input type="date" id=inputDate><button onclick="alert($('inputDate').value)">送信</button></li>
+		<li>レンジ　<input type="range" id=inputRange><button onclick="alert($('inputRange').value)">送信</button></li>
+		<li><form action="javascript:void(0);">メール　<input type="email" id=inputEmail><input type="submit" value="送信" javascript:void(0) style="margin:0"></form></li>
+		<li>電　話　<input type="tel" id=inputTel><button onclick="alert($('inputTel').value)">送信</button></li>
+	</ol>
+</section>
+
+<section>
+	<style>
+		progress[value]{-webkit-appearance: none;height:1em;}
+	</style>
+	
+	<h1>2-2.進捗と分量</h1>
+	<h2>progress</h2>
+	<progress value=0 max=50 id=progress></progress>
+	<button onclick=progress() id=progressBtn>連打</button> 
+	<script>
+		var i=0,startProg;
+		function progress(){
+			i++;
+			$("progress").value = i;
+			if(i==1){
+				var now=new Date();
+				startProg=now.getTime();
+			}
+			if(i==50){
+				var now=new Date();
+				var progTime=Math.floor((startProg-now.getTime())/100)/10;
+				$("progressBtn").innerHTML=(-progTime)+"秒";
+			}
+			
+		}
+	</script>
+
+	<h2>meter</h2>
+	<meter value=0 min=0 max=50 optimum=0 low=20 high=40 id=meter>
+	</meter> 
+	<button onclick=meter() id=meterBtn>連打</button> 
+	<script>
+		var j=0;startMeter;
+		function meter(){
+			j++;
+			$("meter").value = j;
+			if(j==1){
+				var now=new Date();
+				startMeter=now.getTime();
+			}
+			if(j==50){
+				var now=new Date();
+				var meterTime=Math.floor((startMeter-now.getTime())/100)/10;
+				$("meterBtn").innerHTML=(-meterTime)+"秒";
+			}
+		}
+	</script>
+</section>
+
+<section>
+	<style>
+	#player_div button{font-size:20px;}
+	#videoProgress{margin:10px 0;}
+	</style>
+	<h1>2-3.マルチ・メディア（映像・音声）</h1>
+	<div id=player_div style="float:right;width:40%;">
+		<button onclick=video.play()>再生</button>
+		<button onclick=video.pause()>停止</button>
+		<button onclick=video.currentTime=0;video.play()>最初</button><br>
+		<button onclick=vol(-0.2)>音小</button>
+		<button onclick=vol(0.2)>音大</button>
+		<button onclick=speed(0.5)>早い</button>
+		<button onclick=speed(-0.5)>遅い</button>
+	</div>
+
+	<video id=video width=50%></video>
+	<progress value=0 max=1 id=videoProgress style="width:50%;"></progress>
+	<div id=info></div>
+	
+</section>
+
+<script>
+var video = document.getElementById("video");
+video.src="html5.mp4";
+
+video.addEventListener("timeupdate",function(e){
+    	$("info").innerHTML
+ 	= "再生位置"+Math.floor(video.currentTime)+"秒"
+	+ "　長さ" + (Math.floor(video.duration*10) /10	)+"秒"
+	+ "　音量" + video.volume
+  + "　スピード" + video.playbackRate;
+		$("videoProgress").value =video.currentTime/video.duration;
+});
+
+function vol(v)	{video.volume += v;}
+function speed(s){video.playbackRate += s;}
+</script>
+</section>
+
+<section style="background:url(html5.png) no-repeat center;">
+	<h1 class=middle>3. CSS3で特徴的なものをご紹介</h1>
+</section>
+
+<section id=css>
+	<h1>CSS3</h1>
+	<style>
+		.box{
+			box-sizing:border-box;
+			background-color:white;
+			margin:50px auto 100px auto;
+			width:200px;
+			height:200px;
+			height:200px;
+			line-height:200px;
+			font-size:50px;
+			-webkit-transition:
+				-webkit-transform 4s ease-in-out,
+				background 2s ease-in-out,
+				border 2s ease-in-out,
+				box-shadow 2s ease-in-out,
+				border-radius 2s ease-in-out,
+				-webkit-box-reflect 2s ease-in-out;
+		}
+		.photo{
+			border:none;
+			background: url("mL.png");background-size:cover;
+		}
+		.waku{
+			border:3px solid black;
+		}
+		/*1.影*/
+			.shadow{
+				box-shadow:10px 10px 10px gray;
+			}
+		/*2.角丸*/
+			.radius{
+				border-radius:50px;
+			}
+		/*3.球*/
+			.kyu{
+				box-shadow:inset -20px -20px 50px gray;
+				border-radius:100px;
+			}
+		/*4.グラデーション*/
+			.gra{
+				background:
+				-webkit-gradient(linear,left top,left bottom,from(red),to(white));
+			}
+		/*5.反射*/
+			.reflect{
+				-webkit-box-reflect:below 3px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(60%, transparent) , to(white)); 
+			}
+		/*6.変形*/
+			.henkei{
+				-webkit-transform:rotate(45deg) ;
+			}
+		/*7.3次元*/
+			#css{
+				-webkit-perspective:100px;
+				-webkit-transform-style:preserve-3d;
+			}
+			.d3{
+				-webkit-transform:translateZ(-200px) rotateX(720deg) rotateY(360deg);
+			}
+		</style>
+
+		<div id="box" class="box"></div>
+		<button onclick=cgclass("waku")>枠</button>
+		<button onclick=cgclass("shadow")>影</button>
+		<button onclick=cgclass("radius")>角丸</button>
+		<button onclick=cgclass("kyu")>球</button>
+		<button onclick=cgclass("gra")>階調</button>
+		<button onclick=cgclass("photo")>画像</button>
+		<button onclick=cgclass("reflect")>反射</button>
+		<button onclick=cgclass("henkei")>変形</button>
+		<button onclick=cgclass("d3")>３D</button>
+
+
+		<script>
+		function $(id){return document.getElementById(id);}
+		
+			var fshadow=false;
+			var fradius=false;
+			var fkyu=false;
+			var fwaku=false;
+			var fgra=false;
+			var freflect=false;
+			var fhenkei=false;
+			var fd3=false;
+			var fphoto=false;
+			$("box").className="box ";
+			
+			function cgclass(f){
+				if(f=="shadow"){
+					if(!fshadow){$("box").className+="shadow ";fshadow=true;
+					}else{$("box").className= $("box").className.replace ( /(?:^|\s)shadow(?!\S)/g,'');fshadow=false;}
+				}
+				if(f=="radius"){
+					if(!fradius){$("box").className+="radius ";fradius=true;
+					}else{$("box").className= $("box").className.replace ( /(?:^|\s)radius(?!\S)/g,'');fradius=false;}
+				}
+				if(f=="gra"){
+					if(!fgra){$("box").className+="gra ";fgra=true;
+					}else{$("box").className= $("box").className.replace ( /(?:^|\s)gra(?!\S)/g,'');fgra=false;}
+				}
+				if(f=="kyu"){
+					if(!fkyu){$("box").className+="kyu ";fkyu=true;
+					}else{$("box").className= $("box").className.replace ( /(?:^|\s)kyu(?!\S)/g,'');fkyu=false;}
+				}
+				if(f=="reflect"){
+					if(!freflect){$("box").className+="reflect ";freflect=true;
+					}else{$("box").className= $("box").className.replace ( /(?:^|\s)reflect(?!\S)/g,'');freflect=false;}
+				}
+				if(f=="henkei"){
+					if(!fhenkei){$("box").className+="henkei ";fhenkei=true;
+					}else{$("box").className= $("box").className.replace ( /(?:^|\s)henkei(?!\S)/g,'');fhenkei=false;}
+				}
+				if(f=="d3"){
+					if(!fd3){$("box").className+="d3 ";fd3=true;
+					}else{$("box").className= $("box").className.replace ( /(?:^|\s)d3(?!\S)/g,'');fd3=false;}
+				}
+				if(f=="photo"){
+					if(!fphoto){$("box").className+="photo ";fphoto=true;
+					}else{$("box").className= $("box").className.replace ( /(?:^|\s)photo(?!\S)/g,'');fphoto=false;}
+				}
+				if(f=="waku"){
+					if(!fwaku){$("box").className+="waku ";fwaku=true;
+					}else{$("box").className= $("box").className.replace ( /(?:^|\s)waku(?!\S)/g,'');fwaku=false;}
+				}
+			}
+		</script>
+</section>
+
+<section style="background:url(html5.png) no-repeat center;">
+	<h1 class=middle>ご清聴ありがとうございました。</h1>
+</section>
+
+<section style="background:url(html5.png) no-repeat center;">
+	<h1 class=middle>#4. Webアニメーションのご紹介</h1>
+</section>
+
+<section style="background:url(obake.png) no-repeat center bottom;background-size:auto 50%;background-color:skyblue;">
+	<h1 style="color:white;text-shadow:0 0 2px black;" class=upper><a href="obake/index.html" target=_blank>4-1.タッチゲーム</a></h1>
+</section>
+
+<section style="background:url(ufogame.png) no-repeat center center;background-size:cover">
+	<h1 style="color:white;text-shadow:0 0 2px black;"  class=middle>4-2.センサを使ったUFOゲーム</h1>
+</section>
+
+<section style="background:url(map.png) no-repeat center center;background-size:cover">
+	<h1 class=middle>4-3.GPSを使った位置情報アプリ</h1>
+</section>
+
+
+<section style="position:relative">
+	<h1 class=middle id=msg onclick="msg();">「HTML」はWebページを作る道具だった</h1>
+	<h1 class=middle id=msg1 onclick="msg();">「HTML5」は<strong>Webアプリケーション</strong>の基盤</h1>
+	<style>
+		#msg{-webkit-transition:opacity 1s linear;}
+		#msg1{-webkit-transition:opacity 1s linear;opacity:0;position:absolute;top:10px;left:0;width:100%;}
+	</style>
+	<script>
+		function msg(){
+			if($("msg").style.opacity="1"){
+				$("msg").style.opacity="0";
+				$("msg1").style.opacity="1";
+			}else{
+				$("msg").style.opacity="1";
+				$("msg1").style.opacity="0";
+			}
+		}
+	</script>
+</section>
+
+<section>
+	<h1 class=middle>5.身近なHTML5</h1>
+</section>
+
+<section style="text-align:center;">
+	<h1>5-1.Google doodlesから</h1>
+	<iframe src="http://www.google.com/logos/2012/halloween-2012-hp.html" width="700" height="250" frameborder=0 style="margin:30px auto;"></iframe>
+</section>
+
+<section style="text-align:center;">
+	<h1>5-2.Google doodlesから</h1>
+	<iframe src="http://www.google.com/logos/2013/roswell_66th_anniversary.html" width="700" height="250" frameborder=0 style="margin:30px auto;"></iframe>
+</section>
+
+
+<section>
+	<h1 class=upper>HTML5はとてもたのしい技術です</h1>
+	<h2 class=center>いっしょに楽しみましょう</h2>
+</section>
+
+<section>
+	<h1 class=middle>6.最後に<strong>canvas</strong>で皆様にプレゼント</h1>
+</section>
+
+<section style="background-color:black;">
+	<h1>　</h1>
+	<style>
+	</style>
+	<canvas id=canvas width=400 height=400 onclick="ord();" style="float:left;"></canvas>
+	<div id=srccode style="width:400;height:400;color:white;" style="float:right;"></div>
+	<script>
+	//雪の準備
+	function ord(){
+		order++;
+	}
+	snow_init(40);
+	var order=0;
+	setInterval(anime,50);
+	var audio=new Audio();
+	audio.src="xmas.mp3";
+	function anime(){
+		clr();//消去
+		if(1<=order){shikaku(176,350,50,50,"brown");}			if(1==order){$("srccode").innerHTML="ctx.fillRect()";}
+		if(2<=order){sankaku(200,50,150,150,250,150,"green");}	if(2==order){$("srccode").innerHTML="ctx.beginPath();<br>"}
+		if(3<=order){sankaku(200,100,100,250,300,250,"green");}	if(3==order){$("srccode").innerHTML="ctx.beginPath();<br>ctx.moveTo();<br>ctx.lineTo();<br>ctx.closePath();<br>";}
+		if(4<=order){sankaku(200,150,50,350,350,350,"green");}	if(4==order){$("srccode").innerHTML="ctx.beginPath();<br>ctx.moveTo();<br>ctx.lineTo();<br>ctx.closePath();<br>ctx.fill();";}	
+		if(5<=order){moji("★",200,100,100,"yellow");}			if(5==order){$("srccode").innerHTML="ctx.fillText();";}	
+		if(6<=order){maru(200,200,10,"pink");}					if(6==order){$("srccode").innerHTML="ctx.arc();";}
+		if(7<=order){maru(150,300,10,"blue");}					if(7==order){$("srccode").innerHTML="ctx.arc();<br>ctx.arc();";}
+		if(8<=order){maru(250,300,10,"white");}					if(8==order){$("srccode").innerHTML="ctx.arc();<br>ctx.arc();<br>ctx.arc();";}
+		if(9<=order){snow_draw();	}							if(9==order){$("srccode").innerHTML="Array()";}
+		if(10==order){audio.play();}							if(10==order){$("srccode").innerHTML='var sound=new Audio();<br>sound.src="xmas.mp3"<br>sound.play();';}
+		if(11==order){$("srccode").innerHTML="<strong>パチパチパチパチ！</strong>";}
+		if(12==order){$("srccode").innerHTML="<br><br><br><br>本日はありがとうございました";}
+	}
+	
+	var canvas = document.getElementById("canvas");
+	var c = canvas.getContext("2d");
+	
+	//矩形の設計図
+	function shikaku(x,y,w,h,color){
+		c.fillStyle = color   				// 塗色
+		c.fillRect(x,y,w,h); 				// 矩形塗る
+	}
+	
+	//三角の設計図
+	function sankaku(x1,y1,x2,y2,x3,y3,color){
+		c.beginPath();             			// パスの始まり
+		c.moveTo(x1,y1);        			// 始点 
+		c.lineTo(x2,y2);    				// 通過点
+		c.lineTo(x3,y3);    				// 通過点
+		c.closePath();              		// 閉じる
+		c.fillStyle = color;  				// 塗色
+		c.fill();   						// 塗る
+	}
+	
+	//文字の設計図
+	function moji(str,x,y,size,color){
+		c.fillStyle = color;				// 塗色
+		c.textAlign = "center";				// 真中揃え
+		c.font = size+"px serif ";			// フォント指定
+		c.fillText(str,x,y);				// 文字表示
+	}
+	
+	//丸の設計図
+	function maru(x,y,r,color){
+		c.beginPath(); 
+		c.arc(x,y,r,0,2*Math.PI,false); 	// 円弧の描画
+		c.fillStyle = color; 					// 塗色
+		c.fill(); 			   					// 塗る
+	}
+	
+	//雪の準備
+	var snow;
+	function snow_init(n){
+		snow=new Array();
+		for(var i=0;i<n;i++){
+			snow[i]={x:Math.floor(Math.random()*400), y:-i*10};
+		}
+	}
+	//雪の表示
+	function snow_draw(n){
+		for(var j=0;j<snow.length;j++){
+			moji("・",snow[j].x, snow[j].y,20,"white");
+			snow[j].x+=Math.floor(Math.random()*3)-1; 
+			snow[j].y++;
+		  if(snow[j].y>450){snow[j].y=0;} 
+		}
+	}
+	
+	//画面消去
+	function clr(){
+		c.clearRect(0,0,canvas.width,canvas.height);
+	}
+	
+
+	</script>
+
+</section>
+
+<section style="margin-bottom:3px;">
+	<h1>#5.閉会</h1>
+	<ol>
+		<li>ご参加の皆様、ありがとうございました。登壇の皆様、ありがとうございました</li>
+		<li>恐れいりますが、<strong>12時にはご退室</strong>願います</li>
+		<li>引き続き3階の「第<strong>12講義室</strong>」をお借りしていますので、登壇者ご面会を希望の方はそちらにどうぞ</li>
+</section>
+
+</div>
+
+
+<script>
+window.addEventListener("load",resize);
+window.addEventListener("resize",resize);
+function resize(){
+	$("wrap").style.top=(window.innerHeight/2-260)+"px";
+	$("wrap").style.left=(window.innerWidth/2-490)+"px";
+	$("wrap").style.display="block";
+};
+
+
+</script>
+
+
+<div id=next onclick=next(-1) style="color:#aaa;text-align:center;width:50%;float:left;z-index:1;height:1em;">◀◀</div>
+<div id=next onclick=next(1) style="color:#aaa;text-align:center;width:50%;float:right;z-index:1;height:1em;">▶▶</div>
+<script>
+var topPos=0;
+function next(d){
+topPos-=520*d;
+$("top").style.marginTop=topPos+"px";
+}
+</script>
+</html>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3233827-39', 'auto');
+  ga('send', 'pageview');
+
+</script>

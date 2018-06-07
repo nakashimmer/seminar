@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html manifest="index.appcache">
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width">
+<title>たのしいHTML5。Webアプリケーションのプラットフォーム | 産業技術大学院大学 第87回infoTalk</title>
+
+<style>
+	*{	margin:0;padding:0;
+		font-size:20px;
+		font-family:serif;
+	}
+	
+	/*背景グラデーション*/
+	body{
+		background:repeat linear-gradient(-45deg,
+			rgba(255,0,0,0.1),
+				white,
+					rgba(0,0,255,0.1),
+						transparent,
+							rgba(0,255,0,0.1),
+								transparent,
+									rgba(255,0,0,0.1),
+								transparent,
+							rgba(0,0,255,0.1),
+						transparent,
+					rgba(0,255,0,0.1),
+				transparent,
+			rgba(255,0,0,0.1)
+		);
+		background-size:1500px 1500px;
+	}
+	
+	/*背景アニメーション*/
+	body{
+		animation:backgroundKf 5s ease-in-out 1s infinite alternate;
+	}
+	@keyframes backgroundKf{
+		100%{background-position:0 -300px;}
+	}
+	
+	/*ヘッダ*/
+	header{
+		position:fixed;z-index:1;
+		top:0px;
+		width:100%;height;100px;
+		color:white;background-color:rgba(0,0,0,0.8);
+		text-align:center;
+	}
+	header h1{font-size:1.4em;}
+	header h2{font-size:0.8em;margin-top:0.7rem;}
+	
+	/*フッタ*/
+	footer{
+		position:fixed;z-index:1;
+		bottom:0px;
+		width:100%;height;30px;
+		background-color:rgba(0,0,0,0.8);
+		color:white;
+		text-align:center;
+	}
+	
+	/*コンテンツ*/
+	#wrap{
+		max-width:800px;
+		margin:100px auto 0px auto;
+	}
+	
+	/*セクションデザイン*/
+	section{
+		margin:1em 0.5em 3em 0.5em;
+		padding:0.2em;
+		border:1px solid gray;
+		border-radius:0.7em;
+		box-shadow:1px 1px 1px gray;
+		background-color:white;
+		opacity:0.3;
+		transition:
+			box-shadow 1s ease,
+			border 1s ease,
+			opacity 1s ease;
+	}
+	section h1{font-size:1.4em;margin:0.5rem;}
+	section h2{font-size:1em;margin:0.5rem;}
+	section:hover{
+		border:1px solid gray;
+		box-shadow:10px 15px 15px gray;
+		opacity:1;
+	}
+	
+	/*インライン*/
+	p{	margin:1rem;font-weight:bold;}
+	ol{	list-style:none;margin-left:0.5rem;}
+	li{	margin:0.5em;}
+	
+	/*ページ毎に採番*/
+	.page h1:before {
+		counter-increment:i;
+		content:counter(i) ". ";
+	}
+	#wrap{counter-reset:i;}
+	
+	/*箇条書きに採番*/
+	ol li:before {
+		counter-increment:lii;
+		content:counter(lii) ". ";
+	}
+	h1{	counter-reset:lii;}
+	
+	/*項目*/
+	li{	
+		position:relative;
+	}
+	
+	/*アンカー*/
+	#profile a{
+		display:inline;
+		position:relative;
+		left:0em;top:0;
+		text-decoration:none;
+	}
+	
+	footer a{
+		color:white;
+		text-decoration:none;
+	}
+	
+	li a{
+		display:block;
+		text-decoration:none;
+		font-weight:bold;
+		color:blue;
+		position:absolute;
+		top:0;left:1.1em;
+		white-space:nowrap;
+		transition:all 0.5s ease 0.7s;
+		z-index:2;
+		font-size:1em;
+	}
+	@media(min-width:500px){
+		li a:hover{
+			z-index:3;
+			top:-50px;left:0px;;
+			padding:0.1em;
+			background-color:rgba(255,255,255,0.9);
+			color:red;
+			font-size:3.5em;
+			text-shadow:2px 2px 2px gray;
+			border-radius:30px;
+			border-left:1px solid rgba(100,100,100,0.3);
+			border-top:1px solid rgba(100,100,100,0.3);
+			box-shadow:20px 30px 80px gray;
+		}
+	}
+	@media(max-width:500px){
+		section{opacity:1;}
+	}
+</style>
+
+<header>
+	<h1>たのしいHTML5</h1>
+	<h2>Webアプリケーションのプラットフォーム</h2>
+</header>
+
+<footer>
+	<a href="http://pk.aiit.ac.jp/index.php?InfoTalk%2F20160318">infoTalk</a> - 
+	<small>(C) 2016 Shunji Nakashima</small>
+</footer>
+
+<div id="wrap">
+	<section class=page>
+		<h1>はじめに</h1>
+		<p id=msg1_1 onclick='myMsg("msg1_1");'>HTMLは、一年ほど前に「HTML5」に大幅改定され、Webページ制作から、Webアプリケーションを作るための言語に生まれ変わりました。</p>
+		<p id=msg1_2 onclick='myMsg("msg1_2");'>「HTML5」は、だれでも簡単に楽しむことのできるとても楽しい技術です。 アニメーションや３次元の表示などのリッチな表現や、業務アプリケーションやグラフの作成、ミュージック演奏、ゲームや「IoT」まで、数えればきりがありません。</p>
+		<p id=msg1_3 onclick='myMsg("msg1_3");'>今回の講演では、そのHTML5を横断的にご紹介しながら、みなさんと一緒に「HTML5」の無限の可能性を体験していきましょう。</p>
+	</section>
+	
+	<section class=page>
+		<h1>HTML5の変遷</h1>
+		<p id=msg3 onclick='myMsg("msg3");'>HTMLの歴史を簡単にご紹介します。</p>
+		<ol>
+			<li><a href="http://info.cern.ch/hypertext/WWW/TheProject.html">1990 <wbr>世界で初めての<wbr>Webページ</a></li>
+			<li><a href="https://www.w3.org/TR/REC-CSS1/"> 1996-12-17 <wbr>CSS 1</a></li>
+			<li><a href="https://www.w3.org/TR/html4/">1999-12-24 <wbr>HTML 4.01</a></li>
+			<li><a href="https://www.w3.org/TR/html5-diff/">2014-10-28 <wbr>HTML5</a></li>
+		</ol>
+	</section>
+
+	<section class=page>
+		<h1>身近なHTML5</h1>
+		<p id=msg2 onclick='myMsg("msg2");'>HTML5はスマホサイトなどではすでに使用され、ブラウザの対応によりPCサイトでもHTML5はどんどん使われています。身近な例を２つ見ていきましょう</p>
+		<ol>
+			<li><a href="http://www.google.com/doodles/?q=interactive">★Google doodle</a></li>
+			<li><a href="offline.html">★恐竜くん</a></li>
+		</ol>
+
+	</section>
+	
+	
+
+	
+	
+	<section class=page>
+		<h1>HTML5マークアップ</h1>
+		<p id=msg4 onclick='myMsg("msg4");'>HTMLといえばその記号＜タグ＞を思い浮かべるでしょう。HTML5では新しく＜タグ＞が増えました。</p>
+		<ol>
+			<li><a href="/SHOWCASE/MARKUP/">★マークアップ</a></li>
+		</ol>
+	</section>
+	
+	
+	<section class=page>
+		<h1>CSS3</h1>
+		<p id=msg5 onclick='myMsg("msg5");'>CSSは、Webページのデザインを定義します。CSS3では、リッチなデザインや変形、さらにはアニメーションや３次元までできます。</p>
+		<ol>
+			<li><a href="/SHOWCASE/CSS3/border/">★リッチな<wbr>デザイン</a></li>
+			<li><a href="/SHOWCASE/CSS3/enshu/index1.html">擬似クラス</a></li>
+			<li><a href="/SHOWCASE/CSS3/animation/mlCube.html">★3次元変形<wbr>アニメーション</a></li>
+			<li><a href="/SHOWCASE/SMARTPHONEPAGE/">レスポンシブ<wbr>Webデザイン</a></li>
+			<li><a href="http://design.google.com/resizer/#url=http%3A%2F%2Fspringreen.jp%2FSHOWCASE%2FSMARTPHONEPAGE%2F">Resizer</a></li>
+		</ol>
+	</section>
+	
+	
+	<section class=page>
+		<h1>JavaScript</h1>
+		<p id=msg6 onclick='myMsg("msg6");'>JavaScriptは、ブラウザの中で動作するプログラム（スクリプト）です。計算もできますし、HTMLソースやCSSデザインを書き換えることができます</p>
+		<ol>
+			<li><a href="/SHOWCASE/SCRIPT/bmi.html">計算機</a></li>
+			<li><a href="/SHOWCASE/CSS3/animation/matrix.html">CSSを<wbr>コントロール</a></li>
+		</ol>
+	</section>
+	
+	
+	<section class=page>
+		<h1>Canvas API</h1>
+		<p id=msg7 onclick='myMsg("msg7");'>Canvas APIは、HTML5の中でも代表的な仕様です。描画やアニメーション、シミュレーションができます。</p>
+		<ol>
+			<li><a href="/SHOWCASE/CANVAS/tepco/">★リアルタイム<wbr>グラフ</a></li>
+			<li><a href="http://jsdo.it/nakashimmer/pv0Z/fullscreen">風鈴</a></li>
+			<li><a href="http://jsdo.it/nakashimmer/4dPd/fullscreen/">湘南</a></li>
+			<li><a href="/SHOWCASE/CANVAS/shuji/">★習字</a></li>
+			<li><a href="/SHOWCASE/CANVAS/pi/index2.html">数学「円周率」</a></li>
+	</section>
+	
+	
+	<section class=page>
+		<h1>Games</h1>
+		<p id=msg8 onclick='myMsg("msg8");'>Canvas APIを使うことで、ゲームアプリケーションを作ることができます。</p>
+		<ol>
+			<li><a href="/SHOWCASE/CANVAS/touch/">★マリ○風ゲーム</a></li>
+			<li><a href="/SHOWCASE/CANVAS/angry/">★アングリー<wbr>バー◯風ゲーム</a></li>
+		</ol>
+	</section>
+	
+	
+	<section class=page>
+		<h1>様々なAPI</h1>
+		<p id=msg9 onclick='myMsg("msg9");'>APIには、Canvas以外にも数多くあります。シンセ、センサー、GPS．録音・再生のアプリケーションを見ていきましょう。</p>
+		<ol>
+			<li><a href="/SHOWCASE/CANVAS/ufo/">★加速度センサ</a></li>
+			<li><a href="/SHOWCASE/GPS/gps/">★位置情報</a></li>
+			<li><a href="/SHOWCASE/WEBAUDIO/synthesizer/">★シンセサイザ</a></li>
+			
+			<li><a href="/SHOWCASE/SPEECH/">★音声の<wbr>録音と再生</a></li>
+		</ol>
+	</section>
+	
+	
+	<section class=page>
+		<h1>WebGL</h1>
+		<p id=msg10 onclick='myMsg("msg10");'>３次元のアニメーションを、JavaScriptで操作することができます。</p>
+		<ol>
+			<li><a href="/SHOWCASE/WebGL/co/">球体</a></li>
+			<li><a href="/SHOWCASE/WebGL/toras/">トーラス</a></li>
+			<li><a href="http://helloracer.com/webgl/">★HelloRacer</a></li>
+		</ol>
+	</section>
+	
+	
+	<section class=page>
+		<h1>WoT</h1>
+		<p id=msg11 onclick='myMsg("msg11");'>IoT（モノのインターネット）をHTML5の技術で動かすものです。</p>
+		<ol>
+			<li><a href="https://www.youtube.com/watch?v=5VQkIOMMV_o">★WoT</a></li>
+		</ol>
+	</section>
+	
+	
+	<section id=profile>
+		<img src="nakashima.jpg" width=200 align=right style="border-radius:10px;margin:10px;">
+		<p>講師：<a href="/">中島俊治</a></p>
+		<p id=p1 onclick='myMsg("p1");'>放送大学「HTML5入門」非常勤講師。
+		マイクロソフトMVPアワード受賞(2014-2016)。
+		HTML5プロフェッショナル認定試験レベル２合格。</p>
+		<p id=p2 onclick='myMsg("p2");'>1997年、SOFTBANK入社。GeoCities JAPAN 1号社員として立ち上げ従事。Yahoo! JAPANほかのベンチャ企業の後独立。</p>
+		<p id=p3 onclick='myMsg("p3");'>現在、スクー、放送大学などの大学、デジハリ・オンラインスクールなどでHTML5授業を担当。</p>
+		<p id=p4 onclick='myMsg("p4");'>好きなタグは「＜em＞お〜＜/em＞」(emphasis)。</p>
+	</section>
+	
+	<section id=profile>
+		<h1>このサイトのURL</h1>
+		<p style="text-align:center;font-family:Menlo;">http://bit.ly/<wbr>1R7uY15</p>
+	</section>
+</div>
+
+
+<script>
+	//音声読み上げ用スクリプト
+	function myMsg(id){
+		var str = document.getElementById(id).innerHTML;
+		str = new SpeechSynthesisUtterance(str);
+		str.lang = "ja-JP";
+		var voices = speechSynthesis.getVoices();
+		speechSynthesis.speak(str);
+		msgAlw=true;
+	}
+</script>

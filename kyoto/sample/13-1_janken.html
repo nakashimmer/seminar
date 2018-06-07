@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<title>じゃんけんゲーム</title>
+<section>
+	<h1>ジャンケン</h1>
+	<button onclick="janken(0)">ぐー</button>
+	<button onclick="janken(1)">ちー</button>
+	<button onclick="janken(2)">ぱー</button>
+	<div id=output>じゃんけん・・・</div>
+</section>
+
+<script>
+var point=0;										//ポイントの初期化
+var br="<br>";
+var player=["ぐー","ちー","ぱー"];		//ぐーを0,ちーを1,ぱーを2
+var pc=["ぐー","ちー","ぱー"];
+var jadge=["まけ","あいこ","かち"]
+var jadgeNo=new Array();					//勝ち負けの多次元配列表
+jadgeNo[0]=[1,2,0];
+jadgeNo[1]=[0,1,2];
+jadgeNo[2]=[2,0,1];
+
+function janken(playerNo){					//ボタンクリック時の動作
+	var pcNo=Math.floor(Math.random()*3);	//PCの手をかんがえる
+	if(jadgeNo[playerNo][pcNo]==2)point++;			//勝ったら得点
+	
+	document.getElementById("output").innerHTML		//ページ表示
+	="PCは"+pc[pcNo]+br+"あなたは"+player[playerNo]+br+jadge[jadgeNo[playerNo][pcNo]]+br+"得点"+point;
+}
+</script>

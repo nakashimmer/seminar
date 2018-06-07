@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<title>canvasエディター</title>
+<meta name=viewport content="width=302px,user-scalable=no">
+<style>
+*{margin:0;padding:0;font-size:20px;}
+body{background-color:black;}
+#wrap{-webkit-transform:scale(1.5);
+-webkit-transform-origin:left top;}
+
+#codeWrap{width:300px;float:left;}
+
+#canvasWrap{
+	width:300px;
+	float:left;
+	background-color:#fff;
+}
+#code{
+	background-color:#eef;
+	font-family:serif;padding:5px;
+	height:295px;
+	width:285px;	
+}
+h1{color:white;}
+
+</style>
+<div id="wrap">
+	<h1>canvasエディタ</h1>
+	<div id=codeWrap>
+		<textarea id=code wrap=hard></textarea>
+	</div>
+	<div id=canvasWrap>
+		<canvas id=canvas width=300 height=300>
+			このブラウザは対応してませんorz
+		</canvas>
+	</div>
+</div>
+
+<script>
+function $(id){return document.getElementById(id);}
+var canvas=$("canvas");
+var c=canvas.getContext("2d");
+$("code").value=localStorage.getItem("codeData");
+
+$("canvas").addEventListener("click",function(){
+	var script=document.createElement("script");
+	script.innerHTML
+//		='c.fillStyle="#fff"\n'
+		='c.clearRect(0,0,canvas.width,canvas.height);\n'
+		+'c.fillStyle="#000"\n'
+		+$("code").value;
+	$("addCode").appendChild(script);
+});
+
+//背景
+//c.fillStyle="#fff";
+c.clearRect(0,0,canvas.width,canvas.height);
+</script>
+<div id=addCode></div>
+

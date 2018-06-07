@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>flexbox</title>
+	<style>
+		*{margin:0;padding:0;transition:all 0.5s linear;}
+		div{}
+		.item1{background-color:skyblue;}
+		.item2{background-color:yellow;}
+		.item3{background-color:pink;}
+		#style{
+			resize:both;
+			font-family:sans-serif;
+			padding:5px;
+			white-space:pre;
+			overflow:scroll;
+			display:block;
+			tab-size:2;
+			font-size:30px;
+			font-family:menlo;
+			background-color:#000;
+			color:white;
+		}
+		#wrap{display:flex;height:100vh;}
+		#flexbox{flex:1;margin:0.3;}
+		#style{flex:1;}
+		.item{text-align:center;}
+	</style>
+
+
+</head>
+<body>
+
+<div id =wrap>
+	<style id=style contenteditable>/*item準備*/
+.box{		/*親要素*/
+	border:2px solid red;
+	height:100px;
+	margin:10px;
+}
+.item{	/*子要素*/
+	border:2px solid black;
+	width:100px;
+	margin:2px;
+}
+
+/*flex*/
+.box{
+	-display:flex;
+}
+
+/*横並べ位置*/
+.box1{ /*左寄せ*/
+	-justify-content:flex-start;
+}	
+
+.box2{	/*右寄せ*/
+	-justify-content:flex-end;
+}	
+
+.box3{	/*中寄せ*/
+	-justify-content:center;
+}		
+.box4{	/*隙間を中に両端揃え*/
+	-justify-content:space-between;
+}
+
+.box5{ /*周りに隙間で両端揃え*/
+	-justify-content:space-around;
+}
+
+/*②ストレッチ*/
+.item1{-flex:1;}
+.item2{-flex:2;}
+.item3{-flex:1;}
+
+/*③上下*/
+.item{
+	-height:50px;
+}
+
+.box1{	/*上寄せ*/
+	-align-items:flex-start;
+}
+
+.box2{	/*下寄せ*/
+	-align-items:flex-end;
+}	
+.box3{	/*中央寄せ*/
+	-align-items:center;
+}		
+
+/*④ストレッチ無効*/
+.item1,.item2,.item3{-flex:none;}
+
+</style>
+
+	<div id=flexbox>
+		<div class="box1 box">
+			<div class="item1 item">item1</div>
+			<div class="item2 item">item2</div>
+			<div class="item3 item">item3</div>
+		</div>
+		
+		<div class="box2 box">
+			<div class="item1 item">item1</div>
+			<div class="item2 item">item2</div>
+			<div class="item3 item">item3</div>
+		</div>
+		
+		<div class="box3 box">
+			<div class="item1 item">item1</div>
+			<div class="item2 item">item2</div>
+			<div class="item3 item">item3</div>
+		</div>
+		
+		<div class="box4 box">
+			<div class="item1 item">item1</div>
+			<div class="item2 item">item2</div>
+			<div class="item3 item">item3</div>
+		</div>
+		
+		<div class="box5 box">
+			<div class="item1 item">item1</div>
+			<div class="item2 item">item2</div>
+			<div class="item3 item">item3</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

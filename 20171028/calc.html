@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>calc()関数</title>
+		<style>
+			*{
+				margin:0px;padding:0px;
+				transition:all 0.5s ease-in-out;
+			}
+			#sample{
+				margin:5px;
+			}
+			
+			#parent{
+				border:1px solid gray;
+				height:90vh;
+			}
+			#child{
+				border:1px solid gray;
+			}
+			
+			#style{
+				border:1px solid gray;
+				resize:both;
+				font-family:sans-serif;
+				padding:5px;
+				white-space:pre;
+				overflow:scroll;
+				display:block;
+				tab-size:2;
+				font-size:30px;
+				font-family:menlo;
+				background-color:#ddd;
+			}
+			#wrap{display:flex;height:100vh;}
+			#style{flex:1;}
+			#sample{flex:1;}
+		</style>
+	</head>
+	<body>
+		<div id=wrap>
+			<style scoped contenteditable id=style
+>#parent{
+	position:relative;
+	border:3px solid green;
+}
+#child{
+	border:10px solid red;
+	-width:200px;
+	-height:200px;
+	-position:absolute;
+	-top:calc(50% - 100px);
+	-left:calc(50% - 100px);
+}
+			</style>
+	
+			<div id=sample>
+				<div id=parent>
+					<div id=child></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

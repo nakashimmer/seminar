@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>変形</title>
+</head>
+<body>
+	<canvas id=canvas width=500 height=500></canvas>
+	<script>
+		var canvas = document.getElementById('canvas');
+		var ctx = canvas.getContext('2d');
+		//変形した矩形の描画
+		ctx.save();
+		ctx.translate(100,100);
+		ctx.rotate(30/180*Math.PI);
+		ctx.scale(1,0.5);
+		ctx.fillStyle="blue";
+		ctx.fillRect(-50,-50,100,100);
+		ctx.restore();
+
+		ctx.save();
+		ctx.translate(200,200);
+		ctx.rotate(30/180*Math.PI);
+		ctx.scale(1,0.5);
+		ctx.fillStyle="red";
+		ctx.fillRect(-50,-50,100,100);
+		ctx.restore();
+	</script>
+</body>
+</html>

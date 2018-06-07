@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<title>HTML5をパクッ！</title>
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+
+
+		<style>
+			*{
+				margin:0;padding:0;font-size:32px;
+				text-align: justify;
+				text-justify: inter-ideograph;
+				color:#333;
+				font-family: "Rounded Mplus 1c";
+			}
+			body{background-color:#ccc;}
+			img{
+				max-width:80%;margin-left:10%;display:block;
+				box-shadow:2px 2px 2px 2px gray;
+				max-height:80vh;
+				margin:1em auto;
+			}
+			section{
+				min-height:100vh;
+				margin-left:1vw;
+				margin-right:1vw;
+			}
+			blockquote{border-left:1px solid gray;padding-left:10px;margin:1em;display:block;}
+			.c{text-align:center;}
+			h1{font-size:2em;text-align:center;}
+			h2{font-size:1.5em;margin:5em 0 0 0;text-align:center;}
+			h3{
+				font-size:1em;
+				background-color:#333;color:white;
+				margin-bottom:1em;
+				padding:0.5em;
+				box-shadow:2px 2px 2px gray;
+			}
+			ol,ul{margin-left:2em;}
+			.url{font-size:0.5em;}
+			iframe{display:block;margin:10px auto;border:none;}
+			
+			body{position:relative;}
+			#lang{
+				margin:0;padding:0;
+				position:absolute;
+				z-index:1;
+				
+			}
+			#lang button{font-size:0.5em;margin:0;display:block;float:left;opacity:0.6;}
+			#main{
+				position:absolute;
+				height:100vh;
+				overflow:scroll;
+				width:100vw;
+			}
+						
+
+			::-webkit-scrollbar{display:none;}
+			*{-ms-overflow-style:none;}
+		</style>
+	</head>
+	
+	<body>
+		<p id="lang">
+			<button onclick="spch(1);">English</button>
+			<button onclick="spch(0);">Japanese</button>
+		</p>
+		<div id=main>
+		<header>
+			<h1>HTML5をパクッ！</h1>
+		</header>
+		
+		<main>
+			<section class=p>
+				<h2>おはようございます</h2>
+				<section>
+					<h3>「中島俊治」です</h3>
+					<p>サイバー大学、八洲学園大学、放送大学講師</p>
+					<p>元ヤフー。元GeoCities</p>
+					<p>東京アプリ・ワークショップ</p>
+					<p>マイクロソフトMVP</p>
+					<img alt="image" src="1.png">
+
+				</section>
+				
+				<section>
+					<h3>きょうのネタはWe Love HTML5 から</h3>
+					<p>「We Love HTML5」というFBグループを作っています</p>
+					<p>よければご参加ください</p>
+					<a href="https://www.facebook.com/groups/welovehtml5/"><img alt="image" src="10.png"></a>
+				</section>
+			</section>
+			
+			<section>
+				<h2>ドキッ！HTML5が終了するだとぉ?</h2>
+				
+				<section>
+					<h3>twitter界隈でHTML5が終了との噂が</h3>
+					<img alt="image" src="20.png">
+				</section>
+			
+				<section>
+					<h3>たぶんこのスライドが</h3>
+					<p>HTML5カンファレンス2017・・・私もこの場にいました</p>
+					<img alt="image" src="30.jpg">
+				</section>
+
+				
+				<section>
+					<h3>情報ソースを調べてみた</h3>
+					<p>W3C「PROPOSAL TO REPUBLISH PREVIOUS VERSIONS OF HTML AND XHTML AS OBSOLETE RECOMMENDATIONS」</p>
+					<blockquote>
+						<p>we recommend that all implementers use the latest HTML5 –where HTML5 is the term to refer to the family of specifications. We are proposing to obsolete the particular 28 October 2014 W3C Recommendation which henceforth shall be called HTML 5.0, which has been superseded by HTML 5.1, a W3C Recommendation since 1 November 2016. This aims at clarifying the status of the document and point developers and implementers to the latest version of HTML5.</p>
+					</blockquote>
+					<blockquote>
+						<p>これからの展望として、2014年の10月末に W3Cが発表したHTML 5.0は、既に新しいのも出ててそちらが使われてることから、システムとして古く、この先それを使っての開発するとかあり得ない。だから2016年の11月にスタートしたHTML 5.1をこれからは標準にしましょう</p>
+					</blockquote>
+					<blockquote>
+						<p>HTML5は仕様ファミリを指す用語</p>
+					</blockquote>
+				</section>
+			
+				
+				<h2 class=c><strong>ひとあんしん　ε-(´∀｀*)ﾎｯ</strong></h2>
+				
+			</section>
+			
+			<section>
+				<h2>よく聞かれます「HTML5はいつやるべき？」</h2>
+
+				<section>
+					<h3>66.8%のWebサイトがHTML5</h3>
+					<p>もうかなりHTML5ですね</p>
+					<p class=url>URL:http://news.mynavi.jp/news/2017/10/25/047/</p>
+					<img alt="image" src="50.png">
+				</section>
+				
+				<section>
+					<h3>うれしいお知らせ「MDN Web Docs」</h3>
+					<p>Web情報の集積地ができた。高い本を買わなくてもいい</p>
+					<p>MS,Google,Mozillaが協力。
+					<blockquote>
+					「Google Chrome」と「Microsoft Edge」、Firefoxに関連する情報の拠点という位置付けとなる。同サイトには、JavaScriptやCSS、HTMLのほか、さまざまなWeb APIに関するウェブ開発者向けの情報やチュートリアルが集積される</blockquote>
+					<img alt="image" src="60.png">
+				</section>
+			</section>
+
+			<section>
+				<h2>HTMLマークアップ関連の話題</h2>
+				<section>
+					<h3>HTML 5.1 「section内での&lt;h1&gt;の扱い」</h3>
+					<ul>
+						<li contenteditable>以前：&lt;section&gt;でセクショニングしたときは、見出しは全部&lt;h1&gt;でもよかった
+						<blockquote>The use of nested section elements each with an &lt;h1&gt; to create an outline.</blockquote></li>
+						<li>今回：これが削除された。</li>
+						
+					</ul>
+				</section>
+
+				<section>
+					<h3>でもね、WHATWGではサンプルにあるよ</h3>
+					<p>h1~h6のみ、sectionとh1、sectionとh1~h6の三種類が示されている。
+					<p class=url>URL：https://html.spec.whatwg.org/multipage/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements</p>
+					<img alt="image" src="70.png">
+				</section>
+				
+				<section>
+					<h3>どっちやねん？</h3>
+					<p>W3CとWHATWGのソースを見てみる</p>
+					<img alt="image" src="80.png">
+					<img alt="image" src="90.png">
+					<p>&lt;section&gt;がない…それ以前にXHTML1.0 Strictだと…</p>
+				</section>
+
+				<p>たぶん。。。そんなに大したことではないのかも・・・</p>
+				<section>
+					<h3>ちなみに今回のページは</h3>
+					<p>一応、こんな感じにしておいた</p>
+					<img alt="image" src="150.png">
+				</section>
+			
+				
+			</section>
+
+			<section>
+				<h2>つづいてCSS3の話題</h2>
+				<section>
+					<h3>グリッド・レイアウト</h3>
+					<p>むかしのテーブルレイアウトな…</p>
+					<p class=url>URL:https://www.w3.org/TR/css-grid-1/</p>
+					<iframe src="grid.html" style="width:95vw;height:80vh">
+					</iframe>
+				</section>
+
+				<section>
+					<h3>calc()関数</h3>
+					
+					<p>今のCSSは足し算引き算ができる！</p>
+					<p class=url>https://www.w3.org/TR/css-values-3/#calc-notation</p>
+					<iframe src="calc.html" style="width:95vw;height:80vh"></iframe>
+				</section>
+			</section>
+		
+			<section>
+				<h2>JavaScript</h2>
+				<section>
+					<h3>JavaScriptはもっともポピュラな言語</h3>
+					<p>The 15 most popular programming languages…'で一位</p>
+					<p class=url>http://www.businessinsider.com/the-9-most-popular-programming-languages-according-to-the-facebook-for-programmers-2017-10/#14-scala-2</p>
+					<img alt="image" src="155.png">
+				</section>
+
+				<section>
+					<h3>nullの変な挙動</h3>
+					<p><a target=_blank href="http://image.itmedia.co.jp/l/im/nl/articles/1702/22/l_senegal_zeroandnull001.jpg">「null」と「0」の違い</a></p>
+					<blockquote>
+<pre><code contenteditable>null &gt; 0; // 誤り
+null &lt; 0; // 誤り
+null == 0; //誤り
+null &lt; 0 が誤りであれば、null >= 0 は…</code></pre>
+</blockquote>
+				</section>
+
+				<section>
+					<h3>たまに不思議な事がある・・・</h3>
+					<p>「文字列の連結」とか</p>
+					<blockquote>
+<pre><code>var n1="私の点数は";
+var n2=2;
+var n3=3;
+var n4="点";
+var n=n1+n2+n3+n4; //私の点数は23点です。</code></pre>
+					</blockquote>
+					<p>n1:<input type="text" id="n1" value="私の点数は" style="width:5em;">、
+						n2:<input type="text" id="n2" style="width:2em;">、
+						n3:<input type="text" id="n3" style="width:2em;">、
+						n4:<input type="text" id="n4" value="点" style="width:1em;">。
+						<button id="n" onclick="result1();">答えは</button></p>
+						<script>
+							var n1=document.getElementById("n1");
+							var n2=document.getElementById("n2");
+							var n3=document.getElementById("n3");
+							var n4=document.getElementById("n4");
+							var n=document.getElementById("n");
+							function result1(){
+								n.innerHTML=n1.value+parseFloat(n2.value)+parseFloat(n3.value)+n4.value;
+							}
+						</script>
+					
+					<p>じゃぁ</p>
+					<blockquote>
+<pre><code>var n2=2;
+var n3=3;
+var n4="点";
+var n=n2+n3+n4; //どうなる？</code></pre>
+					</blockquote>
+					
+					<p>n2:<input type="text" id="nn2" style="width:2em;">、
+						n3:<input type="text" id="nn3" style="width:2em;">、
+						n4:<input type="text" id="nn4" value="点" style="width:1em;">。
+						<button id="nn" onclick="result2();">答えは</button></p>
+						<script>
+							var nn2=document.getElementById("nn2");
+							var nn3=document.getElementById("nn3");
+							var nn4=document.getElementById("nn4");
+							var nn=document.getElementById("nn");
+							function result2(){
+								nn.innerHTML=parseFloat(nn2.value)+parseFloat(nn3.value)+nn4.value;
+							}
+						</script>
+				</section>
+			</section>
+		
+			<section>
+				<h2>その他</h2>
+				<section>
+					<h3>大学の学生さんに興味のあるものをアンケートしたら・・・</h3>
+					<ul>
+						<li>AI
+						<li>IoT
+						<li>VR、AR
+						<li>セキュリティ
+					</ul>
+					
+				</section>
+				
+				<section>
+					<h3>AI(人工知能)</h3>
+					<p>AIを作るのは大変だけど、AI APIを利用することはできる</p>
+					<img alt="image" src="156.png">
+					<p><iframe src="https://tokyoappwork.shop/SHOWCASE/Talk/" style="width:95vw;height:80vh">
+					</iframe></p>
+				</section>
+				
+				<section>
+					<h3>WoT</h3>
+					<p>ロボットアームをJavaScriptで動かしてみる</p>
+					<p><iframe width="800" height="550" src="https://www.youtube.com/embed/WL0CqY2HwxY?rel=0" allowfullscreen></iframe></p>
+					<p>
+				</section>
+	
+				<section>
+					<h3>サンタクロース</h3>
+						<p>１２月近いのでサンタを作ります。</p>
+						<p><iframe src="santa.html" style="width:95vw;height:80vh;overflow:hidden;">
+					</iframe></p>
+				</section>
+			</section>
+			
+			<section>
+				<h2>さいごに</h2>
+				<section>
+					<h3>東京アプリ・ワークショップ</h3>
+					
+					<p class=url>https://www.street-academy.com/steachers/1274</p>
+					<p>ストリートアカデミーで初心者向けHTML5講座を開催中</p>
+					<img alt="image" src="120.png">
+					
+				</section>
+				<section>
+					<h3>一般社団法人Web技術振興協会【検定科目はHTML5】</h3>
+					<p>HTML5検定を来年から</p>
+					<img alt="image" src="130.png">
+				</section>
+			</section>
+			<section>
+				<h2>ありがとうございました</h2>
+			</section>
+		</main>
+	</div>
+
+
+<script>
+
+function spch(k){
+	if(k===0){lang="ja-jp";}
+	if(k===1){lang="en-us";}
+	var mySelect = window.getSelection();
+	//alert(mySelect);
+	var input = new SpeechSynthesisUtterance(mySelect);
+	input.lang = lang;
+	var voices = speechSynthesis.getVoices();
+	speechSynthesis.speak(input);
+};
+</script>
+
+
+	</body>
+</html>

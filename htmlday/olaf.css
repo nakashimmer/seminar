@@ -1,0 +1,249 @@
+
+/*olaf ---------------------- */
+	
+#snowman * {
+	margin: 0;padding: 0;border: 0;
+	position:relative;
+	text-align:center;
+}
+
+#snowman{
+	margin:50px auto;
+   -webkit-animation:okuyukianime 15s ease-in-out 0 1 normal;
+}
+#inner{
+   -webkit-animation:snowmananime 0.2s ease-in-out 0 52 alternate;
+   
+}
+
+@-webkit-keyframes snowmananime{
+	100%{-webkit-transform:translate(0,40px);}
+}
+
+@-webkit-keyframes okuyukianime{
+	0%{-webkit-transform:scale(0.05);}
+	100%{-webkit-transform:scale(2);}
+}
+
+
+.wg{background:-webkit-gradient(linear,left top,right top,from(gray),color-stop(0.3,#ccc),to(#eee));}
+
+
+
+
+/* HEAD------------------------------------------------------------ */
+
+
+
+
+#head{
+	width:300px;margin:0 auto;
+	z-index:2;
+	-webkit-transform:rotate(10deg);
+	-webkit-transform-origin:center bottom;
+	-webkit-animation:headanime 0.4s ease-in-out 0 26 alternate;
+}
+
+@-webkit-keyframes headanime{
+	100%{ -webkit-transform:rotate(-10deg);}
+}
+
+
+#head1{
+	border:1px solid gray;
+	margin:0 auto;width:120px;height:80px;
+	border-radius:40px 40px 0 0/80px 80px 0 0;}
+
+#hair{width:50px;height:100px;margin:0 auto;}
+#hair1{width:15px;height:95px;border-top:5px solid #6f4b3e;border-right:5px solid #6f4b3e;border-radius:0 100% 0 0;}
+#hair2{width:0px;height:100px;border-right:5px solid #6f4b3e;}
+#hair3{width:15px;height:95px;border-top:5px solid #6f4b3e;border-left:5px solid #6f4b3e;border-radius:100% 0 0 0;}
+.hair{float:left;}
+
+#mayu1{
+	border-left:5px solid black;
+	border-radius:100% 0 0 0;
+}
+#mayu2{
+	border-right:5px solid black;
+	border-radius:0 100% 0 0;
+}
+.mayu{
+	margin:-20px 0 0 -3px;
+	width:35px;height:10px;
+	border-top:5px solid black; 
+}
+
+#eye1{ 
+	float:left;margin-left:5px;
+}
+#eye2{
+	float:right;margin-right:10px;
+}
+.eye{
+	 margin-top:100px;padding-top:10px;
+	width:35px;height:40px;
+	border-radius:20px;
+	background:white;padding:5px; 
+	z-index:1;
+}
+
+.ball{margin:5px 0 0 5px;
+	border-radius:50%;width:30px;height:30px;background:black;}
+
+#head2{
+	border-left:1px solid gray;
+	 border-right:1px solid gray;
+	border-bottom:1px solid gray;
+	margin:-10px auto 0 auto;width:150px;height:200px;
+	border-radius:30px  30px 80px 80px/40px 40px 150px 150px;
+}
+
+#nose{
+	margin:0 auto 0 auto;
+	width:50px;height:50px;
+	border-radius:50% 50% 0 50%;
+	background:-webkit-gradient(radial,right bottom,0,center center,50,from(orange), to(red));
+	z-index:2;
+}
+
+#mouth{
+	margin:10px 20px 0 auto;
+	width:100px;height:120px;background:black;
+	 border-radius:0 0 50% 50%/0 0 100% 100%;
+}
+
+
+#tooth{
+	margin:0 auto;
+	background:white;
+	width:70px;height:30px;
+	  border-radius:0 0 20px 20px/0 0 10px 10px;
+}
+
+
+/* BODY------------------------------------------------------------ */
+
+#body{
+	z-index:1;
+	width:300px;margin:0 auto;
+	-webkit-transform:rotate(-10deg);
+	-webkit-transform-origin:center top;
+	-webkit-animation:bodyanime 0.4s ease-in-out 0 26 alternate;}
+
+@-webkit-keyframes bodyanime{
+	100%{-webkit-transform:rotate(10deg);}
+}
+#body1{
+	border:1px solid gray;
+	margin:-5px auto 0 auto;width:100px;height:80px;
+	 border-radius:50px 50px 10px 10px/80px 80px 20px 20px;
+	padding:20px;
+	text-align:center;
+}
+#body2{
+	border-left:1px solid gray;
+	border-right:1px solid gray;
+	border-bottom:1px solid gray;
+	margin:-5px auto 0 auto;width:230px;height:120px;
+	border-radius:100px 100px 80px 80px/70px 70px 50px 50px;
+	padding:20px;
+	text-align:center;
+}
+
+#hand1{
+	position:absolute;right:120px;
+	-webkit-transform:rotate(30deg);
+	-webkit-transform-origin:right bottom;
+	-webkit-animation:hand1anime 0.3s ease-in-out 0 34 alternate;
+}
+
+@-webkit-keyframes hand1anime{
+	100%{-webkit-transform:rotate(-20deg);}
+}
+
+#hand2{
+	text-align:right;position:absolute;left:120px;
+	-webkit-transform:rotate(-30deg);
+	-webkit-transform-origin:left bottom;
+	-webkit-animation:hand2anime 0.3s ease-in-out 0 34 alternate;
+}
+
+
+@-webkit-keyframes hand2anime{
+	100%{-webkit-transform:rotate(20deg);}
+}
+
+.hand1{
+	width:200px;height:5px;background-color:#6f4b3e;
+}
+#hand1 .hand2{
+	width:50px;height:5px;background-color:#6f4b3e;
+	-webkit-transform:rotate(30deg);
+	-webkit-transform-origin:right bottom;
+	margin-top:-5px;
+}
+#hand1 .hand3{
+	width:50px;height:5px;background-color:#6f4b3e;
+	-webkit-transform:rotate(-30deg);
+	-webkit-transform-origin:right bottom;
+	margin-top:-5px;
+}
+
+#hand2 .hand2{
+	margin:0 0 0 auto;
+	width:50px;height:5px;background-color:#6f4b3e;
+	-webkit-transform:rotate(30deg);
+	-webkit-transform-origin:left bottom;
+	margin-top:-5px;
+}
+#hand2 .hand3{
+	margin:0 0 0 auto;
+	width:50px;height:5px;background-color:#6f4b3e;
+	-webkit-transform:rotate(-30deg);
+	-webkit-transform-origin:left bottom;
+	margin-top:-5px;
+}
+
+
+.btn{
+	margin:20px auto 0 auto;display:block;
+	width:40px;height:40px;background:black;
+	border-radius:50%;
+	box-shadow:-5px 5px 10px gray;}
+
+
+/* FOOT ------------------------------------------------------------ */
+#foot{
+	margin:-10px auto 0 auto;width:200px;height:50px;
+}
+#foot1{
+	-webkit-transform:rotate(0deg);
+	-webkit-transform-origin:center -80px;
+	-webkit-animation:foot1anime 0.4s ease-in-out 0 26 alternate;
+}
+
+@-webkit-keyframes foot1anime{
+	100%{-webkit-transform:translate(-10px,0) rotate(90deg);}
+}
+
+#foot2{
+	-webkit-transform:rotate(-60deg);
+	-webkit-transform-origin:center -80px;
+	-webkit-animation:foot2anime 0.4s ease-in-out 0 26 alternate;
+}
+@-webkit-keyframes foot2anime{
+	100%{
+		-webkit-transform:translate(-10px,0) rotate(0deg);
+	}
+}
+
+.foot{   
+	margin-left:10px;
+	border:1px solid gray;
+	width:80px;height:50px;float:left;z-index:-1;
+	border-radius:20px 20px 30px 30px/30px 30px 20px 20px;
+}
+
+/* olafここまで--------------------------- */
+

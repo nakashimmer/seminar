@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width">
+<title>super obake♥</title>
+<style>
+*{margin:0; padding:0;font-family:sans-serif;}
+#open,#play,#finish{
+	width:320px;height:480px;
+	text-align:center;margin:0 auto;}
+#play,#finish{display:none;}
+button{font-size:40px;margin:100px auto;padding:10px;
+	border:1px solid gray;background-color:white;
+	border-radius:10px;}
+body{margin-top:20px;}
+
+body{background-color:skyblue;}
+</style>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+	<article id=open>
+		<h1>super obake!</h1>
+		<button onclick="start()">スタート！</button>
+	</article>
+		
+	<article id=play>
+		<canvas id="canvas" width="320" height="480">
+			canvas対応のブラウザで見てください
+		</canvas>
+	</article>
+		
+	<article id=finish>
+		<h1>結果</h1>
+		<p>あなたの得点は<span id=result></span>です</p>
+		<button onclick="restart()">もう一度</button>
+	</article>
+
+<script>
+var canvas=document.getElementById("canvas");
+var c=canvas.getContext("2d");
+function $(id){return document.getElementById(id);}
+
+//初期設定
+
+var sound	=new Audio('okng.mp3');
+var obake	={x:160,y:300,dy:0};
+var dokan	={x:350,y:280};
+var heart	={x:350,y:100};
+var zoom	=3;
+var frame	=0;
+var point	=0;
+var koma	=50;
+var timeLimit	=30;
+var snd="";
+var timerId;
+
+//描画
+
+function anime(){
+	frame++;
+	if(frame>timeLimit/koma*1000){
+		end();
+	}
+	
+	//クリア
+	c.clearRect(0,0,canvas.width,canvas.height);
+
+	//ポイント表示
+	pointDisplay();	
+	
+	//マリオ
+	obakeDraw(obake.x,obake.y);
+	obake.y+=obake.dy;
+	if(obake.y==150)obake.dy=10;
+	if(obake.y==300)obake.dy=0;
+	
+	//道
+	for(var i=0;i<340;i+=20)
+		{roadDraw(i-frame%10*2,305);
+	}
+	//ドカン
+	dokanDraw(dokan.x,dokan.y);
+	dokan.x-=3;
+	if(dokan.x<-20)dokan.x=350;
+	
+	//判定
+	if(obake.y>=300 && Math.abs(dokan.x - obake.x)<2){
+		sound.currentTime=1;sound.play();point--;zoom-=1;
+		if(zoom===0){
+		   end();
+		}
+	}
+	
+	//ハート
+	heartDraw(heart.x,heart.y);
+	heart.x-=2;
+	if(heart.x<-20)heart.x=350;
+	if(obake.y==160 && Math.abs(heart.x - obake.x)<40 ){
+		snd="heart"
+		sound.currentTime=0;sound.play();
+		point++;zoom+=1;heart.x=350;
+	}
+}	
+
+
+sound.addEventListener("timeupdate",function(e){
+	if(snd=="heart"){
+		if(0.5<=sound.currentTime){sound.pause();snd="";}
+	}
+});
+
+//ジャンプ
+canvas.addEventListener("mousedown",function(e){
+	if(obake.dy===0){obake.dy=-10;}
+});
+
+//ポイント表示
+function pointDisplay(){
+	//得点表示
+	c.fillStyle="white";
+	c.font="30px sans-serif";
+	c.fillText("得点:"+point,10,50);
+//	c.fillText("power:"+zoom,10,100);
+	c.fillText("残り:"+(timeLimit-Math.floor(frame/(1000/koma))),10,100);
+}
+
+//道描画
+function roadDraw(x,y){
+	c.fillStyle="green";
+	c.strokeStyle="lightgreen";
+	c.fillRect(x,y,20,20);
+	c.lineWidth=3;
+	c.strokeRect(x,y,20,20);
+}
+//ドカン描画
+function dokanDraw(x,y){
+	c.fillStyle="gray";
+	c.strokeStyle="black";
+	c.lineWidth=1;
+	c.beginPath();
+	c.arc(x,y+23,25,0,Math.PI,true);
+	c.fill();
+	c.stroke();
+}	
+//ハート描画
+function heartDraw(x,y){
+	c.save();
+	c.beginPath();
+	c.translate(x,y);
+	c.scale(Math.sin(frame/180*4*Math.PI),1);
+	c.moveTo(-10,-10);
+	c.lineTo(0,0);
+	c.lineTo(10,-10);
+	c.lineCap="round";
+	c.strokeStyle="red";c.lineWidth=20;c.stroke();
+	c.restore();
+}
+
+
+//obake描画
+
+function obakeDraw(x,y){
+	//描画
+	c.save();
+	c.translate(x,y-15-zoom*4+Math.sin(frame/50*Math.PI)*10);
+	c.scale(0.5*zoom,0.5*zoom);
+	c.lineWidth=1;
+	
+	//キャラクタを描画
+	//胴体
+	c.beginPath();
+	c.moveTo(-10,10);
+	c.arc(0, 0, 10, 0.7*Math.PI, 2.5*Math.PI, false);
+	c.closePath();
+	c.fillStyle = "white";
+	c.fill();
+	c.strokeStyle = "black";
+	c.stroke();
+	
+
+	//左目
+	c.beginPath();
+	c.arc(-2, -3, 1, 0, 2*Math.PI, false);
+	c.closePath();
+	c.fillStyle = "black";
+	c.fill();
+
+	//右目
+	c.beginPath();
+	c.arc(4, -3, 1, 0, 2*Math.PI, false);
+	c.closePath();
+	c.fillStyle = "black";
+	c.fill();
+
+	//口
+	c.beginPath();
+	c.arc(1, 0, 5, 0, Math.PI, false);
+	c.closePath();
+	c.strokeStyle = "black";
+	c.stroke();
+
+	//左手
+	c.beginPath();
+	c.moveTo(-5,5.5);
+	c.lineTo(0,5.5);
+	c.lineTo(0,8.5);
+	c.lineTo(-3,7);
+	c.lineTo(-5,7);
+	c.fillStyle="white";
+	c.fill();
+	c.strokeStyle = "black";
+	c.stroke();
+
+	//右手
+	c.beginPath();
+	c.moveTo(4,5.5);
+	c.lineTo(9,5.5);
+	c.lineTo(9,8.5);
+	c.lineTo(6,7);
+	c.lineTo(4,7);
+	c.fillStyle="white";
+	c.fill();
+	c.strokeStyle = "black";
+	c.stroke();
+
+	//キャラクタここまで
+	c.restore();
+}
+
+
+function start(){
+		$("open").style.display="none";			//開始画面を非表示
+		$("play").style.display="block";			//プレイ画面を表示
+		timerId = setInterval(anime,koma);			//タイマー開始
+		sound.play();
+		sound.pause();
+}
+
+	function end(){
+		clearInterval(timerId);								//タイマー終了
+		$("play").style.display="none";			//プレイ画面を終了
+		$("finish").style.display="block";		//終了画面を表示
+		$("result").innerHTML=point;				//ポイントを表示
+	}
+	
+	function restart(){
+		frame = 0;													// 全体のフレームカウント 
+		obake	={x:160,y:300,dy:0};
+		dokan	={x:350,y:280};
+		heart	={x:350,y:100};
+		zoom	=3;
+		frame	=0;
+		point	=0;
+		koma	=50;
+		timeLimit	=30;
+		$("finish").style.display="none";		//終了画面を非表示
+		$("play").style.display="block";			//プレイ画面を表示
+		timerId = setInterval(anime,50);			//タイマー開始
+	}
+
+canvas.addEventListener("touchmove",function(e){
+	e.preventDefault();
+});
+
+</script>

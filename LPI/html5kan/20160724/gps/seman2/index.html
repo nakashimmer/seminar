@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>せまん</title>
+	<style>
+		*{margin:0;padding:0;}
+		#wrap{width:600px;height:400px;position:relative;
+			overflow:hidden;
+		}
+		#range{width:100px;position:absolute;top:300px;left:0;}
+		#canvas{background-image:url("bg.jpg");
+		background-size:cover;
+		}
+		#info1{
+			position:absolute;top:0px;font-size:50px;color:white;
+			text-shadow:10px 10px 10px black;
+		}
+		#info2{position:absolute;top:350px;}
+	</style>
+</head>
+
+<body>
+	<div id=wrap>
+		<canvas id="canvas" width="600" height="400" ></canvas>
+		<p><input type="range" id="range" max="150" value="50" step="1"></p>
+		<p><span id=info1>クリックしてスタート</span>
+		<span id=info2></span></p>
+	</div>
+<script>
+	var canvas = document.getElementById("canvas");
+	var c = canvas.getContext("2d");
+	
+	//canvasの座標を一般的なグラフ用紙の座標に合わせる
+	c.translate(0,300);
+	c.scale(1,-1);
+	
+	//初期設定=================================
+	var v = 20;			//打上y方向の初速
+	var g = 1;			//重力
+	var t;				//打上げてからのカウント
+	var bound;			//バウンドの回数
+	var second = 0;		//秒
+	var timer="no";			//setIntervalを終了するときに使う
+	var point = 0;		//得点
+	var pig = {x:450, y:10, w:100, h:100};			//pigのx,y座標と、横幅、高さ
+	var move;
+	var shootOK;
+	var angrybird={x:0,y:0,w:0,h:0};	//angrybirdのx,y座標と、横方向の移動距離、横幅、高さ
+	ini();
+
+	
+	//画像データの取り込み
+	var angrybirdImage = new Image();
+	angrybirdImage.src = "seman.png";
+	
+	var pigImage = new Image();
+	pigImage.src = "html5exam.png";
+
+	//画像の初期表示
+	angrybirdImage.onload = function(){
+		c.drawImage(angrybirdImage, 
+			angrybird.x, angrybird.y,angrybird.w,angrybird.h
+		);
+	}
+	pigImage.onload = function(){
+		c.drawImage(pigImage, pig.x, pig.y,pig.w,pig.h);
+	}
+	
+	//BGMの音源取り込みと再生、爆発音の取り込み
+	var bgmSound = new Audio("bgm.mp3");
+	bgmSound.play();
+	var attackSound = new Audio("attack.mp3");
+	
+
+	//canvasをonclickしてスタート=================================
+	canvas.addEventListener("click",function(){
+		if(shootOK){
+			//角度指定値の取得
+			angrybird.dx = parseFloat(document.getElementById("range").value)/10;
+			ini();move=true;shootOK=false;
+			attackSound.pause();
+			attackSound.currentTime = 0;	//爆発音初期化
+			clearInterval(timer);			//アニメーションの一旦停止
+			timer = setInterval(anime,30);	//アニメーションの開始}
+
+		}
+	});
+
+	
+	function anime(){
+		//①消去
+		c.clearRect(0, 0, canvas.width, canvas.height);
+
+		//②angrybirdを描画
+		c.drawImage(angrybirdImage, angrybird.x, angrybird.y, angrybird.w, angrybird.h);
+		c.drawImage(pigImage, pig.x, pig.y, pig.w, pig.h);
+
+		//③計算
+		second += 0.03;
+		pig.x-=(350/60*0.03);
+		if(move){
+			t++;
+			angrybird.x += angrybird.dx;
+			angrybird.y = v*t-1/2*g*t*t;
+
+		
+			//衝突判定
+			if(angrybird.y <= 0){
+				t = 0;
+				bound++;
+				angrybird.w *= 0.6;
+				angrybird.h *= 0.6;
+				var long = Math.abs(angrybird.x-pig.x);
+				if(long<(pig.w/2) && bound==1){
+					attackSound.play();
+					point++;
+					pig.w *= 0.95;
+					pig.h *= 0.95;
+					ini();
+					
+					document.getElementById("info2").innerHTML="";
+					for(var i=0;i<point;i++){
+						document.getElementById("info2").innerHTML
+						+="<img src=html5exam.png width=50 style='transform:scale(1,-1);'>";
+					}
+				}
+			}
+		
+			if(500<angrybird.x){ini();}
+			if(5<bound){ini();}
+			document.getElementById("info1").innerHTML=40-Math.floor(second)+"秒";
+		}
+		
+		if(40 <= second){
+			clearInterval(timer);
+			bgmSound.pause();
+		}
+	}
+	function ini(){
+		angrybird.x = 0;
+		angrybird.y = 0;
+		angrybird.w = 100;
+		angrybird.h = 100;
+		bound = 0;
+		t = 0;
+		move=false;
+		shootOK=true;
+	
+	}
+</script>
+</body>
+</html>

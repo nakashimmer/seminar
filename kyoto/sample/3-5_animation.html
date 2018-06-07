@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>CSSアニメーション</title>
+		<style> 
+			.css1{
+				background-image:url(img/mL.png);
+				background-size:100% 100%;
+				width:100px;height:100px;margin:0 auto;
+				-webkit-animation:anime 3s ease-in-out 0 infinite normal;	
+				animation-fill-mode:both;
+			}
+			@-webkit-keyframes anime{
+				0%  {-webkit-transform:rotate(0deg);}
+				100%{-webkit-transform:rotate(360deg);}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="css1">アニメ</div>
+	</body>
+</html>

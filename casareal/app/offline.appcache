@@ -1,0 +1,16 @@
+CACHE MANIFEST
+# バージョン 1.01
+
+CACHE:
+#キャッシュファイル
+sample_4.html
+img/html5.png
+offline404.html
+
+NETWORK:
+#キャッシュしないファイル
+index.php
+
+FALLBACK:
+#フォールバックファイル
+next.html offline404.html

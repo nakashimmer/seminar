@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>オブジェクト|JavaScript文法</title>
+	<link rel="stylesheet" href="../style.css">
+	<meta name="viewport" content="width=320,user-scalable=yes">
+</head>
+<body>
+	<ul>
+	<li><button onclick="now();">今の時間</button>
+	
+	<script>
+		function now(){
+			var now=new Date();
+			var m=now.getMonth();
+			var d=now.getDate();
+			var h=now.getHours();
+			var i=now.getMinutes();
+			alert(m+"月"+d+"日"+h+"時"+i+"分");
+		}
+	</script>
+	<!-- 月に注意！ -->
+	
+	<li><button id="kakudo" onclick="kakudo(90);">sin(90度)</button>
+	<script>
+	function kakudo(rad){
+		window.alert("sin"+rad+"度は"+Math.sin(rad/180*Math.PI));
+	}
+	</script>
+	<!-- 角度はラジアン単位 -->
+	
+<pre>
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+	&lt;meta charset="utf-8">
+	&lt;title>オブジェクト|JavaScript文法&lt;/title>
+&lt;/head>
+&lt;body>
+	&lt;ul>
+	&lt;li>&lt;button onclick="now();">今の時間&lt;/button>
+	
+	&lt;script>
+		function now(){
+			var now=new Date();
+			var m=now.getMonth();
+			var d=now.getDate();
+			var h=now.getHours();
+			var i=now.getMinutes();
+			alert(m+"月"+d+"日"+h+"時"+i+"分");
+		}
+	&lt;/script>
+	&lt;!-- 月に注意！ -->
+	
+	&lt;li>&lt;button id="kakudo" onclick="kakudo(90);">sin(90度)&lt;/button>
+	&lt;script>
+	function kakudo(rad){
+		window.alert("sin"+rad+"度は"+Math.sin(rad/180*Math.PI));
+	}
+	&lt;/script>
+	&lt;!-- 角度はラジアン単位 -->
+	
+	
+
+&lt;/body>
+&lt;/html>
+</pre>
+
+</body>
+</html>

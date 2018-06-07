@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>入力フォーム部品サンプル</title>
+	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+	<link rel="stylesheet" href="css.css">
+</head>
+<body>
+	<div id="wrap">
+		<header>
+			<h1>HTML5</h1>
+		</header>
+		<nav>
+			<ul>
+				<li><a href="index.html">トップ</a></li>
+				<li><a href="input.html">入力</a></li>
+				<li><a href="mm.html">音声映像</a></li>
+				<li><a href="meter.html">進捗測定</a></li>
+			</ul>
+		</nav>
+		<main>
+			<section>
+				<h1>inputのtype属性</h1>
+				<p>テキスト：<input type="text" id="text">
+					<button onclick='mySubmit("text");'>送信</button>
+				</p>
+				
+				<p>レンジ：<input type="range" id="range">
+					<button onclick='mySubmit("range");'>送信</button>
+				</p>
+				
+				<p>色：<input type="color" id="color">
+					<button onclick='mySubmit("color");'>送信</button>
+				</p>
+				
+				<p>日付：<input type="date" id="date">
+					<button onclick='mySubmit("date");'>送信</button>
+				</p>
+				
+				<p>数字：<input type="number" max=100 min=0 step=2 id="number">
+					<button onclick='mySubmit("number");'>送信</button>
+				</p>
+			</section>
+			
+			<section>
+				<h1>入力フォーム</h1>
+				<form>
+					<p>〒番号<input type="text" placeholder="123-0000" required id="text1"></p>
+					<p>メール<input type="email" id="email" required></p>
+					<p><button>送信</button></p>
+				</form>
+			</section>
+		</main>
+		<footer>
+			<small>(C)2015 Nakashima.
+		</footer>
+	</div>
+	
+	<script>
+		function mySubmit(id){
+			alert(document.getElementById(id).value);
+		}
+	</script>
+</body>
+</html>

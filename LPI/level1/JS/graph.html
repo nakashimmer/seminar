@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>JavaScriptサンプル</title>
+	<meta name="viewport" content="width=417,user-scalable=no,initial-scale=1,maximum-scale=1">
+	<link rel="stylesheet" href="css.css">
+	<style>
+	#wrap{text-align:center;}
+	canvas{background-color:skyblue;}
+	</style>
+</head>
+<body>
+	<div id=jsonp></div>
+	
+	<div id="wrap">
+		<header>
+			<h1>JavaScript</h1>
+		</header>
+
+		<main>
+			<h1>東京電力電力使用量グラフ</h1>
+			<canvas id=canvas width=400 height=400></canvas>
+			<div id=info></div>
+		</main>
+		<footer>
+			<small>(C)2015 Nakashima.</small>
+		</footer>
+	</div>
+	
+	<script>
+		var script=document.createElement("script");
+		script.src = "http://tepco-usage-api.appspot.com/latest.json?callback=jsonmsg";
+		document.getElementById("jsonp").appendChild(script);
+		
+		var capacity=0;
+		var usage=0;
+		function jsonmsg(e){
+			capacity=e.capacity;
+			usage=e.usage;
+			document.getElementById("info").innerHTML="使用量="+usage+",キャパ="+capacity;
+			
+			var canvas=document.getElementById("canvas");
+			var ctx=canvas.getContext("2d");
+			
+			ctx.clearRect(0,0,400,400);
+			ctx.beginPath();
+			ctx.moveTo(200,200);
+			ctx.arc(200,200,100,0,2*Math.PI,false);
+			ctx.closePath();
+			ctx.fillStyle="yellow";
+			ctx.fill();
+			
+			ctx.beginPath();
+			ctx.moveTo(200,200);
+			ctx.arc(
+				200,200,100,0-0.5*Math.PI,
+				usage/capacity*2*Math.PI-0.5*Math.PI,
+				false);
+			ctx.closePath();
+			ctx.fillStyle="red";
+			ctx.fill();
+		}
+	</script>
+</body>
+</html>

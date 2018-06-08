@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>グリッドレイアウト</title>
+		<style>
+			*{
+				margin:0px;padding:0px;
+				transition:all 0.5s ease-in-out;
+			}
+			#sample{
+				margin:5px;
+			}
+			#sample div{
+				border:3px solid blue;
+				background:#eee;
+				padding:0.5em;
+				text-align:center;
+			}
+			
+			#style{
+				border:1px solid gray;
+				resize:both;
+				font-family:sans-serif;
+				padding:5px;
+				white-space:pre;
+				overflow:scroll;
+				display:block;
+				tab-size:2;
+				font-size:30px;
+				font-family:menlo;
+				background-color:#ddd;
+			}
+			#wrap{display:flex;height:100vh;}
+			#style{flex:1;}
+			#sample{flex:1;}
+		</style>
+	</head>
+	<body>
+		<div id=wrap>
+			<style scoped contenteditable id=style
+>#sample{
+	border:3px solid red;
+	-display:grid;
+	-grid-gap:10px;
+	-grid-template-columns:
+		1.5fr 1fr 1fr 3fr;
+	-grid-template-rows:
+		1.5fr 1fr 1fr;
+}
+#sample div{
+	-border-radius:10px;
+}
+
+#wrap div:nth-of-type(1){
+	-grid-row:1/4;
+}
+#wrap div:nth-of-type(6){
+	-grid-column:3/5;
+}
+#wrap div:nth-of-type(7){
+	-grid-column:2/4; 
+	-grid-row:3/5;
+}
+#wrap div:nth-of-type(11){
+	-grid-column:1/5;
+}
+			</style>
+	
+			<div id="sample">
+				<div>item1</div>
+				<div>item2</div>
+				<div>item3</div>
+				<div>item4</div>
+				<div>item5</div>
+				<div>item6</div>
+				<div>item7</div>
+				<div>item8</div>
+				<div>item9</div>
+				<div>item10</div>
+				<div>item11</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>CSSサンタ</title>
+
+<style>
+*{
+	margin:0;
+	padding:0;
+	border:0;
+	box-sizing:border-box;
+	transition:all 0.5s ease;
+	outline:0;
+}
+/*
+*::selection {background:none;}
+*/
+#style{
+	resize:both;
+	font-family:sans-serif;
+	position:absolute;top:0;
+	white-space:pre;
+	overflow:scroll;
+	display:block;
+	width:100%;
+	height:100%;
+	tab-size:2;
+	font-size:30px;
+	font-family:menlo;
+	color:white;
+	position:absolute;z-index:10;
+	text-shadow:2px 2px 2px black;
+	padding:1em;
+}
+
+div{border:3px solid gray;margin:3px;padding:3px;}
+#msg{width:300px;height:300px;color:white;font-size:40px;}
+body{
+	height:100vh;
+	background:linear-gradient(blue,black);
+}
+#bg{overflow:hidden;height:100vh;}
+</style>
+</head>
+<body>
+
+<div id=bg>
+	<h1 contenteditable>Merry Xmas</h1>
+	<div class=snow></div>
+	<div class=snow></div>
+	<div class=snow></div>
+	<div class=snow></div>
+	<div class=snow></div>
+	<div id=msg contenteditable></div>
+	<div id=santa>
+		<div id=tonakai>
+			<div id=tuno1></div>
+			<div id=tuno2></div>
+			<div id=kubi1></div>
+			<div id=kubi2></div>
+			<div id=kao></div>
+			<div id=maeashi></div>
+			<div id=ushiroashi></div>
+			<div id=doutai></div>
+			<div id=hana></div>
+			<div id=me></div>
+		</div>
+		<audio src="santa.mp3" id="bgm"></audio>
+		<div id=sled>
+			<div class=inner>
+				<div id=present></div>
+				<div id=face></div>
+				<div id=body></div>
+				<div id=bousi></div>
+				<div id=bousi-huchi></div>
+				<div id=hige></div>
+				<div id=eye1></div>
+				<div id=eye2></div>
+				<div id=sori></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style scoped contenteditable id=style
+>
+</style>
+<style>
+}
+</style>
+
+
+<script src="santa.js"></script>
+<script>
+var sotowaku=document.getElementById("sotowaku");
+var style=document.getElementById("style");
+var bgm=document.getElementById("bgm");
+var count=0;
+var sled=document.getElementById("sled");
+sled.addEventListener("click",function(){
+	bgm.play();
+	style.style.opacity="0";
+});
+
+
+document.addEventListener("keydown",draw);
+function draw(event){
+	var str="";
+	if(code[count+5]){var d=5;}
+	else if(code[count+4]){var d=4;}
+	else if(code[count+3]){var d=3;}
+	else if(code[count+2]){var d=2;}
+	else if(code[count+1]){var d=1;}
+	else {return};
+	
+	for(var i=count;i<count+d;i++){
+		str+=code[i];
+	}
+	
+	count+=d;
+	style.innerHTML+=str;
+
+	event.returnValue = false;
+	style.scrollTop=style.scrollHeight;
+};
+
+</script>
+
+

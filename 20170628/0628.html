@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<title>0628</title>
+<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+
+<style>
+	*{
+		margin:0.1em;padding:0.1em;
+		color:white;font-size:36px;
+		text-overflow: ellipsis;
+		font-family: "Rounded Mplus 1c";
+		text-shadow:3px 3px 3px black;
+	}
+	
+	body{background-color:#000;}
+	h1{color:yellow;}
+	h2{color:skyblue;}
+	header,section{
+		background-color:#333;
+		border:3px solid #eee;
+		min-height:80vh;
+		margin:1em;
+		border-radius:1em 0 1em 0;
+		padding:1em;
+	}
+	header h1{
+		text-align:center;
+		margin-top:30vh;
+		font-size:1.5em;
+	}
+	header p{text-align:center;}
+	li{margin-left:1em;list-style:none;}
+	
+	#s1 img{
+		width:15%;height:90px;
+		background-color:white;
+		box-shadow:0px 0px 10px white;
+	}
+	pre{
+		background-color:#ccc;
+		color:#333;
+		tab-size:1em;
+		font-family:menlo;
+		font-size:0.9em;
+		text-shadow:3px 3px 3px white;
+	}
+	a{
+		text-decoration:none;
+		border-bottom:5px double gray;
+		padding-bottom:8px;
+	}
+	p,li{text-align: justify;}
+</style>
+
+
+<div id=wrap>
+<header>
+	<h1>「AIちゃんで会話アプリを作ったよ」</h1>
+	<p contenteditable>サイバー大学専任講師　なかしまぁ先生</p>
+</header>
+
+<section id=s1>
+<h1>1. 自己紹介</h1>
+<ol>
+<li>講師：中島俊治(なかしまぁ先生)</li>
+<li>職歴：
+<div style="display:flex;">
+	<img src="img/sb.png">
+	<img src="img/geo.png">
+	<img src="img/y.png">
+	<img src="img/vector.png">
+	<img src="img/sbi.png">
+	<img src="img/jv.png">
+</div>
+</li>
+
+<li>資格：HTML5プロフェッショナル認定資格レベル２</li>
+<li>受賞：マイクロソフトＭＶＰアワード(2014〜)</li>
+<li>現在の仕事：サイバー大学、放送大学、八洲学園大学、他２校。デジハリオンライン。東京アプリ・ワークショップ</li>
+</section>
+<section id=s2>
+<h1>2. 背景</h1>
+<ol>
+<li>①LINEのニュースを見ていたら<a target=_blank href="https://www.youtube.com/watch?v=Nq3ysOcy-xY">⇒Youtube</a>(6/16)</li>
+<li>②某大学でアンケートしたところ、学生の一番の興味は「IoT」「AI」「ビッグデータ」</li>
+<style>
+	#s2 img{transition:all 1s linear;width:300px;}
+	#s2 img:hover{width:100%;}
+</style>
+<li>③山崎先生のメッセージ(6/23)<br><img src=img/yamazaki.png></li>
+</section>
+
+<section>
+<h1>3. 作ってみる</h1>
+<p>必要なもの</p>
+<ol>
+	<li>１.音声認識
+	<li>２.音声合成
+</ol>
+
+<h2>WebSpeech API</h2>
+<p>HTML5の「WebSpeech API」を使う。２つの部分から構成される。
+<h2>１．Asynchronous Speech Recognition(音声認識)</h2>
+<h2>２．Text-to-Speech(音声合成)</h2>
+</section>
+
+<section>
+<h1>3-1. ソースコード抜粋</h1>
+<p>function $id(id){return document.getElementById(id);}</p>
+<h2>１．音声認識</h2>
+<pre>
+function nyuryoku(){
+	//①オブジェクト生成
+	var recognition = new webkitSpeechRecognition();
+	//②言語指定
+	recognition.lang = $id("lang").value;
+	//③認識開始
+	recognition.start();
+	//④終了時
+	recognition.addEventListener('result', function(e){
+		//④文字列取得
+		var rec = e.results.item(0).item(0).transcript;
+	});
+}
+</pre>
+<h2>２．合成合成</h2>
+<pre>
+function mySpeech(){
+	//①テキスト取得
+	var input = $id("input").value;	
+	//②音声番号指定
+	var voice = parseInt($id("voice").value);	
+	//③オブジェクト生成
+	var input = new SpeechSynthesisUtterance(input);
+	//④言語指定
+	input.lang = $id("lang").value	
+	//⑤音声リスト
+	var voices = speechSynthesis.getVoices();
+	//⑥音声指定
+	input.voice = voices[voice];	
+	//⑦音声開始
+	speechSynthesis.speak(input);	
+}
+</pre>
+</section>
+
+<section>
+<h1>3-2.注意点</h1>
+<ol>
+<li>まだ開発途中の仕様。
+<li>音声の種類がPCによって異なる。
+<li>バグがあり一部冗長なコードを書かなければならない。
+</section>
+
+<section>
+<h1>3-3. 完成</h1>
+
+<h2>「テキスト読上と音声認識」</h2>
+<a target=_blank href="http://springreen.jp/SHOWCASE/SPEECH/index.html">http://springreen.jp/SHOWCASE/SPEECH/index.html</a>
+</section>
+
+
+<section>
+<h1>3-4. 回答を工夫</h1>
+<p>プログラムを追加して回答を工夫する。
+<pre>
+rec=rec.replace("中島","イケメン中島");
+rec=rec.replace("なかしま","イケメン中島");
+
+var now=new Date();
+rec=rec.replace(
+	"何時",
+	now.getHours()+"時"+now.getMinutes()+"分です"
+);
+</pre>
+
+<h2>でも、これはAIではない</h2>
+</section>
+
+<section id=s4>
+<h1>4.AIを実装する</h1>
+<h2>AI APIを探す</h2>
+<p>「AI API」でぐぐってみた</p>
+<style>
+	#s4 img{transition:all 1s linear;width:300px;}
+	#s4 img:hover{width:100%;}
+</style>
+<p><img src="img/guguru.png">
+</section>
+
+<section id=s6>
+<h1>5. 検索１位</h1>
+<ol>
+<li>
+<h2>1. Amazon、Google、IBM、Microsoftが公開する、AIを使うための「API」「ライブラリ」「実行環境」一覧</h2>
+<a target=blank href="http://www.itmedia.co.jp/news/articles/1703/08/news072.html">HP</a>
+
+<li>
+<h2>2. リクルートがAIをまさかの無料公開。さっそくすべてのAPIを試しまくってみた</h2>
+<a target=blank href="https://bita.jp/dml/recruit_artapi_">
+https://bita.jp/dml/recruit_artapi_</a>
+<ul>
+<li>Text Suggest API（入力補助）
+<li>Text Classification API（文書分類）
+<li>Proofreading API（文法間違い探し）
+<li>Talk API（自動応答）
+<li>Image Infuluence API(画像の影響度)
+<li>Listing API（レコメンドリスト）
+</ul>
+</section>
+
+<section>
+<h1>6. Talk API</h1>
+<a target=_blank href="https://a3rt.recruit-tech.co.jp/product/talkAPI/">https://a3rt.recruit-tech.co.jp/product/talkAPI/</a>
+<p>Talk APIはChatbotを作成するためのAPIです。 Recurrent Neural Network(LSTM)を用いた入力文からの応答文生成による日常会話応答機能を提供します。 Talk APIを活用したChatbotによって様々なアプリケーション上でユーザとの対話を自動化し、 どのようなタイミングにおいても即座にユーザからの問いかけに対して応答することができます。</p>
+
+<h2>[Small Talk API]</h2>
+<p>完全自動の日常会話を可能にするAPIです。 例えばあなたの運用しているWebサイトでAPIを呼び出しサイト上でユーザとの会話を可能にします。 さらにユーザとの会話を学習していくことでより賢く・より自然な会話を実現します。</p>
+
+<h2>注意！</h2>
+<p>他人の名称・メールアドレス・住所・電話番号など個人を特定しうる情報はアップロードしないでください。</p>
+</section>
+
+<section>
+<h1>6-1. ソースコード参考</h1>
+<pre>
+function talk1(){
+	$.post(	//jQueryで送信
+		'https://api.a3rt.recruit-tech.co.jp/talk/v1/smalltalk',
+		params,
+		(result)=>{ //結果はresultに格納される
+			if(result.status == 0) {
+				pcres = result.results[0].reply;	//応答内容
+				speech1(pcres);
+			}
+		},'json');
+	return false;
+};
+</pre>
+</script>
+</section>
+
+<section id=s7>
+<h1>7. AIちゃん</h1>
+<ul>
+<li>URL:
+<a target=_blank href="http://springreen.jp/SHOWCASE/Talk/">http://springreen.jp/SHOWCASE/Talk/</a></p>
+<p>or <a>http://bit.ly/2tSas0B</a></p>
+
+<style>
+	#s7 img{transition:all 1s linear;width:300px;}
+	#s7 img:hover{width:700px;}
+</style>
+<p>QRコード：</p>
+<p><img src="img/qr.png" width="300"></p>
+</section>
+
+
+
+</section>
+
+<section>
+<h1>8. 最後に</h1>
+<p><img src="img/son.png" style="width:100%;"></p>
+<p><video controls src="img/wot.mp4" style="width:100%;">
+</section>
+
+<section>
+<h1>まとめ</h1>
+<p>HTML5はなんでもできて楽しいなぁ〜</p>
+
+<h2>ちょっとだけPR</h2>
+<p>東京アプリ・ワークショップでは<a target=_blank href="https://www.street-academy.com/myclass/277?sessiondetailid=144570">初心者向けHTML5講座</a>を開催しています。</p>
+<p><img src="img/taws.jpg" style="width:100%;"></p>
+
+</section>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>グリッドレイアウト</title>
+		<style>
+			*{
+				margin:0px;padding:0px;
+				transition:all 0.5s ease-in-out;
+			}
+			#sample{
+				margin:10px;
+			}
+			#sample div{
+				border:3px solid black;
+				background:#eee;
+				padding:0.1em;
+				text-align:center;
+			}
+			
+			#style{
+				border:1px solid gray;
+				resize:both;
+				font-family:sans-serif;
+				padding:5px;
+				white-space:pre;
+				overflow:scroll;
+				display:block;
+				tab-size:2;
+				font-size:30px;
+				font-family:menlo;
+				background-color:#000;
+				color:white;
+			}
+			#wrap{display:flex;height:100vh;}
+			#style{flex:1;}
+			#sample{flex:1;}
+			
+			#sample div:nth-of-type(3n){background-color:yellow;}
+			#sample div:nth-of-type(3n+1){background-color:lightgreen;}
+			#sample div:nth-of-type(3n+2){background-color:pink;}
+		</style>
+	</head>
+	<body>
+		<div id=wrap>
+			<style scoped contenteditable id=style
+>/* HTML要素はこのようになっています。
+	<div id="sample">
+		<div>item1</div>
+						︙
+		<div>item11</div>
+	</div>  
+*/
+
+#sample{
+	border:3px solid blue;
+	-display:grid;
+	-grid-gap:10px;
+	-grid-template-columns:
+		2fr 1fr 1fr 1fr;
+	-grid-template-rows:
+		0.5fr 1fr 2fr 1fr 0.5fr;
+}
+
+#sample div{
+	-border-radius:10px;
+}
+
+/*各itemの割合を変える*/
+#wrap div:nth-of-type(1){
+	-grid-column:1/5;
+}
+#wrap div:nth-of-type(2){
+	-grid-column:1/3;
+}
+#wrap div:nth-of-type(7){
+	-grid-column:3/5; 
+	-grid-row:3/5;
+}
+#wrap div:nth-of-type(10){
+	-grid-column:1/4;
+}
+			</style>
+	
+			<div id="sample">
+				<div>item1</div>
+				<div>item2</div>
+				<div>item3</div>
+				<div>item4</div>
+				<div>item5</div>
+				<div>item6</div>
+				<div>item7</div>
+				<div>item8</div>
+				<div>item9</div>
+				<div>item10</div>
+				<div>item11</div>
+			</div>
+		</div>
+	</body>
+</html>

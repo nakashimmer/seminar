@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Web技術振興協会</title>
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+		<style>
+			*{	
+				margin:0px;padding:0px;
+				box-sizing:border-box;
+				transition:all 1s ease-in-out;
+				font-family:"Rounded Mplus 1c";
+				text-align:justify;
+				text-justify:inter-ideograph;
+				scroll-behavior: smooth;
+			}
+			
+			body{
+				background-color:#fefefe;
+				color:#666;
+				text-shadow:4px 4px 4px rgba(0,0,0,0.2);
+				position:absolute;
+				width:100%;
+				min-height:100%;
+				
+			}
+
+			header,section,footer{
+				height:100vh;
+				
+				position:relative;
+			}
+			
+			.inner{
+				position:absolute;
+				width:80vw;
+				height:80vh;
+				
+				top:calc(50% - 40vh);
+				left:calc(50% - 40vw);
+				
+			}
+			
+			header h1{
+				text-align:center;
+				line-height:80vh;
+				font-size:7vw;
+			}
+			
+			h2{
+				font-size:6vw;
+			}
+			ol{
+				list-style:none;
+				margin-before:0;
+				
+			}
+			li,p{
+				list-style:none;
+				font-size:3vw;
+				font-weight:bold;
+				display:block;
+				margin:1em 0 ;	
+			}
+			
+			
+			/*スクロールバーを非表示 (除Firefox)*/
+			::-webkit-scrollbar{display:none;}
+			
+			#left,#right{
+				width:10vw;height:100%;
+				position:absolute;
+				z-index:1;
+			}
+			#left{left:0;top:0;}
+			#right{right:0;top:0;}
+			
+			#ai{
+				overflow:hidden;
+				width:600px;
+				height:550px;
+				margin:0 auto;
+				display:block;
+				border:none;
+			}
+
+			section:nth-of-type(odd){
+				background-color:#eee;
+			}
+			
+			footer{
+				background-color:#aaa;
+				color:white;
+				text-shadow:4px 4px 4px rgba(0,0,0,0.6);
+			}
+			#ninteisho{
+				background-image:url(2.jpg);
+				background-size:cover;
+				background-position:center;
+				color:white;
+				text-shadow:4px 4px 4px black;
+			}
+			#me{
+				width:50%;
+				background-image:url(3.jpg);
+				background-size:cover;
+				
+				display:block;
+				height:70vh;
+				color:white;
+				text-shadow:4px 4px 4px black;
+				float:right;
+				font-size:3vw;
+				margin-top:-10vw;
+			}
+			.logo{width:50%;float:right;}
+			.logo img{height:4vw;margin:0 1vw;}
+			
+			.center{text-align:center;}
+			
+		</style>
+	</head>
+	<body id="body">
+		<div id="left"></div>
+		<div id="right"></div>
+		<header>
+			<div class="inner">
+				<h1>【検定科目はHTML5】</h1>
+			</div>
+		</header>
+		<main>
+			<section>
+				<div class="inner">
+					<h2>Web技術振興協会</h2>
+					<ol>
+						<li>Webの楽しさを皆さんと共に共有するために、2017年10月5日に設立</li>
+						<li>HTML5を中心にした業務、趣味、教養としての教育、検定、講演、イベントなどの事業を展開</li>
+					</ol>
+				</div>
+			</section>
+			
+			<section>
+				<div class="inner">
+					<h2>検定</h2>
+					<ol>
+						<li>Webデザイナ・クリエイタ向け</li>
+						<li>検定科目：HTML5(HTML 5.2, CSS3, JavaScript)</li>
+						<li>合格者には認定書<img src=""></li>
+						<li>スペシャリスト／エキスパート／マスター</li>
+					</ol>
+				</div>
+			</section>
+			
+			<section>
+				<div class="inner" id="ninteisho">
+					<h2>認定書</h2>
+					
+				</div>
+			</section>
+			
+			
+			
+			<section>
+				<div class="inner">
+					<h2>代表理事</h2>
+					<ol>
+						<p id="me">中島俊治</p>
+						<p class="logo">
+							<img src="sb.png"><img src="geo.png"><img src="y.png"><img src="vector.png"><img src="sbi.png"><img src="jv.png"></p>
+						<p>サイバー大学 准教授<br>
+						放送大学他 非常勤講師<br>
+						Microsoft MVP</p>
+					</ol>
+				</div>
+			</section>
+			
+			<section>
+				<div class="inner">
+					<h2>代表理事のマイブーム① WoT</h2>
+					<p style="text-align:center;"><iframe width="560" height="315" src="https://www.youtube.com/embed/WL0CqY2HwxY" frameborder="0" allowfullscreen></iframe></p>
+				</div>
+			</section>
+			
+			<section>
+				<div class="inner">
+					<h2>代表理事のマイブーム② AI</h2>
+					<iframe id=ai src="https://tokyoappwork.shop/SHOWCASE/Talk/"></iframe>
+				</div>
+			</section>
+			
+			<section>
+				<div class="inner">
+					<h2>PR</h2>
+					<ol>
+						<li>一緒に盛り上げてくれるパートナー法人・講師を募集中</li>
+						<li>詳細は<strong>【検定科目はHTML5】</strong>で検索</li>
+					</ol>
+				</div>
+			</section>
+		</main>
+		<footer>
+			<div class="inner">
+				<h2></h2>
+				<ol>
+					<li class="center">ご清聴ありがとうございました</li>
+					<li class="center">会場内にいますので質問あればお声がけください</li>
+					<li class="center">では、JavaScript祭りをお楽しみください</li>
+					<li class="center">一般社団法人Web技術振興協会</li>
+				</ol>
+			</div>
+		</footer>
+		<script>
+			var body = document.getElementById("body");
+			var left = document.getElementById("left");
+			var right = document.getElementById("right");
+			 
+			var n=0;
+			var h=window.innerHeight;
+			
+			var maxn=8;
+			
+			right.addEventListener("click",function(){
+					n++;if(maxn<n){n=maxn;}
+					//body.style.transform="translate(0px,"+(-h*n)+"px)";
+					window.scrollTo(0,h*n);
+			});
+			
+			
+			left.addEventListener("click",function(){
+					n--;if(n<0){n=0;}
+					//body.style.transform="translate(0px,"+(-h*n)+"px)";
+					window.scrollTo(0,h*n);
+			});
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<title>なかしまぁ先生の「初めてのHTML5教室」</title>
+<link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" />
+<meta name=viewport content="width=device-width">
+
+<style>
+	*{
+		margin:0;paddibg:0;
+		font-size:32px;
+		font-family:"Mplus 1p";
+		color:white;
+		text-align:justify;
+		text-shadow:5px 5px 5px rgba(0,0,0,0.8);
+		transition:all 0.5s linear 0s;
+	}
+	body{background-color:#666;}
+	#wrap{
+		position:relative;
+		width:100%;height:100vh;
+		display:flex;
+		flex-direction:column;
+	}
+	header{
+		position:absolute;top:0;
+		width:100%;
+		background:linear-gradient(135deg,red 35px,transparent,rgba(0,0,0,0.3) 35px);
+		box-shadow:0px 1px 0px rgba(0,0,0,0.3);
+	}
+	header h1{text-align:center;
+		height:50px;
+	}
+	
+	
+	main{display:block;flex:1;overflow:scroll;
+		padding-top:50px;padding-bottom:50px;
+	}
+	footer{
+		position:absolute;bottom:0;right:0;
+		width:30%;height:50px;line-height:30px;
+		background-color:rgba(0,0,0,0.3);
+		border-radius:40px 0 0 0;
+	}
+	footer p{
+		text-align:right;height:40px;
+		margin:5px;
+	}
+	footer small,#tokei{font-size:0.5em;}
+	
+	
+	section{
+		border:1px solid gray;
+		margin:0.5em;padding:0.5em;
+		border-radius:0.5em;
+		box-shadow:3px 3px 3px rgba(0,0,0,0.8);
+	}
+
+	.tab{
+		font-size:0.6em;text-indent:0;
+	}
+	a{text-decoration:none;border-bottom:3px dotted gray;}
+	
+	#logo{
+		display:flex;flex-wrap:wrap;
+		width:100%;
+	}
+	.liststylenone{
+		list-style:none;
+		margin-left:-40px;
+	}
+	
+	#logo img{
+		flex:1;
+		height:40px;background-color:white;
+		padding:10px;
+	}
+
+	/*メディアクエリ*/
+	@media(max-width:600px){
+		body{background-color:#eee;}
+		
+		*{color:black;
+			text-shadow:none;
+			box-shadow:none;
+			font-size:20px;
+			position:relative;
+		}
+		#wrap{
+			display:block;
+		}
+		main>section{
+			border:none;
+			box-shadow:none;
+			margin:0;padding:0;
+		}
+		section>section{
+			border-radius:0;
+			box-shadow:none;
+			margin:0;padding:10px;
+			width:auto;
+			border:none;
+			border-top:1px solid gray;
+		}
+		section>section:last-of-type{
+			border-bottom:1px solid gray;
+		}
+		main>section>h1{
+			background-color:gray;
+		}
+		footer{position:relative;width:100%;border-radius:0;}
+		#logo img{
+			height:10px;width:10%;
+			background-color:transparent;
+		}
+	}
+</style>
+
+<div id=wrap>
+<header>
+	<h1>なかしまぁ先生の 初めてのHTML5教室</h1>
+</header>
+
+<main>
+	<section>
+		<h1>はじめに</h1>
+		
+		<section>
+			<h1>この教室の目的</h1>
+			<ul class=cont>
+				<li>HTML5はリッチなデザイン、アニメーションやプログラム、そしてWebアプリケーションができるんだという「HTML5の可能性」を一緒に楽しむ1時間半。
+			</ul>
+		</section>
+		
+		<section>
+			<h1>自己紹介：中島俊治</h1>
+			<ul class=cont>
+				<li>経歴
+					<!--SOFTBANK入社、GeoCoties JAPAN立ち上げ、Yahoo! JAPAN、SBIほか。野村證券の後、独立。-->
+					<p id=logo><img src=img/sb.png><img src=img/geo.png><img src=img/y.png><img src=img/vector.png><img src=img/sbi.png><img src=img/jv.png></p>
+				<li>現在、サイバー大学、放送大学、デジハリ・オンラインその他大学の講師。
+			<li>資格・表彰
+				<ul class=cont>
+					<li>MashUpAwords 6 入賞
+					<li>HTML5プロフェッショナル認定試験（1・２）取得
+					<li>「マイクロソフトMVP」アワード受賞
+					<li>ファイナンシャルプランナ
+					<li>証券外務員
+					<li>ITパスポート
+					<li>第2級アマチュア無線技士
+				</ul>
+		</section>
+		
+	</section>
+
+	<section>
+		<h1>1. ホームページ</h1>
+		<section>
+			<h1>1-1. いわゆるホームページ</h1>
+			<ul class=cont>
+				<li>初期のWebページ</li>
+				<ul>
+					<li><a target=_blank href="http://info.cern.ch/hypertext/WWW/TheProject.html">世界初のwebページ</a>
+					<li><a target=_blank href="http://web.archive.org/web/20130515083615/http://www.aiseikai.or.jp/">古き良き時代のwebページ</a>
+				</ul>
+				<li>現在の標準的なWebページ</li>
+				<ul>
+					<li><a target=_blank href="http://www.pref.okayama.jp/">岡山県庁</a>
+				</ul>
+			</ul>
+		</section>
+		
+		<section>
+			<h1>1-2. いまどきのWebページ</h1>
+			<ul class=cont>
+				<li>1. 背景が動画　
+					<a target=_blank  href="http://ss14.soniaby.com/fr/home">SONIA</a>・
+					<a target=_blank  href="http://www.startrek-movie.jp/">スタートレック</a>
+				<li>2. パララックス　<a target=_blank href="http://shop.nikon-image.com/nikon1/nikon1aw1/">NICON</a>
+			</ul>
+		</section>
+	</section>
+
+	<section>
+		<h1>2.HTML5</h1>
+		<section>
+			<h1>2-1. 広義HTML5</h1>
+			<ul class=cont>
+				<li>狭義のHTML5(文書の構造)</li>
+				<li>CSS3(デザイン)</li>
+				<li>JavaScript(プログラミング)</li>
+			</ul>
+		</section>
+		
+		<section>
+			<h1>2-2. あたらしいHTML</h1>
+			<ul class=cont>
+				<li>新しい要素が増えた</li>
+				<div class="tab">&lt;section> &lt;nav> &lt;article> &lt;aside> &lt;header> &lt;footer> &lt;figure> &lt;figcaption> &lt;time> &lt;mark> &lt;ruby> &lt;rt> &lt;rp> &lt;bdi> &lt;wbr> &lt;embed> &lt;video> &lt;audio> &lt;source> &lt;track> &lt;canvas> &lt;datalist> &lt;keygen> &lt;output> &lt;progress> &lt;meter> &lt;details> &lt;summary> &lt;command> etc...</div>
+				<ul>
+					<li><a target=_blank href="http://springreen.jp/SHOWCASE/MULTIMEDIA/video/index.html">video</a></li>
+					<li>canvas [chrome://network-error/-106]
+					<li><a target=_target href="http://springreen.jp/SHOWCASE/ELEMENT/progress/index.html">progress</a>
+				</ul>
+				
+				<li>廃止されたタグがある</li>
+				<div class="tab">&lt;ACRONYM>  &lt;APPLET>  &lt;BASEFONT>  &lt;BGSOUND>  &lt;BIG>  &lt;BLINK>  &lt;CENETR>  &lt;DIR> &lt;FONT> &lt;FRAMRE &lt;FRAMESET> &lt;ISINDEX>  &lt;MARQUEE>  &lt;NOBR> &lt;NOEMBED> &lt;NOFRAMES> &lt;STRIKE> &lt;TT></div>
+				
+				<li>意味の変わった要素がある</li>
+				<div class="tab">&lt;b>(キーワードや製品名)  &lt;i>(質の異なるテキスト)  &lt;em>(強調)  &lt;strong>(重要性)  &lt;small>(免責、警告、著作権)  &lt;hr>(テキストブロック内のテーマ・話題の区切り)</div>
+			
+			</ul>
+		</section>
+		
+			<section>
+			<h1>2-3. あたらしいCSS3</h1>
+			<ul class=cont>
+				<li>デザインが<a target=_blank href="http://springreen.jp/SHOWCASE/CSS3/border/index.html">リッチ</a>にな。
+				<li>変形できる <a target=_blank href="http://ouj-mado.blogspot.jp/">スナップショット</a>
+				<li>アニメーション・3次元　<a target=_blank href="http://springreen.jp/SHOWCASE/CSS3/CSS3Banar/">3次元バナー</a>・<a target=_blank href="http://springreen.jp/SHOWCASE/CSS3/animation/domino.html">3Dアニメーション</a>・<a target=_blank href="http://jsdo.it/nakashimmer/sBzC">鯉のぼり</a>
+				<li>ページレイアウト　<a target=_blank href="flex.html">Flexible Box</a>・<a target=_blank href="gridLayout.html">GridLayout</a>
+			</ul>
+		</section>
+	</section>
+	
+	<section>
+		<h1>3. JavaScriptはプログラム</h1>
+		<section>
+			<h1>3-1. 計算する</h1>
+			<ul class=cont>
+				<li><a target=_blank href="http://springreen.jp/SHOWCASE/SCRIPT/kesan.html">計算アプリ</a>
+				<li><a target=_blank href="http://springreen.jp/SHOWCASE/SCRIPT/uranai.html">診断アプリ</a>
+			</ul>
+		</section>
+		<section>
+			<h1>3-2. Webアプリケーション</h1>
+			<ul class=cont>
+				<li>ゲーム　<a target=_blank href="http://springreen.jp/SHOWCASE/CANVAS/touch/index.html">横スクロール</a>・
+				<a target=_blank href="http://springreen.jp/SHOWCASE/SCRIPT/maimai/">競争</a>
+				<li>Google <a target=_blank href="http://google.com">doodles(インタラクティブ)</a>
+				<li><a target=_blank href="http://jsdo.it/nakashimmer/sBzC">鯉のぼり </a>
+			</ul>
+		</section>
+		
+
+		
+		<section>
+			<h1>3-3. Webアプリケーション</h1>
+			<ul class=cont>
+				<li>アート　
+					<a target=_blank href="http://springreen.jp/SHOWCASE/CANVAS/shonan">湘南</a>・
+					<a target=_blank href="http://jsdo.it/nakashimmer/pv0Z/fullscreen">風鈴</a>・
+					<a target=_blank href="http://helloracer.com/webgl/">レーシングカー</a>
+				<li>道具　
+					<a target=_blank href="http://springreen.jp/SHOWCASE/CANVAS/oekaki/index.html">お絵かき</a>・
+					<a target=_blank href="http://springreen.jp/SHOWCASE/CANVAS/shuji/index.html">習字</a>
+				<li>数学　
+					<a target=_blank href="http://springreen.jp/SHOWCASE/CANVAS/physics/fractal.html">フラクタル</a>・
+					<a target=_blank href="http://springreen.jp/SHOWCASE/CANVAS/pi/index.html">モンテカルロ法円周率</a>
+				<li>物理系　
+					<a target=_blank href="http://springreen.jp/SHOWCASE/CANVAS/angry/index.html">放物線</a>・
+					<a target=_blank href="http://springreen.jp/SHOWCASE/WebGL/co/index.html">分子模型</a>・
+					<a target=_blank href="http://www.madebyevan.com/webgl-water/">プール</a>
+				<li>ユーティリティ　<a target=_blank href="https://cs264.xbit.jp/~w074265/SHOWCASE/GPS/gps/index.html">マップ</a>
+			</ul>
+		</section>
+	</section>
+
+	<section class=section>
+		<h1>4 Webを超える</h1>
+		<ul class=cont>
+			<li><a target=_blank href="http://springreen.jp/SHOWCASE/WEBAUDIO/synthesizer/index.html">ミュージック</a>
+			<li><a target=_blank href="http://springreen.jp/SHOWCASE/CANVAS/tepco/index.html">外部データの受信</a>
+			<li><a target=_blank href="http://springreen.jp/SHOWCASE/SPEECH/index.html">テキスト読上と音声認識</a>
+			<li><a target=_blank href="https://www.youtube.com/watch?v=5VQkIOMMV_o">IoT/WoT</a>
+			<li><a target=_blank href="https://ja.monaca.io/">ハイブリッド・スマホアプリ</a>
+		</ul>
+	</section>
+</main>
+
+<footer>
+	<p><span id=tokei>今何時</span>　<small>(c)2017 Shunji Nakashima</small></p>
+</footer>
+</div>
+
+<script>
+	setInterval(clock,1000);
+	function clock(){
+		var now = new Date();
+		var h = ("0" + now.getHours()).slice(-2);
+		var i = ("0" + now.getMinutes()).slice(-2);
+		var s = ("0" + now.getSeconds()).slice(-2);
+
+		document.getElementById("tokei").innerHTML = h+":"+ i +":"+ s;
+	}
+</script>

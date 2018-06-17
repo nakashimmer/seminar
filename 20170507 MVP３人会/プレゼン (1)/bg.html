@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>グラデーション背景</title>
+		<style>
+			*{
+				margin:0px;padding:0px;
+				transition:all 0.5s ease-in-out;
+			}
+			#sample{
+				margin:5px;
+				position:relative;
+			}
+
+			#box{
+				width:300px;height:300px;
+				border:1px solid gray;
+				position:absolute;
+				top:0;bottom:0;left:0;right:0;
+				margin:auto;
+			}
+			
+			#style{
+				border:1px solid gray;
+				resize:both;
+				font-family:sans-serif;
+				padding:5px;
+				white-space:pre;
+				overflow:scroll;
+				display:block;
+				tab-size:2;
+				font-size:30px;
+				font-family:menlo;
+				background-color:#000;
+				color:white;
+			}
+			#wrap{display:flex;height:100vh;}
+			#style{flex:1;}
+			#sample{flex:1;}
+		</style>
+	</head>
+	<body>
+		<div id=wrap>
+			<style scoped contenteditable id=style
+>/* HTML要素は次の通り
+<div id=sample>
+	<div id=box></div>
+</div>
+*/
+#sample{background:#fff;}
+#box{
+
+	/*①線形のグラデーション*/
+	-background:
+		linear-gradient(
+			transparent,
+			red);
+
+
+	/*②傾ける*/
+	-background:
+		linear-gradient(
+			45deg,
+			transparent,
+			red);
+
+
+	/*③範囲を指定する*/
+	-background:
+		linear-gradient(
+			45deg,
+			transparent 40%,
+			red 60%);
+
+
+	/*④二色にする*/
+	-background:
+		linear-gradient(
+			45deg,
+			transparent 50%,
+			red 50%);
+
+
+	/*⑤背景の重ね合わせ*/
+	-background:
+		linear-gradient(
+			45deg,
+			transparent 50%,
+			red 50%),
+		linear-gradient(
+			-45deg,
+			transparent 50%,
+			green 50%);
+
+
+	/*⑥重ね合わせはいくつでも*/
+	-background:
+		linear-gradient(
+			45deg,
+			transparent 50%,
+			red 50%),
+		linear-gradient(
+			-45deg,
+			transparent 50%,
+			green 50%),
+		linear-gradient(
+			90deg,
+			transparent 50%,
+			yellow 50%);
+}
+
+
+/*次のコイのぼりの尻尾で使用*/
+
+
+
+			</style>
+	
+			<div id=sample>
+				<div id=box></div>
+			</div>
+		</div>
+	</body>
+</html>

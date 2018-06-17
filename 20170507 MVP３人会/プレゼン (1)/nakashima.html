@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<title>CSS3でアニメーション</title>
+<link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" />
+<meta name=viewport content="width=device-width">
+
+<style>
+	*{
+		margin:0;paddibg:0;
+		font-size:32px;
+		font-family:"Mplus 1p";
+		color:white;
+		text-align:justify;
+		text-shadow:5px 5px 5px rgba(0,0,0,0.8);
+		transition:all 0.5s linear 0s;
+	}
+	body{background-color:#666;}
+	#wrap{
+		position:relative;
+		width:100%;height:100vh;
+		display:flex;
+		flex-direction:column;
+	}
+	header{
+		position:absolute;top:0;
+		width:100%;
+		background:linear-gradient(135deg,red 35px,transparent,rgba(0,0,0,0.3) 35px);
+		box-shadow:0px 1px 0px rgba(0,0,0,0.3);
+	}
+	header h1{text-align:center;
+		height:50px;
+	}
+	
+	
+	main{display:block;flex:1;overflow:scroll;
+		padding-top:50px;padding-bottom:50px;
+	}
+	footer{
+		position:absolute;bottom:0;right:0;
+		width:30%;height:50px;line-height:30px;
+		background-color:rgba(0,0,0,0.3);
+		border-radius:40px 0 0 0;
+	}
+	footer p{
+		text-align:right;height:40px;
+		margin:5px;overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+	}
+	footer small,#tokei{font-size:0.5em;}
+	#tokei{color:yellow;}
+	
+	section{
+		border:1px solid gray;
+		margin:0.5em;padding:0.5em;
+		border-radius:0.5em;
+		box-shadow:3px 3px 3px rgba(0,0,0,0.8);
+	}
+
+	.tab{
+		font-size:0.6em;text-indent:0;
+	}
+	a{text-decoration:none;border-bottom:3px dotted gray;}
+	
+	#logo{
+		display:flex;flex-wrap:wrap;
+		width:100%;
+	}
+	.liststylenone{
+		list-style:none;
+		margin-left:-40px;
+	}
+	
+	#logo{border-radius:0.5em;}
+	#logo img{
+		flex:1;
+		height:60px;
+		padding:10px;flex:1;
+		background:radial-gradient(closest-side,white 30%,transparent 100%);
+	}
+
+	/*メディアクエリ*/
+	@media(max-width:600px){
+		body{background-color:#eee;}
+		
+		*{color:black;
+			text-shadow:none;
+			box-shadow:none;
+			font-size:20px;
+			position:relative;
+		}
+		#wrap{
+			display:block;
+		}
+		main>section{
+			border:none;
+			box-shadow:none;
+			margin:0;padding:0;
+		}
+		section>section{
+			border-radius:0;
+			box-shadow:none;
+			margin:0;padding:10px;
+			width:auto;
+			border:none;
+			border-top:1px solid gray;
+		}
+		section>section:last-of-type{
+			border-bottom:1px solid gray;
+		}
+		main>section>h1{
+			background-color:gray;
+		}
+		footer{position:relative;width:100%;border-radius:0;}
+		#tokei{color:black;}
+		#logo img{
+			height:10px;width:10%;
+			background-color:transparent;
+		}
+	}
+	.noListStyle{list-style:none;}
+</style>
+
+<div id=wrap>
+<header>
+	<h1>CSS3でアニメーション</h1>
+</header>
+
+<main>
+	<section>
+		<h1>はじめに</h1>
+		
+		<section>
+			<h1>この講演の主旨</h1>
+			<ul class=cont>
+				<li>広義HTML5の技術仕様のひとつ「CSS3」でのアニメーション技術の紹介です。
+			</ul>
+		</section>
+		
+		<section>
+			<h1>写真撮影</h1>
+			<ul class=cont>
+				<li>写真撮影OKです。なるべくCSSコードを表示しますので参考にしてください。
+			</ul>
+		</section>
+
+		
+		<section>
+			<h1>自己紹介：中島俊治</h1>
+			<ul class=cont>
+				<li>経歴
+					<p id=logo><img src=img/sb.png alt=SOFTBANK><img src=img/geo.png alt=GeoCities><img src=img/y.png alt=YahooJapan><img src=img/vector.png alt=vector><img src=img/sbi.png alt=sbi><img src=img/jv.png alt=joinvest></p>
+				<li>現在、サイバー大学、放送大学、デジハリ・オンラインその他大学の講師。
+				<li>初心者向けHTML5講座「東京アプリ・ワークショップ」開催。
+			<li>資格・表彰
+				<ul class=cont>
+					<li>MashUpAwords 6 入賞
+					<li>HTML5プロフェッショナル認定試験（1・２）取得
+					<li>「マイクロソフトMVP」アワード受賞
+					<li>ファイナンシャルプランナ
+					<li>証券外務員
+					<li>ITパスポート
+					<li>第2級アマチュア無線技士
+				</ul>
+		</section>
+		
+	</section>
+
+	<section>
+		<h1>CSS3アニメーション</h1>
+		<section>
+			<h1>1. おさらい</h1>
+			<p>CSSはボックスやインラインのスタイルを定義していたが、CSS3ではリッチなデザイン、変形などができるようになった。</p>
+			<ul>
+				<li><a target=_blank href="wakuwaku.html">ワクワク君</a>
+				<li><a target=_blank href="bg.html">背景グラデーション</a>
+			</ul>
+		</section>
+		<section>
+			<h1>2. アニメーションや３Dも！</h1>
+			<p>5月なので、簡単な「コイのぼり」を作成します。
+			<ul class=cont>
+				<li><a target=_blank href="carp.html">鯉のぼり</a>
+			</ul>
+		</section>
+		
+		<section>
+			<h1>3. 写真に応用</h1>
+			<p>最近360カメラが流行ってますね。
+			<ul class=cont>
+				<li><a target=_blank href="star/index.html">360度映像</a>
+			</ul>
+		</section>
+		
+		<section>
+			<h1>4. 今どきのCSS3トレンド①FlexBox</h1>
+			<p>Boxを横並べ、縦並べすることができます。
+			<ul class=cont>
+				<li><a target=_blank href="flex.html">フレックスボックス</a>
+			</ul>
+		</section>
+		
+		<section>
+			<h1>5. 今どきのCSS3トレンド②Grid Layout</h1>
+			<p>スクリーンサイズに柔軟に対応するレイアウト
+			<ul class=cont>
+				<li><a target=_blank href="grid.html">グリッドレイアウト</a>
+			</ul>
+		</section>
+	</section>
+	
+	<section>
+		<h1>最後に</h1>
+		<p>HTML5に興味のある初心者の方向けの「ワークショップ」やってます。
+		<ul>
+			<li><a target=_blank href="https://tokyoappwork.shop/">https://tokyoappwork.shop/ 東京アプリ・ワークショップ</p>
+			<li>近々重大発表があります。
+	</section>
+
+	
+</main>
+
+<footer>
+	<p><span id=tokei>今何時</span>　<small>(c)2017 Shunji Nakashima</small></p>
+</footer>
+</div>
+
+<script>
+	setInterval(clock,1000);
+	function clock(){
+		var now = new Date();
+		var h = ("0" + now.getHours()).slice(-2);
+		var i = ("0" + now.getMinutes()).slice(-2);
+		var s = ("0" + now.getSeconds()).slice(-2);
+
+		document.getElementById("tokei").innerHTML = h+":"+ i +":"+ s;
+	}
+</script>

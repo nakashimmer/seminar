@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang=ja>
+<head>
+	<meta charset=utf-8>
+	<title>コイ</title>
+	<style>
+		*{margin:0;padding:0;transition:all 0.5s ease-in-out;}
+		body{background:skyblue;}
+		#style{
+			color:white;
+			border:1px solid gray;
+			resize:both;
+			font-family:sans-serif;
+			padding:5px;
+			white-space:pre;
+			overflow:auto;
+			display:block;
+			tab-size:2;
+			font-size:30px;
+			font-family:menlo;
+			background-color:black;
+		}
+		#wrap{display:flex;height:100vh;}
+		
+		#style{flex:1;}
+		#sample{
+			flex:1;
+			width:500px;
+			position:relative;
+			transform-style:preserve-3d;
+			perspective:400px;
+			display:flex;height:100vh;
+		}
+		.sample div{border:2px solid gray;margin:5px;padding:10px;}
+	</style>
+	
+	<body>
+		<div id=wrap>
+			<style scoped contenteditable id=style
+>/* HTMLはこのようになっています。
+<div id=cloud> …円形の雲
+	<div id=carpPos> …コイを操作する基点
+		<div id=carp> …コイ本体
+			<div id=carp1> …コイの頭
+				<div id=eye></div> …コイの目
+			</div>
+			<div id=carp2> …コイの胴体
+				<div class=uroko></div> …コイのうろこ1
+				<div class=uroko></div> …コイのうろこ2
+				<div class=uroko></div> …コイのうろこ3
+				<div class=uroko></div> …コイのうろこ4
+				<div class=uroko></div> …コイのうろこ5
+				<div class=uroko></div> …コイのうろこ6
+			</div>
+			<div id=carp3> …コイのしっぽ
+			</div>
+		</div>
+	</div>
+</div>
+*/
+
+/*コイ本体*/
+#carp{
+	position:relative;
+	width:300px;height:100px;
+	-border-color:yellow;
+}
+
+/*コイのあたま*/
+#carp #carp1{
+	position:absolute;
+	width:100px;height:100px;
+	-border-color:yellow;
+	-z-index:1;
+	-background-color:red;
+	-margin:0px;
+	-padding:0;
+	-border:none;
+}
+/*コイの胴体*/
+#carp #carp2{
+	position:absolute;
+	transform:translate(100px);
+	width:150px;height:100px;
+	-z-index:2;
+	-border-color:yellow;
+	-background-color:red;
+	-margin:0px;
+	-padding:0;
+	-border:none;
+}
+
+/*コイの尻尾*/
+#carp #carp3{
+	position:absolute;
+	transform:translate(250px);
+	width:50px;height:100px;
+	-border-color:yellow;
+	-z-index:3;
+	-background:
+		linear-gradient(120deg,
+			red 45%,transparent 45%),
+		linear-gradient(60deg,
+			red 45%,transparent 45%);
+	-margin:0px;
+	-padding:0;
+	-border:none;
+}
+
+#carp{/*目印線を消す*/
+	-margin:0px;
+	-padding:0;
+	-border:none;
+}
+
+/*コイの目*/
+#eye{
+	width:50px;height:50px;
+	position:absolute;
+	-border:10px solid white;
+
+
+	-background-color:black;
+	-border-radius:50%;
+	-margin:0px;
+	-padding:0;
+	-transform:translate(10px,10px);
+}
+/*コイのうろこ*/
+#carp .uroko{
+	position:absolute;
+	width:20px;height:35px;
+	-border-color:yellow;
+	-border:10px solid white;
+	-border-radius:0 50px 50px 0;
+	-border-left:none;
+	-z-index:0;
+	-margin:0px;
+	-padding:0;
+}
+.uroko:nth-of-type(1){
+	transform:translate(0px,0px);
+}
+.uroko:nth-of-type(2){
+	transform:translate(0px,45px);
+}
+.uroko:nth-of-type(3){
+	transform:translate(40px,22.5px);
+}
+.uroko:nth-of-type(4){
+	transform:translate(80px,0px);
+}
+.uroko:nth-of-type(5){
+	transform:translate(80px,45px);
+}
+.uroko:nth-of-type(6){
+	transform:translate(120px,22.5px);
+}
+
+/*基点*/
+#carpPos{
+	-border:30px solid yellow;
+	-position:relative;
+	-width:0px;
+	-height:0px;
+	-margin:0px;
+	-padding:0;
+}
+
+
+/*雲*/
+#cloud{
+	position:absolute;
+	-z-index:1;
+	-background:rgba(255,255,255,0.8);
+	width:400px;height:400px;
+	-top:0;
+	-bottom:0;
+	-left:0;
+	-right:0;
+	-margin:auto;
+	-border-radius:50%;
+	-border:none;
+	-padding:0;
+	-box-shadow:0px 0px 40px rgba(255,255,255,0.8);
+}
+
+/*雲を傾ける*/
+#cloud{
+	-transform:rotateX(60deg);
+}
+
+
+/*コイを3D*/
+#cloud,#carpPos,#carp{
+	-transform-style:preserve-3d;
+}
+
+#carp{
+	-transform:
+		translate3d(-80px,100px,0px)
+		rotateX(-90deg)
+		scale(0.5);
+}
+	
+#carpPos{
+	-transform:
+		translate3d(170px,170px,50px);
+}
+	
+/*鯉アニメーション*/
+#carp1{
+	-animation:
+		carp1frame 5s ease-in-out 0s infinite normal;
+	-transform-origin:right;
+}
+@keyframes carp1frame{
+	0%{transform:rotateY(0deg);z-index:-1;}
+	25%{transform:rotateY(-10deg);}
+	50%{transform:rotateY(0deg);z-index:1;}
+	75%{transform:rotateY(-20deg);}
+	100%{transform:rotateY(0deg);}
+}
+
+#carp3{
+	-animation:
+		carp3frame 0.5s ease-in-out 0s infinite normal;
+	-transform-origin:left;
+}
+@keyframes carp3frame{
+	0%,100%{
+		transform:
+			translate(250px) rotateY(-25deg);
+	}
+	50%{
+		transform:
+			translate(250px) rotateY(20deg);
+	}
+}
+
+/*3次元アニメーション*/
+#carpPos{
+	-animation:
+		carpPoskeyframe 5s linear 0s 
+		infinite normal;
+	-animation-fill-mode:both;
+}
+@keyframes carpPoskeyframe{
+	0%{transform:
+		translate3d(170px,170px,50px) 
+		rotateZ(0deg);}
+	25%{transform:
+		translate3d(170px,170px,100px) 
+		rotateZ(90deg);}
+	50%{transform:
+		translate3d(170px,170px,50px) 
+		rotateZ(180deg);}
+	75%{transform:
+		translate3d(170px,170px,100px) 
+		rotateZ(270deg);}
+	100%{
+		transform:translate3d(170px,170px,50px) 
+		rotateY(360deg);}
+}
+
+
+*{
+	-transition:none;
+}
+/*
+JavaScriptを使えばCSSをコントロールできます。
+F1 近づく
+F2 遠ざかる
+F3 下に
+F4 上に
+*/
+</style>
+	<div id=sample class=sample>
+		<div id=cloud>
+			<div id=carpPos>
+				<div id=carp>
+					<div id=carp1>
+						<div id=eye></div>
+					</div>
+					<div id=carp2>
+						<div class=uroko></div>
+						<div class=uroko></div>
+						<div class=uroko></div>
+						<div class=uroko></div>
+						<div class=uroko></div>
+						<div class=uroko></div>
+					</div>
+					<div id=carp3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script>
+
+	function $id(id){return document.getElementById(id);}
+	var rttX=60;
+	var pspctv=400;
+	var change=false;
+	window.addEventListener("keydown",function(e){
+		console.log(e.keyCode);
+		if(e.keyCode==112){pspctv--;change=true;}//Forard
+		if(e.keyCode==113){pspctv++;change=true;}//Back
+		if(e.keyCode==114){rttX--;change=true;} //↑
+		if(e.keyCode==115){rttX++;change=true;} //↓
+		if(change){
+			$id("sample").style.perspective=pspctv+"px";
+			$id("cloud").style.transform="rotateX("+rttX+"deg)";
+			change=false;
+		}
+	});
+	
+</script>

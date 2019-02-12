@@ -3,7 +3,6 @@
 	margin:0;padding:0;
 	font-family: "Rounded Mplus 1c";
 	font-weight:bold;
-
 }
 
 #bottom{
@@ -17,7 +16,8 @@ header{
 header h1{
 	font-size:30px;text-align:center;
 	line-height:40px;
-	color:white;
+	color:#000;
+	text-shadow:-1px -1px 1px #aaa;
 }
 
 .flex{display:flex;	height:calc(100vh - 40px);}
@@ -33,8 +33,9 @@ iframe{
 #side{
 	width:200px;
 	background-color:#666;
-	color:white;
+	color:#000;
 	height:calc(100vh - 40px);
+	text-shadow:-1px -1px 1px #aaa;
 }
 
 footer {
@@ -44,7 +45,8 @@ footer {
 footer small{
 	font-size:18px;
 	line-height:40px;
-	color:white;
+	color:#000;
+	text-shadow:-1px -1px 1px #aaa;
 }
 ol{list-style:none;}
 

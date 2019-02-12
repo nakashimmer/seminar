@@ -10,7 +10,7 @@ if(slideno){
 for(let i=0;i<srcs.length;i++){
 	srcs[i].addEventListener("click",()=>{
 		iframe.src=i+"/index.html";
-		srcs[i].style.color="gray";
+		srcs[i].style.color="#fff";
 		srcs[i].style.textShadow="none";
 		localStorage.setItem("slideno",i);
 		console.log(i);

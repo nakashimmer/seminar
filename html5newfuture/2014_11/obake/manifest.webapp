@@ -1,7 +1,0 @@
-{
-"name":"obake sensei",
-"description":"おばけ学長先生",
-"launch_path":"/index.html",
-"icons":{"128":"/obake.png"},
-"default_locale":"ja"
-}

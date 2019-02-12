@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<script src="https://unpkg.com/obniz@1.13.0/obniz.js" crossorigin="anonymous"></script>
+		<script src="ob.js"></script>
+		<link rel="stylesheet" href="css.css">
+	</head>
+
+	<body>
+		<div id="wrap">
+			<!-- div id="obniz-debug"></div -->
+			
+			<div class="btn">
+				<h1>#1.Lチカ</h1>
+				<p>
+					<button id="on">ON</button>
+					<button id="off">OFF</button>
+				</p>
+				<div id="print"></div>
+
+			</div>
+			<script>
+				const OBNIZ = new Obniz(obid);
+				const ON = document.getElementById("on");
+				const OFF = document.getElementById("off");
+				const PRINT = document.getElementById("print");
+
+				OBNIZ.onconnect = async function () {
+					const LED = OBNIZ.wired("LED", { anode: 0, cathode: 1 });
+					OBNIZ.display.clear();
+					OBNIZ.display.print("Hello World");
+
+					OBNIZ.switch.onchange = (state) => {
+						PRINT.innerHTML = state;
+						OBNIZ.display.clear();
+						OBNIZ.display.print(state);
+					}
+
+					ON.addEventListener("click", () => {
+						LED.on();
+						OBNIZ.display.clear();
+						OBNIZ.display.print("つける");
+					});
+
+					OFF.addEventListener("click", () => {
+						LED.off();
+						OBNIZ.display.clear();
+						OBNIZ.display.print("消す");
+					});
+				}
+
+			</script>
+
+			<details>
+				<summary><h2>HTML</h2></summary>
+				<pre><code>&lt;button id="on">ON&lt;/button>
+&lt;button id="off">OFF&lt;/button></code></pre>
+			</details>
+
+			<details>
+				<summary><h2>JavaScript</h2></summary>
+				<pre><code>const ON = document.getElementById("on");
+const OFF = document.getElementById("off");
+			
+const OBNIZ = new Obniz(obid);
+OBNIZ.onconnect = async ()=>{
+	const LED = OBNIZ.wired(
+		"LED",{anode:0,cathode:1});
+	ON.addEventListener("click", ()=>{LED.on();});
+	OFF.addEventListener("click", ()=>{LED.off();});
+}</code></pre>
+			</details>
+			<p><a href="2.servo.html">次へ</a></p>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,47 @@
+
+*{
+	margin:0;padding:0;
+	font-family: "Rounded Mplus 1c";
+	font-weight:bold;
+
+}
+
+header{
+	height:50px;
+	background-color:#000;
+}
+header h1{
+	font-size:30px;text-align:center;
+	line-height:50px;
+	color:white;
+
+}
+
+.flex{display:flex;	height:calc(100vh - 80px);}
+
+iframe{
+	flex:1;
+	height:calc(100vh - 80px);
+	border:none;
+	display:block;
+
+	background-color:#f8f4e6;
+}
+#side{
+	width:200px;
+	background-color:#333;
+	color:white;
+	height:calc(100vh - 80px);
+}
+
+footer {	background-color: #333;	text-align:right;}
+footer small{
+	font-size:18px;
+	line-height:30px;
+	color:white;
+}
+ol{list-style:none;}
+
+#side ol li{margin:0.5em;}
+
+video,canvas{display:block;}

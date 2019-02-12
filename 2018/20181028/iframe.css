@@ -1,0 +1,52 @@
+/*ふわっと表示*/
+#wrap{
+	opacity:0;
+	animation:wrapanime 0.5s linear 0s 1 normal;
+	animation-fill-mode:both;
+	margin:1em;
+}
+@keyframes wrapanime{100%{opacity:1;}}
+
+*{
+	margin:0;padding:0;font-weight:bold;
+	font-family: "Rounded Mplus 1c";
+	outline:none;
+	cursor: url(https://webtechpromo.org/speaker/20180708/html5.png),pointer;
+}
+
+
+
+h1{font-size:48px;margin:0.8em 0.5em;color:#333;}
+h2,h3,p,li,dt,dd,summary,details,code,button{font-size:36px;margin:0.3em 1em;color:#333;}
+
+p{
+	text-align:justify;
+	text-justify:inter-ideograph;
+}
+
+ul,ol,dl{margin-left:2em;}
+body{background-color:transparent;}
+
+code,style{
+	margin-left:1em;
+	padding:0.5em;
+	font-size:28px;
+	background-color:rgba(0,0,0,0.2);
+	display:block;
+	font-family:menlo;
+	border-radius:.5em;
+}
+
+details p{margin-left:2em;}
+
+a,.a{
+	text-decoration:none;color:#333;
+	display:inline-block;
+}
+a:after{content: "🖱️";font-size:.5em;
+	text-shadow:2px 2px 2px gray;}
+code{tab-size: 2;}
+
+/*スクロールバーを非表示 (除Firefox)*/
+::-webkit-scrollbar{display:none;}
+*{-ms-overflow-style:none;}

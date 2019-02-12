@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>HTML5 4th Anniversary</title>
+		<meta name="viewport" content="width=device-width">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+
+		<style>
+			*{
+				margin:0;padding:0;
+				color:white !important ;font-size:40px;
+				line-height:1.2em;
+				font-family: "Rounded Mplus 1c";
+				font-weight: bold;
+				text-align:justify;
+				text-justify:inter-ideograph;
+			}
+			body{
+				background-image:url(img/gmo.jpg);
+				background-color: #333;
+				background-size: cover;
+				background-position: center;
+				background-attachment: fixed;
+			}
+
+			#wrap{
+				scroll-snap-type:y mandatory;
+				height:calc(100vh);
+				overflow:scroll;
+			}
+
+			h1{
+				text-align:center;
+				filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.8));
+				font-size:2em;
+				line-height:calc(100vh);
+			}
+
+			.sec{
+				scroll-snap-align: start;
+				height:calc(100vh);
+				margin-bottom:1em;
+			}
+
+			section{
+				background:rgba(0,0,0,0.6);
+				width:80%;margin:2em auto;
+				padding:1em;
+			}
+
+
+
+			section h2{margin:1em;}
+
+			.flex{display:flex;}
+
+			#foto{margin:0;}
+			#foto li{flex:1;
+				list-style:none;
+				text-align:center;
+
+			}
+
+			p{margin:1em 0;}
+			ol,ul{margin-left:1em;}
+			ol li{margin-top:0.5em;font-size:0.7em;}
+
+			/*スクロールバーを非表示 (除Firefox)*/
+			::-webkit-scrollbar{display:none;}
+			*{-ms-overflow-style:none;}
+
+		</style>
+
+	</head>
+	<body>
+		<div id="wrap">
+			<h1 class="sec">HTML5 4th Anniversary</h1>
+
+			<section class="sec">
+				<h2>1.開会</h2>
+				<p>HTML5をW3Cが勧告して４年！HTML5の４歳の誕生日を一緒にお祝いしましょう！</p>
+				<p>2014年10月28日、HTMLは、15年ぶりに大幅な改定が行われ、新しい規格「HTML5」がW3C勧告されました。</p>
+				<p>静的なWebサイト・Webページからインタラクティブで楽しいWebアプリケーションを作るツールとして、利用範囲が拡大しています。</p>
+				<p>今回は、HTML5の４歳の誕生日。「HTML5」を一緒に楽しみましょう。</p>
+			</section>
+
+			<section class="sec">
+
+				<h2>2.登壇者</h2>
+				<ul class="flex" id="foto">
+					<li><img src="img/nakashima.jpeg"><br>中島(主催)<br><span style="font-size:0.7em">キーノート</span></li>
+					<li><img src="img/azami.jpeg"><br>生明さん<br><span style="font-size:0.7em">CSS</span></li>
+					<li><img src="img/ubukata.png"><br>生形さん<br><span style="font-size:0.7em">PWA・Monaca</span></li>
+					<li><img src="img/murachi.png"><br>村地さん<br><span style="font-size:0.7em">ブラウザ</span></li>
+					<li><img src="img/sekiguchi.jpg"><br>関口さん<br><span style="font-size:0.7em">フォント</span></li>
+				</ul>
+			</section>
+
+			<section class="sec">
+				<h2>3.お知らせ</h2>
+				<ul>
+					<li>喫煙：館内は禁煙。セルリアンタワーの喫煙所を利用してください。(地下フロアから246に出て、左からぐるっと回ったセルリアンの裏)</li>
+					<li>ゲストカードは退館時に回収されます。再入場用のゲストカードを受け取って外出してください。</li>
+				</ul>
+			</section>
+
+			<section class="sec">
+				<h2>4.感謝</h2>
+				<ul>
+					<li>GMOインターネットグループ様から会場提供・運営サポートのご提供をいただきました。<br>（会場提供：GMO Yours　運営協力：GMOホスコン）
+					<br><img src="https://hoscon.gmo.jp/wp-content/uploads/2018/06/GMO_HosCon_h_service-300x52.png" style="background-color:white;border-radius:10px;padding:5px;margin:50px 0 10px 80px;">
+					　https://hoscon.gmo.jp/<br>
+					GMOインターネットグループ内でクラウド・ホスティングサービスを運営するグループ4社が集結し「GMOホスコン」と題し、エンジニア向けセミナーやハンズオンを定期開催しています。</p>
+					</li>
+				</ul>
+			</section>
+
+			<section class="sec" style="background:none !important;">
+				<h1 style="line-height:9em;">5.間もなく開始です</h1>
+			</section>
+		</div>
+
+	</body>
+</html>

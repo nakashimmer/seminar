@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../iframe.css">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+
+	</head>
+	<body>
+		<div id="wrap">
+			<h1>2.HTML5は仕様のファミリを指す用語</p>
+			<details><summary>HTML (HTML 5.2)</summary>
+				<p>&lt;開始タグ&gt; コンテンツ &lt;/終了タグ&gt; ⇒ 「要素」</p>
+				<code>
+					&lt;p id="sample"&gt;<span id="sample">今日はいい天気ですね。</span>&lt;/p&gt;
+				</code>
+			</details>
+
+			<details><summary>CSS (CSS3)</summary>
+				<p>セレクタ{プロパティ:値;}</p>
+				<code onclick="document.getElementById('sample').style.color='blue';">
+					p{color:blue;}
+				</code>
+			</details>
+
+
+
+			<details><summary>JavaScript</summary>
+				<p>簡易なプログラム。コンテンツとスタイル・APIを操作</p>
+				<code onclick="document.getElementById('sample').innerHTML='暑い！！！';">
+					const element = document.getElementById("sample");
+					element.innerHTML = "暑い！";
+				</code>
+				<code onclick="document.getElementById('sample').style.color='red';">
+						element.style.color = "red";
+					</code>
+			</details>
+		</div>
+	</body>
+</html>

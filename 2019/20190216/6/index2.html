@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../iframe.css">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+		<style>
+			*{margin:0;padding:0;font-size:20px;}
+			#wrap{width:900px;margin:0 auto;padding:5px;}
+			#board1,#board2{display:flex;}
+			.keys{
+				text-align:center;
+				width:80px;height:90px;
+				margin:3px;
+				color:black;
+				background-color:white;
+				box-shadow:3px 3px 3px gray;
+				border:1px solid gray;
+			}
+
+			h1{
+				font-size:1.5em;
+				line-height:2em;
+				text-align:center;
+			}
+			p{line-height:2em;}
+			#key-1{margin-left:45px;}
+			#key-6{margin-left:90px;}
+			#keys{
+				width:700px;
+				margin:0 auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<h1>今日は誕生日。なので…</h1>
+			<p>音量：<input id=vol type="range" min=0 max=1 value=0.5 step=0.1></p>
+			<p>波形：
+				<label><input type="radio" name="wstyle" value="sine" checked>正弦波</label>
+				<label><input type="radio" name="wstyle" value="square">矩形波</label>
+				<label><input type="radio" name="wstyle" value="triangle">三角波</label>
+				<label><input type="radio" name="wstyle" value="sawtooth">のこぎり波</label>
+			</p>
+			<p>鍵盤：</p>
+			<div id="keys">
+				<div id=board1></div>
+				<div id=board2></div>
+			</div>
+<script>
+	var str = "";
+	var kname = [
+		"C<br>q",
+		"C#<br>2",
+		"D<br>w",
+		"D#<br>3",
+		"E<br>e",
+		"F<br>r",
+		"F#<br>5",
+		"G<br>t",
+		"G#<br>6",
+		"A<br>y",
+		"A#<br>7",
+		"B<br>u",
+		"CC<br>i",
+	]
+
+	for (var i = 0; i < kname.length; i++) {
+		if (0 < kname[i].indexOf("#")) {
+			str += "<div class=keys id=key-" + i + ">" + kname[i] + "</div>";
+		}
+	}
+
+	$("board1").innerHTML = str;
+
+	str = "";
+	for (var i = 0; i < kname.length; i++) {
+		if (kname[i].indexOf("#") < 0) {
+			str += "<div class=keys id=key-" + i + ">" + kname[i] + "</div>";
+		}
+	}
+	$("board2").innerHTML = str;
+
+	var hz = [
+		523.25,	//cc
+		554.37,	//cc#
+		587.33,	//dd
+		622.25,	//dd#
+		659.26,	//ee
+		698.46,	//ff
+		739.99,	//ff#
+		783.99,	//gg
+		830.61,	//gg#
+		880,	//aa
+		932.33,	//aa#
+		987.77,	//bb	
+		1046.5,	//ccc
+	];
+
+	var ac = new AudioContext(); //音の元を作る
+	var vcg = ac.createGain(); //ボリュームを作る
+	var vco = new Array()
+	for (var i = 0; i < hz.length; i++) {
+		vco[i] = ac.createOscillator(); //音源を作る
+		vco[i].connect(vcg); //音源をボリュームにつなぐ
+		vco[i].type = "sine"; //音色
+		vco[i].frequency.value = hz[i];
+	}
+	vcg.connect(ac.destination); //出力につなぐ
+
+	var Code = [
+		81,//q-cc
+		50,//2-cc#
+		87,//w-dd
+		51,//3-dd#
+		69,//e-ee
+		82,//r-ff
+		53,//5-ff#
+		84,//t-gg
+		54,//6-gg#
+		89,//y-aa
+		55,//u-aa#
+		85,//i-bb
+		73,//i-ccc
+		57//9-ccc#
+	];
+
+	window.addEventListener("keydown", kdown);
+
+	function kdown(e) {
+		var i = Code.indexOf(e.keyCode);
+
+		vcg.gain.value = $("vol").value; //音量
+		var wstyle = document.getElementsByName("wstyle");
+		for (var w = 0; w < wstyle.length; w++) {
+			if (wstyle[w].checked) {
+				vco[i].type = wstyle[w].value; //音色
+			}
+		}
+		$("key-" + i).style.backgroundColor = "black";
+		$("key-" + i).style.color = "white";
+		vco[i].start();
+		f = false;
+
+	}
+
+	window.addEventListener("keyup", kup);
+
+	function kup(e) {
+		var i = Code.indexOf(e.keyCode);
+
+		vco[i].stop();
+		vco[i] = ac.createOscillator(); //音源を作る
+		vco[i].connect(vcg); //音源をボリュームにつなぐ
+		vco[i].frequency.value = hz[i];
+		$("key-" + i).style.backgroundColor = "white";
+		$("key-" + i).style.color = "black";
+	}
+
+	function $(id) { return document.getElementById(id); }
+
+</script>
+	<p><a href="index3.html">ということで・・・</a></p>
+
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../iframe.css">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+		<style>
+			button{font-size:30px;padding:0.3em;border-radius:10px;}
+			select{font-size:30px;padding:0.3em;border-radius:10px;height:1.5em;}
+			textarea{font-size:30px;height:4em;width:50%;vertical-align:top;}
+		</style>
+	</head>
+	<body>	
+		<div id="wrap">
+			<h1>⑥Web Speech APIで音声読上</h1>
+			<ol>
+				<li>音声の種類を選択→<span id=voices><button onclick="voice();">選択</button></span></li>
+				<li>言語を選択→<select id=lang>
+					<option value="ja-JP" selected>日本語</option>
+					<option value="en-US">英語</option>
+				</select></li>
+				<li>テキストを入力⇒
+					<textarea id=input>こんにちは。みなさん。</textarea>
+				</li>
+				<li><button onclick="mySpeech();">読上</button></li>
+				</li>
+				<li><p onclick="nyuryoku();">🎤<span id="msg"></span></p></li>
+		</ol>
+		</div>
+
+<script>
+
+	//ボイスの種類
+
+	var voices = speechSynthesis.getVoices();
+	
+	function voice(){
+		voices = speechSynthesis.getVoices();
+		var length=voices.length;
+		var voiceStr="<select id=voice>";
+		console.log(length);
+		
+		for(var i=0;i<length;i++){
+			if(voices[i]){
+				if(voices[i].name==="Google 日本語"){var sel="selected"}else{var sel=""};
+				voiceStr+="<option value="+i+" "+sel+">"+voices[i].name+"</option>";
+				
+			}
+		}
+		voiceStr+="</select>";
+		
+		$id("voices").innerHTML=voiceStr;
+
+	}
+
+	//テキスト読み上げ
+	function mySpeech(){
+		var input = $id("input").value;
+		var voice = parseInt($id("voice").value);
+		var input = new SpeechSynthesisUtterance(input);
+		var lang = $id("lang").value
+		input.lang = lang;
+		var voices = speechSynthesis.getVoices();
+		input.voice = voices[voice];
+		speechSynthesis.speak(input);
+	}
+
+	//音声認識
+	function nyuryoku(){
+		var recognition = new webkitSpeechRecognition();	//音声認識オブジェクト生成
+		recognition.lang = $id("lang").value;	//言語設定
+		recognition.start();	//認識開始
+		$id("msg").innerHTML="しゃべってください";
+		// 終了時トリガー
+		recognition.addEventListener('result', function(e){
+			$id("msg").innerHTML="終了";
+			var rec = e.results.item(0).item(0).transcript;	//文字列抽出
+			
+			//認識文字列を加工
+			//①文字を書き換え
+			rec=rec.replace("中島","イケメン中島");
+			rec=rec.replace("なかしま","イケメン中島");
+			//②時間を回答
+			var now=new Date();
+			rec=rec.replace("何時",now.getHours()+"時"+now.getMinutes()+"分です");
+
+			$id("input").value=	rec;
+			setTimeout(mySpeech,1000);	//1秒後にmySpeechを起動
+		});
+	}
+	
+	function $id(id){return document.getElementById(id);}
+</script>
+
+	</body>
+</html>

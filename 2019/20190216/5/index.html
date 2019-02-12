@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>obniz</title>
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="../iframe.css">
+	</head>
+	<body>
+		<div id="wrap">
+			<h1>obniz (JSでIoT/WoT)</h1>
+			
+			<ol>
+				<li><a href="1.LED.html">Lチカ</a></li>
+				<li><a href="2.servo.html">サーボモータ</a></li>
+				<li><a href="3.LED(speech).html">Lチカ(Speech)</a></li>
+				<li><a href="4.servo(speech).html">サーボ(Speech)</a></li>
+			</ol>
+			
+			<p>obniz ID:<input type="password" id="obid"><button onclick="reg();">登録</button></p>
+		</div>
+		<script>
+			let OBID=document.getElementById("obid");
+			function reg(){
+				localStorage.setItem("OBID",OBID.value);
+			}
+		</script>
+	</body>
+</html>

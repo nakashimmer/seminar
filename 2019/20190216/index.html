@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Microsoft MVP Webの最新話</title>
+		<meta name="viewport" content="width=device-width">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+		<link rel="stylesheet" href="index.css">
+		<style>
+			#video{transition:transform 1s linear;}
+		</style>
+
+	</head>
+	<body>
+		<div class="flex">
+			<iframe id="iframe" src="0/index.html"></iframe>
+			<div id="side">
+				<video autoplay width="200" height="150" id="video"></video>
+				<canvas style="display:none;" width="200" height="150" id="canvas"></canvas>
+				<ol>
+					<li class="src" id="s0">自己紹介</li>
+					<li class="src" id="s1">お願い</li>
+					<li class="src" id="s2">HTML5</li>
+					<li class="src" id="s3">① dialog要素</li>
+					<li class="src" id="s4">② conic-gradient</li>
+					<li class="src" id="s5">③ WoT</li>
+					<li class="src" id="s6">最後に</li>
+
+				</ol>
+			</div>
+		</div>
+		<div id="bottom">
+			<header>
+					<h1>Microsoft MVP Webの最新話</h1>
+			</header>
+			<footer>
+				　<small>(c)＠nakashimmer</small>
+			</footer>
+		</div>
+
+		<script src="index.js"></script>
+		<script src="camera.js"></script>
+		<script>
+			const CANVAS = document.getElementById("canvas");
+			const VIDEO = document.getElementById("video");
+			let t=true;
+			VIDEO.addEventListener("click",()=>{
+				if(t){
+					VIDEO.style.transform = "translate(-200px,150px) scale(3,3)";
+					t=false;
+				}else{
+					VIDEO.style.transform = "translate(0px,0px) scale(1,1)";
+					t = true; 
+				}
+			});
+
+		</script>
+	</body>
+</html>

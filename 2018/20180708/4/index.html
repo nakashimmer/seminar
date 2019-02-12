@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../iframe.css">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+		<style>
+			#dlg{
+				width:90vw;height:90vh;
+				margin:5vh;
+			}
+			iframe{width:100%;height:100%;border:none;}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<h1>①HTMLタグ</h1>
+				<pre><code ondblclick="dlg.showModal();">&lt;h1 id="header">500px競争&lt;/h1>
+
+&lt;p id="msg"&gt;よーい！🔫&lt;/p>
+
+&lt;div id="cource">
+	&lt;div id="maimai">&lt;/div>
+&lt;/div>
+
+&lt;audio id="mp3" src="maimai.mp3">&lt;/audio></code></pre>
+		</div>
+		<dialog id="dlg" onclick="dlg.close();">
+			<iframe src="../maimai/index.html" sandbox="allow-scripts"></iframe>
+		</dialog>
+		<script>
+			var dlg = document.getElementById("dlg");
+		</script>
+	</body>
+</html>

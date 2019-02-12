@@ -1,0 +1,58 @@
+
+*{
+	margin:0;padding:0;
+	font-family: "Rounded Mplus 1c";
+	font-weight:bold;
+
+}
+
+#bottom{
+	display:flex;
+	background-color: black;
+	height:40px;
+}
+header{
+	flex:1;
+}
+header h1{
+	font-size:30px;text-align:center;
+	line-height:40px;
+	color:white;
+}
+
+.flex{display:flex;	height:calc(100vh - 40px);}
+
+iframe{
+	flex:1;
+	height:calc(100vh - 40px);
+	border:none;
+	display:block;
+
+	background-color:#f8f4e6;
+}
+#side{
+	width:200px;
+	background-color:#333;
+	color:white;
+	height:calc(100vh - 40px);
+}
+
+footer {
+	width:200px;
+	text-align:center;
+}
+footer small{
+	font-size:18px;
+	line-height:40px;
+	color:white;
+}
+ol{list-style:none;}
+
+#side ol li{margin:0.5em;}
+
+video,canvas{display:block;}
+
+
+/*スクロールバーを非表示 (除Firefox)*/
+::-webkit-scrollbar{display:none;}
+*{-ms-overflow-style:none;}

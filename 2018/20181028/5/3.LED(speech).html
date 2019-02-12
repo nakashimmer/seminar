@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://unpkg.com/obniz@1.13.0/obniz.js" crossorigin="anonymous"></script>
+		<script src="ob.js"></script>
+		<link rel="stylesheet" href="css.css">
+	</head>
+
+	<body>
+		<!-- div id="obniz-debug"></div -->
+		<div id="wrap">
+			<div class="btn">
+				<h1>#3. Ｌチカ(音声コントロール)</h1>
+				<p>赤色・緑色・終了</p>
+				<p id="print"></p>
+			</div>
+			<script>
+
+				const SPEECH = document.getElementById("speech");
+				const PRINT = document.getElementById("print");
+				const OBNIZ = new Obniz(obid);
+
+				OBNIZ.onconnect = async ()=>{
+					let led1 = OBNIZ.wired("LED", { anode: 0, cathode: 1 });
+					let led2 = OBNIZ.wired("LED", { anode: 2, cathode: 3 });
+
+					OBNIZ.display.clear();
+					OBNIZ.display.print("チカチカしよう！");
+					
+
+					OBNIZ.switch.onchange = (state) => {
+						PRINT.innerHTML = state;
+						OBNIZ.display.clear();
+						OBNIZ.display.print(state);
+					}
+
+					function red() {led1.on(); led2.off(); };
+
+					function blue() {led1.off(); led2.on(); };
+
+					const RECOGNITION = new webkitSpeechRecognition();
+					RECOGNITION.lang = "ja-JP";
+					RECOGNITION.continuous = true;
+					RECOGNITION.start();
+					PRINT.innerHTML="";
+					let result;
+					let i=0;
+					RECOGNITION.addEventListener('result', (e) => {
+						result = e.results.item(i).item(0).transcript;
+						OBNIZ.display.clear();
+						OBNIZ.display.print(result);
+						PRINT.innerHTML+=result+"→";
+						if (result === "赤色") { red(); }
+						if (result === "緑色") { blue(); }
+						if (result === "終了") { 
+							RECOGNITION.stop(); 
+							led1.off();
+							led2.off();
+						}
+						i++;
+					});
+				}
+
+			</script>
+			<details>
+				<summary><h2>JavaScript</h2></summary>
+				<pre><code>const RECOGNITION = new webkitSpeechRecognition();
+RECOGNITION.lang = "ja-JP";
+RECOGNITION.continuous = true;
+RECOGNITION.start();
+let result;
+let i=0;
+RECOGNITION.addEventListener('result', (e)=>{
+	result = e.results.item(i).item(0).transcript;
+	if(result === "赤色"){red();}
+	if(result === "緑色"){blue();}
+	if(result === "終了"){
+		RECOGNITION.stop();led1.off();led2.off();
+	}
+	i++;
+});</code></pre>
+					</details>
+				<p><a href="4.servo(speech).html">次へ</a></p>
+		</div>
+	</body>
+</html>

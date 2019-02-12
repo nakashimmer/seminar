@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../iframe.css">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+		<style>
+			#dlg{
+				width:90vw;height:90vh;
+				margin:5vh;
+			}
+			iframe{width:100%;height:100%;border:none;}
+			#pre1,#pre2,#pre3,#pre4{transition:transform 1s linear 0.5s;}
+			#pre1:hover{transform:rotate(360deg);}
+			#pre2:hover{transform:scale(5,5);}
+			#pre3:hover{transform:translate(0,300px);}
+			#pre4:hover{transform:skew(-40deg,0);}
+			pre{width:80%;}
+			code{line-height:2em;}
+			button{z-index:1;position:absolute;}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<h1>②要素を移動する</h1>
+			<ol>
+				<li>
+					<p>CSSにはtransition(時間変化)とtransform(変形)がある</p>
+					<pre id="pre1"><code>elem:hover{transform:rotate(360deg);}</code></pre>
+					<pre id="pre2"><code>elem:hover{transform:scale(5,5);}</code></pre>
+					<pre id="pre3"><code>elem:hover{transform:translate(0px,300px);}</code></pre>
+					<pre id="pre4"><code>elem:hover{transform:skew(-40deg,0);}</code></pre>
+				</li>
+				<li>
+					<p>
+						<span onclick="js1();">JSに作り直して</span>
+						<button onclick="js2();">実行する</button>
+					</p>
+				</li>
+				<li>
+					<p><a href="index2.html">本番に応用</a></p>
+				</li>
+		</div>
+		<script>
+			let start=true;
+			let rotate,scalex,scaley,translatex,translatey,skewx,skewy;
+			function js1(){
+				document.getElementById("pre1").innerHTML 
+				= `<code>const elem = document.getElementById("elem");
+elem.style.transform="rotate(360deg)";</code>`;
+
+				document.getElementById("pre2").innerHTML 
+				= `<code>elem.style.transform="scale(5,5)";</code>`;
+
+				document.getElementById("pre3").innerHTML 
+				= `<code>elem.style.transform="translate(0px,300px)";</code>`;
+
+				document.getElementById("pre4").innerHTML 
+				= `<code>elem.style.transform="skew(-40deg,0)";</code>`;
+			}
+
+			function js2(){
+				if(start){
+					start=false;
+					rotate=360;
+					scalex=5;
+					scaley=5;
+					translatex=0;
+					translatey=300;
+					skewx=-40;
+					skewy=0;
+				}else{
+					rotate=Math.floor(360+360*(Math.random()-0.5));
+					scalex=Math.floor(5+5*(Math.random()-0.5));
+					scaley=Math.floor(5+5*(Math.random()-0.5));
+					translatex=Math.floor(0+300*(Math.random()-0.5));
+					translatey=Math.floor(300+300*(Math.random()-0.5));
+					skewx=Math.floor(-40+40*(Math.random()-0.5));
+					skewy=Math.floor(0+40*(Math.random()-0.5));
+				}
+				document.getElementById("pre1").style.transform="rotate("+rotate+"deg)";
+				document.getElementById("pre2").style.transform="scale("+scalex+","+scaley+")";
+				document.getElementById("pre3").style.transform="translate("+translatex+"px,"+translatey+"px)";
+				document.getElementById("pre4").style.transform="skew("+skewx+"deg,"+skewy+"deg)";
+
+							document.getElementById("pre1").innerHTML 
+				= '<code>const elem = document.getElementById("elem");<br>elem.style.transform="rotate('+rotate+'deg)";</code>';
+
+				document.getElementById("pre2").innerHTML 
+				= '<code>elem.style.transform="scale('+scalex+','+scaley+')";</code>';
+
+				document.getElementById("pre3").innerHTML 
+				= '<code>elem.style.transform="translate('+translatex+'px,'+translatey+'px)";</code>';
+
+				document.getElementById("pre4").innerHTML 
+				= '<code>elem.style.transform="skew('+skewx+'deg,'+skewy+'deg)";</code>';
+
+
+			}
+		</script>
+
+	</body>
+</html>

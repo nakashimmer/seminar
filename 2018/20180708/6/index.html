@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../iframe.css">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+		<style>
+			button{border-radius:10px;padding:10px;}
+			input[type=range] {
+				-webkit-appearance:none;
+				background:#333;
+				height:40px;
+				width:300px;
+				border-radius:20px;
+			}
+			input[type=range]::-webkit-slider-thumb{
+				-webkit-appearance:none;
+				background:red;
+				height:40px;
+				width:40px;
+				border-radius:50%;
+			}
+			progress{
+				display:block;
+				margin:1em auto;
+				width:80%;
+				border:30px;
+				height:50px;
+				border-color: white;
+				border-radius:25px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<h1>③効果音はAudioオブジェクト</h1>
+			<pre><code>const audio = new Audio();
+audio.src="audio.mp3";
+audio.play(); //再生
+audio.pause(); //停止
+</code></pre>
+			<progress id="progress" min="0" max="100" value="0"></progress>
+			<p>
+				<button onclick="audio.play();">再生</button>
+				<button onclick="audio.pause();">停止</button>
+				<input id="range" type="range"  min=0 max=3 value=1 step=0.2>
+			</p>
+
+		</div>
+		<script>
+			const audio=new Audio();
+			audio.src="audio.mp3";
+			const range=document.getElementById("range");
+			range.addEventListener("mousemove",()=>{
+				audio.playbackRate = range.value;
+			});
+			const progress=document.getElementById("progress");
+			audio.addEventListener("timeupdate",()=>{
+				progress.value=Math.floor(audio.currentTime/audio.duration*100);
+				console.log(Math.floor(audio.currentTime/audio.duration*100));
+			});
+		</script>
+	</body>
+</html>

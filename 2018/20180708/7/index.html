@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../iframe.css">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+		<style>
+			button{
+				border-radius:10px;
+				padding:0.3em;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<h1>④時間を計るのはDateオブジェクト</h1>
+			<p>日付を管理</p>
+			<pre><code>const now=new Date();
+let y = now.getFullYear(); //年を取得…
+let epoch = now.getTime(); //エポックミリ秒を取得</code></pre>
+		<p>
+			<button onclick="start();">開始</button>
+			<button onclick="finish();">終了</button>
+		</p>
+		<ul id="time"><li>経過時間は...</li></ul>
+
+		<script>
+			const time = document.getElementById("time");
+			let startTime;
+			const audio=new Audio();
+			audio.src="ooo.mp3";
+
+			function start(){
+				const now=new Date();
+				startTime = now.getTime();
+				time.innerHTML = "<li>計測中.....</li>";
+			}
+		
+			function finish(){
+				const now=new Date();
+				let finishTime = now.getTime();
+				time.innerHTML 
+				= "<li>開始エポック時間は" + startTime + "ミリ秒"
+				+ "<li>終了エポック時間は" + finishTime + "ミリ秒"
+				+ "<li>経過時間は" + ((finishTime - startTime)/1000) + "秒";
+				if(10<((finishTime - startTime)/1000) && ((finishTime - startTime)/1000)<11){
+					time.innerHTML +="<li>10秒！すごい👏👏👏！</li>";
+					audio.play();
+				}
+			}
+
+		</script>
+
+
+
+
+		</div>
+	</body>
+</html>

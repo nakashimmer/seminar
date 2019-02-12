@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://unpkg.com/obniz@1.13.0/obniz.js" crossorigin="anonymous"></script>
+		<script src="ob.js"></script>
+		<link rel="stylesheet" href="css.css">
+	</head>
+
+	<body>
+		<!-- div id="obniz-debug"></div -->
+		<div id="wrap">
+			<div class="btn">
+				<h1>#4 サーボモータ(音声コントロール)</h1>
+				<p>左上げて・右上げて・終了</p>
+				<p id="print"></p>
+			</div>
+			<script>
+
+				const SPEECH = document.getElementById("speech");
+				const PRINT = document.getElementById("print");
+				const OBNIZ = new Obniz(obid);
+
+				OBNIZ.onconnect = async ()=>{
+
+					const SERVO = OBNIZ.wired(
+						"ServoMotor",
+						{ gnd: 4, vcc: 5, signal: 6 }
+					);
+
+					function left() { SERVO.angle(0);};
+
+					function right() { SERVO.angle(180);};
+
+					const RECOGNITION = new webkitSpeechRecognition();
+					RECOGNITION.lang = "ja-JP";
+					RECOGNITION.continuous = true;
+					RECOGNITION.start();
+					PRINT.innerHTML="";
+
+					let result;
+					let i=0;
+					RECOGNITION.addEventListener('result', (e) => {
+						result = e.results.item(i).item(0).transcript;
+						OBNIZ.display.clear();
+						OBNIZ.display.print(result);
+						PRINT.innerHTML+=result+"→";
+						if (result === "右上げて") { left(); }
+						if (result === "左上げて") { right(); }
+						if (result === "終了") { SERVO.angle(90); RECOGNITION.stop(); }
+						i++;
+					});
+				}
+
+			</script>
+			<details>
+				<summary><h2>JavaScript</h2></summary>
+				<pre><code>RECOGNITION.addEventListener('result',(e)=>{
+	result = e.results.item(i).item(0).transcript;
+	if(result === "右上げて"){ SERVO.angle(0); }
+	if(result === "左上げて"){ SERVO.angle(180); }
+	if(result === "終了"){
+		 SERVO.angle(90); RECOGNITION.stop(); 
+	}
+	i++;
+});</code></pre>
+			</details>
+		</div>
+	</body>
+</html>

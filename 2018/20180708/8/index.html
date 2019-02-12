@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../iframe.css">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+		<style>
+			*{box-sizing: border-box;}
+			#wrap{
+				display:flex;
+				overflow:hidden;
+				height:calc(100vh - 170px);
+			}
+			#parent{
+				height:500px;width:500px;
+				margin:calc(50vh - 325px) auto 0 auto;
+				transform-style: preserve-3d;
+				perspective: 500px;
+
+			}
+			#child{
+				transition:transform 0.3s linear;
+				width:500px;height:500px;
+				background-image:url(html5.png);
+				background-size:100% 100%;
+				background-color:transparent;
+			}
+			#ctrl{
+				width:280px;z-index:1;
+				background-color:rgba(0,0,0,.3);
+				border-radius:20px;
+			}
+			ul li,p{font-size:20px;}
+
+		</style>
+	</head>
+	<body>
+		<h1>⑤CSS3では3次元を表示できる</h1>
+		<div id="wrap">
+			<div id="parent">
+				<div id="child"></div>
+			</div>
+			<div id="ctrl">
+				<p>回転</p>
+				<ul>
+					<li>X:<input type="range" id="rotateX" min="-180" max="180" value="0"></li>
+					<li>Y:<input type="range" id="rotateY" min="-180" max="180" value="0"></li>
+					<li>Z:<input type="range" id="rotateZ" min="-180" max="180" value="0"></li>
+				</ul>
+				<p>移動</p>
+				<ul>
+					<li>X:<input type="range" id="translateX" min="-200" max="200" value="0"></li>
+					<li>Y:<input type="range" id="translateY" min="-200" max="200" value="0"></li>
+					<li>Z:<input type="range" id="translateZ" min="-200" max="200" value="0"></li>
+				</ul>
+				<p>伸縮</p>
+				<ul>
+					<li>X:<input type="range" id="scaleX" min="-5" max="5" value="1"></li>
+					<li>Y:<input type="range" id="scaleY" min="-5" max="5" value="1"></li>
+					<li>Z:<input type="range" id="scaleZ" min="-5" max="5" value="1"></li>
+				</ul>
+			</div>
+		</div>
+		<script>
+			const child=document.getElementById("child");
+			const rotateX=document.getElementById("rotateX");
+			const rotateY=document.getElementById("rotateY");
+			const rotateZ=document.getElementById("rotateZ");
+			const translateX=document.getElementById("translateX");
+			const translateY=document.getElementById("translateY");
+			const translateZ=document.getElementById("translateZ");
+			const scaleX=document.getElementById("scaleX");
+			const scaleY=document.getElementById("scaleY");
+			const scaleZ=document.getElementById("scaleZ");
+			rotateX.addEventListener("mousemove",move);
+			rotateY.addEventListener("mousemove",move);
+			rotateZ.addEventListener("mousemove",move);
+			translateX.addEventListener("mousemove",move);
+			translateY.addEventListener("mousemove",move);
+			translateZ.addEventListener("mousemove",move);
+			scaleX.addEventListener("mousemove",move);
+			scaleY.addEventListener("mousemove",move);
+			scaleZ.addEventListener("mousemove",move);
+
+			function move(){
+
+				let str 
+				= "rotateX("+rotateX.value+"deg) "
+				+"rotateY("+rotateY.value+"deg) "
+				+"rotateZ("+rotateZ.value+"deg) "
+				+"translateX("+translateX.value+"px) "
+				+"translateY("+translateY.value+"px) "
+				+"translateZ("+translateZ.value+"px) "
+				+"scaleX("+scaleX.value+") "
+				+"scaleY("+scaleY.value+") "
+				+"scaleZ("+scaleZ.value+") "
+				;
+				child.style.transform=str;
+				console.log(str);
+			};
+
+		</script>
+	</body>
+</html>

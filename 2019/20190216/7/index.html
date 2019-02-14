@@ -2,28 +2,27 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>obniz</title>
-		<meta name="viewport" content="width=device-width">
 		<link rel="stylesheet" href="../iframe.css">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+		<style>
+			.flex{display:flex;
+				width:90%;height:50vh;
+			}
+			.flex a{flex:1;text-align:center;}
+			.flex a img{width:80%;height:100%;}
+		</style>
 	</head>
 	<body>
 		<div id="wrap">
-			<h1>obniz (JSでIoT/WoT)</h1>
-			
-			<ol>
-				<li><a href="1.LED.html">Lチカ</a></li>
-				<li><a href="2.servo.html">サーボモータ</a></li>
-				<li><a href="3.LED(speech).html">Lチカ(Speech)</a></li>
-				<li><a href="4.servo(speech).html">サーボ(Speech)</a></li>
-			</ol>
-			
-			<p>obniz ID:<input type="password" id="obid"><button onclick="reg();">登録</button></p>
+			<h1>最後に[PR]</h1>
+			<p>HTML5を学びたい人は「東京アプリ・ワークショップ」</p>
+			<p>HTML5の検定なら「検定科目はHTML5」</p>
+			<p class="flex">
+				<a href="https://www.street-academy.com/steachers/1274?conversion_name=direct_message&tracking_code=f3037c532c76e32eb5636350d0147bc9"><img src="taws.png"></a>
+				<a href="https://webtechpromo.org"><img src="wtpo.png"></a>
+			</p>
+			<p><a href="index2.html">最後の最後に・・・</a></p>
 		</div>
-		<script>
-			let OBID=document.getElementById("obid");
-			function reg(){
-				localStorage.setItem("OBID",OBID.value);
-			}
-		</script>
+
 	</body>
 </html>

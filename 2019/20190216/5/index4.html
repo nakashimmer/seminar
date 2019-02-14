@@ -41,28 +41,29 @@
 	<body>
 		<div id="wrap">
 			<div id=jsonp></div>
-			<h1>②-4 [CSS] <a href="https://tepco-usage-api.appspot.com/">外部データ</a>で円グラフ表示</h1>
+			<h1>③-4 [CSS] <a href="https://tepco-usage-api.appspot.com/">外部データ</a>で円グラフ表示</h1>
 
 			<div class="flex">
 				<div id="box1"></div>
 				<iframe src="https://tepco-usage-api.appspot.com/latest.json?callback=jsonmsg"></iframe>
 			</div>
 			<div id="control">
-				<h2>JavaScript</h2>
-				<pre><code>const JSONP = document.getElementById("jsonp");
+				<details>
+					<summary><h2>JavaScript</h2></summary>
+					<pre><code>const JSONP = document.getElementById("jsonp");
 const BOX1 = document.getElementById("box1");
 const script = document.createElement("script");
 script.src = 
-	"https://tepco-usage-api.appspot.com/"
-	+"latest.json?callback=jsonmsg</a>";
+	<mark>"https://tepco-usage-api.appspot.com/"
+	+"latest.json?callback=jsonmsg</a>"</mark>;
 JSONP.appendChild(script);
 
 function jsonmsg(e) {
 	let pst = e.usage / e.capacity * 100;
-	BOX1.style.background = "conic-gradient(
-		red " + pst + "%,yellow 0)";
+	<mark>BOX1.style.background = "conic-gradient(
+		red " + pst + "%,yellow 0)"</mark>;
 }</code></pre>
-
+				</details>
 			</div>
 			
 			
@@ -80,6 +81,6 @@ function jsonmsg(e) {
 				}
 			</script>
 		</div>
-
+		<p><a href="index5.html">次へ</a>
 	</body>
 </html>

@@ -37,30 +37,36 @@
 				</script>
 			</section>
 			<section>
-				<h2>HTML</h2>
-				<pre><code>&lt;button id="btn1">ダイアログを開く&lt;/button>
+				<details>
+					<summary><h2>HTML</h2></summary>
+					<pre><code>&lt;button id="btn1">ダイアログを開く&lt;/button>
 
-&lt;dialog id="dlg">
+<mark>&lt;dialog id="dlg"></mark>
 	&lt;h3>ダイアログ&lt;/h3>
 	&lt;p>HTML5はHTML,CSS,JavaScriptなどの仕様の総称名です。&lt;/p>
 	&lt;p>&lt;button id="btn2">ダイアログを閉じる&lt;/button>&lt/p>
-&lt;/dialog></code></pre>
+<mark>&lt;/dialog></mark></code></pre>
+				</details>
 
-				<h2>JavaScript</h2>
-				<pre><code>const DLG = document.getElementById("dlg");
+				<details>
+					<summary><h2>JavaScript</h2></summary>
+					<pre><code>const DLG = document.getElementById("dlg");
 const BTN1 = document.getElementById("btn1");
 const BTN2 = document.getElementById("btn2");
 
 BTN1.addEventListener("click", ()=>{
-	DLG.showModal();
+	<mark>DLG.showModal();</mark>
 });
 
 BTN2.addEventListener("click", ()=>{
-	DLG.close();
+	<mark>DLG.close();</mark>
 });</code></pre>
-			</section>
-			<h2>ブラウザ対応状況</h2>
-			<p>Google chrome/Firefox/Opera/Android</p>
+				</details>
+				<details>
+					<summary><h2>ブラウザ対応状況</h2></summary>
+					<p>Google chrome/Firefox/Opera/Android</p>
+				</details>
+				</section>
 			<p><a href="index2.html">次へ</a></p>
 		</body>
 </html>

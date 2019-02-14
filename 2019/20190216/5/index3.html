@@ -25,7 +25,7 @@
 	</head>
 	<body>
 		<div id="wrap">
-			<h1>②-3 [CSS] conic-gradientをJSで操作</h1>
+			<h1>③-3 [CSS] conic-gradientをJSで操作</h1>
 			<div class="flex">
 
 				<div id="control">
@@ -64,8 +64,9 @@
 				<div id="box1"></div>
 			</div>
 
-			<h2>JavaScript</h2>
-			<pre><code>const G = document.getElementById("green");
+			<details>
+				<summary><h2>JavaScript</h2></summary>
+				<pre><code>const G = document.getElementById("green");
 const Y = document.getElementById("yellow");
 const B = document.getElementById("blue");
 const BOX1 = document.getElementById("box1");
@@ -75,12 +76,13 @@ Y.addEventListener("change", cng);
 B.addEventListener("change", cng);
 
 function cng() {
-	BOX1.style.background 
+	<mark>BOX1.style.background 
 	= "conic-gradient(green "+G.value+"%,"
-	+ "yellow 0,yellow "+Y.value+"%,"
-	+ "blue 0,blue "+B.value+"%,"
-	+ "red 0)";
+	+ "yellow 0, yellow "+Y.value+"%,"
+	+ "blue 0, blue "+B.value+"%,"
+	+ "red 0)";</mark>
 }</code></pre>
+			</details>
 			<script>
 				const G = document.getElementById("green");
 				const Y = document.getElementById("yellow");

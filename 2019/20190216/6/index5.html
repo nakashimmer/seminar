@@ -6,14 +6,21 @@
 		<script src="https://unpkg.com/obniz@1.13.0/obniz.js" crossorigin="anonymous"></script>
 		<script src="ob.js"></script>
 		<link rel="stylesheet" href="../iframe.css">
+		<style>
+			#print{
+				min-height:1.5em;
+				line-height:1.5em;
+				background-color:#666;
+			}
+		</style>
 	</head>
 
 	<body>
 		<!-- div id="obniz-debug"></div -->
 		<div id="wrap">
 			<div class="btn">
-				<h1>#4 サーボモータ(音声コントロール)</h1>
-				<p>左上げて・右上げて・終了</p>
+				<h1>④-4 【WoT】 obniz-サーボモータ(音声コントロール)</h1>
+				<p>左上げて or 右上げて or 終了</p>
 				<p id="print"></p>
 			</div>
 			<script>
@@ -58,14 +65,15 @@
 				<summary><h2>JavaScript</h2></summary>
 				<pre><code>RECOGNITION.addEventListener('result',(e)=>{
 	result = e.results.item(i).item(0).transcript;
-	if(result === "右上げて"){ SERVO.angle(0); }
-	if(result === "左上げて"){ SERVO.angle(180); }
-	if(result === "終了"){
-		 SERVO.angle(90); RECOGNITION.stop(); 
+	if(result === "<mark>右上げて</mark>"){ <mark>SERVO.angle(0);</mark> }
+	if(result === "<mark>左上げて</mark>"){ <mark>SERVO.angle(180);</mark> }
+	if(result === "<mark>終了</mark>"){
+		 <mark>SERVO.angle(90);</mark> RECOGNITION.stop(); 
 	}
 	i++;
 });</code></pre>
 			</details>
 		</div>
+		<p><a href="index6.html">次へ</a></p>
 	</body>
 </html>

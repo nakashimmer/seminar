@@ -13,7 +13,7 @@
 			<!-- div id="obniz-debug"></div -->
 			
 			<div class="btn">
-				<h1>#1.Lチカ</h1>
+				<h1>④-1 【WoT】obniz-Lチカ</h1>
 				<p>
 					<button id="on">ON</button>
 					<button id="off">OFF</button>
@@ -55,8 +55,8 @@
 
 			<details>
 				<summary><h2>HTML</h2></summary>
-				<pre><code>&lt;button id="on">ON&lt;/button>
-&lt;button id="off">OFF&lt;/button></code></pre>
+				<pre><code>&lt;button id="<mark>on</mark>">ON&lt;/button>
+&lt;button id="<mark>off</mark>">OFF&lt;/button></code></pre>
 			</details>
 
 			<details>
@@ -68,11 +68,11 @@ const OBNIZ = new Obniz(obid);
 OBNIZ.onconnect = async ()=>{
 	const LED = OBNIZ.wired(
 		"LED",{anode:0,cathode:1});
-	ON.addEventListener("click", ()=>{LED.on();});
-	OFF.addEventListener("click", ()=>{LED.off();});
+	<mark>ON</mark>.addEventListener("<mark>click</mark>", ()=>{<mark>LED.on()</mark>;});
+	<mark>OFF</mark>.addEventListener("<mark>click</mark>", ()=>{<mark>LED.off()</mark>;});
 }</code></pre>
 			</details>
-			<p><a href="2.servo.html">次へ</a></p>
+			<p><a href="index3.html">次へ</a></p>
 		</div>
 	</body>
 

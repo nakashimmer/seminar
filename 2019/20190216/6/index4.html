@@ -6,14 +6,21 @@
 		<script src="https://unpkg.com/obniz@1.13.0/obniz.js" crossorigin="anonymous"></script>
 		<script src="ob.js"></script>
 		<link rel="stylesheet" href="../iframe.css">
+		<style>
+			#print{
+				min-height:1.5em;
+				line-height:1.5em;
+				background-color:#666;
+			}
+		</style>
 	</head>
 
 	<body>
 		<!-- div id="obniz-debug"></div -->
 		<div id="wrap">
 			<div class="btn">
-				<h1>#3. Ｌチカ(音声コントロール)</h1>
-				<p>赤色・緑色・終了</p>
+				<h1>④-3 【WoT】obniz-Ｌチカ(音声コントロール)</h1>
+				<p>赤色 or 緑色 or 終了</p>
 				<p id="print"></p>
 			</div>
 			<script>
@@ -72,17 +79,17 @@ RECOGNITION.continuous = true;
 RECOGNITION.start();
 let result;
 let i=0;
-RECOGNITION.addEventListener('result', (e)=>{
+<mark>RECOGNITION</mark>.addEventListener('<mark>result</mark>', (e)=>{
 	result = e.results.item(i).item(0).transcript;
-	if(result === "赤色"){red();}
-	if(result === "緑色"){blue();}
-	if(result === "終了"){
-		RECOGNITION.stop();led1.off();led2.off();
+	if(result === "<mark>赤色</mark>"){<mark>red();</mark>}
+	if(result === "<mark>緑色</mark>"){<mark>blue();</mark>}
+	if(result === "<mark>終了</mark>"){
+		RECOGNITION.stop();<mark>led1.off();led2.off();</mark>
 	}
 	i++;
 });</code></pre>
 					</details>
-				<p><a href="4.servo(speech).html">次へ</a></p>
+				<p><a href="index5.html">次へ</a></p>
 		</div>
 	</body>
 </html>

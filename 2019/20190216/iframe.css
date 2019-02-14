@@ -12,15 +12,19 @@
 	font-weight:bold;
 	font-family: "Rounded Mplus 1c";
 	color:white;
-	background-color: #333;
 	outline:none;
 	cursor: url(https://webtechpromo.org/speaker/20180708/html5.png),pointer;
 }
 
 
+body,#wrap,dialog{
+	background-color: #333;
+}
+
 
 h1{font-size:48px;margin:0.8em 0.5em;color:#fff;}
-h2,h3,p,li,dt,dd,summary,details,code,button{font-size:36px;margin:0.3em 1em;color:#fff;}
+h2,h3,p,li,dt,dd,code,summary,button{font-size:36px;margin:0.3em 1em;color:#fff;}
+
 
 button{border:1px solid white;background-color: #666;border-radius:0.5em;padding:0.5em;}
 
@@ -30,7 +34,6 @@ p{
 }
 
 ul,ol,dl{margin-left:2em;}
-body{background-color:transparent;}
 
 code,style{
 	margin-left:1em;
@@ -60,4 +63,9 @@ code{tab-size: 2;}
 
 summary h2{
 	display:inline;
+}
+
+mark{
+	background-color:transparent;
+	color:lime;
 }

@@ -4,62 +4,64 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="../iframe.css">
 		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
-		<style>
-			.flex{display: flex;}
-			.contentcss {
-				display: block;
-				border: 1px dotted black;
-				min-height: 1em;
-				line-height: 1.2em;
-				white-space: pre;
-				font-size: 32px;
-				font-family: menlo;
-				resize: both;
-				overflow: scroll;
-				tab-size: 1;
-				text-indent: 0em;
-				flex:1;
-			}
-	
-			#box1{margin:0 30px;transition:all 1s linear 0.5s;}
-		</style>
+	<style>
+		#dlg {margin: 0 auto;padding: 1em;width:80%;
+			opacity:0;
+			transition:all 0.5s linear 0.5s;}
+		button {margin: 1em;}
+		#dlg button {display: block;margin: 1em auto;}
+	</style>
+
 	</head>
 	<body>
 		<div id="wrap">
-			<h1>②-2 [CSS] レインボーボール</h1>
-			<div class="flex">
-<style scoped contenteditable class="contentcss" id="style1">#box1{
-	border:1px solid gray;
-	width:300px; height:300px;
-	border-radius:50%;
-	background:conic-gradient(
-		red,purple,blue,green,yellow,orange,red
-	);
-	animation:ball 1s linear infinite normal;
-}
-@keyframes ball{
-	100%{transform:;}
-}
+			<section>
+				<h1>①-2 [HTML] dialog要素-透明度</h1>
 
-</style>
+				<button id="btn1">ダイアログを開く</button>
+				<dialog id="dlg">
+					<h3>ダイアログ</h3>
+					<p>HTML5はHTML,CSS,JavaScriptなどの仕様の総称名です。</p>
+					<p><button id="btn2">ダイアログを閉じる</button></p>
+				</dialog>
+				<script>
+					const DLG = document.getElementById("dlg");
+					const BTN1 = document.getElementById("btn1");
+					const BTN2 = document.getElementById("btn2");
+					
+					BTN1.addEventListener("click",()=>{
+						DLG.showModal();
+						DLG.style.opacity=1;
+					});
 
-				<div id="box1"></div>
+					BTN2.addEventListener("click", ()=>{
+						DLG.close();
+						DLG.style.opacity = 0;
+					});
+				</script>
+			</section>
 
-			</div>
+			<section>
+				<h2>CSS</h2>
+				<pre><code>#dlg{
+	opacity:0;
+	transition:all 0.5s linear 0.5s;
+}</code></pre>
+			</section>
+
+			<section>
+				<h2>JavaScript</h2>
+				<pre><code>BTN1.addEventListener("click",()=>{
+	DLG.showModal();
+	DLG.style.opacity=1;
+});
+BTN2.addEventListener("click",()=>{
+	DLG.close();
+	DLG.style.opacity = 0;
+});</code></pre>
+			</section>
+			<p><a href="index3.html">次へ</a></p>
 		</div>
-		<script>
-			const STYLE1 = document.getElementById("style1");
-			STYLE1.addEventListener(
-				"keydown",
-				(e)=>{
-					if (
-						e.keyCode === 9 ||
-						(!e.shiftKey && e.keyCode === 13)
-					) {
-						e.preventDefault();
-					}
-				});
-		</script>
-		<p><a href="index3.html">次へ</a>
+		
 	</body>
 </html>

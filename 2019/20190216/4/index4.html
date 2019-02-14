@@ -4,82 +4,60 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="../iframe.css">
 		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
-		<style>
+	<style>
+		#dlg {margin: 0 auto;padding: 1em;width:80%;
+			transform:rotate(0) scale(0);
+			transition:all 1s linear;}
+		button {margin: 1em;}
+		#dlg button {display: block;margin: 1em auto;}
+	</style>
 
-			#control{flex:1;}
-			#box1{
-				border:0px solid black;
-				box-shadow:5px 5px 5px rgba(0,0,0,0.3);
-				width:300px; height:300px;
-				border-radius:50%;
-				background:conic-gradient(
-					green 25%,
-					yellow 0,yellow 50%,
-					blue 0,blue 75%,
-					red 0
-				);
-				margin:1em 5em;
-			}
-			#box1{
-				margin:0 30px;
-				transition:all 1s linear 0.5s;
-			}
-			.flex{display: flex;}
-			iframe{
-				flex:1;
-				color:white;
-				background-color:white;
-				border:1px solid gray;
-				font-size:10px;
-				margin:1em;
-				height:330px;
-				border-radius:0.5em;
-			}
-			select{font-size: 1em;width:3em;text-align:right;}
-		</style>
 	</head>
 	<body>
 		<div id="wrap">
-			<div id=jsonp></div>
-			<h1>②-4 [CSS] <a href="https://tepco-usage-api.appspot.com/">外部データ</a>で円グラフ表示</h1>
+			<section>
+				<h1>①-4 [HTML] dialog要素-回転</h1>
 
-			<div class="flex">
-				<div id="box1"></div>
-				<iframe src="https://tepco-usage-api.appspot.com/latest.json?callback=jsonmsg"></iframe>
-			</div>
-			<div id="control">
-				<h2>JavaScript</h2>
-				<pre><code>const JSONP = document.getElementById("jsonp");
-const BOX1 = document.getElementById("box1");
-const script = document.createElement("script");
-script.src = 
-	"https://tepco-usage-api.appspot.com/"
-	+"latest.json?callback=jsonmsg</a>";
-JSONP.appendChild(script);
+				<button id="btn1">ダイアログを開く</button>
+				<dialog id="dlg">
+					<h3>ダイアログ</h3>
+					<p>HTML5はHTML,CSS,JavaScriptなどの仕様の総称名です。</p>
+					<p><button id="btn2">ダイアログを閉じる</button>
+				</dialog>
+				<script>
+					const DLG = document.getElementById("dlg");
+					const BTN1 = document.getElementById("btn1");
+					const BTN2 = document.getElementById("btn2");
+					
+					BTN1.addEventListener("click",()=>{
+						DLG.showModal();
+						DLG.style.transform=" rotate(360deg) scale(1)";
+					});
 
-function jsonmsg(e) {
-	let pst = e.usage / e.capacity * 100;
-	BOX1.style.background = "conic-gradient(
-		red " + pst + "%,yellow 0)";
+					BTN2.addEventListener("click", ()=>{
+						DLG.close();
+						DLG.style.transform = " rotate(0deg) scale(0)";
+					});
+				</script>
+			</section>
+
+			<section>
+				<h2>CSS</h2>
+				<pre><code>#dlg{
+	transform:rotate(0) scale(0);
+	transition:all 1s linear;
 }</code></pre>
+				<h2>JavaScript</h2>
+				<pre><code>BTN1.addEventListener("click",()=>{
+	DLG.showModal();
+	DLG.style.transform = "rotate(360deg) scale(1)";
+});
+BTN2.addEventListener("click",()=>{
+	DLG.close();
+	DLG.style.transform = "rotate(0deg) scale(0)";
+});</code></pre>
 
-			</div>
-			
-			
 
-			<script>
-				const JSONP = document.getElementById("jsonp");
-				const BOX1 = document.getElementById("box1");
-				const script = document.createElement("script");
-				script.src = "https://tepco-usage-api.appspot.com/latest.json?callback=jsonmsg";
-				JSONP.appendChild(script);
-	
-				function jsonmsg(e){
-					let pst= e.usage/e.capacity*100;
-					BOX1.style.background="conic-gradient(red "+pst+"%,yellow 0)";
-				}
-			</script>
-		</div>
-
-	</body>
+			</section>
+		</body>
 </html>

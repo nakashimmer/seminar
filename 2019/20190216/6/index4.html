@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../iframe.css">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+		<style>
+
+			#control{flex:1;}
+			#box1{
+				border:0px solid black;
+				box-shadow:5px 5px 5px rgba(0,0,0,0.3);
+				width:300px; height:300px;
+				border-radius:50%;
+				background:conic-gradient(
+					green 25%,
+					yellow 0,yellow 50%,
+					blue 0,blue 75%,
+					red 0
+				);
+				margin:1em 5em;
+			}
+			#box1{
+				margin:0 30px;
+				transition:all 1s linear 0.5s;
+			}
+			.flex{display: flex;}
+			iframe{
+				flex:1;
+				color:white;
+				background-color:white;
+				border:1px solid gray;
+				font-size:10px;
+				margin:1em;
+				height:330px;
+				border-radius:0.5em;
+			}
+			select{font-size: 1em;width:3em;text-align:right;}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id=jsonp></div>
+			<h1>②-4 [CSS] <a href="https://tepco-usage-api.appspot.com/">外部データ</a>で円グラフ表示</h1>
+
+			<div class="flex">
+				<div id="box1"></div>
+				<iframe src="https://tepco-usage-api.appspot.com/latest.json?callback=jsonmsg"></iframe>
+			</div>
+			<div id="control">
+				<h2>JavaScript</h2>
+				<pre><code>const JSONP = document.getElementById("jsonp");
+const BOX1 = document.getElementById("box1");
+const script = document.createElement("script");
+script.src = 
+	"https://tepco-usage-api.appspot.com/"
+	+"latest.json?callback=jsonmsg</a>";
+JSONP.appendChild(script);
+
+function jsonmsg(e) {
+	let pst = e.usage / e.capacity * 100;
+	BOX1.style.background = "conic-gradient(
+		red " + pst + "%,yellow 0)";
+}</code></pre>
+
+			</div>
+			
+			
+
+			<script>
+				const JSONP = document.getElementById("jsonp");
+				const BOX1 = document.getElementById("box1");
+				const script = document.createElement("script");
+				script.src = "https://tepco-usage-api.appspot.com/latest.json?callback=jsonmsg";
+				JSONP.appendChild(script);
+	
+				function jsonmsg(e){
+					let pst= e.usage/e.capacity*100;
+					BOX1.style.background="conic-gradient(red "+pst+"%,yellow 0)";
+				}
+			</script>
+		</div>
+
+	</body>
+</html>

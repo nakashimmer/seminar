@@ -4,206 +4,63 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="../iframe.css">
 		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
-		<style>
-			.flex{display: flex;}
-			.contentcss {
-				display: block;
-				border: 1px dotted black;
-				min-height: 1em;
-				line-height: 1.2em;
-				white-space: pre;
-				font-size: 32px;
-				font-family: menlo;
-				resize: both;
-				overflow: scroll;
-				tab-size: 1;
-				text-indent: 0em;
-				flex:1;
-			}
-			#box1{margin:0 30px;transition:all 1s linear 0.5s;}
-			.flex button{margin:3px;font-size:16px;flex:1;}
-		</style>
+	<style>
+		#dlg {margin: 0 auto;padding: 1em;width:80%;}
+		button {margin: 1em;}
+		#dlg button {display: block;margin: 1em auto;}
+	</style>
+
 	</head>
 	<body>
 		<div id="wrap">
-			<h1>② [CSS] conic-gradient(円錐)</h1>
-			<div class="flex">
-<style scoped contenteditable class="contentcss" id="style1">#box1{
-	border: 1px solid gray;
-	width: 300px; height: 300px;
-	background:
-	 linear-gradient(
-		 white,
-		 black
-	);
-}</style>
+			<section>
+				<h1>① [HTML] dialog要素</h1>
 
-				<div id="box1"></div>
+				<button id="btn1">ダイアログを開く</button>
+				<dialog id="dlg">
+					<h3>ダイアログ</h3>
+					<p>HTML5はHTML,CSS,JavaScriptなどの仕様の総称名です。</p>
+					<p><button id="btn2">ダイアログを閉じる</button>
+				</dialog>
+				<script>
+					const DLG = document.getElementById("dlg");
+					const BTN1 = document.getElementById("btn1");
+					const BTN2 = document.getElementById("btn2");
+					
+					BTN1.addEventListener("click",()=>{
+						DLG.showModal();
+					});
 
-			</div>
-		</div>
-		<script>
-			const STYLE1 = document.getElementById("style1");
-			STYLE1.addEventListener(
-				"keydown",
-				(e)=>{
-					if (
-						e.keyCode === 9 ||
-						(!e.shiftKey && e.keyCode === 13)
-					) {
-						e.preventDefault();
-					}
-				});
-		</script>
-		<p class="flex">
+					BTN2.addEventListener("click", ()=>{
+						DLG.close();
+					});
+				</script>
+			</section>
+			<section>
+				<h2>HTML</h2>
+				<pre><code>&lt;button id="btn1">ダイアログを開く&lt;/button>
 
-			<button onclick="ins1();">1.基本</button>
-			<button onclick="ins2();">2.円錐</button>
-			<button onclick="ins3();">3.範囲指定</button>
-			<button onclick="ins4();">4.某社ロゴ</button>
-			<button onclick="ins5();">5.分割</button>
-			<button onclick="ins6();">6.元に</button>
-			<button onclick="ins7();">7.円</button>
-			<button onclick="ins8();">8.リピート</button>
-			<button onclick="ins9();">9.くっきり</button>
-			<button onclick="ins10();">10.中心ずらす</button>
-		</p>
-		<p><a href="index2.html">次へ</a>
+&lt;dialog id="dlg">
+	&lt;h3>ダイアログ&lt;/h3>
+	&lt;p>HTML5はHTML,CSS,JavaScriptなどの仕様の総称名です。&lt;/p>
+	&lt;p>&lt;button id="btn2">ダイアログを閉じる&lt;/button>&lt/p>
+&lt;/dialog></code></pre>
 
-			
-<script>
-	function ins1(){
-STYLE1.innerHTML=`#box1{
-	border: 1px solid gray;
-	width: 300px; height: 300px;
-	background:
-		conic-gradient(
-			white,
-			black
-	);
-}`;
-	}
+				<h2>JavaScript</h2>
+				<pre><code>const DLG = document.getElementById("dlg");
+const BTN1 = document.getElementById("btn1");
+const BTN2 = document.getElementById("btn2");
 
-	function ins2() {
-STYLE1.innerHTML = `#box1{
-	border: 1px solid gray;
-	width: 300px; height: 300px;
-	background:
-		conic-gradient(
-			white,
-			black,
-			white
-	);
-}`;
-	}
+BTN1.addEventListener("click", ()=>{
+	DLG.showModal();
+});
 
-	function ins3() {
-STYLE1.innerHTML = `#box1{
-	border: 1px solid gray;
-	width: 300px; height: 300px;
-	background:
-		conic-gradient(
-			white 25%,
-			black 75%
-	);
-}`;
-	}
-
-	function ins4() {
-STYLE1.innerHTML = `#box1{
-	border: 1px solid gray;
-	width: 300px; height: 300px;
-	background:
-		conic-gradient(
-			green 25%,
-			yellow 50%,
-			blue 75%,
-			red
-	);
-}`;
-	}
-
-	function ins5() {
-STYLE1.innerHTML = `#box1{
-	border: 1px solid gray;
-	width: 300px; height: 300px;
-	background:
-		conic-gradient(
-			green 25%,
-			yellow 0,yellow 50%,
-			blue 0,blue 75%,
-			red 0
-	);
-	background-size:100% 100%;
-}`;
-	}
-
-	function ins6() {
-STYLE1.innerHTML = `#box1{
-	border: 1px solid gray;
-	width: 300px; height: 300px;
-	background:
-		conic-gradient(
-			white,
-			black
-	);
-}`;
-	}
-
-	function ins7() {
-STYLE1.innerHTML = `#box1{
-	border: 1px solid gray;
-	width: 300px; height: 300px;
-	background:
-		conic-gradient(
-			white,
-			black
-	);
-	border-radius:50%;
-}`;
-	}
-
-	function ins8() {
-STYLE1.innerHTML = `#box1{
-	border: 1px solid gray;
-	width: 300px; height: 300px;
-	background:
-		repeating-conic-gradient(
-			white 0,
-			black 100%
-	);
-	border-radius:50%;
-}`;
-	}
-
-	function ins9() {
-STYLE1.innerHTML = `#box1{
-	border: 1px solid gray;
-	width: 300px; height: 300px;
-	background:
-		repeating-conic-gradient(
-			white 0, white 10%,
-			black 0, black 20%
-	);
-	border-radius:50%;
-}`;
-	}
-
-	function ins10() {
-STYLE1.innerHTML = `#box1{
-	border: 1px solid gray;
-	width: 300px; height: 300px;
-	background:
-		repeating-conic-gradient(
-			at center,
-			white 0, white 10%,
-			black 0, black 20%
-	);
-	border-radius:50%;
-}`;
-			}
-
-</script>
-
-	</body>
+BTN2.addEventListener("click", ()=>{
+	DLG.close();
+});</code></pre>
+			</section>
+			<h2>ブラウザ対応状況</h2>
+			<p>Google chrome/Firefox/Opera/Android</p>
+			<p><a href="index2.html">次へ</a></p>
+		</body>
 </html>

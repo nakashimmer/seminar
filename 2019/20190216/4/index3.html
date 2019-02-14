@@ -4,98 +4,64 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="../iframe.css">
 		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
-		<style>
-			.flex{display: flex;}
-			#control{flex:1;}
-			#box1{margin:0 30px;
-				border:0px solid black;
-				box-shadow:5px 5px 5px rgba(0,0,0,0.3);
-				width:300px; height:300px;
-				border-radius:50%;
-				background:conic-gradient(
-					green 25%,
-					yellow 0,yellow 50%,
-					blue 0,blue 75%,
-					red 0
-				)
-			}
-			#box1{margin:0 30px;transition:all 1s linear 0.5s;}
-			select{font-size: 1em;width:3em;text-align:right;}
-		</style>
+	<style>
+		#dlg {margin: 0 auto;padding: 1em;width:80%;
+			transform:scale(0);
+			transition:all 0.5s linear;}
+		button {margin: 1em;}
+		#dlg button {display: block;margin: 1em auto;}
+	</style>
+
 	</head>
 	<body>
 		<div id="wrap">
-			<h1>②-3 [CSS] conic-gradientをJSで操作</h1>
-			<div class="flex">
+			<section>
+				<h1>①-3 [HTML] dialog要素-伸縮</h1>
 
-				<div id="control">
-					<h2>CSS</h2>
-					<pre><code>background:conic-gradient(
-	green <select id="green">
-		<option value="0" >0</option>
-		<option value="5" >5</option>
-		<option value="15">15</option>
-		<option value="25" selected>25</option>
-		<option value="35">35</option>
-		<option value="45">45</option>
-		<option value="55">55</option>
-	</select>%,
-	yellow 0, yellow <select id="yellow">
-		<option value="20">20</option>
-		<option value="30">30</option>
-		<option value="40">40</option>
-		<option value="50" selected>50</option>
-		<option value="60">60</option>
-		<option value="70">70</option>
-		<option value="80">80</option>
-	</select>%,
-	blue 0, blue <select id="blue">
-		<option value="45">45</option>
-		<option value="55">55</option>
-		<option value="65">65</option>
-		<option value="75" selected>75</option>
-		<option value="85">85</option>
-		<option value="95">95</option>
-		<option value="100">100</option>
-	</select>%,
-	red 0
-);</code></pre>
-				</div>
-				<div id="box1"></div>
-			</div>
+				<button id="btn1">ダイアログを開く</button>
+				<dialog id="dlg">
+					<h3>ダイアログ</h3>
+					<p>HTML5はHTML,CSS,JavaScriptなどの仕様の総称名です。</p>
+					<p><button id="btn2">ダイアログを閉じる</button>
+				</dialog>
+				<script>
+					const DLG = document.getElementById("dlg");
+					const BTN1 = document.getElementById("btn1");
+					const BTN2 = document.getElementById("btn2");
+					
+					BTN1.addEventListener("click",()=>{
+						DLG.showModal();
+						DLG.style.transform="scale(1)";
+					});
 
-			<h2>JavaScript</h2>
-			<pre><code>const G = document.getElementById("green");
-const Y = document.getElementById("yellow");
-const B = document.getElementById("blue");
-const BOX1 = document.getElementById("box1");
-
-G.addEventListener("change", cng);
-Y.addEventListener("change", cng);
-B.addEventListener("change", cng);
-
-function cng() {
-	BOX1.style.background 
-	= "conic-gradient(green "+G.value+"%,"
-	+ "yellow 0,yellow "+Y.value+"%,"
-	+ "blue 0,blue "+B.value+"%,"
-	+ "red 0)";
+					BTN2.addEventListener("click", ()=>{
+						DLG.close();
+						DLG.style.transform = "scale(0)";
+					});
+				</script>
+			</section>
+			<section>
+				<h2>CSS</h2>
+				<pre><code>#dlg{
+	transform:scale(0);
+	transition:all 0.5s linear;
 }</code></pre>
-			<script>
-				const G = document.getElementById("green");
-				const Y = document.getElementById("yellow");
-				const B = document.getElementById("blue");
-				const BOX1 = document.getElementById("box1");
+			</section>
 
-				G.addEventListener("change", cng);
-				Y.addEventListener("change", cng);
-				B.addEventListener("change", cng);
-
-				function cng() {
-					BOX1.style.background="conic-gradient(green "+G.value+"%,yellow 0,yellow "+Y.value+"%,blue 0,blue "+B.value+"%,red 0)";
-				}
-			</script>
+			<section>
+				<h2>JavaScript</h2>
+				<pre><code>BTN1.addEventListener("click",()=>{
+	DLG.showModal();
+	DLG.style.transform = "scale(1)";
+});
+				
+BTN2.addEventListener("click",()=>{
+	DLG.close();
+	DLG.style.transform = "scale(0)";
+});</code></pre>
+			</section>
+			<p><a href="index4.html">次へ</a></p>
 		</div>
-		<p><a href="index4.html">次へ</a>
+		
 	</body>
 </html>

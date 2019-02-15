@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>カウントダウン</title>
+		<meta name=viewport content="width=device-width">
+		<style>
+			body{text-align:center;background-color:black;}
+			*{color:white;font-size:20px;}
+			#wrap{text-align:center;background-color:black;}
+			button{color:black;}
+		</style>
+	</head>
+	<body>
+		<h1>カウントダウン</h1>
+		<div id="wrap">
+			<canvas id="canvas" width="300" height="300"></canvas>
+			<p id=countdown>カウントダウン</p>
+			<p id=msg>メッセージ</p>
+			<button onclick="start();" id="btn">スタート</button>
+		</div>
+
+		<script>
+			let i, maxMinute, timer1;
+			const CANVAS = document.getElementById("canvas");
+			const C = CANVAS.getContext("2d");
+
+			const MSG=document.getElementById("msg");
+			const COUNTDOWN = document.getElementById("countdown");
+
+			const BTN = document.getElementById("btn");
+
+			//音
+			const startSound = new Audio("startSound.mp3");
+			const midSound = new Audio("midSound.mp3");
+			const dangerSound = new Audio("dangerSound.mp3");
+			const finishSound = new Audio("finishSound.mp3");
+			startSound.value = 1;
+
+			//スタート＝＝＝＝＝
+			function start(){
+				//可変箇所＝＝＝＝＝
+				i = 0;
+				maxMinute = 180;
+				//ここまで＝＝＝＝＝
+				timer();
+				timer1=setInterval(timer,1000);
+				BTN.style.backgroundColor="#333";
+			}
+
+			function timer(){
+				cls();
+				drawArc(maxMinute,i);
+				countdown(maxMinute,i);
+				
+				if(i==0){
+					startSound.play();
+					MSG.innerHTML="開始しました";
+					midSound.volume=0;midSound.play();
+					dangerSound.volume=0;dangerSound.play();
+					finishSound.volume=0;finishSound.play();
+				}
+				if(maxMinute/2<=i){MSG.innerHTML="半分経過";}
+				if(maxMinute/2==i){midSound.volume=1;midSound.play();}
+				if(maxMinute*3/4<=i){MSG.innerHTML="3/4経過";}
+				if(maxMinute-i<5){dangerSound.volume=1;dangerSound.play();}
+				if(i==maxMinute){
+					MSG.innerHTML="終了";
+					dangerSound.pause();
+					finishSound.volume=1;finishSound.play();
+					clearInterval(timer1);
+				}
+				i++;
+			}
+
+			function cls() {
+				C.fillStyle = "black";
+				C.fillRect(0, 0, CANVAS.width, CANVAS.height);
+			}
+
+			function drawArc(maxMinute, i) {
+				C.beginPath();
+				C.moveTo(150, 150);
+				var rad = (i / maxMinute * 2 - 0.5) * Math.PI;
+				C.arc(150, 150, 100, rad, 1.5 * Math.PI, false);
+				C.closePath();
+				C.fillStyle = "white";
+				C.fill();
+			}
+
+			function countdown(maxMinute, i) {
+				COUNTDOWN.innerHTML = "残り時間" + (maxMinute - i) + "秒"
+			}
+</script>
+
+
+</body>
+</html>

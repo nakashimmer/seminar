@@ -64,7 +64,7 @@
 			<details>
 				<summary><h2>JavaScript</h2></summary>
 				<pre><code>RECOGNITION.addEventListener('result',(e)=>{
-	result = e.results.item(i).item(0).transcript;
+	<mark>result</mark> = e.results.item(i).item(0).transcript;
 	if(result === "<mark>右上げて</mark>"){ <mark>SERVO.angle(0);</mark> }
 	if(result === "<mark>左上げて</mark>"){ <mark>SERVO.angle(180);</mark> }
 	if(result === "<mark>終了</mark>"){

@@ -68,9 +68,11 @@ summary h2{
 mark{
 	background-color:transparent;
 	color:lime;
+	margin:0;padding:0;
 }
 
 ::selection {
   background: #fff;
   color: #000;
 }
+

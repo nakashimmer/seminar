@@ -79,8 +79,8 @@ RECOGNITION.continuous = true;
 RECOGNITION.start();
 let result;
 let i=0;
-<mark>RECOGNITION</mark>.addEventListener('<mark>result</mark>', (e)=>{
-	result = e.results.item(i).item(0).transcript;
+<mark>RECOGNITION</mark>.addEventListener('result', (e)=>{
+	<mark>result</mark> = e.results.item(i).item(0).transcript;
 	if(result === "<mark>赤色</mark>"){<mark>red();</mark>}
 	if(result === "<mark>緑色</mark>"){<mark>blue();</mark>}
 	if(result === "<mark>終了</mark>"){

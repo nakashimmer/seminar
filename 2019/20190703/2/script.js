@@ -42,6 +42,9 @@ function mySpeech(){
 
 //音声認識
 function nyuryoku(){
+	const BTN=document.getElementById("btn");
+	BTN.innerHTML="🔴録音中";
+
 	const RECOGNITION = new webkitSpeechRecognition();	//音声認識オブジェクト生成
 	const LANG=document.getElementById("lang");
 	RECOGNITION.lang = LANG.value;	//言語設定
@@ -60,6 +63,7 @@ function nyuryoku(){
 		msg = msg.replace("何時",now.getHours()+"時"+now.getMinutes()+"分です");
 
 		INPUT.value = msg;
+		BTN.innerHTML="ボタンを押して";
 		setTimeout(mySpeech,1000);	//1秒後にmySpeechを起動
 	});
 }

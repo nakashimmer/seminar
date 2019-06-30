@@ -21,15 +21,22 @@
 			<p>
 				obniz ID:
 				<input type="password" id="obid">
-				<button onclick="reg();">登録</button>
-				<a href="index2.html">つづく</a>
+				<button onclick="reg();" id="btn">登録</button>
+				<a href="index2.html">ではいよいよ…</a>
 			</p>	
 		</div>
 
 
 		<script>
-			let OBID=document.getElementById("obid");
+			const BTN=document.getElementById("btn");
+			const OBID=document.getElementById("obid");
+			let obid=localStorage.getItem("OBID");
+			if(obid){
+				OBID.value=obid;
+			}
 			function reg(){
+				BTN.style.backgroundColor="yellow";
+				BTN.style.color = "#333";
 				localStorage.setItem("OBID",OBID.value);
 			}
 		</script>

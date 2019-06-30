@@ -99,17 +99,19 @@ function detectPoseInRealTime(video, net) {
     ctx.restore();
 
 		poses.forEach(({ s, keypoints }) => {
-			drawLine(keypoints[3], keypoints[4], ctx, "green",150);//輪郭
-
-			drawArc(keypoints[0], ctx,"yellow",20);//鼻
-			drawArc(keypoints[1], ctx, "blue",30);//右目
-			drawArc(keypoints[2], ctx, "blue",30);//左目
 
 			drawLine(keypoints[5], keypoints[6], ctx, "gray", 50);//肩
-			drawLine(keypoints[5], keypoints[7], ctx, "gray",10);//腕1
-			drawLine(keypoints[6], keypoints[8], ctx, "gray",10);//腕1
-			drawLine(keypoints[7], keypoints[9], ctx, "gray",10);//腕2
-			drawLine(keypoints[8], keypoints[10], ctx, "gray",10);//腕2
+			drawLine(keypoints[5], keypoints[7], ctx, "gray", 10);//腕1
+			drawLine(keypoints[6], keypoints[8], ctx, "gray", 10);//腕1
+			drawLine(keypoints[7], keypoints[9], ctx, "gray", 10);//腕2
+			drawLine(keypoints[8], keypoints[10], ctx, "gray", 10);//腕2
+
+			drawLine(keypoints[3], keypoints[4], ctx, "green",150);//輪郭
+			drawArc(keypoints[1], ctx, "blue", 30);//右目
+			drawArc(keypoints[2], ctx, "blue", 30);//左目
+			drawArc(keypoints[0], ctx,"yellow",20);//鼻
+
+
 /*
 			drawLine(keypoints[5], keypoints[12], ctx, "gray", 50);//脇腹1
 			drawLine(keypoints[6], keypoints[11], ctx, "gray", 50);//脇腹1
@@ -146,6 +148,11 @@ function drawLine(point1,point2,ctx,color,width) {
 	ctx.strokeStyle = color;
 	ctx.lineWidth=width;
 	ctx.lineCap="round";
+	ctx.shadowColor = "rgba(0, 0, 0,0.8)";
+	ctx.shadowOffsetX = 30;
+	ctx.shadowOffsetY = 30;
+	ctx.shadowBlur = 30;
+
 	ctx.lineTo(
 		Math.floor(point1.position.x/r)*r,
 		Math.floor(point1.position.y / r) * r);

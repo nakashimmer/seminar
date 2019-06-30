@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>①基礎知識</title>
+		<title>①HTML5基礎知識</title>
 		<meta name=viewport content="width=device-width">
 		<link rel="stylesheet" href="../iframe.css">
 		<style>
@@ -39,7 +39,7 @@
 	</head>
 
 	<body>
-		<h1>①基礎知識</h1>
+		<h1>①HTML5基礎知識</h1>
 		<div id="wrap">
 			<section>
 				<h2>1. 事前設定</h2>
@@ -76,10 +76,10 @@
 				<details>
 					<summary><h2>JavaScript</h2></summary>	
 					<pre><code>const VOICES = speechSynthesis.getVoices();
-const CONTEXT = new SpeechSynthesisUtterance(INPUT.value);
+const <mark>CONTEXT</mark> = new SpeechSynthesisUtterance(INPUT.value);
 CONTEXT.lang = LANG.value;
 CONTEXT.voice = VOICES[VOICENO.value];
-speechSynthesis.speak(CONTEXT);</code></pre>
+speechSynthesis.<mark>speak(CONTEXT)</mark>;</code></pre>
 				</details>
 			</section>
 
@@ -88,11 +88,11 @@ speechSynthesis.speak(CONTEXT);</code></pre>
 				<p><button onclick="nyuryoku();" id="btn">ボタンを押して</button>マイクから音声を入力</p>
 				<details>
 					<summary><h2>JavaScript</h2></summary>
-					<pre><code>const RECOGNITION = new webkitSpeechRecognition();
+					<pre><code>const <mark>RECOGNITION</mark> = new webkitSpeechRecognition();
 RECOGNITION.lang = LANG.value;
 RECOGNITION.start();
-RECOGNITION.addEventListener('result', (e)=>{
-	let msg = e.results.item(0).item(0).transcript;
+RECOGNITION.addEventListener(<mark>'result'</mark>, (e)=>{
+	let msg = <mark>e.results.item(0).item(0).transcript</mark>;
 });</code></pre>
 				</details>
 			</section>

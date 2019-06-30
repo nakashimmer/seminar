@@ -11,6 +11,7 @@
 				min-height:1.5em;
 				line-height:1.5em;
 				background-color:#666;
+				flex:1;
 			}
 		</style>
 	</head>
@@ -20,8 +21,15 @@
 		<div id="wrap">
 			<div class="btn">
 				<h1>②-4 【WoT】 obniz-サーボモータ(音声操作)</h1>
-				<p>左上げて or 右上げて or 終了</p>
-				<p id="print"></p>
+				<p>次のどれかを大きな声でお願いします</p>
+				<div class="flex">
+					<ul>
+						<li>左上げて</li>
+						<li>右上げて</li>
+						<li>終了</li>
+					</ul>
+					<p id="print"></p>
+				</div>
 			</div>
 
 			<details>
@@ -51,7 +59,8 @@
 					"ServoMotor",
 					{ gnd: 4, vcc: 5, signal: 6 }
 				);
-
+				SERVO.angle(90);
+				OBNIZ.display.print("音声でサーボ");
 				function left() { SERVO.angle(0);};
 
 				function right() { SERVO.angle(180);};

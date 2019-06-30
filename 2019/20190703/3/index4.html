@@ -11,6 +11,7 @@
 				min-height:1.5em;
 				line-height:1.5em;
 				background-color:#666;
+				flex:1;
 			}
 		</style>
 	</head>
@@ -20,8 +21,15 @@
 		<div id="wrap">
 			<div class="btn">
 				<h1>②-3 【WoT】obniz-Ｌチカ(音声操作)</h1>
-				<p>赤色 or 緑色 or 終了</p>
-				<p id="print"></p>
+				<p>次の色を大きな声でお願いします。</p>
+				<div class="flex">
+					<ul>
+						<li>赤色</li>
+						<li>緑色</li>
+						<li>終了</li>
+					</ul>
+					<p id="print"></p>
+				</div>
 			</div>
 			<details>
 				<summary><h2>JavaScript</h2></summary>
@@ -31,7 +39,7 @@ RECOGNITION.continuous = true;
 RECOGNITION.start();
 let result;
 let i=0;
-<mark>RECOGNITION</mark>.addEventListener('result', (e)=>{
+<mark>RECOGNITION</mark>.addEventListener(<mark>"result"</mark>, (e)=>{
 	<mark>result</mark> = e.results.item(i).item(0).transcript;
 	if(result === "<mark>赤色</mark>"){<mark>red();</mark>}
 	if(result === "<mark>緑色</mark>"){<mark>blue();</mark>}
@@ -55,7 +63,7 @@ let i=0;
 				let led2 = OBNIZ.wired("LED", { anode: 2, cathode: 3 });
 
 				OBNIZ.display.clear();
-				OBNIZ.display.print("チカチカしよう！");
+				OBNIZ.display.print("音声でLチカ");
 				
 
 				OBNIZ.switch.onchange = (state) => {

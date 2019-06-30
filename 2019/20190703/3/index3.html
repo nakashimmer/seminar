@@ -13,17 +13,17 @@
 			<div class="btn">
 				<h1>②-2 【WoT】obniz-サーボモータ</h1>
 				<ol>
-					<li>操作：<input id="slider" type="range"  min="0" max="180"></li>
+					<li>操作：<input id="input" type="range"  min="0" max="180"></li>
 					<li id="info">回転角度</li>
 				</ol>
 			</div>
 			<details>
 				<summary><h2>HTML</h2></summary>
-				<pre><code>&lt;input id="slider" type="range" min="0" max="180"></code></pre>
+				<pre><code>&lt;input id="input" type="range" min="0" max="180"></code></pre>
 			</details>
 			<details>
 				<summary><h2>JavaScript</h2></summary>
-				<pre><code>const SLIDER = document.getElementById("slider");
+				<pre><code>const INPUT = document.getElementById("input");
 const OBNIZ = new Obniz(obid);
 
 OBNIZ.onconnect = async ()=>{
@@ -31,8 +31,8 @@ OBNIZ.onconnect = async ()=>{
 		"ServoMotor",{gnd:4,vcc:5,signal:6}
 	);
 
-	<mark>SLIDER</mark>.addEventListener("<mark>change</mark>",()=>{
-		<mark>SERVO.angle(SLIDER.value)</mark>;
+	<mark>INPUT</mark>.addEventListener("<mark>change</mark>",()=>{
+		<mark>SERVO.angle(INPUT.value)</mark>;
 	});
 }</code></pre>
 			</details>
@@ -41,28 +41,29 @@ OBNIZ.onconnect = async ()=>{
 		</div>
 		<script>
 			const INFO = document.getElementById("info");
-			const SLIDER = document.getElementById("slider");
+			const INPUT = document.getElementById("input");
 			const OBNIZ = new Obniz(obid);
 
 			OBNIZ.io1.pull("5v");
 
 			OBNIZ.onconnect = async ()=>{
 				OBNIZ.display.clear();
-				OBNIZ.display.print("サーボを動かそう！");
+				OBNIZ.display.print("サーボを動かす");
 			
 				const SERVO = OBNIZ.wired(
 					"ServoMotor",
 					{gnd:4, vcc:5, signal:6}
 				);
+				SERVO.angle(90);
 
-				SLIDER.addEventListener(
+				INPUT.addEventListener(
 					"change",
 					()=>{
 						OBNIZ.io1.pull("5v");
-						SERVO.angle(SLIDER.value);
-						INFO.innerHTML = "回転角は"+SLIDER.value+"度";
+						SERVO.angle(INPUT.value);
+						INFO.innerHTML = "回転角は"+ INPUT.value+"度";
 						OBNIZ.display.clear();
-						OBNIZ.display.print(SLIDER.value+"度回転");
+						OBNIZ.display.print(INPUT.value+"度回転");
 						OBNIZ.display.print("させました。");
 					}
 				);

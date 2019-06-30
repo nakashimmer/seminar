@@ -52,7 +52,7 @@ OBNIZ.onconnect = async ()=>{
 			OBNIZ.onconnect = async function () {
 				const LED = OBNIZ.wired("LED", { anode: 0, cathode: 1 });
 				OBNIZ.display.clear();
-				OBNIZ.display.print("Hello World");
+				OBNIZ.display.print("Lチカ");
 
 				OBNIZ.switch.onchange = (state) => {
 					PRINT.innerHTML = state;
@@ -61,15 +61,25 @@ OBNIZ.onconnect = async ()=>{
 				}
 
 				ON.addEventListener("click", () => {
+					ON.style.backgroundColor="yellow";
+					OFF.style.backgroundColor = "#333";
+					ON.style.color = "#333";
+					OFF.style.color = "#fff";
 					LED.on();
 					OBNIZ.display.clear();
-					OBNIZ.display.print("つける");
+					OBNIZ.display.print("ONのボタンを")
+					OBNIZ.display.print("押しました");
 				});
 
 				OFF.addEventListener("click", () => {
+					ON.style.backgroundColor = "#666";
+					OFF.style.backgroundColor = "yellow";
+					ON.style.color = "#fff";
+					OFF.style.color = "#333";
 					LED.off();
 					OBNIZ.display.clear();
-					OBNIZ.display.print("消す");
+					OBNIZ.display.print("OFFのボタンを")
+					OBNIZ.display.print("押しました");
 				});
 			}
 

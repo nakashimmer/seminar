@@ -6,13 +6,38 @@
 		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
 		<style>
 			#wrap{width:900px;margin:0 auto;padding:5px;}
-			h1,p{text-align:center;}
+			#wrap2 {
+			margin: 0px auto 0;
+			width: 800px;
+			height: 600px;
+			overflow: hidden;
+		}
+
+		#video {
+			display: block;
+			margin-left: -2000px;
+			position: absolute;
+		}
+
+		#canvas {
+			position: absolute;
+		}
 		</style>
+		<script src="https://unpkg.com/@tensorflow/tfjs"></script>
+		<script src="https://unpkg.com/@tensorflow-models/posenet"></script>
 	</head>
 	<body>
 		<div id="wrap">
 			<h1>おわり</h1>
 			<p>ご清聴ありがとうございました。</p>
+				<div id="wrap"></div>
+					<div id="wrap2">
+						<video id="video" width="800" height="600" autoplay="1"></video>
+						<canvas id="canvas" width="800" height="600"></canvas>
+					</div>
+				</div>
 		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.js"></script>
+		<script src="index3.js"></script>
 	</body>
 </html>

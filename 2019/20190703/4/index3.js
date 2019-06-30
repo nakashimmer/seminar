@@ -133,7 +133,7 @@ function drawArc(point,ctx,color,width){
     ctx.beginPath();
 		ctx.fillStyle = color;
     ctx.arc(
-			800 - Math.floor(point.position.x / r) * r, 
+			Math.floor(point.position.x / r) * r, 
 			Math.floor(point.position.y / r) * r,
 			width,0,2*Math.PI,false);
 		ctx.fill();
@@ -147,10 +147,10 @@ function drawLine(point1,point2,ctx,color,width) {
 	ctx.lineWidth=width;
 	ctx.lineCap="round";
 	ctx.lineTo(
-		800-Math.floor(point1.position.x/r)*r,
+		Math.floor(point1.position.x/r)*r,
 		Math.floor(point1.position.y / r) * r);
 	ctx.lineTo(
-		800 - Math.floor(point2.position.x / r) * r,
+		Math.floor(point2.position.x / r) * r,
 		Math.floor(point2.position.y / r) * r);
 	ctx.stroke();	
 }

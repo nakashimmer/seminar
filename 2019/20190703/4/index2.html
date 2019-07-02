@@ -5,25 +5,44 @@
 		<link rel="stylesheet" href="../iframe.css">
 		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
 		<style>
-			p{text-align: center;}
-			img{
-				width:80%;
-				border-radius:10px;
-				filter:drop-shadow(10px 10px 10px black);
+			#wrap{width:900px;margin:0 auto;padding:5px;}
+			#wrap2 {
+				margin: 0px auto 0;
+				width: 800px;
+				height: 600px;
+				overflow: hidden;
 			}
-			
+
+			#video {
+				display: block;
+				margin-left: -2000px;
+				position: absolute;
+			}
+
+			#canvas {
+				position: absolute;
+			}
+			img{height:1.3em;}
+			#nakashima{display:block;width:320px;height:300px;}
 		</style>
+		<script src="https://unpkg.com/@tensorflow/tfjs"></script>
+		<script src="https://unpkg.com/@tensorflow-models/posenet"></script>
 	</head>
 	<body>
 		<div id="wrap">
-			<h1>最後に[PR]</h1>
-			<p>HTML5検定をはじめました。「検定科目はHTML5」</p>
-			<p><img src="wtpo.png" style="width:90%;"></p>
-			<p style="text-align: center;"><img src="https://webtechpromo.org/test/nintei.jpg"></p>
-			</p>
-			<p><img src="kyokasho.jpg"></p>
-			<p><a href="index3.html">次へ</a></p>
+			<h1>ご清聴ありがとうございました</h1>
+			<div style="position:relative;">
+				<div style="position:absolute;">
+					<p>懇親会でも気軽に声をかけてください<br>
+					<img src="fb.png"> <img src="twitter.png"> @<mark>nakashimmer</mark></p>
+				</div>
+				<div id="wrap2">
+					<video id="video" width="800" height="600" autoplay="1"></video>
+					<canvas id="canvas" width="800" height="600"></canvas>
+				</div>
+			</div>
 		</div>
-
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.js"></script>
+		<script src="index2.js"></script>
 	</body>
 </html>

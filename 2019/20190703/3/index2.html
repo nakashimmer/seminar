@@ -12,7 +12,7 @@
 		<div id="wrap">
 			<!-- div id="obniz-debug"></div -->
 			<div class="btn">
-				<h1>②-1 【WoT】obniz-Lチカ</h1>
+				<h1>②-1 Lチカ(LEDチカチカ)</h1>
 				<p>
 					<button id="on">ON</button>
 					<button id="off">OFF</button>
@@ -33,8 +33,7 @@ const OFF = document.getElementById("off");
 			
 const OBNIZ = new Obniz(obid);
 OBNIZ.onconnect = async ()=>{
-	const LED = OBNIZ.wired(
-		"LED",{anode:0,cathode:1});
+	const LED = OBNIZ.wired("LED",{anode:0,cathode:1});
 	<mark>ON</mark>.addEventListener("<mark>click</mark>", ()=>{<mark>LED.on()</mark>;});
 	<mark>OFF</mark>.addEventListener("<mark>click</mark>", ()=>{<mark>LED.off()</mark>;});
 }</code></pre>

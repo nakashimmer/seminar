@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<script src="https://unpkg.com/obniz@1.13.0/obniz.js" crossorigin="anonymous"></script>
+		<script src="ob.js"></script>
+		<link rel="stylesheet" href="../index/iframe.css">
+	</head>
+
+	<body>
+		<div id="wrap">
+			<!-- div id="obniz-debug"></div -->
+			<div class="btn">
+				<h1>②-1 Lチカ(LEDチカチカ)</h1>
+				<p>
+					<button id="on">ON</button>
+					<button id="off">OFF</button>
+				</p>
+				<div id="print"></div>
+			</div>
+
+			<details>
+				<summary><h2>HTML</h2></summary>
+				<pre><code>&lt;button id="<mark>on</mark>">ON&lt;/button>
+&lt;button id="<mark>off</mark>">OFF&lt;/button></code></pre>
+			</details>
+
+			<details>
+				<summary><h2>JavaScript</h2></summary>
+				<pre><code>const ON = document.getElementById("on");
+const OFF = document.getElementById("off");
+			
+const OBNIZ = new Obniz(obid);
+OBNIZ.onconnect = async ()=>{
+	const LED = OBNIZ.wired("LED",{anode:0,cathode:1});
+	<mark>ON</mark>.addEventListener("<mark>click</mark>", ()=>{<mark>LED.on()</mark>;});
+	<mark>OFF</mark>.addEventListener("<mark>click</mark>", ()=>{<mark>LED.off()</mark>;});
+}</code></pre>
+			</details>
+			<p class="center"><a href="index3.html">次へ</a></p>
+		</div>
+
+
+		<script>
+			const OBNIZ = new Obniz(obid);
+			const ON = document.getElementById("on");
+			const OFF = document.getElementById("off");
+			const PRINT = document.getElementById("print");
+
+			OBNIZ.onconnect = async function () {
+				const LED = OBNIZ.wired("LED", { anode: 0, cathode: 1 });
+				OBNIZ.display.clear();
+				OBNIZ.display.print("Lチカ");
+
+				OBNIZ.switch.onchange = (state) => {
+					PRINT.innerHTML = state;
+					OBNIZ.display.clear();
+					OBNIZ.display.print(state);
+				}
+
+				ON.addEventListener("click", () => {
+					ON.style.backgroundColor="yellow";
+					OFF.style.backgroundColor = "#333";
+					ON.style.color = "#333";
+					OFF.style.color = "#fff";
+					LED.on();
+					OBNIZ.display.clear();
+					OBNIZ.display.print("ONのボタンを")
+					OBNIZ.display.print("押しました");
+				});
+
+				OFF.addEventListener("click", () => {
+					ON.style.backgroundColor = "#666";
+					OFF.style.backgroundColor = "yellow";
+					ON.style.color = "#fff";
+					OFF.style.color = "#333";
+					LED.off();
+					OBNIZ.display.clear();
+					OBNIZ.display.print("OFFのボタンを")
+					OBNIZ.display.print("押しました");
+				});
+			}
+
+		</script>
+	</body>
+
+</html>

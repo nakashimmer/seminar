@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../index/iframe.css">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+	<style>
+		
+			
+			#board{
+				position:relative;
+				height:200px;
+				width:900px;
+				margin:0 auto;
+			}
+			#board1,#board2{
+				position: absolute;
+				display:flex;
+			}
+			#board2{
+				margin:0 auto;
+			}
+			.keys{
+				text-align:center;
+				width:50px;height:60px;
+				margin:3px 3px 3px 3px;
+				color:black;
+				background-color:white;
+			}
+			.keys:last-of-type{
+			}
+
+			input[type="radio"] {
+		   transform:translate(0px ,-10px) scale(2);
+  		 margin-right: 1em;
+			}
+
+			section{
+			}
+			#key-1{margin-left:35px;}
+			#key-6{margin-left:55px;}
+			#key-13{margin-left:65px;}
+			#key-18{margin-left:55px;}
+			#key-24{margin-right:25px;}
+			#key-25{margin-left:55px;}
+			#board1 *{
+				background-color:black;color:white;
+				height:50px;
+				padding-top:50px;
+			}
+			#board2 *{
+				padding-top:100px;
+			}
+	</style>
+
+	</head>
+	<body>
+		<div id="wrap">
+			<section>
+				<h1>シンセサイザ</h1>		
+	
+				<p>音量：<input id=vol type="range" min=0 max=1 value=0.5 step=0.1></p>
+				<p>波形：
+					<label><input type="radio" name="wstyle" value="sine" checked>正弦波</label> 
+					<label><input type="radio" name="wstyle" value="square">矩形波</label> 
+					<label><input type="radio" name="wstyle" value="triangle">三角波</label> 
+					<label><input type="radio" name="wstyle" value="sawtooth">のこぎり波</label>
+				</p>
+				<p>鍵盤：</p>
+				<div id="board">
+					<div id="board2"></div>
+					<div id="board1"></div>
+				</div>
+
+				<p><a href="../10/index.html">弾きにくいので</a></p>
+			
+			</section>
+
+	<script src="script.js"></script>
+		</body>
+</html>

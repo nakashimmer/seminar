@@ -1,0 +1,47 @@
+*{
+	margin:0;padding:0;
+	font-size: 24px;
+	outline: 0;
+}
+#wrap{
+	max-width:800px;
+	margin:0 auto;
+
+}
+#obniz-debug *{font-size: 16px;}
+
+h1{
+	font-size:1.3em;
+	line-height:3em;
+}
+.btn{
+	border:3px double black;
+	border-radius:0.5em;
+	margin:2em;padding:2em;
+	text-align:center;
+}
+button{
+	border:1px solid black;
+	margin:0.5em;padding:0.5em;
+	border-radius:0.5em;
+	box-shadow:3px 3px 3px #aaa;
+}
+summary h2{
+	display:inline;
+}
+input{font-size:1em;width:8em;}
+pre{
+	background-color:rgba(0,0,0,0.4);
+	border-radius:0.5em;
+	margin:0.5em;padding:0.5em;
+	tab-size:3;
+}
+code{
+	font-family:menlo;
+}
+print{
+	line-height:2em;
+	height:2em;
+}
+
+ol,ul{list-style: none;}

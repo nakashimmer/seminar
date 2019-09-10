@@ -1,0 +1,63 @@
+
+*{
+	margin:0;padding:0;
+	font-family: "Rounded Mplus 1c";
+	font-weight:bold;
+}
+
+#bottom{
+	display:flex;
+	background-color:#666;
+	height:40px;
+}
+header{
+	flex:1;
+}
+header h1{
+	font-size:30px;text-align:center;
+	line-height:40px;
+	color:#000;
+	text-shadow:-1px -1px 1px #aaa;
+}
+
+.flex{display:flex;	height:calc(100vh - 40px);}
+
+iframe{
+	flex:1;
+	height:calc(100vh - 40px);
+	border:none;
+	display:block;
+
+	background-color:#333;
+}
+#side{
+	width:200px;
+	background-color:#666;
+	color:#000;
+	height:calc(100vh - 40px);
+	text-shadow:-1px -1px 1px #aaa;
+}
+
+footer {
+	width:200px;
+	text-align:center;
+}
+footer small{
+	font-size:18px;
+	line-height:40px;
+	color:#000;
+	text-shadow:-1px -1px 1px #aaa;
+}
+ol{list-style:none;}
+
+#side ol li{padding:0.5em;display:block;border-bottom:1px dotted white;}
+#side ol li:hover{background-color:#333;}
+
+video,canvas{display:block;}
+
+
+/*スクロールバーを非表示 (除Firefox)*/
+::-webkit-scrollbar{display:none;}
+*{-ms-overflow-style:none;}
+
+#side>ol{overflow: scroll;height:calc(100vh - 150px - 45px);}

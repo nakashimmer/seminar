@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../index/iframe.css">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+		<style>
+			.flex{display: flex;}
+			.contentcss {
+				display: block;
+				border: 1px dotted black;
+				min-height: 1em;
+				line-height: 1.2em;
+				white-space: pre;
+				font-size: 32px;
+				font-family: menlo;
+				resize: both;
+				overflow: scroll;
+				tab-size: 1;
+				text-indent: 0em;
+				flex:1;
+			}
+	
+			#box1{margin:0 30px;transition:all 1s linear 0.5s;}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<h1>③-2 [CSS] レインボーボール</h1>
+			<div class="flex">
+<style scoped contenteditable class="contentcss" id="style1">#box1{
+	border:1px solid gray;
+	width:300px; height:300px;
+	border-radius:50%;
+	background:conic-gradient(
+		red,purple,blue,green,
+		yellow,orange,red
+	);
+	animation:
+		ball 1s linear infinite normal;
+}
+@keyframes ball{
+	100%{transform:;}
+}
+
+</style>
+
+				<div id="box1"></div>
+
+			</div>
+		</div>
+		<script>
+			const STYLE1 = document.getElementById("style1");
+			STYLE1.addEventListener(
+				"keydown",
+				(e)=>{
+					if (
+						e.keyCode === 9 ||
+						(!e.shiftKey && e.keyCode === 13)
+					) {
+						e.preventDefault();
+					}
+				});
+		</script>
+		<p><a href="index3.html">次へ</a>
+	</body>
+</html>

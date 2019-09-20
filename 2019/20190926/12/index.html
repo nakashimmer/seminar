@@ -2,34 +2,43 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<title>obniz</title>
+		<meta name="viewport" content="width=device-width">
 		<link rel="stylesheet" href="../index/iframe.css">
-		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
-	<style>
-			input[type="radio"] {
-		   transform:translate(0px ,-10px) scale(2);
-  		 margin-right: 1em;
-			}
-
-	</style>
-
+		<style>
+			img{width:100%;height:500px;border-radius:20px;}
+			input{color:black;font-size:1em;width:8em;margin:0 0.3em;}
+			button{font-size: 1em;}
+		</style>
 	</head>
+
 	<body>
 		<div id="wrap">
-			<section>
-				<h1>midi API</h1>
+			<h1>② 実装</h1>
 
-			<div id="wrap">
-			<p>midi キーボードを挿してください。</p>
-			<p>音量：<input id=vol type="range" min=0 max=1 value=0.5 step=0.1></p>
-			<p>波形：
-				<label><input type="radio" name="wstyle" value="sine" checked>正弦波</label> 
-				<label><input type="radio" name="wstyle" value="square">矩形波</label> 
-				<label><input type="radio" name="wstyle" value="triangle">三角波</label> 
-				<label><input type="radio" name="wstyle" value="sawtooth">のこぎり波</label>
-			</p>
-			<p>メッセージ：<span id="msg"></span></p>
-	
+			<p><img src="obniz.jpg" alt="obniz"></p>
+
+			<p>
+				obniz ID:
+				<input type="password" id="obid">
+				<button onclick="reg();" id="btn">登録</button>
+				<a href="index2.html">ではいよいよ…</a>
+			</p>	
 		</div>
-		<script src="script.js"></script>
+
+
+		<script>
+			const BTN=document.getElementById("btn");
+			const OBID=document.getElementById("obid");
+			let obid=localStorage.getItem("OBID");
+			if(obid){
+				OBID.value=obid;
+			}
+			function reg(){
+				BTN.style.backgroundColor="yellow";
+				BTN.style.color = "#333";
+				localStorage.setItem("OBID",OBID.value);
+			}
+		</script>
 	</body>
 </html>

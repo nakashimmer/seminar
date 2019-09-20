@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>WebRTC</title>
+	<meta name=viewport content="width=device-width">
+	<link rel="stylesheet" href="../index/iframe.css">
+	<style>
+	
+			.you,.pc{margin:0.2em;padding:0.3em;color:black;}
+			.you{background-color:skyblue;text-align:right;}
+			.pc{background-color:pink;}
+
+			#result{
+				height:300px;
+				border:1px solid gray;
+				overflow:scroll;
+			}
+			.write{display:none;}
+
+			@media(max-width:450px){
+				.write{display:inline;}
+				.rec1{display:none;}
+				#wrap{width:100%;}
+			}
+			select,option{font-size:30px;color:black;}
+
+		</style>
+		<script src="jquery-3.2.1.min.js"></script>
+	</head>
+	<body>
+		<h1>AI連携</h1>
+		<div id="wrap">	
+			<ol>
+				<li>
+					音声種類選択→ 
+					<span id="voiceSelect"><button id="btn1">選択</button>
+				</li>
+				<li>
+					言語を選択する→ 
+					<select id="lang">
+						<option value="ja-JP" selected>日本語</option>
+						<!--option value="en-US">英語</option-->
+					</select>
+				</li>
+				<li>
+					メッセージ：
+					<button id="btn2" class=rec1>音声で呼びかける</button>
+					<input type="text" id="msg" class="write">
+					<button id="btn3" class="write">送信</button>
+				</li>
+				<li>
+					<small style="color:red;">外部と共有されるので非公開情報・個人情報にかかるものは絶対禁止です</small>
+				</li>
+			</ol>
+
+			<div id="result"></div>
+		</div>
+
+		<script src="script.js"></script>
+
+  </body>
+</html>
+

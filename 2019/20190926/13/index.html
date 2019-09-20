@@ -11,7 +11,7 @@
 			#table{
 				border-collapse: collapse;
 				display:flex;
-				width:800px;
+				width:100%;
 				border:3px solid black;
 				border-right: none;
 				background-color:white;
@@ -31,7 +31,7 @@
 			}
 			input{
 				font-size:20px;
-				width:calc(100% - 2em);
+				width:calc(100%);
 				border:none;
 				text-align:right;
 			}
@@ -42,11 +42,11 @@
 			}
 			button{
 				color:white;
-				width:40%;
 				background-color: black;
 				margin:1em 0 0 auto;
 				font-size:20px;
 			}
+			th,td{width:12.5%;}
 
 		</style>
 
@@ -65,41 +65,37 @@
 		
 			<table id="table">
 				<tr>
-					<th>学習回数</th><th>x値</th><th>y値</th>
-				</tr>
-				<tr>
+					<th>学習回数</th>
 					<th>1回目</th>
-					<td><input type="text" class="x" value="-1"></td>
-					<td><input type="text" class="y" value="-3"></td>
-				</tr>
-				<tr>
 					<th>2回目</th>
-					<td><input type="text" class="x" value="0"></td>
-					<td><input type="text" class="y" value="-1"></td>
-				</tr>
-				<tr>
 					<th>3回目</th>
-					<td><input type="text" class="x" value="1"></td>
-					<td><input type="text" class="y" value="1"></td>
-				</tr>
-				<tr>
 					<th>4回目</th>
-					<td><input type="text" class="x" value="2"></td>
-					<td><input type="text" class="y" value="3"></td>
-				</tr>
-				<tr>
 					<th>5回目</th>
-					<td><input type="text" class="x" value="3"></td>
-					<td><input type="text" class="y" value="5"></td>
-				</tr>
-				<tr>
 					<th>6回目</th>
+					<th>予測</th>
+				</tr>
+				<tr>	
+					<th>x値</th>
+					<td><input type="text" class="x" value="-1"></td>
+					<td><input type="text" class="x" value="0"></td>
+					<td><input type="text" class="x" value="1"></td>
+					<td><input type="text" class="x" value="2"></td>
+					<td><input type="text" class="x" value="3"></td>
 					<td><input type="text" class="x" value="4"></td>
-					<td><input type="text" class="y" value="7"></td>
+					<td>
+						<input type="text" class="x" placeholder="①" style="border:1px solid red;"><br>
+						<button
+							onclick="tsr();">②予測</button>
+					</td>
 				</tr>
 				<tr>
-					<th>予測</th>
-					<td><input type="text" class="x" placeholder="①" style="width:50%;border:1px solid red;"><button onclick="tsr();">②予測</button></td>
+					<th>y値</th>
+					<td><input type="text" class="y" value="-3"></td>
+					<td><input type="text" class="y" value="-1"></td>
+					<td><input type="text" class="y" value="1"></td>
+					<td><input type="text" class="y" value="3"></td>
+					<td><input type="text" class="y" value="5"></td>
+					<td><input type="text" class="y" value="7"></td>
 					<td class="y">③予測値</td>
 				</tr>
 		</table>

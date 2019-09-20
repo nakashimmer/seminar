@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>線形関数</TITLE>
+	<meta charset="utf-8">
+
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.2.1"></script>
+	<style>
+	input{width:50px;line-height:1.3em;font-size:16px;text-align:center;}
+	button{width: 150px; height: 30px; font-size:16px;}
+	#dumpjson{min-height: 120px;border:1px solid gray;}
+	</style>
+
+</head>
+
+<body onload=init()>
+	<h1> 線形関数</h1>
+	<p>y = ax + b</p>
+	
+	<p>読込むデータの作成（ a と b の値を指定してください）：ｙ＝ <input id="const_a" type="text" value="5" > ｘ + <input
+		id="const_b" type="text" value="4" ></p>
+
+	<p>学習データ数：<input id="train" type="text" value="100" >　検証データ数：<input id="test" type="text" value="10"
+		>
+	　学習率：<input id="optim" type="text" value="0.01" >　学習回数：<input id="count" type="text" value="10"
+		></p>
+
+	<p>
+		<button id="button_01" onclick="Prepare_Data();">学習データ作成</button>
+	　<button id="button_02" onclick="Learn();">学習開始</button>
+	　<button id="button_03" onclick="Data_dsp();" >学習データ表示</button>
+	　<button id="button_04" onclick="Test_dsp();" >検証データ表示</button>
+	　<button id="button_05" onclick="Initialize();" >全初期化</button>
+	</p>
+	<p id="dumpjson"></p>
+
+	<p>関数の x の値を指定後に評価してください。</p>
+	<p>x=<input id="d_00" type="text" value="2.0" >　ｙの計算値=<input id="d_01" type="text"	value=" "></p>
+	<p><button id="button_06" onclick="Evaluate();">入力データの評価</button>
+	評価結果：<input id="result_00" type="text" value=" ">
+
+	<script>
+
+		let xTrainData = new Array();
+		let yTrainData = new Array();
+		let xTestData = new Array();
+		let yTestData = new Array();
+		let xTrain_Temp, yTrain_Temp, xTest_Temp, yTest_Temp;
+		let Train_count = 1;
+		let dsp;
+
+		const dumpjson=document.getElementById("dumpjson");
+		const result_00=document.getElementById("result_00");
+		const d_00 = document.getElementById('d_00');
+		const d_01=document.getElementById("d_01");
+		const count= document.getElementById('count');
+		const train = document.getElementById('train');
+		const test = document.getElementById('test');
+		const optim = document.getElementById('optim');
+		
+
+		const const_a = document.getElementById("const_a");
+		const const_b = document.getElementById("const_b");
+
+
+
+		const model = tf.sequential();					// 学習モデル設定
+		model.add(tf.layers.dense({
+			inputShape: [1],
+			activation: 'linear',
+			units: 1
+		}));
+
+
+		function init() {						// 初期設定
+			dumpjson.value = "";
+			result_00.value = "";
+			d_01.value = "";
+		}
+
+
+		async function Learn() {					// 学習
+			var epochData = count.value;
+			var train_num = train.value;
+			var test_num = test.value;
+			var optimize = optim.value;
+
+			dsp = "学習回数:    Loss（学習）    /   Loss（検証） <br>";
+			dumpjson.innerHTML = "学習中！";
+
+			const xTrain = tf.tensor2d(xTrainData, [xTrainData.length, 1], 'float32');
+			const yTrain = tf.tensor2d(yTrainData, [yTrainData.length, 1], 'float32');
+			const xTest = tf.tensor2d(xTestData, [xTestData.length, 1], 'float32');
+			const yTest = tf.tensor2d(yTestData, [yTestData.length, 1], 'float32');
+
+			xTrain_Temp = xTrain;						// 学習データ表示用
+			yTrain_Temp = yTrain;
+			xTest_Temp = xTest;
+			yTest_Temp = yTest;
+
+			model.compile({
+				loss: "meanSquaredError",
+				optimizer: 'sgd'
+			});
+
+			const history = await model.fit(xTrain, yTrain, {
+				epochs: epochData,
+				validationData: [xTest, yTest],
+				callbacks: {
+					onEpochEnd: async (epoch, logs) => {
+						dsp = dsp + ("      " + (Train_count + epoch)).slice(-7) + " : " + logs.loss + " / " + logs.val_loss + "<br>";
+						dumpjson.innerHTML = dsp;
+					},
+				}
+			});
+			Train_count = Train_count * 1.0 + epochData * 1.0;
+			dsp = dsp + "学習終了、学習結果は上記の通り。\n";
+			dumpjson.innerHTML = dsp;
+		}
+
+
+		async function Evaluate() {					// 指定したデータの評価
+			let d_00v = d_00.value * 1.0;
+			let a = const_a.value * 1.0;
+			let b = const_b.value * 1.0;
+			let d_01v = a * d_00v + b;
+			d_01.value = d_01v;
+
+			const inputData = tf.tensor2d([d_00v], [1, 1], 'float32');
+			const outputData = model.predict(inputData);
+
+			var results = outputData.dataSync();
+			result_00.value = (" y = " + results);
+		}
+
+
+		function Prepare_Data() {					// 学習用と検証用データの作成
+			var a = const_a.value * 1.0;
+			var b = const_b.value * 1.0;
+			var train_num = train.value * 1.0;
+			var test_num = test.value * 1.0;
+
+			for (i = 0; i <= train_num; i++) {
+				xTrainData[i] = Math.random() * 20 - 10;
+				yTrainData[i] = a * xTrainData[i] + b;
+				dumpjson.innerHTML+="<li>xTrain="+ xTrainData[i]+"yTrain"+ yTrainData[i];
+			}
+			for (i = 0; i <= test_num; i++) {
+				xTestData[i] = Math.random() * 20 - 10;
+				yTestData[i] = a * xTestData[i] + b;
+				dumpjson.innerHTML += "<li>xTest=" + xTestData[i] + "yTest" + yTestData[i]+"</li>";
+			}
+			dumpjson.innerHTML += "データ作成終了";
+		}
+
+
+		function Data_dsp() {						// 学習用データの表示
+			dumpjson.innerHTML = "<p>学習用データ：<br>" + xTrain_Temp + "<p>分類用データ：<br>" + yTrain_Temp;
+		}
+
+
+		function Test_dsp() {						// 検証用データの表示
+			dumpjson.innerHTML= "<p>検証用データ：<br>" + xTest_Temp + "<p>分類用データ：<br>" + yTest_Temp;
+		}
+
+
+		function Initialize() {						// 再ロード（全リセット）
+			window.location.reload(true);
+		}
+
+
+	</script>
+</body>
+
+</html>

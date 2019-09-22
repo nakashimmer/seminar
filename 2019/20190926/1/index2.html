@@ -5,26 +5,28 @@
 		<link rel="stylesheet" href="../index/iframe.css">
 		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
 		<style>
-
+			img{height:2em;}
+			#nakashima{display:block;width:320px;height:300px;}
 		</style>
-
 	</head>
 	<body>
 		<div id="wrap">
-			<h1>お願い-2</h1>
-		
-			<p contenteditable="true">観客の皆様の<mark>声援</mark>が何よりも「<mark>チカラ</mark>」になります。</p>
-			<ul>
-				<li>びっくりしたら<span onclick="o.play();">「<mark>おっ！</mark>」👏 </span></li>
-				<li>すごいとおもったら<span onclick="oo.play();">「<mark>おおぉ〜〜</mark>」👏👏👏 </span></li>
-				<li>感動したら<span onclick="ooo.play();">「<mark>おおおおお!!</mark>」👏👏👏👏🎉🎉🎊 </span></li>
-			</ul>
-			
-			<script>
-				const o = new Audio();o.src="o.mp3";
-				const oo = new Audio();oo.src="oo.mp3";
-				const ooo = new Audio();ooo.src="ooo.mp3";
-			</script>
+			<h1>自己紹介</h1>
+
+			<div class="flex">
+				<div style="flex:1;">
+					<h2><ruby><rb>中島俊治</rb><rt>なかしましゅんじ</rt></ruby></h2>
+					<ul>
+						<li><a href="index3.html">サイバー大学 IT総合学部 准教授</a></li>
+						<li>マイクロソフトMVP(2014〜)</li>
+						<li>元ヤフー・元GeoCities Japan</li>
+						<li>HTML5検定法人 代表理事</li>
+						<li>初心者向けHTML5講座開催</li>
+						
+					</ul>
+				</div>
+				<img src="nakashima.jpeg" alt="なかしまぁ" id="nakashima">
+			</div>
 		</div>
 	</body>
 </html>

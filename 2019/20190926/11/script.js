@@ -1,137 +1,181 @@
-const BOARD1=document.getElementById("board1");
-const BOARD2=document.getElementById("board2");
-const VOL=document.getElementById("vol");
+import { MnistData } from './data.js.js';
 
-const KNAME=[
-	"c<br>z",	"c#<br>s",
-	"d<br>x",	"d#<br>d",
-	"e<br>c",
-	"f<br>v",	"f#<br>g",
-	"g<br>b",	"g#<br>h",
-	"a<br>n",	"a#<br>j",
-	"b<br>m",
-	"C<br>q",	"C#<br>2",
-	"D<br>w",	"D#<br>3",
-	"E<br>e",
-	"F<br>r",	"F#<br>5",
-	"G<br>t",	"G#<br>6",
-	"A<br>y",	"A#<br>7",
-	"B<br>u",
-	"CC<br>i",	"CC#<br>9"
-]
+async function showExamples(data) {
+	// Create a container in the visor
+	const surface =
+		tfvis.visor().surface({ name: 'Input Data Examples', tab: 'Input Data' });
 
-for(let i=0;i<KNAME.length;i++){
-	if(0<KNAME[i].indexOf("#")){
-		BOARD1.innerHTML += '<div class="keys" id="key-'+i+'">'+KNAME[i]+'</div>';
+	// Get the examples
+	const examples = data.nextTestBatch(20);
+	const numExamples = examples.xs.shape[0];
+
+	// Create a canvas element to render each example
+	for (let i = 0; i < numExamples; i++) {
+		const imageTensor = tf.tidy(() => {
+			// Reshape the image to 28x28 px
+			return examples.xs
+				.slice([i, 0], [1, examples.xs.shape[1]])
+				.reshape([28, 28, 1]);
+		});
+
+		const canvas = document.createElement('canvas');
+		canvas.width = 28;
+		canvas.height = 28;
+		canvas.style = 'margin: 4px;';
+		await tf.browser.toPixels(imageTensor, canvas);
+		surface.drawArea.appendChild(canvas);
+
+		imageTensor.dispose();
 	}
 }
 
-for(let i=0;i<KNAME.length;i++){
-	if(KNAME[i].indexOf("#")<0){
-		BOARD2.innerHTML+="<div class=keys id=key-"+i+">"+KNAME[i]+"</div>";
-	}
+async function run() {
+	const data = new MnistData();
+	await data.load();
+	await showExamples(data);
+	const model = getModel();
+	tfvis.show.modelSummary({ name: 'Model Architecture' }, model);
+	await train(model, data);
+	await showAccuracy(model, data);
+	await showConfusion(model, data);
+}
+
+document.addEventListener('DOMContentLoaded', run);
+
+
+function getModel() {
+	const model = tf.sequential();
+
+	const IMAGE_WIDTH = 28;
+	const IMAGE_HEIGHT = 28;
+	const IMAGE_CHANNELS = 1;
+
+	// In the first layer of our convolutional neural network we have 
+	// to specify the input shape. Then we specify some parameters for 
+	// the convolution operation that takes place in this layer.
+	model.add(tf.layers.conv2d({
+		inputShape: [IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS],
+		kernelSize: 5,
+		filters: 8,
+		strides: 1,
+		activation: 'relu',
+		kernelInitializer: 'varianceScaling'
+	}));
+
+	// The MaxPooling layer acts as a sort of downsampling using max values
+	// in a region instead of averaging.  
+	model.add(tf.layers.maxPooling2d({ poolSize: [2, 2], strides: [2, 2] }));
+
+	// Repeat another conv2d + maxPooling stack. 
+	// Note that we have more filters in the convolution.
+	model.add(tf.layers.conv2d({
+		kernelSize: 5,
+		filters: 16,
+		strides: 1,
+		activation: 'relu',
+		kernelInitializer: 'varianceScaling'
+	}));
+	model.add(tf.layers.maxPooling2d({ poolSize: [2, 2], strides: [2, 2] }));
+
+	// Now we flatten the output from the 2D filters into a 1D vector to prepare
+	// it for input into our last layer. This is common practice when feeding
+	// higher dimensional data to a final classification output layer.
+	model.add(tf.layers.flatten());
+
+	// Our last layer is a dense layer which has 10 output units, one for each
+	// output class (i.e. 0, 1, 2, 3, 4, 5, 6, 7, 8, 9).
+	const NUM_OUTPUT_CLASSES = 10;
+	model.add(tf.layers.dense({
+		units: NUM_OUTPUT_CLASSES,
+		kernelInitializer: 'varianceScaling',
+		activation: 'softmax'
+	}));
+
+
+	// Choose an optimizer, loss function and accuracy metric,
+	// then compile and return the model
+	const optimizer = tf.train.adam();
+	model.compile({
+		optimizer: optimizer,
+		loss: 'categoricalCrossentropy',
+		metrics: ['accuracy'],
+	});
+
+	return model;
+}
+
+async function train(model, data) {
+	const metrics = ['loss', 'val_loss', 'acc', 'val_acc'];
+	const container = {
+		name: 'Model Training', styles: { height: '1000px' }
+	};
+	const fitCallbacks = tfvis.show.fitCallbacks(container, metrics);
+
+	const BATCH_SIZE = 512;
+	const TRAIN_DATA_SIZE = 5500;
+	const TEST_DATA_SIZE = 1000;
+
+	const [trainXs, trainYs] = tf.tidy(() => {
+		const d = data.nextTrainBatch(TRAIN_DATA_SIZE);
+		return [
+			d.xs.reshape([TRAIN_DATA_SIZE, 28, 28, 1]),
+			d.labels
+		];
+	});
+
+	const [testXs, testYs] = tf.tidy(() => {
+		const d = data.nextTestBatch(TEST_DATA_SIZE);
+		return [
+			d.xs.reshape([TEST_DATA_SIZE, 28, 28, 1]),
+			d.labels
+		];
+	});
+
+	return model.fit(trainXs, trainYs, {
+		batchSize: BATCH_SIZE,
+		validationData: [testXs, testYs],
+		epochs: 10,
+		shuffle: true,
+		callbacks: fitCallbacks
+	});
+/*
+	const model = getModel();
+	tfvis.show.modelSummary({ name: 'Model Architecture' }, model);
+
+	await train(model, data);
+*/
+}
+
+const classNames = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+
+function doPrediction(model, data, testDataSize = 500) {
+	const IMAGE_WIDTH = 28;
+	const IMAGE_HEIGHT = 28;
+	const testData = data.nextTestBatch(testDataSize);
+	const testxs = testData.xs.reshape([testDataSize, IMAGE_WIDTH, IMAGE_HEIGHT, 1]);
+	const labels = testData.labels.argMax([-1]);
+	const preds = model.predict(testxs).argMax([-1]);
+
+	testxs.dispose();
+	return [preds, labels];
 }
 
 
-const HZ=[
-	261.63,	/*c*/	277.18,	/*c#*/
-	293.66,	/*d*/	311.13,	/*d#*/
-	329.63,	/*e*/
-	349.23,	/*f*/	369.99,	/*f#*/
-	392,	/*g*/		415.3,	/*g#*/
-	440,	/*a*/		466.16,	/*a#*/
-	493.88,	/*b*/
-	
-	523.25,	/*cc*/	554.37,	/*cc#*/
-	587.33,	/*dd*/	622.25,	/*dd#*/
-	659.26,	/*ee*/
-	698.46,	/*ff*/	739.99,	/*ff#*/
-	783.99,	/*gg*/	830.61,	/*gg#*/
-	880,	/*aa*/	932.33,	/*aa#*/
-	987.77,	/*bb*/	
-	1046.5,	/*ccc*/	1108.73,/*ccc#*/
-];
+async function showAccuracy(model, data) {
+	const [preds, labels] = doPrediction(model, data);
+	const classAccuracy = await tfvis.metrics.perClassAccuracy(labels, preds);
+	const container = { name: 'Accuracy', tab: 'Evaluation' };
+	tfvis.show.perClassAccuracy(container, classAccuracy, classNames);
 
-const AC=new AudioContext(); //音の元を作る
-const VCG=AC.createGain(); //ボリュームを作る
-const VCO=new Array()
-for(let i=0;i<HZ.length;i++){
- VCO[i]=AC.createOscillator(); //音源を作る
- VCO[i].connect(VCG); //音源をボリュームにつなぐ
- VCO[i].type="sine"; //音色
- VCO[i].frequency.value=HZ[i];
+	labels.dispose();
 }
-VCG.connect(AC.destination); //出力につなぐ
 
-var Code=[
-	90,/*z-c*/	83,/*s-c#*/
-	88,/*x-d*/	68,/*d-d#*/
-	67,/*c-e*/
-	86,/*v-f*/	71,/*g-f#*/
-	66,/*b-g*/	72,/*h-g#*/
-	78,/*n-a*/	74,/*j-a#*/
-	77,/*m-b*/
-	
-	81,/*q-cc*/	50,/*2-cc#*/
-	87,/*w-dd*/	51,/*3-dd#*/
-	69,/*e-ee*/
-	82,/*r-ff*/	53,/*5-ff#*/
-	84,/*t-gg*/	54,/*6-gg#*/
-	89,/*y-aa*/	55,/*u-aa#*/
-	85,/*i-bb*/
-	73,/*i-ccc*/	57/*9-ccc#*/
-];
+async function showConfusion(model, data) {
+	const [preds, labels] = doPrediction(model, data);
+	const confusionMatrix = await tfvis.metrics.confusionMatrix(labels, preds);
+	const container = { name: 'Confusion Matrix', tab: 'Evaluation' };
+	tfvis.render.confusionMatrix(
+		container, { values: confusionMatrix }, classNames);
 
-const BGC=[
-	"white",	/*c*/	"black",	/*c#*/
-	"white",	/*d*/	"black",	/*d#*/
-	"white",	/*e*/
-	"white",	/*f*/	"black",	/*f#*/
-	"white",	/*g*/	"black",	/*g#*/
-	"white",	/*a*/	"black",	/*a#*/
-	"white",	/*b*/
-	
-	"white",	/*cc*/	"black",	/*cc#*/
-	"white",	/*dd*/	"black",	/*dd#*/
-	"white",	/*ee*/
-	"white",	/*ff*/	"black",	/*ff#*/
-	"white",	/*gg*/	"black",	/*gg#*/
-	"white",	/*aa*/	"black",	/*aa#*/
-	"white",	/*bb*/	
-	"white",	/*ccc*/	"black" /*ccc#*/
-];
-
-window.addEventListener("keydown",(e)=>{
-	let i = Code.indexOf(e.keyCode);
-
-	VCG.gain.value=VOL.value; //音量
-	let wstyle = document.getElementsByName("wstyle");
-	for(let w=0;w<wstyle.length;w++){
-		if (wstyle[w].checked) {
-			VCO[i].type=wstyle[w].value; //音色
-		}
-	}
-	let key = document.getElementById("key-"+i);
-	key.style.backgroundColor="#666";
-	key.style.color="white";
-	VCO[i].start();
-	f=false;
-});
-
-
-
-window.addEventListener("keyup",(e)=>{
-	let i = Code.indexOf(e.keyCode);
-
-		VCO[i].stop();
-		VCO[i]=AC.createOscillator(); //音源を作る
-		VCO[i].connect(VCG); //音源をボリュームにつなぐ
-		VCO[i].frequency.value=HZ[i];
-		let key = document.getElementById("key-"+i);
-		key.style.backgroundColor=BGC[i];
-		if(BGC[i]==="white"){
-			key.style.color="black";
-		}else{
-			key.style.color="white";
-		}
-});
+	labels.dispose();
+}

@@ -5,68 +5,50 @@
 		<link rel="stylesheet" href="../index/iframe.css">
 		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
 	<style>
-		#dlg {margin: 0 auto;padding: 1em;width:80%;}
-		button {margin: 1em;}
-		#dlg button {display: block;margin: 1em auto;}
+		input{
+			color:black;
+			text-align:center;
+			height:2em;
+			font-size:30px;
+		}
+		#msg{
+			background-color:rgba(0,0,0,0.8);
+			padding:0.5em;border-radius:0.5em;
+		}
 	</style>
 
 	</head>
 	<body>
 		<div id="wrap">
 			<section>
-				<h1>② [HTML] dialog要素</h1>
+				<h1>あなたをプログラムにたとえると(診断アプリ)</h1> 
 
-				<button id="btn1">ダイアログを開く</button>
-				<dialog id="dlg">
-					<h3>ダイアログ</h3>
-					<p>HTML5はHTML,CSS,JavaScriptなどの仕様の総称名です。</p>
-					<p><button id="btn2">ダイアログを閉じる</button>
-				</dialog>
-				<script>
-					const DLG = document.getElementById("dlg");
-					const BTN1 = document.getElementById("btn1");
-					const BTN2 = document.getElementById("btn2");
-					
-					BTN1.addEventListener("click",()=>{
-						DLG.showModal();
-					});
-
-					BTN2.addEventListener("click", ()=>{
-						DLG.close();
-					});
-				</script>
+				<p>あなたの名前：<input type="text" id="name"></p>
+				<p id="msg">なにがでるかな？</p>
+				
 			</section>
-			<section>
-				<details>
-					<summary><h2>HTML</h2></summary>
-					<pre><code>&lt;button id="btn1">ダイアログを開く&lt;/button>
+		
+		<script>
+			const name = document.getElementById("name");
+			const msg = document.getElementById("msg");
+			const kekka=[
+				"ちょっと優柔不断だけど頼れるJavaScript",
+				"デザインセンスのあるCSS",
+				"何事にも意味のあるHTML",
+				"HTMLと仲のよいPHP",
+				"今が旬のPython",
+				"基本をしっかりとC言語",
+			]
 
-<mark>&lt;dialog id="dlg"></mark>
-	&lt;h3>ダイアログ&lt;/h3>
-	&lt;p>HTML5はHTML,CSS,JavaScriptなどの仕様の総称名です。&lt;/p>
-	&lt;p>&lt;button id="btn2">ダイアログを閉じる&lt;/button>&lt/p>
-<mark>&lt;/dialog></mark></code></pre>
-				</details>
+			name.addEventListener("change",()=>{
+				if(!name.value){return;}
+				let random=Math.floor(Math.random()*6);
 
-				<details>
-					<summary><h2>JavaScript</h2></summary>
-					<pre><code>const DLG = document.getElementById("dlg");
-const BTN1 = document.getElementById("btn1");
-const BTN2 = document.getElementById("btn2");
+				let str	= name.value+"さんにぴったりの言語は"+kekka[random]+"です";
+				str='<a target="_blank" href="http://twitter.com/intent/tweet?text='+str+'&hashtags=診断アプリ">'+str+'</a>';
+				msg.innerHTML=str;
+			});
+		</script>
 
-BTN1.addEventListener("click", ()=>{
-	<mark>DLG.showModal();</mark>
-});
-
-BTN2.addEventListener("click", ()=>{
-	<mark>DLG.close();</mark>
-});</code></pre>
-				</details>
-				<details>
-					<summary><h2>ブラウザ対応状況</h2></summary>
-					<p>Google chrome/Firefox/Opera/Android</p>
-				</details>
-				</section>
-			<p><a href="index2.html">次へ</a></p>
 		</body>
 </html>

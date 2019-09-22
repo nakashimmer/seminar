@@ -2,150 +2,104 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<title>音声のAPI</title>
+		<meta name=viewport content="width=device-width">
 		<link rel="stylesheet" href="../index/iframe.css">
-		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
 		<style>
-			.flex{display: flex;}
-			.flex>div{flex:1;}
-			.contentcss {
-				display: block;
-				border: 1px dotted black;
-				min-height: 1em;
-				line-height: 1.2em;
-				white-space: pre;
-				font-size: 32px;
-				font-family: menlo;
-				resize: both;
-				overflow: scroll;
-				tab-size: 1;
-				text-indent: 0em;
+
+			button,select{
+				font-size:24px;
+				border-radius:5px;
+				height:2em;
+				border:1px solid gray;
+				background-color:#eee;
+				padding:0 0.5em;
+				margin:0 0.5em;
+				text-align: center;
+				color:black;
+				width:200px;
+				vertical-align:5px;
 			}
 
-			#parent{
-				display: flex; 
-				flex-direction: column; 
-				justify-content: center;
-				align-items: center;
-				height:calc(100vh - 180px);
-			}
-			#spinner{
-				width:100px;
-				height:100px;
-				border-width:10px;
-				border-style:solid;
-				border-color:red green blue yellow;
-				border-radius: 50%;
+			#input{
+				font-size:24px;
+				width:100%;
+				color:black;
 			}
 
-			.flex button{margin:3px;font-size:16px;flex:1;}
+			section{
+				border:1px solid gray;
+				margin:1em;
+			}
+			option{width:100px;}
+			p{margin:1em;}
+
+
 		</style>
 	</head>
+
 	<body>
+		<h1>音声のAPI</h1>
 		<div id="wrap">
-			<h1>アニメーション</h1>
-			<div class="flex">
-				<div>
-				<style scoped contenteditable class="contentcss" id="style1">#spinner{
-	animation: 
-		mystory 1s linear 0s 
-		infinite normal;
-}</style>
+			<section>
+				<h2>1. 事前設定</h2>
+				<p>音声種類<span id="list"><button onclick="mkList();">選択</button></span>と言語<select id="lang">
+						<option value="ja-JP" selected>日本語</option>
+						<option value="en-US">アメリカ英語</option>
+						<option value="en-GB">イギリス英語</option>
+						<option value="zh">中国語</option>
+						<option value="ko">韓国語</option>
+						<option value="de">ドイツ語</option>
+						<option value="fr">フランス語</option>
+						<option value="it">イタリア語</option>
+						<option value="nl">オランダ語</option>
+						<option value="pt">ポルトガル語</option>
+						<option value="es">スペイン語</option>
+						<option value="pl">ポーランド語</option>
+						<option value="el">ギリシャ語</option>
+						<option value="ru">ロシア語</option>
+						<option value="he">ヘブライ語</option>
+						<option value="hi">ヒンディー語</option>
+						<option value="ar">アラビア語</option>
+						<option value="la">ラテン語</option>
+						<option value="sw">スワヒリ語</option>
+					</select>を設定
+				</p>
+			</section>
 
-			</div>
-			<div id="parent">
-				<div id="spinner"></div>
-			</div>
+			<section>
+				<h2>2. SpeechSynthesis(テキスト読上)</h2>
+				<p><textarea id="input">こんにちは。みなさん。</textarea><br>
+					テキストを入力して<button onclick="mySpeech();">読み上げる</button>
+				</p>
+				
+				<details>
+					<summary><h2>JavaScript</h2></summary>	
+					<pre><code>const VOICES = speechSynthesis.getVoices();
+const <mark>CONTEXT</mark> = new SpeechSynthesisUtterance(INPUT.value);
+CONTEXT.lang = LANG.value;
+CONTEXT.voice = VOICES[VOICENO.value];
+speechSynthesis.<mark>speak(CONTEXT)</mark>;</code></pre>
+				</details>
+			</section>
+
+			<section>
+				<h2>3. SpeechRecognition(音声認識)</h2>
+				<p><button onclick="nyuryoku();" id="btn">ボタンを押して</button>マイクから音声を入力</p>
+				<details>
+					<summary><h2>JavaScript</h2></summary>
+					<pre><code>const <mark>RECOGNITION</mark> = new webkitSpeechRecognition();
+RECOGNITION.lang = LANG.value;
+RECOGNITION.start();
+RECOGNITION.addEventListener(<mark>'result'</mark>, (e)=>{
+	let msg = <mark>e.results.item(0).item(0).transcript</mark>;
+});</code></pre>
+				</details>
+			</section>
+	
 		</div>
-		<script>
-			const STYLE1 = document.getElementById("style1");
-			STYLE1.addEventListener(
-				"keydown",
-				(e)=>{
-					if (
-						e.keyCode === 9 ||
-						(!e.shiftKey && e.keyCode === 13)
-					) {
-						e.preventDefault();
-					}
-				});
-		</script>
-		<p class="flex">
 
-			<button onclick="ins1();" id="b1">1.回転</button>
-			<button onclick="ins2();" id="b2">2.伸縮</button>
-			<button onclick="ins3();" id="b3">3.移動</button>
-			<button onclick="ins4();" id="b4">4.3次元</button>
-		</p>
-
-
-			
-<script>
-	const B1 = document.getElementById("b1");
-	const B2 = document.getElementById("b2");
-	const B3 = document.getElementById("b3");
-	const B4 = document.getElementById("b4");
-
-
-
-	function ins1(){
-		B1.style.backgroundColor="#333";
-STYLE1.innerHTML=`#spinner{
-	animation: 
-		mystory 1s linear 0s 
-		infinite normal;
-}
-@keyframes mystory{
-	0%{transform:rotate(0deg);}
-	100%{transform:rotate(360deg);}
-}`;
-}
-
-	function ins2() {
-		B2.style.backgroundColor = "#333";
-STYLE1.innerHTML = `#spinner{
-	animation: 
-		mystory 1s linear 0s 
-		infinite normal;
-}
-@keyframes mystory{
-	0%{transform:scale(0.8,0.8);}
-	100%{transform:scale(1.2,1.2);}
-}`;
-	}
-
-	function ins3() {
-		B3.style.backgroundColor = "#333";
-STYLE1.innerHTML = `#spinner{
-	animation: 
-		mystory 1s linear 0s 
-		infinite normal;
-}
-@keyframes mystory{
-	0%{transform:translate(-300px,0px);}
-	100%{transform:translate(300px,0px);}
-}`;
-	}
-
-	function ins4() {
-		B4.style.backgroundColor = "#333";
-STYLE1.innerHTML = `#parent{
-	transform-style:preserve-3d;
-	perspective:200px;
-}
-#spinner{
-	animation: 
-	mystory 1s linear 0s infinite normal;
-}
-@keyframes mystory{
-	0%{transform:
-		rotateY(20deg) translateX(-300px);}
-	100%{transform:
-		rotateY(20deg) translateX(300px);}
-}`;
-	}
-
-
-</script>
-
+		<script src="script.js"></script>
 	</body>
+
 </html>

@@ -4,50 +4,32 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="../index/iframe.css">
 		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
-	<style>
-		#dlg {margin: 0 auto;padding: 1em;width:80%;}
-		button {margin: 1em;}
-		#dlg button {display: block;margin: 1em auto;}
-		summary h2{display:block;}
-		p,input{font-size:30px;}
-		input{background-color:transparent;border:1px splid white;text-align:center;}
-		mark *{color:lime;}
-	</style>
+		<style>
+			details summary{user-select:none;}
+		</style>
 
 	</head>
 	<body>
 		<div id="wrap">
-			<section>
-				<h1>input要素</h1> 
+			<h1>HTML5は仕様のファミリを指す用語</h1>
+			<details><summary>HTML (HTML 5.2)</summary>
+				<p>構造を示す</p>
+				<pre><code>&lt;p id="elem"&gt;<span id="elem">今日はいい天気ですね。</span>&lt;/p&gt;</code></pre>
+			</details>
 
-				<p id="input">&lt;input type="<input type="text" id="type">"&gt;</p>
+			<details><summary>CSS (CSS3)</summary>
+				<p>要素のスタイリング</p>
+				<pre><code onclick="document.getElementById('elem').style.color='blue';">#elem{color:blue;}</code></pre>
+			</details>
 
-				<p style="text-align:center;"><span id="sample"></span>　<span id="value"></span></p>
-				
-	
-			</section>
-			<section>
-				<h2>HTML</h2>
-				<pre><code>&ltinput type=<mark>"<span id=type2></span>"</mark>&gt;</code></pre>
-			</section>
-			<script>
-				const type=document.getElementById("type");
-				const type2=document.getElementById("type2");
-				const sample=document.getElementById("sample");
-				const value=document.getElementById("value");
-				
-				type.addEventListener("change",mk);
-				function mk(){
-					sample.innerHTML='<input id="input1" type="'+type.value+'">';
-					input1 = document.getElementById("input1");
-					input1.addEventListener("change",ipt1);
-					function ipt1(){
-						value.innerHTML=input1.value;
-					}
+			<details><summary>JavaScript</summary>
+				<p>プログラム</p>
+				<pre><code onclick="document.getElementById('elem').innerHTML='暑い！！！';">const ELEM = document.getElementById("elem");
+ELEM.innerHTML = "暑い！！！";</code></pre>
+				<pre><code onclick="document.getElementById('elem').style.color='red';">ELEM.style.color = "red";</code></pre>
+			</details>
 
-					type2.innerHTML=type.value;
-				}
-
-			</script>
-		</body>
+			<p><a href="index2.html">次へ</a></p>
+		</div>
+	</body>
 </html>

@@ -2,53 +2,43 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<title>obniz</title>
+		<meta name="viewport" content="width=device-width">
 		<link rel="stylesheet" href="../index/iframe.css">
-		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
-	<style>
-		input{
-			color:black;
-			text-align:center;
-			height:2em;
-			font-size:30px;
-		}
-		#msg{
-			background-color:rgba(0,0,0,0.8);
-			padding:0.5em;border-radius:0.5em;
-		}
-	</style>
-
+		<style>
+			img{width:100%;height:500px;border-radius:20px;}
+			input{color:black;font-size:1em;width:8em;margin:0 0.3em;}
+			button{font-size: 1em;}
+		</style>
 	</head>
+
 	<body>
 		<div id="wrap">
-			<section>
-				<h1>あなたをプログラムにたとえると(診断アプリ)</h1> 
+			<h1>② 実装</h1>
 
-				<p>あなたの名前：<input type="text" id="name"></p>
-				<p id="msg">なにがでるかな？</p>
-				
-			</section>
-		
+			<p><img src="obniz.jpg" alt="obniz"></p>
+
+			<p>
+				obniz ID:
+				<input type="password" id="obid">
+				<button onclick="reg();" id="btn">登録</button>
+				<a href="index2.html">ではいよいよ…</a>
+			</p>	
+		</div>
+
+
 		<script>
-			const name = document.getElementById("name");
-			const msg = document.getElementById("msg");
-			const kekka=[
-				"ちょっと優柔不断だけど頼れるJavaScript",
-				"デザインセンスのあるCSS",
-				"何事にも意味のあるHTML",
-				"HTMLと仲のよいPHP",
-				"今が旬のPython",
-				"基本をしっかりとC言語",
-			]
-
-			name.addEventListener("change",()=>{
-				if(!name.value){return;}
-				let random=Math.floor(Math.random()*6);
-
-				let str	= name.value+"さんにぴったりの言語は"+kekka[random]+"です";
-				str='<a target="_blank" href="http://twitter.com/intent/tweet?text='+str+'&hashtags=診断アプリ">'+str+'</a>';
-				msg.innerHTML=str;
-			});
+			const BTN=document.getElementById("btn");
+			const OBID=document.getElementById("obid");
+			let obid=localStorage.getItem("OBID");
+			if(obid){
+				OBID.value=obid;
+			}
+			function reg(){
+				BTN.style.backgroundColor="yellow";
+				BTN.style.color = "#333";
+				localStorage.setItem("OBID",OBID.value);
+			}
 		</script>
-
-		</body>
+	</body>
 </html>

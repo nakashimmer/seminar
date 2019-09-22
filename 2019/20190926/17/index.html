@@ -1,66 +1,72 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-	<meta charset="utf-8">
-	<title>PWA</title>
-	<meta name=viewport content="width=device-width">
-	<link rel="stylesheet" href="../index/iframe.css">
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../index/iframe.css">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
 	<style>
-	#qr{position:relative;}
-	img{position:absolute;right:15px;top:5px;}
-		
+		#dlg {margin: 0 auto;padding: 1em;width:80%;}
+		button {margin: 1em;}
+		#dlg button {display: block;margin: 1em auto;}
+	</style>
 
-		</style>
-	
 	</head>
 	<body>
-		<h1>PWA(Progressive Web Apps)</h1>
-		<div id="wrap">	
-			<div id="qr"><a target="_blank" href="https://nakashimmer.github.io/pwa/index.html"><img src="pwa.png"></a></div>
-			<h2>必要なもの</h2>
-			<details>
-				<summary>index.html</summary>
-				<pre><code>navigator.serviceWorker.register(
-	'./service-worker.js');</code></pre>
-			</details>
-			<details>
-				<summary>manifest.json</summary>
-				<pre><code>{
-  "name": "お絵かきアプリ",
-  "short_name": "お絵かき",
-  "background_color": "#fc980c",
-  "icons": [{
-      "src": "./html5-256.png",
-      "sizes": "256x256",
-      "type": "image/png"
-    },{
-      "src": "./html5-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    }],
-  "start_url": "./?utm_source=homescreen",
-  "display": "standalone"
-}
+		<div id="wrap">
+			<section>
+				<h1>② [HTML] dialog要素</h1>
 
-				</code></pre>
-			</details>
-			<details>
-				<summary>service-worker.js</summary>
-				<pre><code>const CACHE_NAME = 'cache-v2';
-const urlsToCache = [];
+				<button id="btn1">ダイアログを開く</button>
+				<dialog id="dlg">
+					<h3>ダイアログ</h3>
+					<p>HTML5はHTML,CSS,JavaScriptなどの仕様の総称名です。</p>
+					<p><button id="btn2">ダイアログを閉じる</button>
+				</dialog>
+				<script>
+					const DLG = document.getElementById("dlg");
+					const BTN1 = document.getElementById("btn1");
+					const BTN2 = document.getElementById("btn2");
+					
+					BTN1.addEventListener("click",()=>{
+						DLG.showModal();
+					});
 
-self.addEventListener('install', (event)=>{
-  /*キャッシュを保存*/
+					BTN2.addEventListener("click", ()=>{
+						DLG.close();
+					});
+				</script>
+			</section>
+			<section>
+				<details>
+					<summary><h2>HTML</h2></summary>
+					<pre><code>&lt;button id="btn1">ダイアログを開く&lt;/button>
+
+<mark>&lt;dialog id="dlg"></mark>
+	&lt;h3>ダイアログ&lt;/h3>
+	&lt;p>HTML5はHTML,CSS,JavaScriptなどの仕様の総称名です。&lt;/p>
+	&lt;p>&lt;button id="btn2">ダイアログを閉じる&lt;/button>&lt/p>
+<mark>&lt;/dialog></mark></code></pre>
+				</details>
+
+				<details>
+					<summary><h2>JavaScript</h2></summary>
+					<pre><code>const DLG = document.getElementById("dlg");
+const BTN1 = document.getElementById("btn1");
+const BTN2 = document.getElementById("btn2");
+
+BTN1.addEventListener("click", ()=>{
+	<mark>DLG.showModal();</mark>
 });
 
-self.addEventListener('activate', (event)=>{
-  /*古いキャッシュは削除*/
-});
-
-</code></pre>
-			</details>
-		</div>
-  </body>
+BTN2.addEventListener("click", ()=>{
+	<mark>DLG.close();</mark>
+});</code></pre>
+				</details>
+				<details>
+					<summary><h2>ブラウザ対応状況</h2></summary>
+					<p>Google chrome/Firefox/Opera/Android</p>
+				</details>
+				</section>
+			<p><a href="index2.html">次へ</a></p>
+		</body>
 </html>
-

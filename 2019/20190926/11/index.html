@@ -4,78 +4,174 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="../index/iframe.css">
 		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
-	<style>
-		
-			
-			#board{
-				position:relative;
-				height:200px;
-				width:900px;
-				margin:0 auto;
-			}
-			#board1,#board2{
-				position: absolute;
+		<style>
+			*{margin:0;padding:0;font-size:20px;}
+			#table{
+				border-collapse: collapse;
 				display:flex;
-			}
-			#board2{
-				margin:0 auto;
-			}
-			.keys{
-				text-align:center;
-				width:50px;height:60px;
-				margin:3px 3px 3px 3px;
-				color:black;
+				width:100%;
+				border:3px solid black;
+				border-right: none;
 				background-color:white;
 			}
-			.keys:last-of-type{
+			table *{color:black;}
+			th,td{
+				border:1px solid black;
+				border-right:3px solid black;
+				width:270px;
+				font-size:20px !important;
+			}
+			th{background-color:#fff;}
+			td{text-align:right;padding:0.5em;}
+			tr:nth-of-type(1),
+			tr:nth-of-type(7){
+				border-bottom:5px double black;
+			}
+			input{
+				font-size:20px;
+				width:calc(100%);
+				border:none;
+				text-align:right;
 			}
 
-			input[type="radio"] {
-		   transform:translate(0px ,-10px) scale(2);
-  		 margin-right: 1em;
-			}
 
-			section{
+			.btn{
+				margin:0 auto;
 			}
-			#key-1{margin-left:35px;}
-			#key-6{margin-left:55px;}
-			#key-13{margin-left:65px;}
-			#key-18{margin-left:55px;}
-			#key-24{margin-right:25px;}
-			#key-25{margin-left:55px;}
-			#board1 *{
-				background-color:black;color:white;
-				height:50px;
-				padding-top:50px;
+			button{
+				color:white;
+				background-color: black;
+				margin:1em 0 0 auto;
+				font-size:20px;
 			}
-			#board2 *{
-				padding-top:100px;
-			}
-	</style>
+			th,td{width:12.5%;}
 
+		</style>
+
+		</style>
+		<script src="https://unpkg.com/@tensorflow/tfjs"></script>
 	</head>
 	<body>
+	<h1>一次関数の値を予測</h1>
 		<div id="wrap">
-			<section>
-				<h1>シンセサイザ</h1>		
-	
-				<p>音量：<input id=vol type="range" min=0 max=1 value=0.5 step=0.1></p>
-				<p>波形：
-					<label><input type="radio" name="wstyle" value="sine" checked>正弦波</label> 
-					<label><input type="radio" name="wstyle" value="square">矩形波</label> 
-					<label><input type="radio" name="wstyle" value="triangle">三角波</label> 
-					<label><input type="radio" name="wstyle" value="sawtooth">のこぎり波</label>
-				</p>
-				<p>鍵盤：</p>
-				<div id="board">
-					<div id="board2"></div>
-					<div id="board1"></div>
-				</div>
+		<ol>
+			<li>① (x,y)の値のセットを1〜6回まで設定する</li>
+			<li>② 7回のxの値を入力し「予測」ボタンを押す</li>
+			<li>③ 7回のyに予測値が表示される</li>
+		</ol>
+		
+			<table id="table">
+				<tr>
+					<th>データ</th>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+					<th>6</th>
+					<th>予測</th>
+				</tr>
+				<tr>	
+					<th>x値</th>
+					<td><input type="text" class="x" value="0"></td>
+					<td><input type="text" class="x" value="1"></td>
+					<td><input type="text" class="x" value="2"></td>
+					<td><input type="text" class="x" value="3"></td>
+					<td><input type="text" class="x" value="4"></td>
+					<td><input type="text" class="x" value="5"></td>
+					<td>
+						<input type="text" class="x" placeholder="①" style="border:1px solid red;"><br>
+						<button
+							onclick="tsr();">②予測</button>
+					</td>
+				</tr>
+				<tr>
+					<th>y値</th>
+					<td><input type="text" class="y" value="-3"></td>
+					<td><input type="text" class="y" value="-1"></td>
+					<td><input type="text" class="y" value="1"></td>
+					<td><input type="text" class="y" value="3"></td>
+					<td><input type="text" class="y" value="5"></td>
+					<td><input type="text" class="y" value="7"></td>
+					<td class="y">③予測値</td>
+				</tr>
+		</table>
+		<p id="output"></p>
+		<p><a href="../13-2/index.html">骨格を認識させる</a></p>
 
-				<p><a href="../11-2/index.html">弾きにくいので</a></p>
+		<script>
+		const x = document.getElementsByClassName("x");
+		const y = document.getElementsByClassName("y");
+
+		const output = document.getElementById("output");
+
+
+		function xf(i){return parseFloat(x[i].value);}
+		function yf(i){return parseFloat(y[i].value);}
+
+		function tsr(){
+
+			async function learnLinear(){
+
+				//データ読み込み
+				const model = tf.sequential();
+				model.add(
+					tf.layers.dense(
+						{
+							units: 1, 
+							inputShape: [1]
+						}
+					)
+				);
+
+				model.compile(
+					{
+						loss: 'meanSquaredError',
+						optimizer: 'sgd'
+					}
+				);
+
+				//データ用意
+				const xs = tf.tensor2d(
+					[xf(0),xf(1),xf(2),xf(3),xf(4),xf(5)],[6, 1]
+				);
+
+
+				const ys = tf.tensor2d(
+					[yf(0),yf(1),yf(2),yf(3),yf(4),yf(5)],[6, 1]
+				);
+
+
+
+				await model.fit(
+					xs,
+					ys,
+					{epochs: 500,
+					callbacks: {
+							onEpochEnd: async (epoch, logs) => {
+								console.log(epoch, logs);
+								output.innerHTML = "<li>" + epoch + "回/LogLoss=" + logs.loss + "</li>";
+							},
+						}}
+				);
+
+			//予測
+				var result = model.predict(
+					tf.tensor2d(
+						[xf(6)],[1, 1]
+					)
+				)
+
+
+
+				y[6].innerText = (""+result).slice(14).slice(0,-3);
+
+			}
+
+			learnLinear();
 			
-			</section>
-
-	<script src="script.js"></script>
-		</body>
+		}		
+	</script>
+	
+	</body>
 </html>

@@ -1,177 +1,65 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<link rel="stylesheet" href="../index/iframe.css">
-		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
-		<style>
-			*{margin:0;padding:0;font-size:20px;}
-			#table{
-				border-collapse: collapse;
-				display:flex;
-				width:100%;
-				border:3px solid black;
-				border-right: none;
-				background-color:white;
-			}
-			table *{color:black;}
-			th,td{
-				border:1px solid black;
-				border-right:3px solid black;
-				width:270px;
-				font-size:20px !important;
-			}
-			th{background-color:#fff;}
-			td{text-align:right;padding:0.5em;}
-			tr:nth-of-type(1),
-			tr:nth-of-type(7){
-				border-bottom:5px double black;
-			}
-			input{
-				font-size:20px;
-				width:calc(100%);
-				border:none;
-				text-align:right;
-			}
 
+<head>
+	<meta charset="utf-8">
+	<title>WebRTC</title>
+	<meta name=viewport content="width=device-width">
+	<link rel="stylesheet" href="../index/iframe.css">
+	<style>
+	
+			.you,.pc{margin:0.2em;padding:0.3em;color:black;}
+			.you{background-color:skyblue;text-align:right;}
+			.pc{background-color:pink;}
 
-			.btn{
-				margin:0 auto;
+			#result{
+				height:300px;
+				border:1px solid gray;
+				overflow:scroll;
 			}
-			button{
-				color:white;
-				background-color: black;
-				margin:1em 0 0 auto;
-				font-size:20px;
+			.write{display:none;}
+
+			@media(max-width:450px){
+				.write{display:inline;}
+				.rec1{display:none;}
+				#wrap{width:100%;}
 			}
-			th,td{width:12.5%;}
+			select,option{font-size:30px;color:black;}
 
 		</style>
-
-		</style>
-		<script src="https://unpkg.com/@tensorflow/tfjs"></script>
+		<script src="jquery-3.2.1.min.js"></script>
 	</head>
 	<body>
-	<h1>一次関数の値を予測</h1>
-		<div id="wrap">
-		<ol>
-			<li>① (x,y)の値のセットを1〜6回まで設定する</li>
-			<li>② 7回のxの値を入力し「予測」ボタンを押す</li>
-			<li>③ 7回のyに予測値が表示される</li>
-		</ol>
-		
-			<table id="table">
-				<tr>
-					<th>データ</th>
-					<th>1</th>
-					<th>2</th>
-					<th>3</th>
-					<th>4</th>
-					<th>5</th>
-					<th>6</th>
-					<th>予測</th>
-				</tr>
-				<tr>	
-					<th>x値</th>
-					<td><input type="text" class="x" value="0"></td>
-					<td><input type="text" class="x" value="1"></td>
-					<td><input type="text" class="x" value="2"></td>
-					<td><input type="text" class="x" value="3"></td>
-					<td><input type="text" class="x" value="4"></td>
-					<td><input type="text" class="x" value="5"></td>
-					<td>
-						<input type="text" class="x" placeholder="①" style="border:1px solid red;"><br>
-						<button
-							onclick="tsr();">②予測</button>
-					</td>
-				</tr>
-				<tr>
-					<th>y値</th>
-					<td><input type="text" class="y" value="-3"></td>
-					<td><input type="text" class="y" value="-1"></td>
-					<td><input type="text" class="y" value="1"></td>
-					<td><input type="text" class="y" value="3"></td>
-					<td><input type="text" class="y" value="5"></td>
-					<td><input type="text" class="y" value="7"></td>
-					<td class="y">③予測値</td>
-				</tr>
-		</table>
-		<p id="output"></p>
-		<p><a href="../13-2/index.html">骨格を認識させる</a></p>
+		<h1>AI連携</h1>
+		<div id="wrap">	
+			<ol>
+				<li>
+					音声種類選択→ 
+					<span id="voiceSelect"><button id="btn1">選択</button>
+				</li>
+				<li>
+					言語を選択する→ 
+					<select id="lang">
+						<option value="ja-JP" selected>日本語</option>
+						<!--option value="en-US">英語</option-->
+					</select>
+				</li>
+				<li>
+					メッセージ：
+					<button id="btn2" class=rec1>音声で呼びかける</button>
+					<input type="text" id="msg" class="write">
+					<button id="btn3" class="write">送信</button>
+				</li>
+				<li>
+					<small style="color:red;">外部と共有されるので非公開情報・個人情報にかかるものは絶対禁止です</small>
+				</li>
+			</ol>
 
-		<script>
-		const x = document.getElementsByClassName("x");
-		const y = document.getElementsByClassName("y");
+			<div id="result"></div>
+		</div>
 
-		const output = document.getElementById("output");
+		<script src="script.js"></script>
 
-
-		function xf(i){return parseFloat(x[i].value);}
-		function yf(i){return parseFloat(y[i].value);}
-
-		function tsr(){
-
-			async function learnLinear(){
-
-				//データ読み込み
-				const model = tf.sequential();
-				model.add(
-					tf.layers.dense(
-						{
-							units: 1, 
-							inputShape: [1]
-						}
-					)
-				);
-
-				model.compile(
-					{
-						loss: 'meanSquaredError',
-						optimizer: 'sgd'
-					}
-				);
-
-				//データ用意
-				const xs = tf.tensor2d(
-					[xf(0),xf(1),xf(2),xf(3),xf(4),xf(5)],[6, 1]
-				);
-
-
-				const ys = tf.tensor2d(
-					[yf(0),yf(1),yf(2),yf(3),yf(4),yf(5)],[6, 1]
-				);
-
-
-
-				await model.fit(
-					xs,
-					ys,
-					{epochs: 500,
-					callbacks: {
-							onEpochEnd: async (epoch, logs) => {
-								console.log(epoch, logs);
-								output.innerHTML = "<li>" + epoch + "回/LogLoss=" + logs.loss + "</li>";
-							},
-						}}
-				);
-
-			//予測
-				var result = model.predict(
-					tf.tensor2d(
-						[xf(6)],[1, 1]
-					)
-				)
-
-
-
-				y[6].innerText = (""+result).slice(14).slice(0,-3);
-
-			}
-
-			learnLinear();
-			
-		}		
-	</script>
-	
-	</body>
+  </body>
 </html>
+

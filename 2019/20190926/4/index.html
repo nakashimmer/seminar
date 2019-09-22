@@ -24,6 +24,18 @@
 					<input type="text" id="n1">＋<input type="text" id="n2">
 					<button id="btn1">合計</button>
 				</p>
+
+				<details>
+					<summary>JavaScript</summary>
+					<pre><code>const N1 = document.getElementById("n1");
+const N2 = document.getElementById("n2");
+const BTN1 = document.getElementById("btn1");
+					
+BTN1.addEventListener("click",()=>{
+	BTN1.innerHTML="合計は＝"
+	+ (Number(N1.value) + Number(N2.value));
+});</code></pre>
+				</details>
 	
 			</section>
 		

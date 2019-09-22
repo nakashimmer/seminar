@@ -35,8 +35,11 @@
 					});
 
 					BTN2.addEventListener("click", ()=>{
-						DLG.close();
+						setTimeout(fn1,1000);
 						DLG.style.transform = " rotate(0deg) scale(0)";
+						function fn1() {
+							DLG.close();
+						}
 					});
 				</script>
 			</section>

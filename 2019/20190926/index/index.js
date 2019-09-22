@@ -9,7 +9,7 @@ if(slideno){
 }
 for(let i=0;i<srcs.length;i++){
 	srcs[i].addEventListener("click",()=>{
-		iframe.src=i+"/index.html";
+		iframe.src = srcs[i].getAttribute("id")+"/index.html";
 		srcs[i].style.color="#fff";
 		srcs[i].style.textShadow="none";
 		localStorage.setItem("slideno",i);

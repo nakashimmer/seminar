@@ -26,7 +26,7 @@
 	</head>
 	<body>
 		<div id="wrap">
-			<h1>③ [CSS] conic-gradient(円錐)</h1>
+			<h1>円錐グラデーション</h1>
 			<div class="flex">
 <style scoped contenteditable class="contentcss" id="style1">#box1{
 	border: 1px solid gray;
@@ -62,11 +62,7 @@
 			<button onclick="ins3();" id="b3">3.範囲指定</button>
 			<button onclick="ins4();" id="b4">4.某社ロゴ</button>
 			<button onclick="ins5();" id="b5">5.分割</button>
-			<button onclick="ins6();" id="b6">6.元に</button>
-			<button onclick="ins7();" id="b7">7.円</button>
-			<button onclick="ins8();" id="b8">8.リピート</button>
-			<button onclick="ins9();" id="b9">9.くっきり</button>
-			<button onclick="ins10();" id="b10">10.中心ずらす</button>
+			<button onclick="ins7();" id="b7">7.円グラフ</button>
 		</p>
 		<p><a href="index2.html">次へ</a>
 
@@ -77,11 +73,7 @@
 	const B3 = document.getElementById("b3");
 	const B4 = document.getElementById("b4");
 	const B5 = document.getElementById("b5");
-	const B6 = document.getElementById("b6");
 	const B7 = document.getElementById("b7");
-	const B8 = document.getElementById("b8");
-	const B9 = document.getElementById("b9");
-	const B10 = document.getElementById("b10");
 
 
 	function ins1(){
@@ -155,18 +147,7 @@ STYLE1.innerHTML = `#box1{
 }`;
 	}
 
-	function ins6() {
-		B6.style.backgroundColor = "#333";
-STYLE1.innerHTML = `#box1{
-	border: 1px solid gray;
-	width: 300px; height: 300px;
-	background:
-		conic-gradient(
-			white,
-			black
-	);
-}`;
-	}
+
 
 	function ins7() {
 		B7.style.backgroundColor = "#333";
@@ -175,55 +156,16 @@ STYLE1.innerHTML = `#box1{
 	width: 300px; height: 300px;
 	background:
 		conic-gradient(
-			white,
-			black
+			green 25%,
+			yellow 0 50%,
+			blue 0 75%,
+			red 0
 	);
 	border-radius:50%;
 }`;
 	}
 
-	function ins8() {
-		B8.style.backgroundColor = "#333";
-STYLE1.innerHTML = `#box1{
-	border: 1px solid gray;
-	width: 300px; height: 300px;
-	background:
-		repeating-conic-gradient(
-			white 0,
-			black 100%
-	);
-	border-radius:50%;
-}`;
-	}
 
-	function ins9() {
-		B9.style.backgroundColor = "#333";
-STYLE1.innerHTML = `#box1{
-	border: 1px solid gray;
-	width: 300px; height: 300px;
-	background:
-		repeating-conic-gradient(
-			white 0 10%,
-			black 0 20%
-	);
-	border-radius:50%;
-}`;
-	}
-
-	function ins10() {
-		B10.style.backgroundColor = "#333";
-STYLE1.innerHTML = `#box1{
-	border: 1px solid gray;
-	width: 300px; height: 300px;
-	background:
-		repeating-conic-gradient(
-			at center,
-			white 0 10%,
-			black 0 20%
-	);
-	border-radius:50%;
-}`;
-			}
 
 </script>
 

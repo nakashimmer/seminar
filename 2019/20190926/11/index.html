@@ -5,7 +5,7 @@
 		<link rel="stylesheet" href="../index/iframe.css">
 		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
 		<style>
-			*{margin:0;padding:0;font-size:20px;}
+			*{margin:0;padding:0;}
 			#table{
 				border-collapse: collapse;
 				display:flex;
@@ -54,10 +54,11 @@
 	<body>
 	<h1>一次関数の値を予測</h1>
 		<div id="wrap">
+		<p><a target="_blank" href="https://www.cis.twcu.ac.jp/~asakawa/MathBio2010/lesson13/index.html">機械知覚の父オリバー・セルフリッジ「パンデモニウム」</a></p>
 		<ol>
-			<li>① (x,y)の値のセットを1〜6回まで設定する</li>
+			<li>① (x,y)の値のセットを1〜6回まで設定</li>
 			<li>② 7回のxの値を入力し「予測」ボタンを押す</li>
-			<li>③ 7回のyに予測値が表示される</li>
+			<li>③ 学習を行い7回のyに予測値が表示される</li>
 		</ol>
 		
 			<table id="table">
@@ -97,7 +98,7 @@
 				</tr>
 		</table>
 		<p id="output"></p>
-		<p><a href="../13-2/index.html">骨格を認識させる</a></p>
+	
 
 		<script>
 		const x = document.getElementsByClassName("x");

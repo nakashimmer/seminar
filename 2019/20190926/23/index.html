@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Google Analytics --><script src="/showcase/ga.js"></script>
+		<meta charset="UTF-8">
+		<title>UFOゲーム</title>
+		<meta name="viewport" content="width=device-width">
+			<link rel="stylesheet" href="../index/iframe.css">
+			<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+		<style>
+			#canvas1{
+				margin:0 auto;
+				display:block;
+				background:url("startBG.png") center top no-repeat;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>UFOゲーム</h1>
+		<div id="wrap">
+			<canvas id="canvas1" width="320" height="460"></canvas>
+		</div>
+
+		<script>
+			const CANVAS1 = document.getElementById("canvas1");
+			const C = CANVAS1.getContext("2d");
+
+			const STEALTH = {x:160,y:300};
+			let rival_kosu = 100;
+			const rival = new Array(rival_kosu);
+			for(let i=0;i<rival_kosu;i++){
+				rival[i]={
+					x:Math.floor(Math.random()*14)*20+40,
+					y:-i*100-50,
+					dy:Math.floor(Math.random()*5)+2
+				};
+			}
+			let frame = 0;
+			let wave = 0;
+			let point = 0;
+			const ACC = {x:0,y:0,z:0};
+			const GRA = {x:0,y:0,z:0};
+			const RAT = {a:0,b:0,g:0};
+			let jouge = 0;
+			const SOUND = new Audio('sound.mp3');
+			let userAgent = window.navigator.userAgent.toLowerCase();
+			let kishu=userAgent.indexOf("mac");
+			let startlock=true;
+			let timer;
+
+			CANVAS1.addEventListener("click",()=>{
+				if(startlock){
+					timer=setInterval(anime,50);
+					startlock=false;
+				}
+			});
+
+			function anime(){
+				frame++;
+				end();
+				bg();
+				waves();
+				target();
+				player();
+				remain();
+			}
+
+			function end(){
+				if(frame>50*20){
+					clearInterval(timer);
+					startlock = true;
+				}
+			}
+
+			function bg(){
+				C.globalAlpha = 1;
+				C.fillStyle = "black";
+				C.fillRect(0,0,320,460);
+			}
+				
+			function waves(){
+				for(let i=0;i<48;i++){
+					wave = frame*6%200;
+					C.beginPath();
+					C.moveTo(0,i*200+wave);
+					C.lineTo(320,i*200+wave);
+					C.strokeStyle = "silver";
+					C.lineWidth = 1;
+					C.stroke();
+				}
+			}
+
+			function crash(){
+				if((Math.abs(rival[i].x-STEALTH.x) < 30) &&
+				(Math.abs(rival[i].y-STEALTH.y) < 10)){
+					SOUND.currentTime=0;
+					SOUND.play();
+
+					C.beginPath();
+					C.arc(rival[i].x,rival[i].y,50,0,2*Math.PI,true);
+					C.fillStyle="pink";
+					C.fill();
+					point++;
+					rival[i].x=320-rival[i].x;
+					rival[i].y=-20;
+				}
+			}
+
+
+
+			function target(){
+				for(i=0;i<rival_kosu;i++){
+					if((rival[i].y>-30)&&(rival[i].y<480)){
+						C.beginPath();
+						C.arc(rival[i].x,rival[i].y+5,15,0,2*Math.PI,false);
+						C.fillStyle="#555";
+						C.fill();
+						C.beginPath();
+						C.arc(rival[i].x,rival[i].y,15,0,2*Math.PI,false);
+						C.fillStyle="yellow";
+						C.fill();
+						crash();
+					}
+					rival[i].y+=rival[i].dy;
+				}
+			}
+				
+			function player(){
+				//shadow
+				C.beginPath();
+				C.moveTo(STEALTH.x,STEALTH.y+8);
+				C.lineTo(STEALTH.x-30,STEALTH.y+30+8-GRA.x*3);
+				C.lineTo(STEALTH.x+30,STEALTH.y+30+8+GRA.x*3);
+				C.closePath();
+				C.fillStyle = "#666";
+				C.fill();
+				//real
+				C.beginPath();
+				C.moveTo(STEALTH.x,STEALTH.y);
+				C.lineTo(STEALTH.x-30,STEALTH.y+30-GRA.x*3);
+				C.lineTo(STEALTH.x+30,STEALTH.y+30+GRA.x*3);
+				C.closePath();
+				C.fillStyle = "lightgreen";
+				C.fill();
+				C.font = '40px "Times roman"';
+				C.fillText(point,STEALTH.x-10,STEALTH.y+80);
+			}
+
+			function remain(){
+				C.fillStyle="white"; 
+				C.font='30px "Times roman"';
+				C.fillText('Time:'+(50-Math.floor(frame/20)),0,460);
+			}
+
+			window.addEventListener('devicemotion', function(e) {
+				const ACG = e.accelerationIncludingGravity;
+				GRA.x = ACG.x; //x方向の傾き重力加速度
+				GRA.y = ACG.y; //y方向の傾き重力加速度
+			//	GRA.z = acg.z; //z方向の傾き重力加速度
+
+				if(kishu>0){
+						STEALTH.x += Math.floor(GRA.x)*5;
+						STEALTH.y -= Math.floor(GRA.y+5)*5;
+				}else{
+						STEALTH.x -= Math.floor(GRA.x)*5;
+						STEALTH.y += Math.floor(GRA.y+5)*5-50;
+				}
+				
+				if(STEALTH.x<0){STEALTH.x=0;}
+				if(320<STEALTH.x){STEALTH.x=320;}
+
+				if(STEALTH.y<0){STEALTH.y=0;}
+				if(460<STEALTH.y){STEALTH.y=460;}
+
+			});
+
+		</script>
+	</body>
+</html>

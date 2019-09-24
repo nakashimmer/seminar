@@ -51,7 +51,7 @@ footer small{
 ol{list-style:none;}
 
 #side ol li{padding:0.5em;display:block;border-bottom:1px dotted white;}
-#side ol li:hover{background-color:#333;color:white;}
+#side ol li:hover{background-color:#999;}
 
 video,canvas{display:block;}
 

@@ -58,6 +58,7 @@ function nyuryoku(){
 		//①文字を書き換え
 		msg = msg.replace("中島","イケメン中島");
 		msg = msg.replace("なかしま","イケメン中島");
+		msg = msg.replace("ありがとう", "どういたしまして");
 		//②時間を回答
 		const now=new Date();
 		msg = msg.replace("何時",now.getHours()+"時"+now.getMinutes()+"分です");

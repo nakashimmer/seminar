@@ -12,8 +12,7 @@ for(let i=0;i<srcs.length;i++){
 		iframe.src = srcs[i].getAttribute("id")+"/index.html";
 		srcs[i].style.color="#fff";
 		srcs[i].style.textShadow="none";
-		localStorage.setItem("slideno",i);
-		console.log(i);
+		localStorage.setItem("slideno", srcs[i].getAttribute("id"));
 	});
 }
 

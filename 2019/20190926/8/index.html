@@ -7,8 +7,7 @@
 	<meta name=viewport content="width=device-width">
 	<link rel="stylesheet" href="../index/iframe.css">
 	<style>
-	#qr{position:relative;}
-	img{position:absolute;right:15px;top:5px;}
+	.qr{margin: 50px auto;text-align: center;}
 		
 
 		</style>
@@ -17,7 +16,7 @@
 	<body>
 		<h1>PWA(Progressive Web Apps)</h1>
 		<div id="wrap">	
-			<div id="qr"><a target="_blank" href="https://nakashimmer.github.io/pwa/index.html"><img src="pwa.png"></a></div>
+			<p class="qr"><a target="_blank" href="https://nakashimmer.github.io/pwa/index.html"><img src="pwa.png"></a></>
 			<h2>必要なもの</h2>
 			<details>
 				<summary>index.html</summary>
@@ -48,7 +47,7 @@
 			<details>
 				<summary>service-worker.js</summary>
 				<pre><code>const CACHE_NAME = 'cache-v2';
-const urlsToCache = [];
+const urlsToCache = ['/','hoge.html'];
 
 self.addEventListener('install', (event)=>{
   /*キャッシュを保存*/

@@ -18,12 +18,14 @@
 			<section>
 				<h1>dialog要素-透明度</h1>
 
-				<button id="btn1">ダイアログを開く</button>
-				<dialog id="dlg">
-					<h3>ダイアログ</h3>
-					<p>HTML5はHTML,CSS,JavaScriptなどの仕様の総称名です。</p>
-					<p><button id="btn2">ダイアログを閉じる</button></p>
-				</dialog>
+				<div class="sample">
+					<button id="btn1">ダイアログを開く(btn1)</button>
+					<dialog id="dlg">
+						<h3>ダイアログ</h3>
+						<p>HTML5はHTML,CSS,JavaScriptなどの仕様の総称名です。</p>
+						<p><button id="btn2">ダイアログを閉じる(btn2)</button></p>
+					</dialog>
+				</div>
 				<script>
 					const DLG = document.getElementById("dlg");
 					const BTN1 = document.getElementById("btn1");
@@ -35,7 +37,7 @@
 					});
 
 					BTN2.addEventListener("click", ()=>{
-						setTimeout(fn1,5000);
+						setTimeout(fn1,1000);
 						DLG.style.opacity = 0;
 						function fn1(){
 							DLG.close();
@@ -57,14 +59,12 @@
 			<section>
 				<details>
 					<summary><h2>JavaScript</h2></summary>
-					<pre><code>BTN1.addEventListener("click",()=>{
+					<pre><code><mark>BTN1</mark>.addEventListener("click",()=>{
 	DLG.showModal();
-	<mark>DLG.style.opacity=1;</mark>
-});
-BTN2.addEventListener("click",()=>{
+	<mark>DLG.style.opacity=1;</mark>});
+<mark>BTN2</mark>.addEventListener("click",()=>{
 	DLG.close();
-	<mark>DLG.style.opacity = 0;</mark>
-});</code></pre>
+	<mark>DLG.style.opacity = 0;</mark>});</code></pre>
 				</details>
 			</section>
 			<p><a href="index3.html">次へ</a></p>

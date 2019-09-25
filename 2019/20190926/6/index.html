@@ -71,9 +71,42 @@
 					<div id="board2"></div>
 					<div id="board1"></div>
 				</div>
+			</section>
+
+			<section>
+				<details>
+					<summary>JavaScript</summary>
+					<pre><code>//準備
+const <mark>AC=new AudioContext()</mark>; //音の元を作る
+const VCG=AC.createGain(); //ボリュームを作る
+const VCO=new Array();//ひとつひとつの音の設定
+
+for(let i=0;i&lt;HZ.length;i++){
+ <mark>VCO[i]</mark>=<mark>AC</mark>.createOscillator(); //音源を作る
+ <mark>VCO[i]</mark>.connect(VCG); //音源をボリュームにつなぐ
+ <mark>VCO[i]</mark>.type="sine"; //音色
+ <mark>VCO[i]</mark>.frequency.value=HZ[i];//周波数を決める
+}
+VCG.connect(AC.destination); //出力につなぐ
+
+//キーを押す
+window.addEventListener("<mark>keydown</mark>",(e)=>{
+	let i = Code.indexOf(e.keyCode);
+	VCG.gain.value=VOL.value; //音量
+	<mark>VCO[i].start()</mark>;//音が出る
+}</code></pre>
+				</details>
+
+			</section>
+
 
 				<p><a href="../6-2/index.html">弾きにくいので</a></p>
 			
+
+
+
+
+
 			</section>
 
 	<script src="script.js"></script>

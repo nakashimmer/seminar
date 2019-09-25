@@ -14,16 +14,16 @@
 	<body>
 		<div id="wrap">
 			<section>
-				<h1>② [HTML] dialog要素</h1>
-
-				<p>
+				<h1>dialog要素</h1>
+				<p>dialog要素はダイアログボックスの要素</p>
+				<p class="sample">
 					<button onclick='alert("普通のアラート")';'>普通のアラート</button>
-					<button id="btn1">ダイアログを開く</button>
+					<button id="btn1">ダイアログを開く(btn1)</button>
 				</p>
 				<dialog id="dlg">
 					<h3>ダイアログ</h3>
 					<p>HTML5はHTML,CSS,JavaScriptなどの仕様の総称名です。</p>
-					<p><button id="btn2">ダイアログを閉じる</button>
+					<p><button id="btn2">ダイアログを閉じる(btn2)</button>
 				</dialog>
 				<script>
 					const DLG = document.getElementById("dlg");
@@ -53,23 +53,11 @@
 
 				<details>
 					<summary><h2>JavaScript</h2></summary>
-					<pre><code>const DLG = document.getElementById("dlg");
-const BTN1 = document.getElementById("btn1");
-const BTN2 = document.getElementById("btn2");
-
-BTN1.addEventListener("click", ()=>{
-	<mark>DLG.showModal();</mark>
-});
-
-BTN2.addEventListener("click", ()=>{
-	<mark>DLG.close();</mark>
-});</code></pre>
+					<pre><code><mark>BTN1</mark>.addEventListener("click", ()=>{<mark>DLG.showModal();</mark>});
+<mark>BTN2</mark>.addEventListener("click", ()=>{<mark>DLG.close();</mark>});</code></pre>
 				</details>
-				<details>
-					<summary><h2>ブラウザ対応状況</h2></summary>
-					<p>Google chrome/Firefox/Opera/Android</p>
-				</details>
-				</section>
+
+			</section>
 			<p><a href="index2.html">次へ</a></p>
 		</body>
 </html>

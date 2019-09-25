@@ -16,6 +16,18 @@
 	<div id="wrap">
 		<h1>加速度センサ</h1>
 		<p class="img"><a target="_blank" href="https://nakashimmer.github.io/showcase/JS/deviceAccess/devicemotion/ufo/index.html"><img src="ufo.png"></a></p>
+
+		<section>
+			<details>
+				<summary>JavaScript</summary>
+				<pre><code>window.addEventListener('devicemotion', (e)=>{
+	const ACG = e<mark>.accelerationIncludingGravity</mark>;
+	let X = ACG<mark>.x</mark>;
+	let Y = ACG<mark>.y</mark>;
+	let Z = acg<mark>.z</mark>;
+}
+
+
 	</div>
 </body>
 

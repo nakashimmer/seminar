@@ -19,35 +19,32 @@
 		<div id="wrap">
 			<section>
 				<h1>計算機</h1> 
-
-				<p>
-					<input type="text" id="n1">＋<input type="text" id="n2">
-					<button id="btn1">合計</button>
+				<p>JavaScriptはプログラム</p>
+				<p class="sample">
+					<input type="text" id="a" autocomplete="off" placeholder="a">
+					＋<input type="text" id="b"autocomplete="off" placeholder="b">
+					<button id="c">合計c</button>
 				</p>
 
 				<details>
 					<summary>JavaScript</summary>
-					<pre><code>const N1 = document.getElementById("n1");
-const N2 = document.getElementById("n2");
-const BTN1 = document.getElementById("btn1");
 					
-BTN1.addEventListener("click",()=>{
-	BTN1.innerHTML="合計は＝"
-	+ (Number(N1.value) + Number(N2.value));
+					<pre><code>c.addEventListener("<mark>click</mark>",()=>{
+	c.innerHTML="合計cは＝"+ (Number(<mark>a.value</mark>)<mark>+</mark>Number(<mark>b.value</mark>));
 });</code></pre>
 				</details>
 	
 			</section>
 		
 		<script>
-			const N1 = document.getElementById("n1");
-			const N2 = document.getElementById("n2");
-			const BTN1 = document.getElementById("btn1");
+			const a = document.getElementById("a");
+			const b = document.getElementById("b");
+			const c = document.getElementById("c");
 
-			BTN1.addEventListener("click",()=>{
-				BTN1.innerHTML
-					= "合計は<br>＝"
-					+ (Number(N1.value) + Number(N2.value));
+			c.addEventListener("click",()=>{
+				c.innerHTML
+					= "合計cは＝"
+					+ (Number(a.value) + Number(b.value));
 			});
 		</script>
 

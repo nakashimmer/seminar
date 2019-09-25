@@ -14,7 +14,13 @@
 	<body>
 		<div id="wrap">
 			<h1>HTML5とは</h1>
-			<p>HTML5は、<mark><span class="mark" contenteditable >ホームページ(Webページ)</span></mark>を作るためのツール</p>
+			<p>HTML5は、<mark id="mark" onclick="cng();">ホームページ(Webページ)</mark>を作るためのツール</p>
 		</div>
+		<script>
+			const mark=document.getElementById("mark");
+			function cng(){
+				mark.innerHTML="Webアプリケーション";
+			}
+		</script>
 	</body>
 </html>

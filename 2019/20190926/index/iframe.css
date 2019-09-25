@@ -65,8 +65,6 @@ a:after{
 	opacity:0;
 }
 
-
-
 @keyframes anchorAnimation{
 	50%{opacity:1;}
 	100%{transform:translateX(50px);}

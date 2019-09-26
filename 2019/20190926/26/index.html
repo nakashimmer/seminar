@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="../index/iframe.css">
+	<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+	<style>
+	
+			#cource{
+				background-image:url(bg.png);
+				width:600px;height:200px;
+				margin:0px auto;
+				position:relative;
+			}
+
+			#runner{
+				background-image:url(runner.png);
+				width:100px;
+				height:100px;
+				background-size:100% 100%;
+				position:absolute;
+				top:50px;left:0;
+			}
+
+			#wrap p{
+				text-align:center;
+				margin:50px;
+			}
+
+			#btn1{
+				width:5em;
+				line-height:3em;
+				
+				border:1px solid gray;
+				border-radius:30px;
+				outline:0;
+			}
+
+			#btn1:disabled{
+				background-color:black;
+				color:white;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div id="wrap">
+	
+		</style>
+	</head>
+	<body>
+		<h1>簡単なゲーム</h1>
+		<div id="wrap" class="sample">
+			<h2>500px競争</h2>
+			<p>CSSをJSでコントロール</p>
+			<div id="cource">
+				<div id="runner"></div>
+			</div>
+			
+			<p><button id="btn1">ボタン</button></p>
+		</div>
+		
+
+		<script>
+			const RUNNER=document.getElementById("runner");
+			const BTN1=document.getElementById("btn1");
+	
+			//初期化
+			let mypx = 0;	//位置(0〜500)
+			let interval = 5;	//インターバル(0~)
+			let startTime;
+
+			//★①音声
+			const BGM1 = new Audio();
+			BGM1.src = "bgm1.mp3";
+			const BGM2 = new Audio();
+			BGM2.src = "bgm2.mp3";
+
+			//イベント
+			BTN1.addEventListener("click", fnc1);
+
+			//ルーチン
+			function fnc1() {
+				RUNNER.style.transform = "rotate(" + (mypx % 3 - 1) * 5 + "deg)";
+				RUNNER.style.top = 50 + Math.sin(mypx / 180 * Math.PI) * 50 + "px";
+
+				mypx += interval;
+				RUNNER.style.left = mypx + "px";
+				BTN1.innerHTML = mypx + "px";
+
+				const NOW = new Date();
+
+				if (mypx === interval) {
+					startTime = NOW.getTime();
+					//★②再生
+					BGM1.play();
+				}
+
+				//ゴール
+				if (500 <= mypx) {
+					BTN1.disabled = "disabled";
+
+					BTN1.innerHTML += "<br>" + (NOW.getTime() - startTime) / 1000 + "s";
+					BTN1.style.lineHeight = "1.5em";
+					//★③停止と再生
+					BGM1.pause();
+					BGM2.play();
+				}
+
+			}
+		</script>
+	</body>
+</html>

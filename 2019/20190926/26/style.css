@@ -1,0 +1,38 @@
+#cource{
+	background-image:url(bg.png);
+	width:600px;height:200px;
+	margin:0px auto;
+	position:relative;
+}
+
+#runner{
+	background-image:url(runner.png);
+	width:100px;
+	height:100px;
+	background-size:100% 100%;
+	position:absolute;
+	top:50px;left:0;
+}
+
+p{
+	text-align:center;
+	margin:50px;
+}
+
+#btn1{
+	width:5em;
+	line-height:3em;
+	background-color:#eff;
+	border:1px solid gray;
+	border-radius:30px;
+	outline:0;
+}
+
+#btn1:disabled{
+	background-color:black;
+	color:white;
+}
+
+
+
+

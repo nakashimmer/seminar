@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+		<!-- Google Analytics --><script src="/showcase/ga.js"></script>
+	<meta charset="utf-8">
+	<title>Audio</title>
+</head>
+<body>
+
+	<audio id="audio1" src="bgm1.mp3" controls></audio>
+	
+	<p>
+		<button onclick='$("audio1").play();'>再生</button>
+		<button onclick='$("audio1").pause();'>停止</button>
+		<button onclick='$("audio1").volume-=0.2;'>小さく</button>
+		<button onclick='$("audio1").volume+=0.2;'>大きく</button>
+		<button onclick='$("audio1").playbackRate-=0.5;'>遅く</button>
+		<button onclick='$("audio1").playbackRate+=0.5;'>速く</button>
+	</p>
+
+	<script>
+		function $(id){return document.getElementById(id);}
+	</script>
+
+</body>
+</html>

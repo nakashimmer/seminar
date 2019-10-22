@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../index/iframe.css">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+	<style>
+		#dlg {margin: 0 auto;padding: 1em;width:80%;}
+		button {margin: 1em;}
+		#dlg button {display: block;margin: 1em auto;}
+		summary h2{display:block;}
+		p,input{font-size:30px;}
+		input{background-color:transparent;border:1px splid white;text-align:center;}
+		mark *{color:lime;}
+	</style>
+
+	</head>
+	<body>
+		<div id="wrap">
+			<section>
+				<h1>入力-input要素</h1> 
+				<p>入力の種類が増えた</p>
+				<p id="input">&lt;input type="<input type="text" id="type">"&gt;</p>
+
+				<p style="text-align:center;" class="sample">
+					<span id="sample"></span>　<span id="value"></span>
+				</p>
+				
+	
+			</section>
+			<section>
+				<h2>HTML</h2>
+				<pre><code>&ltinput type=<mark>"<span id=type2></span>"</mark>&gt;</code></pre>
+			</section>
+			<script>
+				const type=document.getElementById("type");
+				const type2=document.getElementById("type2");
+				const sample=document.getElementById("sample");
+				const value=document.getElementById("value");
+				
+				type.addEventListener("change",mk);
+				function mk(){
+					sample.innerHTML='<input id="input1" type="'+type.value+'">';
+					input1 = document.getElementById("input1");
+					input1.addEventListener("change",ipt1);
+					function ipt1(){
+						value.innerHTML=input1.value;
+					}
+
+					type2.innerHTML=type.value;
+				}
+
+			</script>
+		</body>
+</html>

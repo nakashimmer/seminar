@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../index/iframe.css">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+		<style>
+
+			#wrap2 {
+				margin: 0px auto 0;
+				width: 800px;
+				height: 600px;
+				overflow: hidden;
+			}
+
+			#video {
+				display: block;
+				position: absolute;
+			}
+
+			#canvas {
+				position: absolute;
+			}
+
+		</style>
+		<script src="https://unpkg.com/@tensorflow/tfjs"></script>
+		<script src="https://unpkg.com/@tensorflow-models/posenet"></script>
+	</head>
+	<body>
+		<div id="wrap">
+			<h1>骨格推定-PoseNet</h1>
+			<p>PoseNet:Webブラウザでリアルタイムに人間の姿勢推定を可能にする機械学習モデル</p>
+			<div style="position:relative;">
+
+				<div id="wrap2" class="sample">
+					<video id="video" width="800" height="600" autoplay="1"></video>
+					<canvas id="canvas" width="800" height="600"></canvas>
+				</div>
+			</div>
+		</div>
+		<p><a href="index2.html">Canvas APIで図形に置き換える</a></p>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.js"></script>
+		<script src="camera.js"></script>
+	</body>
+</html>

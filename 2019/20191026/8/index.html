@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>PWA</title>
+	<meta name=viewport content="width=device-width">
+	<link rel="stylesheet" href="../index/iframe.css">
+	<style>
+	.qr{margin: 50px auto;text-align: center;}
+		.flex>p{flex:1;}
+
+		</style>
+	
+	</head>
+	<body>
+		<h1>PWA(Progressive Web Apps)</h1>
+		
+		<div id="wrap">
+			<div class="flex">	
+				<p>PWA：デスクトップとモバイルの両方でインストール可能なWebアプリ</p>
+				<p class="qr"><a target="_blank" href="https://nakashimmer.github.io/pwa/index.html"><img src="pwa.png"></a></p>
+			</div>
+			<div class="sample">
+			<h2>必要なもの</h2>
+			<details>
+				<summary>index.html</summary>
+				<pre><code>navigator.serviceWorker.register(
+	'./service-worker.js');</code></pre>
+			</details>
+			<details>
+				<summary>manifest.json</summary>
+				<pre><code>{
+  "name": "お絵かきアプリ",
+  "short_name": "お絵かき",
+  "background_color": "#fc980c",
+  "icons": [{
+      "src": "./html5-256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },{
+      "src": "./html5-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }],
+  "start_url": "./?utm_source=homescreen",
+  "display": "standalone"
+}
+
+				</code></pre>
+			</details>
+			<details>
+				<summary>service-worker.js</summary>
+				<pre><code>const CACHE_NAME = 'cache-v2';
+const urlsToCache = ['/','hoge.html'];
+
+self.addEventListener('install', (event)=>{
+  /*キャッシュを保存*/
+});
+
+self.addEventListener('activate', (event)=>{
+  /*古いキャッシュは削除*/
+});
+
+</code></pre>
+			</details>
+			</div>
+		</div>
+  </body>
+</html>
+

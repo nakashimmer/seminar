@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../index/iframe.css">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+	<style>
+		input{
+			color:black;
+			text-align:center;
+			height:2em;
+			font-size:30px;
+		}
+		#msg{
+			background-color:rgba(0,0,0,0.8);
+			padding:0.5em;border-radius:0.5em;
+		}
+	</style>
+
+	</head>
+	<body>
+		<div id="wrap">
+			<section>
+				<h1>診断アプリ-乱数</h1> 
+				<h2>あなたをプログラムにたとえると…</h2>
+				<div class="sample">
+					<p>あなたの名前：<input type="text" id="name"></p>
+					<p id="msg">なにがでるかな？</p>
+				</div>
+				<details>
+					<summary>JavaScript</summary>
+					<pre><code>const kekka=[
+	"ちょっと優柔不断だけど頼れるJavaScript",
+	"いつもおしゃれなCSS",
+	"何事にも意味のあるHTML",
+	"HTMLと仲のよいPHP",
+	"今が旬のPython",
+	"基本をしっかりとC言語",
+]
+kekka[Math.floor(<mark>Math.random()</mark>*6)]</code></pre>
+				</details>
+
+			</section>
+			<p><a target="_blank" href="https://twitter.com/nakashimmer">twitter</a></p>
+		
+		<script>
+			const name = document.getElementById("name");
+			const msg = document.getElementById("msg");
+			const kekka=[
+				"ちょっと優柔不断だけど頼れるJavaScript",
+				"いつもおしゃれなCSS",
+				"何事にも意味のあるHTML",
+				"HTMLと仲のよいPHP",
+				"今が旬のPython",
+				"基本をしっかりとC言語",
+			]
+
+			name.addEventListener("change",()=>{
+				if(!name.value){return;}
+				let random=Math.floor(Math.random()*6);
+
+				let str	= name.value+"さんにぴったりの言語は"+kekka[random]+"です";
+				str='<a target="_blank" href="http://twitter.com/intent/tweet?text='+str+'&hashtags=診断アプリ">'+str+'<br>結果を友だちとシェアしよう！</a>';
+				msg.innerHTML=str;
+			});
+		</script>
+
+		</body>
+</html>

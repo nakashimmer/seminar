@@ -1,0 +1,46 @@
+<!DOCTYPE>
+<html>
+<head>
+
+</head>
+
+<body>
+	<div id="output_field"></div>
+	<button onclick="learnLinear();">計算する</button>
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.0"> </script>
+<script>
+	const funcY = (item) => item * 2 - 1
+	let output = document.getElementById('output_field')
+
+		async function learnLinear() {
+			const model = tf.sequential()
+			model.add(tf.layers.dense({ units: 1, inputShape: [1] }))
+			model.compile({
+				loss: 'meanSquaredError',
+				optimizer: 'sgd'
+			})
+
+			const xs = tf.tensor2d([-1, 0, 1, 2, 3, 4], [6, 1])
+			const ys = tf.tensor2d([-3, -1, 1, 3, 5, 7], [6, 1])
+
+			await model.fit(xs, ys, {
+				epochs: 500,
+				callbacks: {
+					onEpochEnd: async (epoch, logs) => {
+						console.log(epoch, logs);
+						output.innerHTML+="<li>"+epoch+"loss"+logs.loss+"</li>";
+					},
+				}
+			})
+			let toPredict = [2, 10, 12, 5, 7]
+			
+			for (let item of toPredict) {
+				let result = model.predict(tf.tensor2d([item], [1, 1]))
+				output.innerHTML += `<p> x値 ${item} - yの値 ${result} - 真のy値 ${funcY(item)}</p>`
+			}
+		}
+
+</script>
+</body>
+
+</html>

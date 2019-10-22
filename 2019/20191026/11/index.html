@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../index/iframe.css">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+		<style>
+			*{margin:0;padding:0;}
+			#table{
+				border-collapse: collapse;
+				display:flex;
+				width:100%;
+				border:3px solid black;
+				border-right: none;
+				background-color:white;
+			}
+			table *{color:black;}
+			th,td{
+				border:1px solid black;
+				border-right:3px solid black;
+				width:270px;
+				font-size:20px !important;
+			}
+			th{background-color:#fff;}
+			td{text-align:right;padding:0.5em;}
+			tr:nth-of-type(1),
+			tr:nth-of-type(7){
+				border-bottom:5px double black;
+			}
+			input{
+				font-size:20px;
+				width:calc(100%);
+				border:none;
+				text-align:right;
+			}
+
+
+			.btn{
+				margin:0 auto;
+			}
+			button{
+				color:white;
+				background-color: black;
+				margin:1em 0 0 auto;
+				font-size:20px;
+			}
+			th,td{width:12.5%;}
+
+		</style>
+
+		</style>
+		<script src="https://unpkg.com/@tensorflow/tfjs"></script>
+	</head>
+	<body>
+	<h1>機械学習-TensorFlow.js</h1>
+	<h2>関数の値を予測</h2>
+		<div id="wrap">
+		
+		<ol>
+			<li>① (x,y)の値のセットを1〜6回まで設定</li>
+			<li>② 7回のxの値を入力し「予測」ボタンを押す</li>
+			<li>③ 学習を行い7回のyに予測値が表示される</li>
+		</ol>
+		<div  class="sample">
+			<table id="table">
+				<tr>
+					<th>データ</th>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+					<th>6</th>
+					<th>予測</th>
+				</tr>
+				<tr>	
+					<th>x値</th>
+					<td><input type="text" class="x" value="0"></td>
+					<td><input type="text" class="x" value="1"></td>
+					<td><input type="text" class="x" value="2"></td>
+					<td><input type="text" class="x" value="3"></td>
+					<td><input type="text" class="x" value="4"></td>
+					<td><input type="text" class="x" value="5"></td>
+					<td>
+						<input type="text" class="x" placeholder="①" style="border:1px solid red;"><br>
+						<button
+							onclick="tsr();">②予測</button>
+					</td>
+				</tr>
+				<tr>
+					<th>y値</th>
+					<td><input type="text" class="y" value="-3"></td>
+					<td><input type="text" class="y" value="-1"></td>
+					<td><input type="text" class="y" value="1"></td>
+					<td><input type="text" class="y" value="3"></td>
+					<td><input type="text" class="y" value="5"></td>
+					<td><input type="text" class="y" value="7"></td>
+					<td class="y">③予測値</td>
+				</tr>
+		</table>
+		
+		<p id="output"></p>
+	</div>
+		<p><a href="https://www.tensorflow.org/js/?hl=ja" target="_blank">TensorFlow.js：ブラウザ内および Node.js 上でモデルのトレーニングとデプロイを行うための JavaScript ライブラリ</a></p>
+	
+
+		<script>
+		const x = document.getElementsByClassName("x");
+		const y = document.getElementsByClassName("y");
+
+		const output = document.getElementById("output");
+
+
+		function xf(i){return parseFloat(x[i].value);}
+		function yf(i){return parseFloat(y[i].value);}
+
+		function tsr(){
+
+			async function learnLinear(){
+
+				//データ読み込み
+				const model = tf.sequential();
+				model.add(
+					tf.layers.dense(
+						{
+							units: 1, 
+							inputShape: [1]
+						}
+					)
+				);
+
+				model.compile(
+					{
+						loss: 'meanSquaredError',
+						optimizer: 'sgd'
+					}
+				);
+
+				//データ用意
+				const xs = tf.tensor2d(
+					[xf(0),xf(1),xf(2),xf(3),xf(4),xf(5)],[6, 1]
+				);
+
+
+				const ys = tf.tensor2d(
+					[yf(0),yf(1),yf(2),yf(3),yf(4),yf(5)],[6, 1]
+				);
+
+
+
+				await model.fit(
+					xs,
+					ys,
+					{epochs: 500,
+					callbacks: {
+							onEpochEnd: async (epoch, logs) => {
+								console.log(epoch, logs);
+								output.innerHTML = "<li>" + epoch + "回/LogLoss=" + logs.loss + "</li>";
+							},
+						}}
+				);
+
+			//予測
+				var result = model.predict(
+					tf.tensor2d(
+						[xf(6)],[1, 1]
+					)
+				)
+
+
+
+				y[6].innerText = (""+result).slice(14).slice(0,-3);
+
+			}
+
+			learnLinear();
+			
+		}		
+	</script>
+	
+	</body>
+</html>

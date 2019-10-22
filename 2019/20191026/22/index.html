@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="../index/iframe.css">
+	<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+	<style>
+	.img{
+		text-align:center;
+	}
+	.flex>p{flex:1;}
+	</style>
+</head>
+
+<body>
+	<div id="wrap">
+		<h1>位置情報-Geolocation API</h1>
+		<div class="flex">
+			<p>GPSで緯度・経度・高度・方角・速度がわかる</p>
+
+			<p class="img"><a  target="_blank" href="https://nakashimmer.github.io/showcase/JS/deviceAccess/gps/index.html"><img src="gps.png"></a></p>
+		</div>
+		<section>
+			<details>
+				<summary>JavaScript</summary>
+				<pre><code>navigator.<mark>geolocation</mark>.watchPosition(<mark>seiko</mark>,shippai,option);
+
+function seiko(pos){
+	let IDO = pos.<mark>coords.latitude</mark>;
+	let KEIDO = pos.<mark>coords.longitude</mark>;
+	let KODO = pos.<mark>coords.altitude</mark>;
+	let HOGAKU = pos.<mark>coords.heading</mark>;
+	let SOKUDO = pos.<mark>coords.speed;</mark>
+}</code></pre>
+			</details>
+		</section>
+	</div>
+
+
+
+</body>
+
+</html>

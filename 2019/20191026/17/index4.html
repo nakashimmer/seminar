@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../index/iframe.css">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+	<style>
+		#dlg {margin: 0 auto;padding: 1em;width:80%;
+			transform:rotate(0) scale(0);
+			transition:all 1s linear;}
+		button {margin: 1em;}
+		#dlg button {display: block;margin: 1em auto;}
+	</style>
+
+	</head>
+	<body>
+		<div id="wrap">
+			<section>
+				<h1>dialog要素-回転</h1>
+
+				<button id="btn1">ダイアログを開く(btn1)</button>
+				<dialog id="dlg">
+					<h3>ダイアログ</h3>
+					<p>HTML5はHTML,CSS,JavaScriptなどの仕様の総称名です。</p>
+					<p><button id="btn2">ダイアログを閉じる(btn2)</button>
+				</dialog>
+				<script>
+					const DLG = document.getElementById("dlg");
+					const BTN1 = document.getElementById("btn1");
+					const BTN2 = document.getElementById("btn2");
+					
+					BTN1.addEventListener("click",()=>{
+						DLG.showModal();
+						DLG.style.transform=" rotate(360deg) scale(1)";
+					});
+
+					BTN2.addEventListener("click", ()=>{
+						setTimeout(fn1,1000);
+						DLG.style.transform = " rotate(0deg) scale(0)";
+						function fn1() {
+							DLG.close();
+						}
+					});
+				</script>
+			</section>
+
+			<section>
+				<details>
+					<summary><h2>CSS</h2></summary>
+					<pre><code>#dlg{
+	transform:<mark>rotate(0) scale(0)</mark>;
+	<mark>transition</mark>:all 1s linear;
+}</code></pre>
+				</details>
+				<details>
+					<summary><h2>JavaScript</h2></summary>
+					<pre><code>BTN1.addEventListener("click",()=>{
+	DLG.showModal();
+	DLG.style.transform="<mark>rotate(360deg) scale(1)"</mark>;});
+BTN2.addEventListener("click",()=>{
+	DLG.close();
+	DLG.style.transform="<mark>rotate(0deg) scale(0)</mark>";});</code></pre>
+				</details>
+			</section>
+		</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>obniz</title>
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="../index/iframe.css">
+		<style>
+			img{height:300px;border-radius:20px;}
+			input{color:black;font-size:1em;width:8em;margin:0 0.3em;}
+			button{font-size: 1em;}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<h1>Web of Things(WoT)-obniz</h1>
+			<div class="flex">
+				<p>obniz（オブナイズ）：<br>ON/OFFやUART通信などのIO制御をクラウドのAPI経由で行える仕組み。センサーやアクチュエーター、既存機器をネットワーク経由で直接操作でき、クラウド中心のIoT開発が可能。</p>
+
+				<p><img src="obniz.png" alt="obniz"></p>
+			</div>
+			<p>
+				obniz ID:
+				<input type="password" id="obid">
+				<button onclick="reg();" id="btn">登録</button>
+				<a href="index2.html">ではいよいよ…</a>
+			</p>	
+		</div>
+
+
+		<script>
+			const BTN=document.getElementById("btn");
+			const OBID=document.getElementById("obid");
+			let obid=localStorage.getItem("OBID");
+			if(obid){
+				OBID.value=obid;
+			}
+			function reg(){
+				BTN.style.backgroundColor="yellow";
+				BTN.style.color = "#333";
+				localStorage.setItem("OBID",OBID.value);
+			}
+		</script>
+	</body>
+</html>

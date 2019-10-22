@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../index/iframe.css">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+	<style>
+		input{
+			color:black;
+			text-align:right;
+			height:2em;
+			font-size:30px;
+		}
+
+	</style>
+
+	</head>
+	<body>
+		<div id="wrap">
+			<section>
+				<h1>計算</h1> 
+				<p>JavaScriptはプログラム</p>
+				<p class="sample">
+					<input type="text" id="a" autocomplete="off" placeholder="a">
+					＋<input type="text" id="b"autocomplete="off" placeholder="b">
+					<button id="c">合計c</button>
+				</p>
+
+				<details>
+					<summary>JavaScript</summary>
+					
+					<pre><code>C.addEventListener("<mark>click</mark>",()=>{
+	C.innerHTML="合計cは＝"+ (Number(<mark>A.value</mark>)<mark>+</mark>Number(<mark>B.value</mark>));
+});</code></pre>
+				</details>
+	
+			</section>
+		
+		<script>
+			const a = document.getElementById("a");
+			const b = document.getElementById("b");
+			const c = document.getElementById("c");
+
+			c.addEventListener("click",()=>{
+				c.innerHTML
+					= "合計cは＝"
+					+ (Number(a.value) + Number(b.value));
+			});
+		</script>
+
+		</body>
+</html>

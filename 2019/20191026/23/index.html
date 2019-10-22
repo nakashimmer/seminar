@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="../index/iframe.css">
+	<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+	<style>
+		.img{
+		text-align:center;
+	}
+	.flex>p{flex:1;}
+	</style>
+</head>
+
+<body>
+	<div id="wrap">
+		<h1>加速度-DeviceMotionEvent</h1>
+		<div class="flex">
+			<p>デバイスの位置と向きの変更スピードがわかる</p>
+			<p class="img"><a target="_blank" href="https://nakashimmer.github.io/showcase/JS/deviceAccess/devicemotion/ufo/index.html"><img src="ufo.png"></a></p>
+		</div>
+		<section>
+			<details>
+				<summary>JavaScript</summary>
+				<pre><code>window.addEventListener('devicemotion', (e)=>{
+	const ACG = e<mark>.accelerationIncludingGravity</mark>;
+	let X = ACG<mark>.x</mark>;
+	let Y = ACG<mark>.y</mark>;
+	let Z = acg<mark>.z</mark>;
+}</code></pre>
+				</details>
+			</section>
+
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../index/iframe.css">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+		<style>
+			#wrap{}
+
+			#ctrl{
+				flex:1;
+				color:white;
+				padding:0.5em;
+				height:calc(100vh - 150px);
+			}
+			input{width:100px;color:black;}
+			input[type="color"]{width:40px;}
+			
+			pre{
+				padding:0.3em;
+			}
+
+			#sample{
+				flex:1;
+				background-color: #fff;
+				display:flex;
+				flex-direction:column;
+				justify-content: center;
+    		align-items: center; 
+				height:calc(100vh - 135px);
+			}
+
+			#box1{
+				width:150px;height:150px;
+				transition:all 0.3s linear;
+				background-image: url(img1.png);
+				background-size:100% 100%;
+				background-color: transparent;
+				filter:drop-shadow(0px 0px 0px gray);
+			}
+			button{font-size:1em;}
+			table{border-collapse: collapse;}
+			th,td{border:1px solid white;}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<h1>filterプロパティ</h1>
+
+<div id="wrap"　 style="display:flex;">
+			<div id="ctrl">
+				<table>
+					<tr>
+						<th>影：</th>
+						<td>
+							x：<input type="range" min=-150 max=150 step=10 value=0 id=i1><br>
+							y：<input type="range" min=-200 max=200 step=10 value=0 id=i2><br>
+							ボカシ<input type="range" min=0 max=30 step=1 value=0 id=i3><br>
+							色：<input type="color" value="#aaaaaa" id=i4>
+						</td>
+					</tr>
+					<tr>
+						<th>明るさ</th>
+						<td><input type="range" min=0 max=300 step=10 value=100 id=i5></td>
+					</tr>
+					<tr>
+						<th>コントラスト</th>
+						<td><input type="range" min=0 max=300 step=1 value=100 id=i6></td>
+					</tr>
+					<tr>
+						<th>グレイスケール</th>
+						<td><input type="range" min=0 max=100 step=1 value=0 id=i6></td>
+					</tr>
+						<th>彩度</th>
+						<td><input type="range" min=0 max=300 step=1 value=100 id=i7></td></td>
+					</tr>
+					<tr>
+						<th>セピア</th>
+						<td><input type="range" min=0 max=100 step=1 value=0 id=i8></td>
+					</tr>
+					<tr>
+						<th>色相反転</th>
+						<td><input type="range" min=0 max=360 step=1 value=0 id=i9></td>
+					</tr>
+					<tr>
+						<th>階調反転</th>
+						<td><input type="range" min=0 max=100 step=1 value=0 id=i10></td>
+					</tr>
+					<tr>
+						<th>ぼかし</th>
+						<td><input type="range" min=0 max=100 step=1 value=0 id=i11></td>
+					</tr>
+					<tr>
+						<th>透明度</th>
+						<td><input type="range" min=0 max=1 step=0.1 value=1 id=i12></td>
+					</tr>
+					<tr>
+						<th>画像URL</th>
+						<td><input type="text" id=i13 value="html5.png"><br>
+						<button onclick="location.reload();">リセット</button></li>
+				</table>
+			</div>
+			<div>
+				<pre><code>#box{filter:<span id=dsv>***</span><br>}</code></pre>
+			</div>
+
+			<div id="sample">
+				<div id="box1"></div>
+			</div>
+
+		</div>
+
+		<script>
+			const box1 = document.getElementById("box1");
+			const input = document.getElementsByTagName("input");
+			const dsv = document.getElementById("dsv");
+
+			for(let i=0;i<input.length;i++){
+				input[i].addEventListener("change",filterChange);
+			}
+			filterChange();		
+			function filterChange(){
+				let str = `
+	drop-shadow(`
+						+input[0].value+"px "
+						+input[1].value+"px "
+						+input[2].value+"px "
+						+input[3].value+`)
+	brightness(`+input[4].value+`%)
+	contrast(`+input[5].value+`%)
+	grayscale(`+input[6].value+`%)
+	saturate(`+ input[7].value +`%)
+	sepia(`+ input[8].value +`%)
+	hue-rotate(`+ input[9].value +`deg)
+	invert(`+ input[10].value +`%)
+	blur(`+ input[11].value +`px)
+	opacity(`+ input[12].value +`)`;
+				box1.style.filter=str;
+				dsv.innerHTML = str;
+
+				box1.style.backgroundImage="url("+input[13].value+")";
+
+				console.log();
+
+			}
+		</script>
+	</body>
+</html>

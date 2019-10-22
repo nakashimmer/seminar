@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../index/iframe.css">
+		<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+	<style>
+		#dlg {margin: 0 auto;padding: 1em;width:80%;
+			transform:scale(0);
+			transition:all 0.5s linear;}
+		button {margin: 1em;}
+		#dlg button {display: block;margin: 1em auto;}
+	</style>
+
+	</head>
+	<body>
+		<div id="wrap">
+			<section>
+				<h1>dialog要素-伸縮</h1>
+
+				<button id="btn1">ダイアログを開く(btn1)</button>
+				<dialog id="dlg">
+					<h3>ダイアログ</h3>
+					<p>HTML5はHTML,CSS,JavaScriptなどの仕様の総称名です。</p>
+					<p><button id="btn2">ダイアログを閉じる(btn2)</button>
+				</dialog>
+				<script>
+					const DLG = document.getElementById("dlg");
+					const BTN1 = document.getElementById("btn1");
+					const BTN2 = document.getElementById("btn2");
+					
+					BTN1.addEventListener("click",()=>{
+						DLG.showModal();
+						DLG.style.transform="scale(1)";
+					});
+
+					BTN2.addEventListener("click", ()=>{
+						setTimeout(fn1,500);
+						DLG.style.transform = "scale(0)";
+						function fn1() {
+							DLG.close();
+						}
+					});
+				</script>
+			</section>
+			<section>
+				<details>
+					<summary><h2>CSS</h2></summary>
+					<pre><code>#dlg{
+	<mark>transform:scale(0);</mark>
+	transition:all 0.5s linear;
+}</code></pre>
+				</details>
+			</section>
+
+			<section>
+				<details>
+					<summary><h2>JavaScript</h2></summary>
+					<pre><code><mark>BTN1</mark>.addEventListener("click",()=>{
+	DLG.showModal();
+	<mark>DLG.style.transform = "scale(1)";</mark>});				
+<mark>BTN2</mark>.addEventListener("click",()=>{
+	DLG.close();
+	<mark>DLG.style.transform = "scale(0)";</mark>});</code></pre>
+				</details>
+			</section>
+			<p><a href="index4.html">次へ</a></p>
+		</div>
+		
+	</body>
+</html>

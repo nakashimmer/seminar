@@ -1,0 +1,103 @@
+/*ふわっと表示*/
+#wrap{
+	opacity:0;
+	animation:wrapanime 0.5s linear 0s 1 normal;
+	animation-fill-mode:both;
+}
+@keyframes wrapanime{100%{opacity:1;}}
+
+*{
+	margin:0;padding:0;
+	font-weight:bold;
+	font-family: "Rounded Mplus 1c";
+	color:white;
+	outline:none;
+	cursor: url(https://webtechpromo.org/speaker/20180708/html5.png),pointer;
+}
+
+
+body,#wrap,dialog{
+	background-color: #333;
+}
+
+
+h1{
+	font-size:40px;padding:0.3em;color:white;
+	text-shadow: -2px -2px 2px black;
+	margin:0;
+	background-color: #666;
+}
+h2,h3,p,li,dt,dd,code,summary,button{font-size:36px;margin:0.3em 1em;color:#fff;}
+
+
+button{border:1px solid white;background-color: #666;border-radius:0.5em;padding:0.5em;}
+
+p{
+	text-align:justify;
+	text-justify:inter-ideograph;
+}
+
+ul,ol,dl{margin-left:2em;}
+
+code,style{
+	margin-left:1em;
+	padding:0.5em;
+	font-size:28px;
+	background-color:rgba(0,0,0,0.2);
+	display:block;
+	font-family:menlo;
+	border-radius:.5em;
+}
+
+details p{margin-left:2em;}
+
+a,.a{
+	text-decoration:none;color:#fff;
+	display:inline-block;
+}
+a:after{
+	content: "　➡";
+	font-size:.5em;
+	color:#999;
+	display: inline-block;
+	width:1em;
+	animation:anchorAnimation 1s linear 0s infinite normal;
+	opacity:0;
+}
+
+@keyframes anchorAnimation{
+	50%{opacity:1;}
+	100%{transform:translateX(50px);}
+}
+
+code{tab-size: 2;}
+
+/*スクロールバーを非表示 (除Firefox)*/
+::-webkit-scrollbar{display:none;}
+*{-ms-overflow-style:none;}
+
+summary h2{
+	display:inline;
+}
+
+mark{
+	background-color:transparent;
+	color:lime;
+	margin:0;padding:0;
+}
+
+::selection {
+  background: #fff;
+  color: #000;
+}
+
+.flex{display:flex;}
+
+.center{text-align:center;}
+
+.sample{
+	border:1px solid white;
+	border-radius:0.5em;
+	padding:0.3em;
+	margin:1em;
+}

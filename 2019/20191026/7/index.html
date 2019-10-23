@@ -39,7 +39,7 @@
 	</head>
 
 	<body>
-		<h1>音声操作-Web Speech API</h1>
+		<h1>音声操作-<mark>Web Speech API</mark></h1>
 		<div id="wrap">
 			<section>
 				<h2>1. 事前設定</h2>
@@ -76,7 +76,7 @@
 				<details>
 					<summary><h2>JavaScript</h2></summary>	
 					<pre><code>const VOICES = speechSynthesis.getVoices();
-const <mark>CONTEXT</mark> = new SpeechSynthesisUtterance(INPUT.value);
+const <mark>CONTEXT</mark> = new SpeechSynthesisUtterance(<mark>INPUT.value</mark>);
 CONTEXT.lang = LANG.value;
 CONTEXT.voice = VOICES[VOICENO.value];
 speechSynthesis.<mark>speak(CONTEXT)</mark>;</code></pre>

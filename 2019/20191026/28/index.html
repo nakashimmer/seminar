@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<link rel="stylesheet" href="../index/iframe.css">
+			<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+		<style>
+			canvas{
+				display:flex;
+				position: absolute;
+				top:0;bottom:0;left:0;right:0;
+				margin:auto;
+			}
+		</style>
+	</head>
+	<body  onclick="start();">
+	<div id="wrap">
+		<h1>物理エンジン -<mark>matter</mark></h1>
+		<main id="stage"></main>
+		<script src="matter.js"></script>
+
+	<script>
+//初期化
+
+	const Engine = Matter.Engine,
+		Render = Matter.Render,
+		Runner = Matter.Runner,
+		World = Matter.World,
+		Bodies = Matter.Bodies;
+
+	const engine = Engine.create(),  //物理演算エンジンを生成？
+	world = engine.world;  //重力の存在する仮想世界の生成…？
+
+	// create renderer
+	const render = Render.create({  //レンダリングの設定？
+		element: document.body,
+		engine: engine,
+		options: {
+			width: 800,  //ステージの横幅
+			height: 350,  //ステージの高さ
+			background: '#fff',  //ステージの背景色
+			wireframes: false  //ワイヤーフレームモードをオフ
+			}
+		});
+
+		Render.run(render);  //ステージを配置させる記述？
+
+	let shikaku=new Array();
+
+	//四角
+
+		for(let i=0;i<25;i++){
+			let x = i * 50 + 300; let y = 25;
+			if (i > 4) { x = (i - 5) * 50 + 300; y = 75; }
+			if (i > 9) { x = (i - 10) * 50 + 300+1; y = 125; }
+			if (i > 14) { x = (i - 15) * 50 + 300; y = 175; }
+			if (i > 19) { x = (i - 20) * 50 + 300+1; y = 225; }
+		
+			shikaku[i] = Bodies.circle(x, y, 25,
+			{
+				restitution:0.3,
+				render: {
+					sprite: { //スプライトの設定
+						texture: './shunji.png' //テクスチャ画像を指定
+					}
+				}
+			}
+			);
+		}
+	
+/*
+	//円1
+	var maru = Bodies.circle(200, 0, 50, {
+		restitution: 1,
+		render: {
+			fillStyle: 'green',  //中身の色
+			strokeStyle: 'red',  //線の色
+			lineWidth: 5, //線の太さ
+			sprite: { //スプライトの設定
+				texture: './shunji.jpg' //テクスチャ画像を指定
+			}
+		},
+		
+	});
+
+	//円2
+	var maru2 = Bodies.circle(700, 0, 50, {
+		restitution: 1,
+		render:{
+			sprite: { //スプライトの設定
+				texture: './shunji.jpg' //テクスチャ画像を指定
+			}
+		}
+	});*/
+
+	//床
+	var yuka = Bodies.rectangle(400, 350, 800, 5, {
+		isStatic: true,
+		render: {
+			fillStyle: 'green',  //中身の色
+		}
+	});
+
+		//天井
+		var tenjo = Bodies.rectangle(400, 0, 800, 5, {
+			isStatic: true,
+			render: {
+				fillStyle: 'green',  //中身の色
+			}
+
+		});
+
+	//壁1
+		var kabe = Bodies.rectangle(0, 175, 5, 350, {
+			isStatic: true,
+			render: {
+				fillStyle: 'green',  //中身の色
+			}
+		});
+
+		//壁2
+		var kabe2 = Bodies.rectangle(800, 175, 5, 350, {
+			isStatic: true,
+			render: {
+				fillStyle: 'green',  //中身の色
+			}
+		});
+
+		
+
+	World.add(world, [  //作成した図形をステージに追加して描画する？
+	//	maru,
+	//	maru2,
+		shikaku[0], shikaku[1], shikaku[2], shikaku[3], shikaku[4], 
+		shikaku[5], shikaku[6], shikaku[7], shikaku[8], shikaku[9], 
+
+		shikaku[10], shikaku[11],shikaku[12], shikaku[13], shikaku[14], 
+		shikaku[15], shikaku[16], shikaku[17], shikaku[18], shikaku[19], 
+
+		shikaku[20], shikaku[21], shikaku[22], shikaku[23], shikaku[24], 
+		yuka,
+		kabe,
+		kabe2,
+		tenjo
+	]);
+
+	
+			// create runner
+			var runner = Runner.create();
+	function start() {
+			Runner.run(runner, engine);  //物理エンジンを実行？
+	}
+	var MouseConstraint = Matter.MouseConstraint,
+		Mouse = Matter.Mouse;
+
+	// add mouse control
+	var mouse = Mouse.create(render.canvas),
+		mouseConstraint = MouseConstraint.create(engine, {
+			mouse: mouse,
+			constraint: {
+				stiffness: 0.2,
+				render: {
+					visible: false
+				}
+			}
+		});
+	World.add(world, mouseConstraint);
+
+
+
+	// keep the mouse in sync with rendering
+	render.mouse = mouse;
+
+	
+
+
+
+	</script>
+	</body>
+</html>

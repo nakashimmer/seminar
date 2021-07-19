@@ -63,7 +63,7 @@ function talk1(){
 		+RESULT.innerHTML;
 	
 	$.post(
-		'https://api.a3rt.recruit-tech.co.jp/talk/v1/smalltalk',
+		'https://api.a3rt.recruit.co.jp/talk/v1/smalltalk',
 		params,
 		(result)=>{
 			if(result.status == 0) {

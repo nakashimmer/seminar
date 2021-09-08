@@ -1,0 +1,32 @@
+	*{margin:0;padding:0;font-size:30px;}
+	.menlo>li{font-family:menlo;font-size:50px;}
+	h1{text-align: center;background-color:black;color:white;}
+	ul,ol{margin-left:2em;}
+	section{border:1px solid gray;margin:1em;padding:1em;border-radius:1em;}
+	
+	/*awa*/
+	
+	#wrap{overflow:hidden;position:relative;height:100vh;}
+	.awa{
+		position:absolute;
+		animation:awa1 30s linear 0s infinite normal;
+		animation-fill-mode:both;
+		background-image:url(html5.png);
+		background-size:100% 100%;
+		filter:opacity(0.1);
+	}
+	.awa:nth-of-type(1){width:500px;height:500px;}
+	.awa:nth-of-type(2){width:200px;height:200px;animation-name:awa2;animation-delay:10s;}
+	.awa:nth-of-type(3){width:100px;height:100px;animation-name:awa3;animation-delay:20s;}
+	@keyframes awa1{
+		0%{transform:translate(calc(100vw - 500px),calc(100vh + 100px)) rotate(30deg);}
+		100%{transform:translate(0px,-550px) rotate(130deg);}
+	}
+	@keyframes awa2{
+		0%{transform:translate(0px,calc(100vh + 300px)) rotate(30deg);}
+		100%{transform:translate(calc(100vw - 200px),-300px) rotate(-130deg);}
+	}
+	@keyframes awa3{
+		0%{transform:translate(500px,calc(100vh + 300px)) rotate(40deg);}
+		100%{transform:translate(500px,-300px) rotate(100deg);}
+	}
